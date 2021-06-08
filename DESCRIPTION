@@ -1,0 +1,25 @@
+Package: ggglyph
+Title: Multivariate Data Visualization using Glyphs
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "J.", family = "Aravind",
+           email = "j.aravind@icar.gov.in",
+           role = c("aut", "cre"),
+		       comment = c(ORCID = "0000-0002-4791-442X")))
+Description: Provides geoms for visualizing multivariate data using 'ggplot2'.
+License: GPL-2 | GPL-3
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+LazyData: true
+RdMacros:
+     mathjaxr,
+     Rdpack
+Depends:
+    R (>= 3.5.0)
+Imports:
+     ggplot2,
+     mathjaxr,
+     Rdpack,
+     rlang
+Suggests:
+     scales
