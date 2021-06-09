@@ -6,7 +6,7 @@
 \usage{
 geom_starglyph(
   mapping = NULL,
-  data,
+  data = NULL,
   stat = "identity",
   position = "identity",
   ...,
@@ -93,30 +93,30 @@ mtcars$lab <- row.names(mtcars)
 library(ggplot2)
 
 # Both whiskers and contour
-ggplot() +
-  geom_starglyph(data = mtcars, aes(x = mpg, y = disp, fill = cyl),
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
                  size = 0.1, alpha =  0.5) +
   ylim(c(-0, 550))
 
 # Only contours (polygon)
-ggplot() +
-  geom_starglyph(data = mtcars, aes(x = mpg, y = disp, fill = cyl),
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = FALSE, contour = TRUE,
                  size = 0.1, alpha =  0.5) +
   ylim(c(-0, 550))
 
 # Only whiskers
-ggplot() +
-  geom_starglyph(data = mtcars, aes(x = mpg, y = disp, colour = cyl),
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
                  size = 0.1) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
   ylim(c(-0, 550))
 
 # With text annotations
-ggplot() +
-  geom_starglyph(data = mtcars, aes(x = mpg, y = disp, colour = cyl),
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
                  size = 0.1) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
@@ -124,12 +124,13 @@ ggplot() +
   ylim(c(-0, 550))
 
 # Faceted
-ggplot() +
-  geom_starglyph(data = mtcars, aes(x = mpg, y = disp, fill = cyl),
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
                  size = 0.1, alpha =  0.5) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
+
 }
 \references{
 \insertAllCited{}
