@@ -3,3 +3,7 @@
 ^RoughWork$
 ^Release\.R$
 ^ggglyph\.pdf$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
