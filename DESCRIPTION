@@ -6,7 +6,8 @@ Authors@R: c(
            email = "j.aravind@icar.gov.in",
            role = c("aut", "cre"),
 		       comment = c(ORCID = "0000-0002-4791-442X")))
-Description: Provides geoms for visualizing multivariate data using 'ggplot2'.
+Description: Provides geoms for visualizing multivariate data as glyphs using 
+     'ggplot2'.
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.1.1
@@ -18,6 +19,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
      ggplot2,
+     grid,
      mathjaxr,
      Rdpack,
      rlang
