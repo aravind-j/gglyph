@@ -20,9 +20,9 @@ starglyphGrob(
 )
 }
 \arguments{
-\item{x}{The horizontal position.}
+\item{x}{A numeric vector or unit object specifying x-locations.}
 
-\item{y}{The vertical position.}
+\item{y}{A numeric vector or unit object specifying y-locations.}
 
 \item{z}{A numeric vector specifying the distance of star gylph points from
 the center.}

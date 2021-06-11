@@ -4,8 +4,8 @@
 #' \insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph}.
 #' \loadmathjax
 #'
-#' @param x The horizontal position.
-#' @param y The vertical position.
+#' @param x A numeric vector or unit object specifying x-locations.
+#' @param y A numeric vector or unit object specifying y-locations.
 #' @param z A numeric vector specifying the distance of star gylph points from
 #'   the center.
 #' @param size The size of glyphs.
@@ -52,11 +52,12 @@ starglyphGrob <- function(x = .5, y = .5, z,
 
   # Get polygon points
   dimension <- length(z)
-  angle <- seq(0, 2*base::pi, length.out = dimension + 1)[1:dimension]
+  angle <- seq(angle.start, 2*base::pi, length.out = dimension + 1)[1:dimension]
 
   starx <- x + (z * size * cos(angle))
   stary <- y + (z * size * sin(angle))
 
+  # Empty Grobs
   contourGrob <- grid::nullGrob()
   whiskerGrob <- grid::nullGrob()
 
@@ -80,6 +81,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
 
     whiskerGrob <- grid::polylineGrob(x = rayx,
                                       y = rayy,
+                                      id = rayid,
                                       default.units = "native",
                                       gp = grid::gpar(col = col,
                                                       lwd = lwd,
@@ -88,8 +90,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
 
   grid::grobTree(contourGrob, whiskerGrob,
                  gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                 col = col, fill = fill)
-  )
+                                 col = col, fill = fill))
 
 
 }
