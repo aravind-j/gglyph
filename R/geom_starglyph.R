@@ -93,6 +93,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
 
   # Remove rows with missing values in "cols"
 
+  # Modify mapping to include cols
   mcols <- rlang::as_quosures(rlang::syms(cols), .GlobalEnv)
   names(mcols) <- cols
   mapping <- modifyList(mapping, mcols)
