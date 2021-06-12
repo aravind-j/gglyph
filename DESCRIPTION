@@ -1,4 +1,4 @@
-Package: ggglyph
+Package: gglyph
 Title: Multivariate Data Visualization using Glyphs
 Version: 0.0.0.9000
 Authors@R: c(
@@ -13,14 +13,12 @@ Encoding: UTF-8
 RoxygenNote: 7.1.1
 LazyData: true
 RdMacros:
-     mathjaxr,
      Rdpack
 Depends:
     R (>= 3.5.0)
 Imports:
      ggplot2,
      grid,
-     mathjaxr,
      Rdpack,
      rlang
 Suggests:
