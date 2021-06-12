@@ -53,8 +53,8 @@ the center.}
 A \code{\link[grid]{grobTree}} object.
 }
 \description{
-Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
-\insertCite{chambers_graphical_1983}{ggglyph}. \loadmathjax
+Uses \code{\link[grid]{Grid}} graphics to draw a profile glyph
+\insertCite{chambers_graphical_1983}{ggglyph}.
 }
 \examples{
 # mirror = TRUE

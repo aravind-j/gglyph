@@ -1,7 +1,7 @@
 #' Draw a Profile Glyph
 #'
-#' Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
-#' \insertCite{chambers_graphical_1983}{ggglyph}. \loadmathjax
+#' Uses \code{\link[grid]{Grid}} graphics to draw a profile glyph
+#' \insertCite{chambers_graphical_1983}{ggglyph}.
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.

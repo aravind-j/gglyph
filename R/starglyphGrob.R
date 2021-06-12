@@ -2,7 +2,6 @@
 #'
 #' Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
 #' \insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph}.
-#' \loadmathjax
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
@@ -15,7 +14,7 @@
 #' @param alpha The alpha transparency value.
 #' @param angle.start The start angle for the glyph in radians. Default is zero.
 #' @param angle.stop The stop anlge for the glyph in radians. Default is
-#'   \mjseqn{2\pi}
+#'   \eqn{2\pi}.
 #' @param whisker logical. If \code{TRUE}, plots the star glyph whiskers.
 #' @param contour logical. If \code{TRUE}, plots the star glyph contours. glyph.
 #'

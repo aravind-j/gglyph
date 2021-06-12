@@ -40,7 +40,7 @@ the center.}
 \item{angle.start}{The start angle for the glyph in radians. Default is zero.}
 
 \item{angle.stop}{The stop anlge for the glyph in radians. Default is
-\mjseqn{2\pi}}
+\eqn{2\pi}.}
 
 \item{whisker}{logical. If \code{TRUE}, plots the star glyph whiskers.}
 
@@ -52,7 +52,6 @@ A \code{\link[grid]{grobTree}} object.
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
 \insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph}.
-\loadmathjax
 }
 \examples{
 stargylph <- starglyphGrob(x = 250, y = 250,
