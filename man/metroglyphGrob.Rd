@@ -48,7 +48,7 @@ A \code{\link[grid]{grobTree}} object.
 }
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a metroglyph
-\insertCite{anderson_semigraphical_1957}{ggglyph}.
+\insertCite{anderson_semigraphical_1957,dutoit_graphical_1986}{gglyph}.
 }
 \examples{
 mglyph1 <- metroglyphGrob(x = 200, y = 100,
@@ -75,4 +75,7 @@ grid::grid.draw(mglyph1)
 grid::grid.draw(mglyph2)
 grid::grid.draw(mglyph3)
 grid::grid.draw(mglyph4)
+}
+\seealso{
+\code{\link[gglyph]{geom_metroglyph}}
 }

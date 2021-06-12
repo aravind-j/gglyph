@@ -1,7 +1,7 @@
 #' Draw a Star Glyph
 #'
 #' Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
-#' \insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph}.
+#' \insertCite{siegel_surgical_1972,chambers_graphical_1983,dutoit_graphical_1986}{gglyph}.
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
@@ -23,7 +23,7 @@
 #' @importFrom grid polygonGrob polylineGrob nullGrob grobTree gpar
 #' @export
 #'
-#' @seealso \code{\link[ggglyph]{geom_starglyph}}
+#' @seealso \code{\link[gglyph]{geom_starglyph}}
 #'
 #' @references
 #'

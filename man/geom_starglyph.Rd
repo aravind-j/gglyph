@@ -72,12 +72,12 @@ A \code{geom} layer.
 }
 \description{
 The starglyph geom is used to plot multivariate data as star glyphs
-\insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph} in a
-scatterplot.
+\insertCite{siegel_surgical_1972,chambers_graphical_1983,dutoit_graphical_1986}{gglyph}
+in a scatterplot.
 }
 \section{Aesthetics}{
- \code{geom_starglyph()} understands the following aesthetics
-  (required aesthetics are in bold): \itemize{ \item{\strong{x}}
+ \code{geom_starglyph()} understands the following
+  aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
   \item{shape} \item{size} \item{stroke} \item{linetype} }
 }
@@ -136,5 +136,5 @@ ggplot(data = mtcars) +
 \insertAllCited{}
 }
 \seealso{
-\code{\link[ggglyph]{starglyphGrob}}
+\code{\link[gglyph]{starglyphGrob}}
 }

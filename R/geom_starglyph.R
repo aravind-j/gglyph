@@ -1,8 +1,8 @@
 #' Add Star Glyphs as a Scatterplot
 #'
 #' The starglyph geom is used to plot multivariate data as star glyphs
-#' \insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph} in a
-#' scatterplot.
+#' \insertCite{siegel_surgical_1972,chambers_graphical_1983,dutoit_graphical_1986}{gglyph}
+#' in a scatterplot.
 #'
 #' @inheritParams ggplot2::layer
 #' @inheritParams starglyphGrob
@@ -11,8 +11,8 @@
 #' @param linewidth The line width.
 #' @param ... additional parameters
 #'
-#' @section Aesthetics: \code{geom_starglyph()} understands the following aesthetics
-#'   (required aesthetics are in bold): \itemize{ \item{\strong{x}}
+#' @section Aesthetics: \code{geom_starglyph()} understands the following
+#'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
 #'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
 #'   \item{shape} \item{size} \item{stroke} \item{linetype} }
 #'
@@ -25,7 +25,7 @@
 #' @importFrom Rdpack reprompt
 #' @export
 #'
-#' @seealso \code{\link[ggglyph]{starglyphGrob}}
+#' @seealso \code{\link[gglyph]{starglyphGrob}}
 #'
 #' @references
 #'

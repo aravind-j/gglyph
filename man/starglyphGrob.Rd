@@ -51,7 +51,7 @@ A \code{\link[grid]{grobTree}} object.
 }
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
-\insertCite{siegel_surgical_1972,chambers_graphical_1983}{ggglyph}.
+\insertCite{siegel_surgical_1972,chambers_graphical_1983,dutoit_graphical_1986}{gglyph}.
 }
 \examples{
 stargylph <- starglyphGrob(x = 250, y = 250,
@@ -64,5 +64,5 @@ grid::grid.draw(stargylph)
 \insertAllCited{}
 }
 \seealso{
-\code{\link[ggglyph]{geom_starglyph}}
+\code{\link[gglyph]{geom_starglyph}}
 }

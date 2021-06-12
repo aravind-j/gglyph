@@ -1,7 +1,7 @@
 #' Draw a Metroglyph
 #'
 #' Uses \code{\link[grid]{Grid}} graphics to draw a metroglyph
-#' \insertCite{anderson_semigraphical_1957}{ggglyph}.
+#' \insertCite{anderson_semigraphical_1957,dutoit_graphical_1986}{gglyph}.
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
@@ -21,6 +21,8 @@
 #'
 #' @importFrom grid circleGrob polylineGrob grobTree gpar
 #' @export
+#'
+#' @seealso \code{\link[gglyph]{geom_metroglyph}}
 #'
 #' @examples
 #' mglyph1 <- metroglyphGrob(x = 200, y = 100,

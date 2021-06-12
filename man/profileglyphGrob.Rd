@@ -54,7 +54,7 @@ A \code{\link[grid]{grobTree}} object.
 }
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a profile glyph
-\insertCite{chambers_graphical_1983}{ggglyph}.
+\insertCite{chambers_graphical_1983,dutoit_graphical_1986}{gglyph}.
 }
 \examples{
 # mirror = TRUE
@@ -273,5 +273,5 @@ grid::grid.draw(profileglyph)
 \insertAllCited{}
 }
 \seealso{
-\code{\link[ggglyph]{geom_profileglyph}}
+\code{\link[gglyph]{geom_profileglyph}}
 }
