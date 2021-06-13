@@ -67,7 +67,7 @@ pieglyphGrob <- function(x = .5, y = .5, z,
 
   # Get polygon points
   dimension <- length(z)
-  angle <- seq(angle.start, 2*base::pi, length.out = dimension + 1)[1:dimension]
+  # angle <- seq(angle.start, 2*base::pi, length.out = dimension + 1)[1:dimension]
 
   # Convert z to cumulative proportions
   if (scale.segment) {
@@ -79,7 +79,6 @@ pieglyphGrob <- function(x = .5, y = .5, z,
 
   diffz <- diff(cumpropz)
 
-  gl <- grid::grobTree()
   segxylist <- vector("list", dimension)
 
   for (i in 1:dimension) {
