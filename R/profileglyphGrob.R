@@ -127,10 +127,6 @@
 #' grid::grid.draw(profileglyph)
 #'
 #'
-#'
-#'
-#'
-#'
 #' # mirror = TRUE, flip.axes = TRUE
 #' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
 #' barglyph <- profileglyphGrob(x = 100, y = 100, z = dims,
@@ -253,8 +249,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                           flip.axes = FALSE,
                           bar = TRUE,
                           line = TRUE,
-                          mirror = TRUE,
-                          dot = TRUE) {
+                          mirror = TRUE) {
 
   # grid::grid.rect(gp=gpar(col="gray"))
   # grid::grid.points(x = x, y = y, pch =  20)

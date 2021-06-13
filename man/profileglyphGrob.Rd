@@ -17,8 +17,7 @@ profileglyphGrob(
   flip.axes = FALSE,
   bar = TRUE,
   line = TRUE,
-  mirror = TRUE,
-  dot = TRUE
+  mirror = TRUE
 )
 }
 \arguments{
