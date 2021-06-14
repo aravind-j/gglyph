@@ -25,7 +25,7 @@ pieglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star gylph points from
+\item{z}{A numeric vector specifying the distance of star glyph points from
 the center.}
 
 \item{size}{The size of glyphs.}
@@ -135,6 +135,8 @@ grid::grid.draw(p6)
 
 }
 \references{
+\insertAllCited{}
+
 \insertAllCited{}
 }
 \seealso{

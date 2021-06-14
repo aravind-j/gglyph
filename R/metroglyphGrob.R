@@ -5,7 +5,7 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star gylph points from
+#' @param z A numeric vector specifying the distance of star glyph points from
 #'   the center.
 #' @param size The size of rays.
 #' @param circle.size The size of the central circle.
@@ -26,6 +26,10 @@
 #' @export
 #'
 #' @seealso \code{\link[gglyph]{geom_metroglyph}}
+#'
+#' @references
+#'
+#' \insertAllCited{}
 #'
 #' @examples
 #' mglyph1 <- metroglyphGrob(x = 200, y = 100,

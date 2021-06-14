@@ -22,7 +22,7 @@ tileglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star gylph points from
+\item{z}{A numeric vector specifying the distance of star glyph points from
 the center.}
 
 \item{size}{The size of glyphs.}
@@ -141,6 +141,9 @@ grid::grid.draw(tg7)
 grid::grid.draw(tg8)
 
 }
+\references{
+\insertAllCited{}
+}
 \seealso{
-\code{\link[gglyph]{geom_metroglyph}}
+\code{\link[gglyph]{geom_tileglyph}}
 }

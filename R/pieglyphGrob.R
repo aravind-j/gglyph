@@ -5,7 +5,7 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star gylph points from
+#' @param z A numeric vector specifying the distance of star glyph points from
 #'   the center.
 #' @param size The size of glyphs.
 #' @param edges The number of edges of the polygon to depict the circular glyph
@@ -30,6 +30,10 @@
 #' @export
 #'
 #' @seealso \code{\link[gglyph]{geom_pieglyph}}
+#'
+#' @references
+#'
+#' \insertAllCited{}
 #'
 #' @references
 #'

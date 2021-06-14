@@ -25,7 +25,7 @@ metroglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star gylph points from
+\item{z}{A numeric vector specifying the distance of star glyph points from
 the center.}
 
 \item{size}{The size of rays.}
@@ -167,6 +167,9 @@ grid::grid.draw(mglyph2)
 grid::grid.draw(mglyph3)
 grid::grid.draw(mglyph4)
 
+}
+\references{
+\insertAllCited{}
 }
 \seealso{
 \code{\link[gglyph]{geom_metroglyph}}
