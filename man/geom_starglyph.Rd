@@ -56,6 +56,12 @@ glyphs as a character vector.}
 
 \item{contour}{logical. If \code{TRUE}, plots the star glyph contours. glyph.}
 
+\item{colour.whisker}{The colour of whisker.}
+
+\item{linewidth.whisker}{The whisker line width.}
+
+\item{linewidth.contour}{The contour line width.}
+
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.
@@ -66,8 +72,6 @@ display.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
-
-\item{linewidth}{The line width.}
 }
 \value{
 A \code{geom} layer.

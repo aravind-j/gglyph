@@ -8,7 +8,9 @@
 #' @inheritParams starglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
 #'   glyphs as a character vector.
-#' @param linewidth The line width.
+#' @param colour.whisker The colour of whisker.
+#' @param linewidth.whisker The whisker line width.
+#' @param linewidth.contour The contour line width.
 #' @param ... additional parameters
 #'
 #' @section Aesthetics: \code{geom_starglyph()} understands the following
