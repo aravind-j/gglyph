@@ -25,7 +25,7 @@ profileglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star gylph points from
+\item{z}{A numeric vector specifying the distance of star glyph points from
 the center.}
 
 \item{size}{The size of glyphs.}
@@ -151,10 +151,6 @@ profileglyph <- profileglyphGrob(x = 500, y = 500, z = dims, size = 100,
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
-
-
-
-
 
 
 # mirror = TRUE, flip.axes = TRUE
