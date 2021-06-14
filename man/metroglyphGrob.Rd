@@ -10,9 +10,11 @@ metroglyphGrob(
   z,
   size = 1,
   circle.size = 10,
-  col = "black",
+  col.circle = "black",
+  col.ray = "black",
   fill = NA,
-  lwd = 1,
+  lwd.circle = 1,
+  lwd.ray = 1,
   alpha = 1,
   angle.start = 0,
   angle.stop = 2 * base::pi
@@ -30,15 +32,20 @@ the center.}
 
 \item{circle.size}{The size of the central circle.}
 
-\item{col}{The colour of whisker and contours.}
+\item{col.circle}{The circle colour.}
 
-\item{fill}{The fill colour.}
+\item{col.ray}{The colour of rays.}
 
-\item{lwd}{The line width.}
+\item{fill}{The circle fill colour.}
+
+\item{lwd.circle}{The circle line width.}
+
+\item{lwd.ray}{The ray line width.}
 
 \item{alpha}{The alpha transparency value.}
 
-\item{angle.start}{The start angle for the glyph rays in radians. Default is zero.}
+\item{angle.start}{The start angle for the glyph rays in radians. Default is
+zero.}
 
 \item{angle.stop}{The stop anlge for the glyph rays in radians. Default is
 \eqn{2\pi}.}
@@ -75,6 +82,70 @@ grid::grid.draw(mglyph1)
 grid::grid.draw(mglyph2)
 grid::grid.draw(mglyph3)
 grid::grid.draw(mglyph4)
+
+
+mglyph1 <- metroglyphGrob(x = 200, y = 100,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 10, lwd.circle = 3)
+
+mglyph2 <- metroglyphGrob(x = 500, y = 100,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 25, lwd.circle = 3)
+
+mglyph3 <- metroglyphGrob(x = 200, y = 300,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 0,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3)
+
+mglyph4 <- metroglyphGrob(x = 500, y = 300,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 50,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3)
+
+
+grid::grid.newpage()
+grid::grid.draw(mglyph1)
+grid::grid.draw(mglyph2)
+grid::grid.draw(mglyph3)
+grid::grid.draw(mglyph4)
+
+
+mglyph1 <- metroglyphGrob(x = 200, y = 100,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 10, lwd.circle = 3,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+                          col.circle = "gray")
+
+mglyph2 <- metroglyphGrob(x = 500, y = 100,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 25, lwd.circle = 3,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+                          col.circle = "white", fill = "black")
+
+mglyph3 <- metroglyphGrob(x = 200, y = 300,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 0,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"))
+
+mglyph4 <- metroglyphGrob(x = 500, y = 300,
+                          z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                          size = 100, circle.size = 50,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 5, lwd.circle = 15,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+                          col.circle = "white", fill = "gray")
+
+
+grid::grid.newpage()
+grid::grid.draw(mglyph1)
+grid::grid.draw(mglyph2)
+grid::grid.draw(mglyph3)
+grid::grid.draw(mglyph4)
+
 }
 \seealso{
 \code{\link[gglyph]{geom_metroglyph}}
