@@ -94,6 +94,52 @@ grid::grid.draw(tg6)
 grid::grid.draw(tg7)
 grid::grid.draw(tg8)
 
+tg1 <- tileglyphGrob(x = 150, y = 150,
+                   z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+                   size = 5, ratio = 10)
+
+tg2 <- tileglyphGrob(x = 450, y = 150,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
+                     size = 5, ratio = 10)
+
+tg3 <- tileglyphGrob(x = 150, y = 250,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+                     size = 5, nrow = 2, ratio = 10)
+
+tg4 <- tileglyphGrob(x = 450, y = 250,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
+                     size = 5, nrow = 2, ratio = 10)
+
+tg5 <- tileglyphGrob(x = 150, y = 350,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+                     size = 5, ratio = 10,
+                     fill = RColorBrewer::brewer.pal(7, "Dark2"))
+
+tg6 <- tileglyphGrob(x = 450, y = 350,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
+                     size = 5, ratio = 10,
+                     fill = RColorBrewer::brewer.pal(7, "Dark2"))
+
+tg7 <- tileglyphGrob(x = 150, y = 450,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+                     size = 5, nrow = 2, ratio = 10,
+                     fill = RColorBrewer::brewer.pal(7, "Dark2"))
+
+tg8 <- tileglyphGrob(x = 450, y = 450,
+                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
+                     size = 5, nrow = 2, ratio = 10,
+                     fill = RColorBrewer::brewer.pal(7, "Dark2"))
+
+grid::grid.newpage()
+grid::grid.draw(tg1)
+grid::grid.draw(tg2)
+grid::grid.draw(tg3)
+grid::grid.draw(tg4)
+grid::grid.draw(tg5)
+grid::grid.draw(tg6)
+grid::grid.draw(tg7)
+grid::grid.draw(tg8)
+
 }
 \seealso{
 \code{\link[gglyph]{geom_metroglyph}}
