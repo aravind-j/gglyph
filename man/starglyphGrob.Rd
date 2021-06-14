@@ -9,9 +9,11 @@ starglyphGrob(
   y = 0.5,
   z,
   size = 1,
-  col = "black",
+  col.whisker = "black",
+  col.contour = "black",
   fill = NA,
-  lwd = 1,
+  lwd.whisker = 1,
+  lwd.contour = 1,
   alpha = 1,
   angle.start = 0,
   angle.stop = 2 * base::pi,
@@ -29,11 +31,15 @@ the center.}
 
 \item{size}{The size of glyphs.}
 
-\item{col}{The colour of whisker and contours.}
+\item{col.whisker}{The colour of whisker.}
+
+\item{col.contour}{The colour of contours.}
 
 \item{fill}{The fill colour.}
 
-\item{lwd}{The line width.}
+\item{lwd.whisker}{The whisker line width.}
+
+\item{lwd.contour}{The contour line width.}
 
 \item{alpha}{The alpha transparency value.}
 
@@ -54,10 +60,134 @@ Uses \code{\link[grid]{Grid}} graphics to draw a star glyph
 \insertCite{siegel_surgical_1972,chambers_graphical_1983,dutoit_graphical_1986}{gglyph}.
 }
 \examples{
-stargylph <- starglyphGrob(x = 250, y = 250,
-                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100)
+sg1 <- starglyphGrob(x = 250, y = 150,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100)
+
+sg2 <- starglyphGrob(x = 250, y = 300,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 3,
+                     lwd.contour = 0.01)
+
+sg3 <- starglyphGrob(x = 250, y = 450,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 0.1,
+                     lwd.contour = 3)
+
+sg4 <- starglyphGrob(x = 500, y = 150,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     angle.start = 0, angle.stop = -base::pi)
+
+sg5 <- starglyphGrob(x = 500, y = 300,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 3,
+                     lwd.contour = 0.01,
+                     angle.start = 0, angle.stop = -base::pi)
+
+sg6 <- starglyphGrob(x = 500, y = 450,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 0.1,
+                     lwd.contour = 3,
+                     angle.start = 0, angle.stop = -base::pi)
+
 grid::grid.newpage()
-grid::grid.draw(stargylph)
+grid::grid.draw(sg1)
+grid::grid.draw(sg2)
+grid::grid.draw(sg3)
+grid::grid.draw(sg4)
+grid::grid.draw(sg5)
+grid::grid.draw(sg6)
+
+sg1 <- starglyphGrob(x = 250, y = 150,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     fill = "salmon")
+
+sg2 <- starglyphGrob(x = 250, y = 300,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 3,
+                     lwd.contour = 0.01,
+                     fill = "cyan")
+
+sg3 <- starglyphGrob(x = 250, y = 450,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 0.1,
+                     lwd.contour = 3,
+                     fill = "green")
+
+sg4 <- starglyphGrob(x = 500, y = 150,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     angle.start = 0, angle.stop = -base::pi,
+                     fill = "salmon")
+
+sg5 <- starglyphGrob(x = 500, y = 300,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 3,
+                     lwd.contour = 0.01,
+                     angle.start = 0, angle.stop = -base::pi,
+                     fill = "cyan")
+
+sg6 <- starglyphGrob(x = 500, y = 450,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 0.1,
+                     lwd.contour = 3,
+                     angle.start = 0, angle.stop = -base::pi,
+                     fill = "green")
+
+grid::grid.newpage()
+grid::grid.draw(sg1)
+grid::grid.draw(sg2)
+grid::grid.draw(sg3)
+grid::grid.draw(sg4)
+grid::grid.draw(sg5)
+grid::grid.draw(sg6)
+
+sg1 <- starglyphGrob(x = 250, y = 150,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
+                     col.contour = "gray")
+
+sg2 <- starglyphGrob(x = 250, y = 300,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 3,
+                     lwd.contour = 0.01,
+                     col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
+                     col.contour = "gray")
+
+sg3 <- starglyphGrob(x = 250, y = 450,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 0.1,
+                     lwd.contour = 3,
+                     col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
+                     col.contour = "gray")
+
+sg4 <- starglyphGrob(x = 500, y = 150,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     angle.start = 0, angle.stop = -base::pi,
+                     col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
+                     col.contour = "gray")
+
+sg5 <- starglyphGrob(x = 500, y = 300,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 3,
+                     lwd.contour = 0.01,
+                     angle.start = 0, angle.stop = -base::pi,
+                     col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
+                     col.contour = "gray")
+
+sg6 <- starglyphGrob(x = 500, y = 450,
+                     z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33), size = 100,
+                     lwd.whisker = 0.1,
+                     lwd.contour = 3,
+                     angle.start = 0, angle.stop = -base::pi,
+                     col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
+                     col.contour = "gray")
+
+grid::grid.newpage()
+grid::grid.draw(sg1)
+grid::grid.draw(sg2)
+grid::grid.draw(sg3)
+grid::grid.draw(sg4)
+grid::grid.draw(sg5)
+grid::grid.draw(sg6)
 
 }
 \references{

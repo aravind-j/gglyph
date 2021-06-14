@@ -48,11 +48,32 @@
 #'                  size = 0.1, alpha =  0.5) +
 #'   ylim(c(-0, 550))
 #'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                  cols = zs, whisker = TRUE, contour = TRUE,
+#'                  size = 0.1, alpha =  0.5,
+#'                  linewidth.whisker = 3, linewidth.contour = 0.1) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                  cols = zs, whisker = TRUE, contour = TRUE,
+#'                  size = 0.1, alpha =  0.5,
+#'                  linewidth.whisker = 1, linewidth.contour = 3) +
+#'   ylim(c(-0, 550))
+#'
+#'
 #' # Only contours (polygon)
 #' ggplot(data = mtcars) +
 #'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                  cols = zs, whisker = FALSE, contour = TRUE,
 #'                  size = 0.1, alpha =  0.5) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                  cols = zs, whisker = FALSE, contour = TRUE,
+#'                  size = 0.1, alpha =  0.5, linewidth.contour = 3) +
 #'   ylim(c(-0, 550))
 #'
 #' # Only whiskers
@@ -61,6 +82,15 @@
 #'                  cols = zs, whisker = TRUE, contour = FALSE,
 #'                  size = 0.1) +
 #'   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
+#'   ylim(c(-0, 550))
+#'
+#' # Whiskers with colours
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp),
+#'                  cols = zs, whisker = TRUE, contour = FALSE,
+#'                  size = 0.1,
+#'                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
+#'   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
 #'   ylim(c(-0, 550))
 #'
 #' # With text annotations
@@ -80,12 +110,21 @@
 #'   ylim(c(-0, 550)) +
 #'   facet_grid(. ~ cyl)
 #'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                  cols = zs, whisker = TRUE, contour = TRUE,
+#'                  size = 0.1) +
+#'   ylim(c(-0, 550)) +
+#'   facet_grid(. ~ cyl)
+#'
 geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            position = "identity", ...,
                            cols = character(0L),
                            whisker = TRUE,
                            contour = TRUE,
-                           linewidth = 1,
+                           colour.whisker = NULL,
+                           linewidth.whisker = 1,
+                           linewidth.contour = 1,
                            show.legend = NA, inherit.aes = TRUE) {
 
 
@@ -101,7 +140,9 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
   params <- list(
     whisker = whisker,
     contour = contour,
-    linewidth = linewidth,
+    linewidth.whisker = linewidth.whisker,
+    linewidth.contour = linewidth.contour,
+    colour.whisker = colour.whisker,
     cols = cols, ...)
 
   ggplot2::layer(
@@ -125,6 +166,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                              stroke = 0.5,
                                                              linetype = 1,
                                                              alpha = 1),
+
                                   draw_key = ggplot2::draw_key_polygon,
 
                                   setup_params = function(data, params) {
@@ -143,14 +185,32 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                  sep = ""))
                                     }
 
-                                    data$linewidth <- params$linewidth
+                                    # Check if col.whisker are valid
+                                    if (!is.null(params$colour.whisker)) {
+                                      if (length(params$colour.whisker) != length(cols))
+                                        stop('The number of colours specified in',
+                                             '"colour.whisker" are not equal to the number',
+                                             'of variables specified in "cols".')
+
+                                      if (!all(iscolour(params$colour.whisker))) {
+                                        stop('Invalid colour(s) specified in "colour.whisker".')
+                                      }
+
+                                      data$colour <- NULL
+                                    }
+
+
+                                    data$linewidth.whisker <- params$linewidth.whisker
+                                    data$linewidth.contour <- params$linewidth.contour
                                     data
                                   },
 
                                   draw_panel = function(data, panel_params,
                                                         coord, cols,
                                                         whisker, contour,
-                                                        linewidth) {
+                                                        linewidth.whisker,
+                                                        linewidth.contour,
+                                                        colour.whisker) {
 
                                     data <- coord$transform(data, panel_params)
 
@@ -163,9 +223,15 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                                         y = data$y[i],
                                                                         z = unlist(data[i, cols]),
                                                                         size = data$size[i],
-                                                                        col = data$colour[i],
+                                                                        col.whisker = if (is.null(colour.whisker)) {
+                                                                          data$colour[i]
+                                                                        } else {
+                                                                          colour.whisker
+                                                                        },
+                                                                        col.contour = data$colour[i],
                                                                         fill = data$fill[i],
-                                                                        lwd = data$linewidth[i],
+                                                                        lwd.whisker = data$linewidth.whisker[i],
+                                                                        lwd.contour = data$linewidth.contour[i],
                                                                         alpha = data$alpha[i],
                                                                         angle.start = 0,
                                                                         angle.stop = 2*base::pi,

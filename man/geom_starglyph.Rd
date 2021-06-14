@@ -13,7 +13,9 @@ geom_starglyph(
   cols = character(0L),
   whisker = TRUE,
   contour = TRUE,
-  linewidth = 1,
+  colour.whisker = NULL,
+  linewidth.whisker = 1,
+  linewidth.contour = 1,
   show.legend = NA,
   inherit.aes = TRUE
 )
@@ -54,8 +56,6 @@ glyphs as a character vector.}
 
 \item{contour}{logical. If \code{TRUE}, plots the star glyph contours. glyph.}
 
-\item{linewidth}{The line width.}
-
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.
@@ -66,6 +66,8 @@ display.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
+
+\item{linewidth}{The line width.}
 }
 \value{
 A \code{geom} layer.
@@ -99,11 +101,32 @@ ggplot(data = mtcars) +
                  size = 0.1, alpha =  0.5) +
   ylim(c(-0, 550))
 
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+                 cols = zs, whisker = TRUE, contour = TRUE,
+                 size = 0.1, alpha =  0.5,
+                 linewidth.whisker = 3, linewidth.contour = 0.1) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+                 cols = zs, whisker = TRUE, contour = TRUE,
+                 size = 0.1, alpha =  0.5,
+                 linewidth.whisker = 1, linewidth.contour = 3) +
+  ylim(c(-0, 550))
+
+
 # Only contours (polygon)
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = FALSE, contour = TRUE,
                  size = 0.1, alpha =  0.5) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+                 cols = zs, whisker = FALSE, contour = TRUE,
+                 size = 0.1, alpha =  0.5, linewidth.contour = 3) +
   ylim(c(-0, 550))
 
 # Only whiskers
@@ -112,6 +135,15 @@ ggplot(data = mtcars) +
                  cols = zs, whisker = TRUE, contour = FALSE,
                  size = 0.1) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
+  ylim(c(-0, 550))
+
+# Whiskers with colours
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp),
+                 cols = zs, whisker = TRUE, contour = FALSE,
+                 size = 0.1,
+                 colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
+  geom_point(data = mtcars, aes(x = mpg, y = disp)) +
   ylim(c(-0, 550))
 
 # With text annotations
@@ -128,6 +160,13 @@ ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
                  size = 0.1, alpha =  0.5) +
+  ylim(c(-0, 550)) +
+  facet_grid(. ~ cyl)
+
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
+                 cols = zs, whisker = TRUE, contour = TRUE,
+                 size = 0.1) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
