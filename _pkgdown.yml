@@ -1,0 +1,17 @@
+template:
+  params:
+    bootswatch: sandstone
+
+reference:
+    - title: Geoms
+      contents:
+         - '`geom_starglyph`'
+
+    - title: Grobs
+      contents:
+         - '`dotglyphGrob`'
+         - '`metroglyphGrob`'
+         - '`pieglyphGrob`'
+         - '`profileglyphGrob`'
+         - '`starglyphGrob`'
+         - '`tileglyphGrob`'
