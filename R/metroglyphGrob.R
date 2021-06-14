@@ -46,13 +46,37 @@
 #'                           size = 100, circle.size = 50,
 #'                           angle.start = base::pi, angle.stop = -base::pi)
 #'
-#'
 #' grid::grid.newpage()
 #' grid::grid.draw(mglyph1)
 #' grid::grid.draw(mglyph2)
 #' grid::grid.draw(mglyph3)
 #' grid::grid.draw(mglyph4)
 #'
+#' mglyph1 <- metroglyphGrob(x = 200, y = 100,
+#'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                           size = 100, circle.size = 10,
+#'                           angle.start = base::pi, angle.stop = 0)
+#'
+#' mglyph2 <- metroglyphGrob(x = 500, y = 100,
+#'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                           size = 100, circle.size = 25,
+#'                           angle.start = base::pi, angle.stop = 0)
+#'
+#' mglyph3 <- metroglyphGrob(x = 200, y = 400,
+#'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                           size = 100, circle.size = 0,
+#'                           angle.start = 0, angle.stop = -base::pi)
+#'
+#' mglyph4 <- metroglyphGrob(x = 500, y = 400,
+#'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                           size = 100, circle.size = 50,
+#'                           angle.start = 0, angle.stop = -base::pi)
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(mglyph1)
+#' grid::grid.draw(mglyph2)
+#' grid::grid.draw(mglyph3)
+#' grid::grid.draw(mglyph4)
 #'
 #' mglyph1 <- metroglyphGrob(x = 200, y = 100,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
@@ -74,13 +98,11 @@
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3)
 #'
-#'
 #' grid::grid.newpage()
 #' grid::grid.draw(mglyph1)
 #' grid::grid.draw(mglyph2)
 #' grid::grid.draw(mglyph3)
 #' grid::grid.draw(mglyph4)
-#'
 #'
 #' mglyph1 <- metroglyphGrob(x = 200, y = 100,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
@@ -108,7 +130,6 @@
 #'                           lwd.ray = 5, lwd.circle = 15,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                           col.circle = "white", fill = "gray")
-#'
 #'
 #' grid::grid.newpage()
 #' grid::grid.draw(mglyph1)
@@ -138,7 +159,13 @@ metroglyphGrob <- function(x = .5, y = .5, z,
 
   # Get polygon points
   dimension <- length(z)
-  angle <- seq(angle.start, angle.stop, length.out = dimension + 1)[1:dimension]
+
+  if (abs(angle.start - angle.stop) == 2*base::pi) {
+    angle <- seq(angle.start, angle.stop,
+                 length.out = dimension + 1)[1:dimension]
+  } else {
+    angle <- seq(angle.start, angle.stop, length.out = dimension)
+  }
 
   # rayx <- x + (z * size * cos(angle))
   # rayy <- y + (z * size * sin(angle))
