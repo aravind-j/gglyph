@@ -17,9 +17,11 @@ RdMacros:
 Depends:
     R (>= 3.5.0)
 Imports:
+     dplyr,
      ggplot2,
      grid,
      Rdpack,
-     rlang
-Suggests:
+     rlang,
      scales
+Suggests:
+     RColorBrewer
