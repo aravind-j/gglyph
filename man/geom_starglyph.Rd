@@ -54,7 +54,7 @@ glyphs as a character vector.}
 
 \item{whisker}{logical. If \code{TRUE}, plots the star glyph whiskers.}
 
-\item{contour}{logical. If \code{TRUE}, plots the star glyph contours. glyph.}
+\item{contour}{logical. If \code{TRUE}, plots the star glyph contours.}
 
 \item{colour.whisker}{The colour of whisker.}
 
