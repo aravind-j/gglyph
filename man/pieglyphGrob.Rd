@@ -16,6 +16,7 @@ pieglyphGrob(
   alpha = 1,
   angle.start = 0,
   angle.stop = 2 * base::pi,
+  linejoin = c("mitre", "round", "bevel"),
   scale.segment = FALSE,
   scale.radius = TRUE
 )
@@ -45,6 +46,9 @@ outline.}
 
 \item{angle.stop}{The stop anlge for the glyph in radians. Default is
 \eqn{2\pi}.}
+
+\item{linejoin}{The line join style for the pie segment polygons. Either
+\code{"mitre"}, \code{"round"} or \code{"bevel"}.}
 
 \item{scale.segment}{logical. If \code{TRUE}, the segments (pie slices) are
 scaled according to value of z.}
@@ -133,10 +137,25 @@ grid::grid.draw(p4)
 grid::grid.draw(p5)
 grid::grid.draw(p6)
 
+p1 <- pieglyphGrob(x = 200, y = 150,
+                   z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                   size = 100, lwd = 5)
+
+p2 <- pieglyphGrob(x = 400, y = 300,
+                   z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                   size = 100, lwd = 5, linejoin = "round")
+
+p3 <- pieglyphGrob(x = 600, y = 450,
+                   z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                   size = 100, lwd = 5, linejoin = "bevel")
+
+grid::grid.newpage()
+grid::grid.draw(p1)
+grid::grid.draw(p2)
+grid::grid.draw(p3)
+
 }
 \references{
-\insertAllCited{}
-
 \insertAllCited{}
 }
 \seealso{

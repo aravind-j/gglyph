@@ -17,7 +17,8 @@ profileglyphGrob(
   flip.axes = FALSE,
   bar = TRUE,
   line = TRUE,
-  mirror = TRUE
+  mirror = TRUE,
+  linejoin = c("mitre", "round", "bevel")
 )
 }
 \arguments{
@@ -47,6 +48,9 @@ the center.}
 \item{line}{logical. If \code{TRUE}, profile line is plotted.}
 
 \item{mirror}{logical. If \code{TRUE}, mirror profile is plotted.}
+
+\item{linejoin}{The line join style for the profile line(s) and bars. Either
+\code{"mitre"}, \code{"round"} or \code{"bevel"}.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
@@ -263,6 +267,60 @@ profileglyph <- profileglyphGrob(x = 500, y = 400, z = dims, size = 100,
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
+
+dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+                        size = 150, lwd = 5, width = 25)
+
+pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        linejoin = "round")
+
+pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        linejoin = "bevel")
+
+grid::grid.newpage()
+grid::grid.draw(pg1)
+grid::grid.draw(pg2)
+grid::grid.draw(pg3)
+
+dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        bar = FALSE)
+
+pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        linejoin = "round", bar = FALSE)
+
+pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        linejoin = "bevel", bar = FALSE)
+
+grid::grid.newpage()
+grid::grid.draw(pg1)
+grid::grid.draw(pg2)
+grid::grid.draw(pg3)
+
+dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        line = FALSE)
+
+pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        linejoin = "round", line = FALSE)
+
+pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
+                        size = 150, lwd = 5, width = 25,
+                        linejoin = "bevel", line = FALSE)
+
+grid::grid.newpage()
+grid::grid.draw(pg1)
+grid::grid.draw(pg2)
+grid::grid.draw(pg3)
+
 }
 \references{
 \insertAllCited{}

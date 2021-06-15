@@ -18,7 +18,9 @@ starglyphGrob(
   angle.start = 0,
   angle.stop = 2 * base::pi,
   whisker = TRUE,
-  contour = TRUE
+  contour = TRUE,
+  linejoin = c("mitre", "round", "bevel"),
+  lineend = c("round", "butt", "square")
 )
 }
 \arguments{
@@ -50,7 +52,13 @@ the center.}
 
 \item{whisker}{logical. If \code{TRUE}, plots the star glyph whiskers.}
 
-\item{contour}{logical. If \code{TRUE}, plots the star glyph contours. glyph.}
+\item{contour}{logical. If \code{TRUE}, plots the star glyph contours.}
+
+\item{linejoin}{The line join style for the contour polygon. Either
+\code{"mitre"}, \code{"round"} or \code{"bevel"}.}
+
+\item{lineend}{The line end style for the whisker lines. Either
+\code{"round"}, \code{"butt"} or \code{"square"}.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
@@ -188,6 +196,40 @@ grid::grid.draw(sg3)
 grid::grid.draw(sg4)
 grid::grid.draw(sg5)
 grid::grid.draw(sg6)
+
+sg1 <- starglyphGrob(x = 150, y = 250,
+                     z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+                     lwd.contour = 10)
+
+sg2 <- starglyphGrob(x = 300, y = 250,
+                     z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+                     lwd.contour = 10, linejoin = "bevel")
+
+sg3 <- starglyphGrob(x = 450, y = 250,
+                     z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+                     lwd.contour = 10, linejoin = "round")
+
+grid::grid.newpage()
+grid::grid.draw(sg1)
+grid::grid.draw(sg2)
+grid::grid.draw(sg3)
+
+sg1 <- starglyphGrob(x = 150, y = 250,
+                     z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+                     lwd.whisker = 10, contour = FALSE)
+
+sg2 <- starglyphGrob(x = 300, y = 250,
+                     z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+                     lwd.whisker = 10, lineend = "butt", contour = FALSE)
+
+sg3 <- starglyphGrob(x = 450, y = 250,
+                     z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+                     lwd.whisker = 10, lineend = "square", contour = FALSE)
+
+grid::grid.newpage()
+grid::grid.draw(sg1)
+grid::grid.draw(sg2)
+grid::grid.draw(sg3)
 
 }
 \references{

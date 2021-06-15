@@ -15,6 +15,8 @@
 #' @param fill The fill colour.
 #' @param lwd The line width.
 #' @param alpha The alpha transparency value.
+#' @param linejoin The line join style for the tile polygon. Either
+#'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
 #'
 #' @return A \code{\link[grid]{grob}} object.
 #'
@@ -120,6 +122,26 @@
 #' grid::grid.draw(tg7)
 #' grid::grid.draw(tg8)
 #'
+#' tg1 <- tileglyphGrob(x = 150, y = 150,
+#'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+#'                      size = 30, nrow = 2, lwd = 5)
+#'
+#' tg2 <- tileglyphGrob(x = 300, y = 300,
+#'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+#'                      size = 30, nrow = 2, lwd = 5,
+#'                      linejoin = "round")
+#'
+#' tg3 <- tileglyphGrob(x = 450, y = 450,
+#'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
+#'                      size = 30, nrow = 2, lwd = 5,
+#'                      linejoin = "bevel")
+#'
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(tg1)
+#' grid::grid.draw(tg2)
+#' grid::grid.draw(tg3)
+#'
 tileglyphGrob <- function(x = .5, y = .5, z,
                           size = 10,
                           ratio = 1,
@@ -127,7 +149,11 @@ tileglyphGrob <- function(x = .5, y = .5, z,
                           col = 'black',
                           fill = NA,
                           lwd = 1,
-                          alpha = 1) {
+                          alpha = 1,
+                          linejoin = c("mitre", "round", "bevel")) {
+
+  linejoin <- match.arg(linejoin)
+
   # grid::grid.points(x = x, y = y, pch =  20)
 
   dimension <- length(z)
@@ -167,5 +193,6 @@ tileglyphGrob <- function(x = .5, y = .5, z,
                  gp = gpar(col = col,
                            fill = fill,
                            lwd = lwd,
-                           alpha = alpha))
+                           alpha = alpha,
+                           linejoin = linejoin))
 }

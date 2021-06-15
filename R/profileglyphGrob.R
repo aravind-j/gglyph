@@ -17,6 +17,8 @@
 #' @param bar logical. If \code{TRUE}, profile bars are plotted.
 #' @param line logical. If \code{TRUE}, profile line is plotted.
 #' @param mirror logical. If \code{TRUE}, mirror profile is plotted.
+#' @param linejoin The line join style for the profile line(s) and bars. Either
+#'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'
@@ -237,8 +239,60 @@
 #' grid::grid.draw(barglyph)
 #' grid::grid.draw(barprofileglyph)
 #' grid::grid.draw(profileglyph)
-
-
+#'
+#' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+#' pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+#'                         size = 150, lwd = 5, width = 25)
+#'
+#' pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         linejoin = "round")
+#'
+#' pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         linejoin = "bevel")
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(pg1)
+#' grid::grid.draw(pg2)
+#' grid::grid.draw(pg3)
+#'
+#' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+#' pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         bar = FALSE)
+#'
+#' pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         linejoin = "round", bar = FALSE)
+#'
+#' pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         linejoin = "bevel", bar = FALSE)
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(pg1)
+#' grid::grid.draw(pg2)
+#' grid::grid.draw(pg3)
+#'
+#' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+#' pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         line = FALSE)
+#'
+#' pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         linejoin = "round", line = FALSE)
+#'
+#' pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
+#'                         size = 150, lwd = 5, width = 25,
+#'                         linejoin = "bevel", line = FALSE)
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(pg1)
+#' grid::grid.draw(pg2)
+#' grid::grid.draw(pg3)
+#'
 profileglyphGrob <- function(x = .5, y = .5, z,
                           size = 1,
                           col = 'black',
@@ -249,7 +303,10 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                           flip.axes = FALSE,
                           bar = TRUE,
                           line = TRUE,
-                          mirror = TRUE) {
+                          mirror = TRUE,
+                          linejoin = c("mitre", "round", "bevel")) {
+
+  linejoin <- match.arg(linejoin)
 
   # grid::grid.rect(gp=gpar(col="gray"))
   # grid::grid.points(x = x, y = y, pch =  20)
@@ -280,16 +337,27 @@ profileglyphGrob <- function(x = .5, y = .5, z,
     if (bar) {
       bargrob <- grid::rectGrob(x= xpos, y = rep(y, dimension),
                                 width = width, height = z*size,
-                                default.units = "native", just = barjust)
+                                default.units = "native", just = barjust,
+                                gp = grid::gpar(lwd = lwd, alpha = alpha,
+                                                col = col, fill = fill,
+                                                linejoin = linejoin))
       if (line) {
         if (mirror) {
           blinegrob <- grid::polylineGrob(x = c(xpos, rev(xpos)),
                                           y = c(ypos1, rev(ypos2)),
                                           id = rep(1:2, each = dimension),
-                                          default.units = "native")
+                                          default.units = "native",
+                                          gp = grid::gpar(lwd = lwd,
+                                                          alpha = alpha,
+                                                          col = col,
+                                                          linejoin = linejoin))
         } else {
           blinegrob <- grid::polylineGrob(x = xpos, y = ypos,
-                                          default.units = "native")
+                                          default.units = "native",
+                                          gp = grid::gpar(lwd = lwd,
+                                                          alpha = alpha,
+                                                          col = col,
+                                                          linejoin = linejoin))
         }
       }
 
@@ -300,11 +368,19 @@ profileglyphGrob <- function(x = .5, y = .5, z,
       if (mirror) {
         blinegrob <- grid::polygonGrob(x = c(xpos, rev(xpos)),
                                        y = c(ypos1, rev(ypos2)),
-                                       default.units = "native")
+                                       default.units = "native",
+                                       gp = grid::gpar(lwd = lwd,
+                                                       alpha = alpha,
+                                                       col = col,
+                                                       linejoin = linejoin))
       } else {
         blinegrob <- grid::polygonGrob(x = c(xpos[1], xpos, xpos[dimension]),
                                        y = c(y, ypos, y),
-                                       default.units = "native")
+                                       default.units = "native",
+                                       gp = grid::gpar(lwd = lwd,
+                                                       alpha = alpha,
+                                                       col = col,
+                                                       linejoin = linejoin))
       }
     }
 
@@ -312,7 +388,8 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     gridout <- grid::grobTree(bargrob, blinegrob,
                               gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                              col = col, fill = fill))
+                                              col = col, fill = fill,
+                                              linejoin = linejoin))
 
     #---------------------------------------------------------------------------
 
@@ -344,16 +421,27 @@ profileglyphGrob <- function(x = .5, y = .5, z,
       bargrob <- grid::rectGrob(x= rep(x, dimension), y = ypos,
                                 width = z*size, height = width,
                                 default.units = "native", just = barjust,
-                                hjust = barjusth)
+                                hjust = barjusth,
+                                gp = grid::gpar(lwd = lwd, alpha = alpha,
+                                                col = col, fill = fill,
+                                                linejoin = linejoin))
       if (line) {
         if (mirror) {
           blinegrob <- grid::polylineGrob(x = c(xpos1, rev(xpos2)),
                                           y = c(ypos, rev(ypos)),
                                           id = rep(1:2, each = dimension),
-                                          default.units = "native")
+                                          default.units = "native",
+                                          gp = grid::gpar(lwd = lwd,
+                                                          alpha = alpha,
+                                                          col = col,
+                                                          linejoin = linejoin))
         } else {
           blinegrob <- grid::polylineGrob(x = xpos, y = ypos,
-                                          default.units = "native")
+                                          default.units = "native",
+                                          gp = grid::gpar(lwd = lwd,
+                                                          alpha = alpha,
+                                                          col = col,
+                                                          linejoin = linejoin))
         }
       }
 
@@ -364,11 +452,19 @@ profileglyphGrob <- function(x = .5, y = .5, z,
       if (mirror) {
         blinegrob <- grid::polygonGrob(x = c(xpos1, rev(xpos2)),
                                        y = c(ypos, rev(ypos)),
-                                       default.units = "native")
+                                       default.units = "native",
+                                       gp = grid::gpar(lwd = lwd,
+                                                       alpha = alpha,
+                                                       col = col,
+                                                       linejoin = linejoin))
       } else {
         blinegrob <- grid::polygonGrob(x = c(x, xpos, x),
                                        y = c(ypos[1], ypos, ypos[dimension]),
-                                       default.units = "native")
+                                       default.units = "native",
+                                       gp = grid::gpar(lwd = lwd,
+                                                       alpha = alpha,
+                                                       col = col,
+                                                       linejoin = linejoin))
       }
     }
 
@@ -376,7 +472,8 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     gridout <- grid::grobTree(bargrob, blinegrob,
                               gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                              col = col, fill = fill))
+                                              col = col, fill = fill,
+                                              linejoin = linejoin))
   }
 
   return(gridout)

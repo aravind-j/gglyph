@@ -18,7 +18,11 @@
 #' @param angle.stop The stop anlge for the glyph in radians. Default is
 #'   \eqn{2\pi}.
 #' @param whisker logical. If \code{TRUE}, plots the star glyph whiskers.
-#' @param contour logical. If \code{TRUE}, plots the star glyph contours. glyph.
+#' @param contour logical. If \code{TRUE}, plots the star glyph contours.
+#' @param linejoin The line join style for the contour polygon. Either
+#'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
+#' @param lineend The line end style for the whisker lines. Either
+#'   \code{"round"}, \code{"butt"} or \code{"square"}.
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'
@@ -161,6 +165,40 @@
 #' grid::grid.draw(sg5)
 #' grid::grid.draw(sg6)
 #'
+#' sg1 <- starglyphGrob(x = 150, y = 250,
+#'                      z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+#'                      lwd.contour = 10)
+#'
+#' sg2 <- starglyphGrob(x = 300, y = 250,
+#'                      z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+#'                      lwd.contour = 10, linejoin = "bevel")
+#'
+#' sg3 <- starglyphGrob(x = 450, y = 250,
+#'                      z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+#'                      lwd.contour = 10, linejoin = "round")
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(sg1)
+#' grid::grid.draw(sg2)
+#' grid::grid.draw(sg3)
+#'
+#' sg1 <- starglyphGrob(x = 150, y = 250,
+#'                      z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+#'                      lwd.whisker = 10, contour = FALSE)
+#'
+#' sg2 <- starglyphGrob(x = 300, y = 250,
+#'                      z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+#'                      lwd.whisker = 10, lineend = "butt", contour = FALSE)
+#'
+#' sg3 <- starglyphGrob(x = 450, y = 250,
+#'                      z = c(0.28, 0.33, 0.8, 1.2, 0.6, 0.5, 0.7), size = 100,
+#'                      lwd.whisker = 10, lineend = "square", contour = FALSE)
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(sg1)
+#' grid::grid.draw(sg2)
+#' grid::grid.draw(sg3)
+#'
 starglyphGrob <- function(x = .5, y = .5, z,
                           size = 1,
                           col.whisker = 'black',
@@ -172,7 +210,12 @@ starglyphGrob <- function(x = .5, y = .5, z,
                           angle.start = 0,
                           angle.stop = 2*base::pi,
                           whisker = TRUE,
-                          contour = TRUE) {
+                          contour = TRUE,
+                          linejoin = c("mitre", "round", "bevel"),
+                          lineend = c("round", "butt", "square")) {
+
+  linejoin <- match.arg(linejoin)
+  lineend <- match.arg(lineend)
 
   # grid::grid.rect(gp=gpar(col="gray"))
   # grid::grid.points(x = x, y = y, pch =  20)
@@ -203,7 +246,8 @@ starglyphGrob <- function(x = .5, y = .5, z,
                                      gp = grid::gpar(fill = fill,
                                                      col = col.contour,
                                                      lwd = lwd.contour,
-                                                     alpha = alpha))
+                                                     alpha = alpha,
+                                                     linejoin = linejoin))
   }
 
   # Plot whiskers
@@ -218,7 +262,8 @@ starglyphGrob <- function(x = .5, y = .5, z,
                                       default.units = "native",
                                       gp = grid::gpar(col = col.whisker,
                                                       lwd = lwd.whisker,
-                                                      alpha = alpha))
+                                                      alpha = alpha,
+                                                      lineend = lineend))
   }
 
   grid::grobTree(contourGrob, whiskerGrob,

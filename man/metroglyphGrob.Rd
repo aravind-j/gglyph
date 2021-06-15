@@ -17,7 +17,8 @@ metroglyphGrob(
   lwd.ray = 1,
   alpha = 1,
   angle.start = 0,
-  angle.stop = 2 * base::pi
+  angle.stop = 2 * base::pi,
+  lineend = c("round", "butt", "square")
 )
 }
 \arguments{
@@ -49,6 +50,9 @@ zero.}
 
 \item{angle.stop}{The stop anlge for the glyph rays in radians. Default is
 \eqn{2\pi}.}
+
+\item{lineend}{The line end style for the rays. Either \code{"round"},
+\code{"butt"} or \code{"square"}.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
@@ -166,6 +170,26 @@ grid::grid.draw(mglyph1)
 grid::grid.draw(mglyph2)
 grid::grid.draw(mglyph3)
 grid::grid.draw(mglyph4)
+
+mg1 <- metroglyphGrob(x = 150, y = 150,
+                      z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                      size = 50, circle.size = 25,
+                      lwd.ray = 5)
+
+mg2 <- metroglyphGrob(x = 300, y = 250,
+                      z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                      size = 50, circle.size = 25,
+                      lwd.ray = 5, lineend = "butt")
+
+mg3 <- metroglyphGrob(x = 450, y = 350,
+                      z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                      size = 50, circle.size = 25,
+                      lwd.ray = 5, lineend = "square")
+
+grid::grid.newpage()
+grid::grid.draw(mg1)
+grid::grid.draw(mg2)
+grid::grid.draw(mg3)
 
 }
 \references{

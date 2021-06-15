@@ -17,6 +17,8 @@
 #' @param angle.start The start angle for the glyph in radians. Default is zero.
 #' @param angle.stop The stop anlge for the glyph in radians. Default is
 #'   \eqn{2\pi}.
+#' @param linejoin The line join style for the pie segment polygons. Either
+#'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
 #' @param scale.segment logical. If \code{TRUE}, the segments (pie slices) are
 #'   scaled according to value of z.
 #' @param scale.radius logical. If \code{TRUE}, the radius of segments (pie
@@ -30,10 +32,6 @@
 #' @export
 #'
 #' @seealso \code{\link[gglyph]{geom_pieglyph}}
-#'
-#' @references
-#'
-#' \insertAllCited{}
 #'
 #' @references
 #'
@@ -113,6 +111,23 @@
 #' grid::grid.draw(p5)
 #' grid::grid.draw(p6)
 #'
+#' p1 <- pieglyphGrob(x = 200, y = 150,
+#'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                    size = 100, lwd = 5)
+#'
+#' p2 <- pieglyphGrob(x = 400, y = 300,
+#'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                    size = 100, lwd = 5, linejoin = "round")
+#'
+#' p3 <- pieglyphGrob(x = 600, y = 450,
+#'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                    size = 100, lwd = 5, linejoin = "bevel")
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(p1)
+#' grid::grid.draw(p2)
+#' grid::grid.draw(p3)
+#'
 pieglyphGrob <- function(x = .5, y = .5, z,
                          size = 1, edges = 200,
                          col = 'black', # equal to no. of segments
@@ -121,7 +136,10 @@ pieglyphGrob <- function(x = .5, y = .5, z,
                          alpha = 1,
                          angle.start = 0,
                          angle.stop = 2*base::pi,
+                         linejoin = c("mitre", "round", "bevel"),
                          scale.segment = FALSE, scale.radius = TRUE) {
+
+  linejoin <- match.arg(linejoin)
 
   # grid::grid.points(x = x, y = y, pch =  20)
 
@@ -173,5 +191,6 @@ pieglyphGrob <- function(x = .5, y = .5, z,
                     gp = grid::gpar(col = col,
                                     fill = fill,
                                     lwd = lwd,
-                                    alpha = alpha))
+                                    alpha = alpha,
+                                    linejoin = linejoin))
 }
