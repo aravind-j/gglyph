@@ -20,7 +20,10 @@ starglyphGrob(
   whisker = TRUE,
   contour = TRUE,
   linejoin = c("mitre", "round", "bevel"),
-  lineend = c("round", "butt", "square")
+  lineend = c("round", "butt", "square"),
+  grid.levels = NULL,
+  grid.points = FALSE,
+  point.size = 10
 )
 }
 \arguments{

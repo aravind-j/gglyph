@@ -212,7 +212,10 @@ starglyphGrob <- function(x = .5, y = .5, z,
                           whisker = TRUE,
                           contour = TRUE,
                           linejoin = c("mitre", "round", "bevel"),
-                          lineend = c("round", "butt", "square")) {
+                          lineend = c("round", "butt", "square"),
+                          grid.levels = NULL,
+                          grid.points = FALSE,
+                          point.size = 10) {
 
   linejoin <- match.arg(linejoin)
   lineend <- match.arg(lineend)
@@ -235,7 +238,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
   # Empty Grobs
   contourGrob <- grid::nullGrob()
   whiskerGrob <- grid::nullGrob()
-
+  gpointsGrob <- grid::nullGrob()
 
   # Plot contours/polygon
   if (contour == TRUE) {
@@ -266,9 +269,53 @@ starglyphGrob <- function(x = .5, y = .5, z,
                                                       lineend = lineend))
   }
 
-  grid::grobTree(contourGrob, whiskerGrob,
+  # Plot grid points
+
+  if (grid.points) {
+    if (!is.null(grid.levels)) { # Check if grid points are to be plotted
+      # Check if grid.levels is a list in appropriate format
+      if (is.list(grid.levels) &
+          all(unlist( lapply(grid.levels,
+                             function(x) is.numeric(x) | is.integer(x))))) {
+        # Check if z is present in corresponding grid.levels
+        if (!all(mapply(function(a, b) a %in% b, z, grid.levels))) {
+          warning('Mismatch in values "z" values and corresponding "grid.levels".\n',
+                  'Unable to plot grid points.')
+        } else {
+          # plot points
+          grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels)
+
+          starpx <- mapply(function(a, b) x + (a * size * cos(b)),
+                           grid.levels, angle)
+          starpy <- mapply(function(a, b) y + (a * size * sin(b)),
+                           grid.levels, angle)
+
+          starpx <- unlist(starpx)
+          starpy <- unlist(starpy)
+
+          gpointsGrob <- grid::pointsGrob(starpx, starpy,
+                                          default.units = "native",
+                                          pch = 20,
+                                          size = unit(point.size,
+                                                      "native"),
+                                          gp = grid::gpar(col = col.whisker,
+                                                          alpha = alpha))
+        }
+
+      } else {
+        warning('Non-standard format specified as "grid.levels".\n',
+                'Unable to plot grid points.')
+      }
+
+    } else {
+      warning('"grid.levels" not specified.\n',
+              'Unable to plot grid points.')
+    }
+  }
+
+
+  grid::grobTree(contourGrob, whiskerGrob, gpointsGrob,
                  gp = grid::gpar(alpha = alpha,
                                  fill = fill))
-
 
 }
