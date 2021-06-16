@@ -12,13 +12,17 @@ metroglyphGrob(
   circle.size = 10,
   col.circle = "black",
   col.ray = "black",
+  col.points = "black",
   fill = NA,
   lwd.circle = 1,
   lwd.ray = 1,
   alpha = 1,
   angle.start = 0,
   angle.stop = 2 * base::pi,
-  lineend = c("round", "butt", "square")
+  lineend = c("round", "butt", "square"),
+  grid.levels = NULL,
+  grid.points = FALSE,
+  point.size = 10
 )
 }
 \arguments{
@@ -26,8 +30,7 @@ metroglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star glyph points from
-the center.}
+\item{z}{A numeric vector specifying the length of rays.}
 
 \item{size}{The size of rays.}
 
@@ -190,6 +193,79 @@ grid::grid.newpage()
 grid::grid.draw(mg1)
 grid::grid.draw(mg2)
 grid::grid.draw(mg3)
+
+gl <- split(x = rep(c(1, 2, 3), 6),
+            f = rep(1:6, each = 3))
+
+mglyph1 <- metroglyphGrob(x = 200, y = 100,
+                          z = c(1, 3, 2, 1, 2, 3),
+                          size = 25, circle.size = 10, lwd.circle = 3,
+                          grid.points = TRUE, grid.levels = gl)
+
+mglyph2 <- metroglyphGrob(x = 500, y = 100,
+                          z = c(1, 3, 2, 1, 2, 3),
+                          size = 25, circle.size = 25, lwd.circle = 3,
+                          grid.points = TRUE, grid.levels = gl)
+
+mglyph3 <- metroglyphGrob(x = 200, y = 300,
+                          z = c(1, 3, 2, 1, 2, 3),
+                          size = 25, circle.size = 0,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3,
+                          grid.points = TRUE, grid.levels = gl)
+
+mglyph4 <- metroglyphGrob(x = 500, y = 300,
+                          z = c(1, 3, 2, 1, 2, 3),
+                          size = 25, circle.size = 50,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3,
+                          grid.points = TRUE, grid.levels = gl)
+
+grid::grid.newpage()
+grid::grid.draw(mglyph1)
+grid::grid.draw(mglyph2)
+grid::grid.draw(mglyph3)
+grid::grid.draw(mglyph4)
+
+gl <- split(x = rep(c(0, 1, 2), 6),
+            f = rep(1:6, each = 3))
+
+mglyph1 <- metroglyphGrob(x = 200, y = 100,
+                          z = c(0, 2, 1, 0, 1, 2),
+                          size = 25, circle.size = 10, lwd.circle = 3,
+                          grid.points = TRUE, grid.levels = gl,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+                          col.points = NA)
+
+mglyph2 <- metroglyphGrob(x = 500, y = 100,
+                          z = c(0, 2, 1, 0, 1, 2),
+                          size = 25, circle.size = 25, lwd.circle = 3,
+                          grid.points = TRUE, grid.levels = gl,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"))
+
+mglyph3 <- metroglyphGrob(x = 200, y = 300,
+                          z = c(0, 2, 1, 0, 1, 2),
+                          size = 25, circle.size = 0,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3,
+                          grid.points = TRUE, grid.levels = gl,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+                          col.points = "white")
+
+mglyph4 <- metroglyphGrob(x = 500, y = 300,
+                          z = c(0, 2, 1, 0, 1, 2),
+                          size = 25, circle.size = 50,
+                          angle.start = base::pi, angle.stop = -base::pi,
+                          lwd.ray = 3,
+                          grid.points = TRUE, grid.levels = gl,
+                          col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+                          col.points = NA, point.size = 20)
+
+grid::grid.newpage()
+grid::grid.draw(mglyph1)
+grid::grid.draw(mglyph2)
+grid::grid.draw(mglyph3)
+grid::grid.draw(mglyph4)
 
 }
 \references{

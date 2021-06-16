@@ -5,8 +5,7 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star glyph points from
-#'   the center.
+#' @param z A numeric vector specifying the length of rays.
 #' @param size The size of rays.
 #' @param circle.size The size of the central circle.
 #' @param col.circle The circle colour.
@@ -24,7 +23,7 @@
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'
-#' @importFrom grid circleGrob polylineGrob grobTree gpar
+#' @importFrom grid circleGrob polylineGrob grobTree gpar nullGrob unit
 #' @export
 #'
 #' @seealso \code{\link[gglyph]{geom_metroglyph}}
@@ -163,17 +162,94 @@
 #' grid::grid.draw(mg2)
 #' grid::grid.draw(mg3)
 #'
+#' gl <- split(x = rep(c(1, 2, 3), 6),
+#'             f = rep(1:6, each = 3))
+#'
+#' mglyph1 <- metroglyphGrob(x = 200, y = 100,
+#'                           z = c(1, 3, 2, 1, 2, 3),
+#'                           size = 25, circle.size = 10, lwd.circle = 3,
+#'                           grid.points = TRUE, grid.levels = gl)
+#'
+#' mglyph2 <- metroglyphGrob(x = 500, y = 100,
+#'                           z = c(1, 3, 2, 1, 2, 3),
+#'                           size = 25, circle.size = 25, lwd.circle = 3,
+#'                           grid.points = TRUE, grid.levels = gl)
+#'
+#' mglyph3 <- metroglyphGrob(x = 200, y = 300,
+#'                           z = c(1, 3, 2, 1, 2, 3),
+#'                           size = 25, circle.size = 0,
+#'                           angle.start = base::pi, angle.stop = -base::pi,
+#'                           lwd.ray = 3,
+#'                           grid.points = TRUE, grid.levels = gl)
+#'
+#' mglyph4 <- metroglyphGrob(x = 500, y = 300,
+#'                           z = c(1, 3, 2, 1, 2, 3),
+#'                           size = 25, circle.size = 50,
+#'                           angle.start = base::pi, angle.stop = -base::pi,
+#'                           lwd.ray = 3,
+#'                           grid.points = TRUE, grid.levels = gl)
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(mglyph1)
+#' grid::grid.draw(mglyph2)
+#' grid::grid.draw(mglyph3)
+#' grid::grid.draw(mglyph4)
+#'
+#' gl <- split(x = rep(c(0, 1, 2), 6),
+#'             f = rep(1:6, each = 3))
+#'
+#' mglyph1 <- metroglyphGrob(x = 200, y = 100,
+#'                           z = c(0, 2, 1, 0, 1, 2),
+#'                           size = 25, circle.size = 10, lwd.circle = 3,
+#'                           grid.points = TRUE, grid.levels = gl,
+#'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+#'                           col.points = NA)
+#'
+#' mglyph2 <- metroglyphGrob(x = 500, y = 100,
+#'                           z = c(0, 2, 1, 0, 1, 2),
+#'                           size = 25, circle.size = 25, lwd.circle = 3,
+#'                           grid.points = TRUE, grid.levels = gl,
+#'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' mglyph3 <- metroglyphGrob(x = 200, y = 300,
+#'                           z = c(0, 2, 1, 0, 1, 2),
+#'                           size = 25, circle.size = 0,
+#'                           angle.start = base::pi, angle.stop = -base::pi,
+#'                           lwd.ray = 3,
+#'                           grid.points = TRUE, grid.levels = gl,
+#'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+#'                           col.points = "white")
+#'
+#' mglyph4 <- metroglyphGrob(x = 500, y = 300,
+#'                           z = c(0, 2, 1, 0, 1, 2),
+#'                           size = 25, circle.size = 50,
+#'                           angle.start = base::pi, angle.stop = -base::pi,
+#'                           lwd.ray = 3,
+#'                           grid.points = TRUE, grid.levels = gl,
+#'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
+#'                           col.points = NA, point.size = 20)
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(mglyph1)
+#' grid::grid.draw(mglyph2)
+#' grid::grid.draw(mglyph3)
+#' grid::grid.draw(mglyph4)
+#'
 metroglyphGrob <- function(x = .5, y = .5, z,
                           size = 1, circle.size = 10,
                           col.circle = 'black',
                           col.ray = 'black',
+                          col.points = 'black',
                           fill = NA,
                           lwd.circle = 1,
                           lwd.ray = 1,
                           alpha = 1,
                           angle.start = 0,
                           angle.stop = 2*base::pi,
-                          lineend = c("round", "butt", "square")) {
+                          lineend = c("round", "butt", "square"),
+                          grid.levels = NULL,
+                          grid.points = FALSE,
+                          point.size = 10) {
 
   lineend <- match.arg(lineend)
 
@@ -221,7 +297,64 @@ metroglyphGrob <- function(x = .5, y = .5, z,
                                                 alpha = alpha,
                                                 lineend = lineend))
 
-  grid::grobTree(circGrob, rayGrob,
+  gpointsGrob <- grid::nullGrob()
+
+  # Plot grid points
+  if (grid.points) {
+    if (!is.null(grid.levels)) { # Check if grid points are to be plotted
+      # Check if grid.levels is a list in appropriate format
+      if (is.list(grid.levels) &
+          all(unlist( lapply(grid.levels,
+                             function(x) is.numeric(x) | is.integer(x))))) {
+        # Check if z is present in corresponding grid.levels
+        if (!all(mapply(function(a, b) a %in% b, z, grid.levels))) {
+          warning('Mismatch in values "z" values and corresponding "grid.levels".\n',
+                  'Unable to plot grid points.')
+        } else {
+          # plot points
+          grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels)
+
+          gridx <- mapply(function(a, b) x + ((circle.size +
+                                                 (a * size)) * cos(b)),
+                           grid.levels, angle)
+          gridy <- mapply(function(a, b) y + ((circle.size +
+                                                 (a * size)) * sin(b)),
+                           grid.levels, angle)
+
+          gridx <- unlist(gridx)
+          gridy <- unlist(gridy)
+
+          if (is.na(col.points)) {
+            if (length(col.ray == length(grid.levels))) {
+              col.points <- mapply(function(a,b) rep(a, length(b)),
+                                   col.ray, grid.levels)
+              col.points <- unlist(col.points)
+            } else {
+              col.points <- col.ray
+            }
+          }
+
+          gpointsGrob <- grid::pointsGrob(gridx, gridy,
+                                          default.units = "native",
+                                          pch = 20,
+                                          size = grid::unit(point.size,
+                                                            "native"),
+                                          gp = grid::gpar(col = col.points,
+                                                          alpha = alpha))
+        }
+
+      } else {
+        warning('Non-standard format specified as "grid.levels".\n',
+                'Unable to plot grid points.')
+      }
+
+    } else {
+      warning('"grid.levels" not specified.\n',
+              'Unable to plot grid points.')
+    }
+  }
+
+  grid::grobTree(circGrob, rayGrob, gpointsGrob,
                  gp = grid::gpar(alpha = alpha, fill = fill,
                                  lineend = lineend))
 
