@@ -5,12 +5,13 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star glyph points from
-#'   the center.
+#' @param z A numeric vector specifying the values to be plotted as dimensions
+#'   of the pie glyph according to the arguments \code{scale.segment} or
+#'   \code{scale.radius}.
 #' @param size The size of glyphs.
 #' @param edges The number of edges of the polygon to depict the circular glyph
 #'   outline.
-#' @param col The colour of whisker and contours.
+#' @param col The line colour.
 #' @param fill The fill colour.
 #' @param lwd The line width.
 #' @param alpha The alpha transparency value.
@@ -20,9 +21,9 @@
 #' @param linejoin The line join style for the pie segment polygons. Either
 #'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
 #' @param scale.segment logical. If \code{TRUE}, the segments (pie slices) are
-#'   scaled according to value of z.
+#'   scaled according to value of \code{z}.
 #' @param scale.radius logical. If \code{TRUE}, the radius of segments (pie
-#'   slices) are scaled according to value of z.
+#'   slices) are scaled according to value of \code{z}.
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'
@@ -130,8 +131,8 @@
 #'
 pieglyphGrob <- function(x = .5, y = .5, z,
                          size = 1, edges = 200,
-                         col = 'black', # equal to no. of segments
-                         fill = NA, # equal to no. of segments
+                         col = 'black',
+                         fill = NA,
                          lwd = 1,
                          alpha = 1,
                          angle.start = 0,
@@ -152,7 +153,8 @@ pieglyphGrob <- function(x = .5, y = .5, z,
     cumpropz <- c(0, cumsum(z)/sum(z))
   } else {
     # Convert z to cumulative proportions
-    cumpropz <- c(0, scales::rescale(1:dimension))
+    # cumpropz <- c(0, scales::rescale(1:dimension))
+    cumpropz <- c(scales::rescale(0:dimension))
   }
 
   diffz <- diff(cumpropz)

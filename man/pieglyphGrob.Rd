@@ -26,15 +26,16 @@ pieglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star glyph points from
-the center.}
+\item{z}{A numeric vector specifying the values to be plotted as dimensions
+of the pie glyph according to the arguments \code{scale.segment} or
+\code{scale.radius}.}
 
 \item{size}{The size of glyphs.}
 
 \item{edges}{The number of edges of the polygon to depict the circular glyph
 outline.}
 
-\item{col}{The colour of whisker and contours.}
+\item{col}{The line colour.}
 
 \item{fill}{The fill colour.}
 
@@ -51,10 +52,10 @@ outline.}
 \code{"mitre"}, \code{"round"} or \code{"bevel"}.}
 
 \item{scale.segment}{logical. If \code{TRUE}, the segments (pie slices) are
-scaled according to value of z.}
+scaled according to value of \code{z}.}
 
 \item{scale.radius}{logical. If \code{TRUE}, the radius of segments (pie
-slices) are scaled according to value of z.}
+slices) are scaled according to value of \code{z}.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
