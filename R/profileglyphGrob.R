@@ -5,10 +5,11 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star glyph points from
-#'   the center.
+#' @param z A numeric vector specifying the values to be plotted as dimensions
+#'   of the profile (length of the bars).
 #' @param size The size of glyphs.
-#' @param col The colour of whisker and contours.
+#' @param col.bar The colour of bars.
+#' @param col.line The colour of line(s).
 #' @param fill The fill colour.
 #' @param lwd The line width.
 #' @param alpha The alpha transparency value.
@@ -49,15 +50,15 @@
 #'
 #' barglyph <- profileglyphGrob(x = 100, y = 250, z = dims,
 #'                              size = 100,
-#'                              col = "salmon")
+#'                              col.bar = "salmon", col.line = "salmon")
 #'
 #' barprofileglyph <- profileglyphGrob(x = 300, y = 250, z = dims,
 #'                                     size = 100, line = FALSE,
-#'                                     col = "cyan")
+#'                                     col.bar = "cyan")
 #'
 #' profileglyph <- profileglyphGrob(x = 500, y = 250, z = dims,
 #'                                  size = 100, line = TRUE, bar = FALSE,
-#'                                  col = "green")
+#'                                  col.line = "green")
 #'
 #' grid::grid.draw(barglyph)
 #' grid::grid.draw(barprofileglyph)
@@ -99,19 +100,19 @@
 #'
 #' barglyph <- profileglyphGrob(x = 100, y = 350, z = dims,
 #'                              size = 100, mirror = FALSE,
-#'                              col = "salmon")
+#'                              col.bar = "salmon", col.line = "salmon")
 #'
 #' barprofileglyph <- profileglyphGrob(x = 300, y = 350, z = dims,
 #'                                     size = 100, line = FALSE, mirror = FALSE,
-#'                                     col = "cyan")
+#'                                     col.bar = "cyan")
 #'
 #' profileglyph <- profileglyphGrob(x = 500, y = 350, z = dims,
 #'                                  size = 100, line = TRUE, bar = FALSE,
-#'                                  mirror = FALSE, col = "green")
+#'                                  mirror = FALSE, col.line = "green")
 #'
 #' grid::grid.draw(barglyph)
 #' grid::grid.draw(barprofileglyph)
-#' grid::grid.draw(profileglyph)
+#' grid::grid.draw(profileglyph)#'
 #'
 #' barglyph <- profileglyphGrob(x = 100, y = 500, z = dims, size = 100,
 #'                              fill = "salmon", mirror = FALSE)
@@ -127,7 +128,6 @@
 #' grid::grid.draw(barglyph)
 #' grid::grid.draw(barprofileglyph)
 #' grid::grid.draw(profileglyph)
-#'
 #'
 #' # mirror = TRUE, flip.axes = TRUE
 #' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
@@ -148,17 +148,17 @@
 #'
 #' barglyph <- profileglyphGrob(x = 100, y = 250, z = dims,
 #'                              size = 100, flip.axes = TRUE,
-#'                              col = "salmon")
+#'                              col.bar = "salmon", col.line = "salmon")
 #'
 #' barprofileglyph <- profileglyphGrob(x = 300, y = 250, z = dims,
 #'                                     size = 100, line = FALSE,
 #'                                     flip.axes = TRUE,
-#'                                     col = "cyan")
+#'                                     col.bar = "cyan")
 #'
 #' profileglyph <- profileglyphGrob(x = 500, y = 250, z = dims,
 #'                                  size = 100, line = TRUE, bar = FALSE,
 #'                                  flip.axes = TRUE,
-#'                                  col = "green")
+#'                                  col.line = "green")
 #'
 #' grid::grid.draw(barglyph)
 #' grid::grid.draw(barprofileglyph)
@@ -206,17 +206,17 @@
 #' barglyph <- profileglyphGrob(x = 100, y = 250, z = dims,
 #'                              size = 100, mirror = FALSE,
 #'                              flip.axes = TRUE,
-#'                              col = "salmon")
+#'                              col.bar = "salmon", col.line = "salmon")
 #'
 #' barprofileglyph <- profileglyphGrob(x = 300, y = 250, z = dims,
 #'                                     size = 100, line = FALSE, mirror = FALSE,
 #'                                     flip.axes = TRUE,
-#'                                     col = "cyan")
+#'                                     col.bar = "cyan")
 #'
 #' profileglyph <- profileglyphGrob(x = 500, y = 250, z = dims,
 #'                                  size = 100, line = TRUE, bar = FALSE,
 #'                                  flip.axes = TRUE,
-#'                                  mirror = FALSE, col = "green")
+#'                                  mirror = FALSE, col.line = "green")
 #'
 #' grid::grid.draw(barglyph)
 #' grid::grid.draw(barprofileglyph)
@@ -240,6 +240,7 @@
 #' grid::grid.draw(barprofileglyph)
 #' grid::grid.draw(profileglyph)
 #'
+#' # linejoin variants
 #' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
 #' pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
 #'                         size = 150, lwd = 5, width = 25)
@@ -293,9 +294,54 @@
 #' grid::grid.draw(pg2)
 #' grid::grid.draw(pg3)
 #'
+#' bg1 <- profileglyphGrob(x = 100, y = 100, z = dims,
+#'                         size = 100,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bpg1 <- profileglyphGrob(x = 300, y = 100, z = dims,
+#'                          size = 100, line = FALSE,
+#'                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bg2 <- profileglyphGrob(x = 150, y = 250, z = dims,
+#'                         size = 100, mirror = FALSE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bpg2 <- profileglyphGrob(x = 350, y = 250, z = dims,
+#'                          size = 100, line = FALSE, mirror = FALSE,
+#'                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bg3 <- profileglyphGrob(x = 100, y = 300, z = dims,
+#'                         size = 100, flip.axes = TRUE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bpg3 <- profileglyphGrob(x = 300, y = 300, z = dims,
+#'                          size = 100, line = FALSE, flip.axes = TRUE,
+#'                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bg4 <- profileglyphGrob(x = 150, y = 400, z = dims,
+#'                         size = 100, mirror = FALSE, flip.axes = TRUE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bpg4 <- profileglyphGrob(x = 350, y = 400, z = dims,
+#'                          size = 100, line = FALSE, mirror = FALSE,
+#'                          flip.axes = TRUE,
+#'                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(bg1)
+#' grid::grid.draw(bpg1)
+#' grid::grid.draw(bg2)
+#' grid::grid.draw(bpg2)
+#' grid::grid.draw(bg3)
+#' grid::grid.draw(bpg3)
+#' grid::grid.draw(bg4)
+#' grid::grid.draw(bpg4)
+#'
 profileglyphGrob <- function(x = .5, y = .5, z,
                           size = 1,
-                          col = 'black',
+                          col.bar = 'black',
+                          col.line = 'black',
                           fill = NA,
                           lwd = 1,
                           alpha = 1,
@@ -339,7 +385,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                 width = width, height = z*size,
                                 default.units = "native", just = barjust,
                                 gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                                col = col, fill = fill,
+                                                col = col.bar, fill = fill,
                                                 linejoin = linejoin))
       if (line) {
         if (mirror) {
@@ -349,14 +395,14 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                           default.units = "native",
                                           gp = grid::gpar(lwd = lwd,
                                                           alpha = alpha,
-                                                          col = col,
+                                                          col = col.line,
                                                           linejoin = linejoin))
         } else {
           blinegrob <- grid::polylineGrob(x = xpos, y = ypos,
                                           default.units = "native",
                                           gp = grid::gpar(lwd = lwd,
                                                           alpha = alpha,
-                                                          col = col,
+                                                          col = col.line,
                                                           linejoin = linejoin))
         }
       }
@@ -371,7 +417,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        default.units = "native",
                                        gp = grid::gpar(lwd = lwd,
                                                        alpha = alpha,
-                                                       col = col,
+                                                       col = col.line,
                                                        linejoin = linejoin))
       } else {
         blinegrob <- grid::polygonGrob(x = c(xpos[1], xpos, xpos[dimension]),
@@ -379,7 +425,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        default.units = "native",
                                        gp = grid::gpar(lwd = lwd,
                                                        alpha = alpha,
-                                                       col = col,
+                                                       col = col.line,
                                                        linejoin = linejoin))
       }
     }
@@ -388,7 +434,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     gridout <- grid::grobTree(bargrob, blinegrob,
                               gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                              col = col, fill = fill,
+                                              fill = fill,
                                               linejoin = linejoin))
 
     #---------------------------------------------------------------------------
@@ -423,7 +469,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                 default.units = "native", just = barjust,
                                 hjust = barjusth,
                                 gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                                col = col, fill = fill,
+                                                col = col.bar, fill = fill,
                                                 linejoin = linejoin))
       if (line) {
         if (mirror) {
@@ -433,14 +479,14 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                           default.units = "native",
                                           gp = grid::gpar(lwd = lwd,
                                                           alpha = alpha,
-                                                          col = col,
+                                                          col = col.line,
                                                           linejoin = linejoin))
         } else {
           blinegrob <- grid::polylineGrob(x = xpos, y = ypos,
                                           default.units = "native",
                                           gp = grid::gpar(lwd = lwd,
                                                           alpha = alpha,
-                                                          col = col,
+                                                          col = col.line,
                                                           linejoin = linejoin))
         }
       }
@@ -455,7 +501,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        default.units = "native",
                                        gp = grid::gpar(lwd = lwd,
                                                        alpha = alpha,
-                                                       col = col,
+                                                       col = col.line,
                                                        linejoin = linejoin))
       } else {
         blinegrob <- grid::polygonGrob(x = c(x, xpos, x),
@@ -463,7 +509,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        default.units = "native",
                                        gp = grid::gpar(lwd = lwd,
                                                        alpha = alpha,
-                                                       col = col,
+                                                       col = col.line,
                                                        linejoin = linejoin))
       }
     }
@@ -472,7 +518,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     gridout <- grid::grobTree(bargrob, blinegrob,
                               gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                              col = col, fill = fill,
+                                              fill = fill,
                                               linejoin = linejoin))
   }
 
