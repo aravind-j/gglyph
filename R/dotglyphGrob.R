@@ -5,10 +5,10 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star glyph points from
-#'   the center.
+#' @param z A numeric vector specifying the values to be plotted as dimensions
+#'   of the dot glyph (number of stacked dots).
 #' @param radius The radius of the glyphs.
-#' @param col The colour of whisker and contours.
+#' @param col The line colour.
 #' @param fill The fill colour.
 #' @param lwd The line width.
 #' @param alpha The alpha transparency value.

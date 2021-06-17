@@ -6,8 +6,8 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star glyph points from
-#'   the center.
+#' @param z A numeric vector specifying the values to be plotted as dimensions
+#'   in the tileglyph.
 #' @param size The size of glyphs.
 #' @param ratio The aspect ratio (height / width).
 #' @param nrow The number of rows.

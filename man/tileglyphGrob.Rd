@@ -23,8 +23,8 @@ tileglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star glyph points from
-the center.}
+\item{z}{A numeric vector specifying the values to be plotted as dimensions
+in the tileglyph.}
 
 \item{size}{The size of glyphs.}
 

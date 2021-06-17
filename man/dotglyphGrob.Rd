@@ -22,12 +22,12 @@ dotglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star glyph points from
-the center.}
+\item{z}{A numeric vector specifying the values to be plotted as dimensions
+of the dot glyph (number of stacked dots).}
 
 \item{radius}{The radius of the glyphs.}
 
-\item{col}{The colour of whisker and contours.}
+\item{col}{The line colour.}
 
 \item{fill}{The fill colour.}
 
