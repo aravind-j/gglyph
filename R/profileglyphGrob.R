@@ -357,6 +357,11 @@ profileglyphGrob <- function(x = .5, y = .5, z,
   # grid::grid.rect(gp=gpar(col="gray"))
   # grid::grid.points(x = x, y = y, pch =  20)
 
+  # Empty grobs
+  bargrob <- grid::nullGrob()
+  blinegrob <- grid::nullGrob()
+  glinesGrob <- grid::nullGrob()
+
   dimension <- length(z)
 
   if (!flip.axes) {
@@ -374,10 +379,6 @@ profileglyphGrob <- function(x = .5, y = .5, z,
     } else {
       barjust <- "top"
     }
-
-    # Empty grobs
-    bargrob <- grid::nullGrob()
-    blinegrob <- grid::nullGrob()
 
     # Bar profile with/without line
     if (bar) {
@@ -432,11 +433,6 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     # grid::grid.points(x= xpos, y = rep(y, dimension), default.units = "native")
 
-    gridout <- grid::grobTree(bargrob, blinegrob,
-                              gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                              fill = fill,
-                                              linejoin = linejoin))
-
     #---------------------------------------------------------------------------
 
 
@@ -457,10 +453,6 @@ profileglyphGrob <- function(x = .5, y = .5, z,
       barjust <- "center"
       barjusth <- 0
     }
-
-    # Empty grobs
-    bargrob <- grid::nullGrob()
-    blinegrob <- grid::nullGrob()
 
     # Bar profile with/without line
     if (bar) {
@@ -516,12 +508,12 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     # grid::grid.points(x= rep(y, dimension), y = ypos, default.units = "native")
 
-    gridout <- grid::grobTree(bargrob, blinegrob,
-                              gp = grid::gpar(lwd = lwd, alpha = alpha,
-                                              fill = fill,
-                                              linejoin = linejoin))
   }
 
+  gridout <- grid::grobTree(bargrob, blinegrob,
+                            gp = grid::gpar(lwd = lwd, alpha = alpha,
+                                            fill = fill,
+                                            linejoin = linejoin))
   return(gridout)
 
 }
