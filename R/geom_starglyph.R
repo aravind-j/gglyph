@@ -183,7 +183,8 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                     # Check if "cols" exist in data
                                     if (FALSE %in% (cols %in% colnames(data))) {
                                       stop(paste('The following column(s) specified as "cols" are not present in "data":\n',
-                                                 paste(cols[!(cols %in% colnames(data))], collapse = ", "),
+                                                 paste(cols[!(cols %in% colnames(data))],
+                                                       collapse = ", "),
                                                  sep = ""))
                                     }
 
@@ -236,7 +237,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                                         lwd.contour = data$linewidth.contour[i],
                                                                         alpha = data$alpha[i],
                                                                         angle.start = 0,
-                                                                        angle.stop = 2*base::pi,
+                                                                        angle.stop = 2 * base::pi,
                                                                         whisker = whisker,
                                                                         contour = contour))
                                     }

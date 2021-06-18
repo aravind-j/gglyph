@@ -318,15 +318,15 @@
 #'
 starglyphGrob <- function(x = .5, y = .5, z,
                           size = 1,
-                          col.whisker = 'black',
-                          col.contour = 'black',
-                          col.points = 'black',
+                          col.whisker = "black",
+                          col.contour = "black",
+                          col.points = "black",
                           fill = NA,
                           lwd.whisker = 1,
                           lwd.contour = 1,
                           alpha = 1,
                           angle.start = 0,
-                          angle.stop = 2*base::pi,
+                          angle.stop = 2 * base::pi,
                           whisker = TRUE,
                           contour = TRUE,
                           linejoin = c("mitre", "round", "bevel"),
@@ -344,10 +344,12 @@ starglyphGrob <- function(x = .5, y = .5, z,
   # Get polygon points
   dimension <- length(z)
 
-  if (abs(angle.start - angle.stop) == 2*base::pi) {
-    angle <- seq(angle.start, angle.stop, length.out = dimension + 1)[1:dimension]
+  if (abs(angle.start - angle.stop) == 2 * base::pi) {
+    angle <- seq(angle.start, angle.stop,
+                 length.out = dimension + 1)[1:dimension]
   } else {
-    angle <- seq(angle.start, angle.stop, length.out = dimension)
+    angle <- seq(angle.start, angle.stop,
+                 length.out = dimension)
   }
 
   starx <- x + (z * size * cos(angle))
@@ -393,8 +395,8 @@ starglyphGrob <- function(x = .5, y = .5, z,
     if (!is.null(grid.levels)) { # Check if grid points are to be plotted
       # Check if grid.levels is a list in appropriate format
       if (is.list(grid.levels) &
-          all(unlist( lapply(grid.levels,
-                             function(x) is.numeric(x) | is.integer(x))))) {
+          all(unlist(lapply(grid.levels,
+                            function(x) is.numeric(x) | is.integer(x))))) {
         # Check if z is present in corresponding grid.levels
         if (!all(mapply(function(a, b) a %in% b, z, grid.levels))) {
           warning('Mismatch in values "z" values and corresponding "grid.levels".\n',
@@ -413,7 +415,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
 
           if (is.na(col.points)) {
             if (length(col.whisker == length(grid.levels))) {
-              col.points <- mapply(function(a,b) rep(a, length(b)),
+              col.points <- mapply(function(a, b) rep(a, length(b)),
                                    col.whisker, grid.levels)
               col.points <- unlist(col.points)
             } else {

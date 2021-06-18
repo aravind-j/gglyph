@@ -244,15 +244,15 @@
 #'
 metroglyphGrob <- function(x = .5, y = .5, z,
                           size = 1, circle.size = 10,
-                          col.circle = 'black',
-                          col.ray = 'black',
-                          col.points = 'black',
+                          col.circle = "black",
+                          col.ray = "black",
+                          col.points = "black",
                           fill = NA,
                           lwd.circle = 1,
                           lwd.ray = 1,
                           alpha = 1,
                           angle.start = 0,
-                          angle.stop = 2*base::pi,
+                          angle.stop = 2 * base::pi,
                           lineend = c("round", "butt", "square"),
                           grid.levels = NULL,
                           grid.points = FALSE,
@@ -272,7 +272,7 @@ metroglyphGrob <- function(x = .5, y = .5, z,
   # Get polygon points
   dimension <- length(z)
 
-  if (abs(angle.start - angle.stop) == 2*base::pi) {
+  if (abs(angle.start - angle.stop) == 2 * base::pi) {
     angle <- seq(angle.start, angle.stop,
                  length.out = dimension + 1)[1:dimension]
   } else {
@@ -311,8 +311,8 @@ metroglyphGrob <- function(x = .5, y = .5, z,
     if (!is.null(grid.levels)) { # Check if grid points are to be plotted
       # Check if grid.levels is a list in appropriate format
       if (is.list(grid.levels) &
-          all(unlist( lapply(grid.levels,
-                             function(x) is.numeric(x) | is.integer(x))))) {
+          all(unlist(lapply(grid.levels,
+                            function(x) is.numeric(x) | is.integer(x))))) {
         # Check if z is present in corresponding grid.levels
         if (!all(mapply(function(a, b) a %in% b, z, grid.levels))) {
           warning('Mismatch in values "z" values and corresponding "grid.levels".\n',
@@ -333,7 +333,7 @@ metroglyphGrob <- function(x = .5, y = .5, z,
 
           if (is.na(col.points)) {
             if (length(col.ray == length(grid.levels))) {
-              col.points <- mapply(function(a,b) rep(a, length(b)),
+              col.points <- mapply(function(a, b) rep(a, length(b)),
                                    col.ray, grid.levels)
               col.points <- unlist(col.points)
             } else {

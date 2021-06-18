@@ -109,7 +109,7 @@
 #'
 dotglyphGrob <- function(x = .5, y = .5, z,
                          radius = 10,
-                         col = 'black',
+                         col = "black",
                          fill = NA,
                          lwd = 1,
                          alpha = 1,
@@ -121,7 +121,7 @@ dotglyphGrob <- function(x = .5, y = .5, z,
   # grid::grid.points(x = x, y = y, pch =  20)
 
   if (!flip.axes) {
-    xpos <- x + ((radius * 2) * seq(-(dimension-1)/2, (dimension-1)/2,
+    xpos <- x + ((radius * 2) * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
                                     length.out = dimension))
     ypos <- rep(y, dimension)
 
@@ -134,7 +134,7 @@ dotglyphGrob <- function(x = .5, y = .5, z,
 
   } else {
     xpos <- rep(x, dimension)
-    ypos <- y - ((radius * 2) * seq(-(dimension-1)/2, (dimension-1)/2,
+    ypos <- y - ((radius * 2) * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
                                     length.out = dimension))
 
     circy <- mapply(function(a, b) rep(a, b), ypos, z)
@@ -157,4 +157,3 @@ dotglyphGrob <- function(x = .5, y = .5, z,
                                                        lwd = lwd,
                                                        alpha = alpha))
 }
-

@@ -209,12 +209,12 @@
 #'
 pieglyphGrob <- function(x = .5, y = .5, z,
                          size = 1, edges = 200,
-                         col = 'black',
+                         col = "black",
                          fill = NA,
                          lwd = 1,
                          alpha = 1,
                          angle.start = 0,
-                         angle.stop = 2*base::pi,
+                         angle.stop = 2 * base::pi,
                          linejoin = c("mitre", "round", "bevel"),
                          scale.segment = FALSE,
                          scale.radius = TRUE,
@@ -270,7 +270,7 @@ pieglyphGrob <- function(x = .5, y = .5, z,
 
   # Convert z to cumulative proportions
   if (scale.segment) {
-    cumpropz <- c(0, cumsum(z)/sum(z))
+    cumpropz <- c(0, cumsum(z) / sum(z))
   } else {
     # Convert z to cumulative proportions
     # cumpropz <- c(0, scales::rescale(1:dimension))
@@ -296,7 +296,7 @@ pieglyphGrob <- function(x = .5, y = .5, z,
     arcp <- seq.int(cumpropz[i], cumpropz[i + 1], length.out = n)
 
     # Sector arc point radians
-    arcpr <- (angle.stop * arcp) + (angle.start * pi/180)
+    arcpr <- (angle.stop * arcp) + (angle.start * (pi / 180))
 
     # Sector arc coordinates
 
@@ -310,7 +310,7 @@ pieglyphGrob <- function(x = .5, y = .5, z,
                                    arcid = i)
       if (drawgridlines) {
         gridxylist[[i]] <- lapply(grid.levels[[i]],
-                                  function(a) if (length(a) ==0) {
+                                  function(a) if (length(a) == 0) {
                                     NA
                                   } else{
                                     lapply(a,
