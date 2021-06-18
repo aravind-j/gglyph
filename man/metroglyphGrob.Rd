@@ -53,7 +53,7 @@ metroglyphGrob(
 \item{angle.start}{The start angle for the glyph rays in radians. Default is
 zero.}
 
-\item{angle.stop}{The stop anlge for the glyph rays in radians. Default is
+\item{angle.stop}{The stop angle for the glyph rays in radians. Default is
 \eqn{2\pi}.}
 
 \item{lineend}{The line end style for the rays. Either \code{"round"},

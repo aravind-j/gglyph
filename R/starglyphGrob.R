@@ -5,8 +5,8 @@
 #'
 #' @param x A numeric vector or unit object specifying x-locations.
 #' @param y A numeric vector or unit object specifying y-locations.
-#' @param z A numeric vector specifying the distance of star gylph points from
-#'   the center.
+#' @param z A numeric vector specifying the distance of star glyph points from
+#'   the centre.
 #' @param size The size of glyphs.
 #' @param col.whisker The colour of whisker.
 #' @param col.contour The colour of contours.
@@ -16,7 +16,7 @@
 #' @param lwd.contour The contour line width.
 #' @param alpha The alpha transparency value.
 #' @param angle.start The start angle for the glyph in radians. Default is zero.
-#' @param angle.stop The stop anlge for the glyph in radians. Default is
+#' @param angle.stop The stop angle for the glyph in radians. Default is
 #'   \eqn{2\pi}.
 #' @param whisker logical. If \code{TRUE}, plots the star glyph whiskers.
 #' @param contour logical. If \code{TRUE}, plots the star glyph contours.

@@ -32,8 +32,8 @@ starglyphGrob(
 
 \item{y}{A numeric vector or unit object specifying y-locations.}
 
-\item{z}{A numeric vector specifying the distance of star gylph points from
-the center.}
+\item{z}{A numeric vector specifying the distance of star glyph points from
+the centre.}
 
 \item{size}{The size of glyphs.}
 
@@ -53,7 +53,7 @@ the center.}
 
 \item{angle.start}{The start angle for the glyph in radians. Default is zero.}
 
-\item{angle.stop}{The stop anlge for the glyph in radians. Default is
+\item{angle.stop}{The stop angle for the glyph in radians. Default is
 \eqn{2\pi}.}
 
 \item{whisker}{logical. If \code{TRUE}, plots the star glyph whiskers.}

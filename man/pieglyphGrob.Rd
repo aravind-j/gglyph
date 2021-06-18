@@ -49,7 +49,7 @@ outline.}
 
 \item{angle.start}{The start angle for the glyph in radians. Default is zero.}
 
-\item{angle.stop}{The stop anlge for the glyph in radians. Default is
+\item{angle.stop}{The stop angle for the glyph in radians. Default is
 \eqn{2\pi}.}
 
 \item{linejoin}{The line join style for the pie segment polygons. Either

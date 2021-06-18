@@ -17,7 +17,7 @@
 #' @param alpha The alpha transparency value.
 #' @param angle.start The start angle for the glyph rays in radians. Default is
 #'   zero.
-#' @param angle.stop The stop anlge for the glyph rays in radians. Default is
+#' @param angle.stop The stop angle for the glyph rays in radians. Default is
 #'   \eqn{2\pi}.
 #' @param lineend The line end style for the rays. Either \code{"round"},
 #'   \code{"butt"} or \code{"square"}.

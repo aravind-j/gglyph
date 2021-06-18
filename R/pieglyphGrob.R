@@ -16,7 +16,7 @@
 #' @param lwd The line width.
 #' @param alpha The alpha transparency value.
 #' @param angle.start The start angle for the glyph in radians. Default is zero.
-#' @param angle.stop The stop anlge for the glyph in radians. Default is
+#' @param angle.stop The stop angle for the glyph in radians. Default is
 #'   \eqn{2\pi}.
 #' @param linejoin The line join style for the pie segment polygons. Either
 #'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
