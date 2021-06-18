@@ -10,6 +10,7 @@
 #' @param circle.size The size of the central circle.
 #' @param col.circle The circle colour.
 #' @param col.ray The colour of rays.
+#' @param col.points The colour of grid.points.
 #' @param fill The circle fill colour.
 #' @param lwd.circle The circle line width.
 #' @param lwd.ray The ray line width.
@@ -20,6 +21,12 @@
 #'   \eqn{2\pi}.
 #' @param lineend The line end style for the rays. Either \code{"round"},
 #'   \code{"butt"} or \code{"square"}.
+#' @param grid.points logical. If \code{TRUE}, grid points are plotted along the
+#'   whiskers. Default is \code{FALSE}.
+#' @param grid.levels A list of grid levels (as vectors) corresponding to the
+#'   values in \code{z} at which points are to be plotted. The values in
+#'   \code{z} should be present in the list specified.
+#' @param point.size The size of the grid points in native units.
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'

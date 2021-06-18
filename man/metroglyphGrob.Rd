@@ -40,6 +40,8 @@ metroglyphGrob(
 
 \item{col.ray}{The colour of rays.}
 
+\item{col.points}{The colour of grid.points.}
+
 \item{fill}{The circle fill colour.}
 
 \item{lwd.circle}{The circle line width.}
@@ -56,6 +58,15 @@ zero.}
 
 \item{lineend}{The line end style for the rays. Either \code{"round"},
 \code{"butt"} or \code{"square"}.}
+
+\item{grid.levels}{A list of grid levels (as vectors) corresponding to the
+values in \code{z} at which points are to be plotted. The values in
+\code{z} should be present in the list specified.}
+
+\item{grid.points}{logical. If \code{TRUE}, grid points are plotted along the
+whiskers. Default is \code{FALSE}.}
+
+\item{point.size}{The size of the grid points in native units.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
