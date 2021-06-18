@@ -18,7 +18,11 @@ pieglyphGrob(
   angle.stop = 2 * base::pi,
   linejoin = c("mitre", "round", "bevel"),
   scale.segment = FALSE,
-  scale.radius = TRUE
+  scale.radius = TRUE,
+  grid.levels = NULL,
+  grid.lines = FALSE,
+  col.grid = "grey",
+  lwd.grid = lwd
 )
 }
 \arguments{
@@ -56,6 +60,17 @@ scaled according to value of \code{z}.}
 
 \item{scale.radius}{logical. If \code{TRUE}, the radius of segments (pie
 slices) are scaled according to value of \code{z}.}
+
+\item{grid.levels}{A list of grid levels (as vectors) corresponding to the
+values in \code{z} at which grid lines are to be plotted. The values in
+\code{z} should be present in the list specified.}
+
+\item{grid.lines}{logical. If \code{TRUE}, grid lines are plotted along the
+segments when \code{scale.radius = TRUE}. Default is \code{FALSE}.}
+
+\item{col.grid}{The colour of the grid lines.}
+
+\item{lwd.grid}{The line width of the grid lines.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
@@ -154,6 +169,77 @@ grid::grid.newpage()
 grid::grid.draw(p1)
 grid::grid.draw(p2)
 grid::grid.draw(p3)
+
+dims = c(1, 3, 2, 1, 2, 3)
+gl <- split(x = rep(c(1, 2, 3), 6),
+            f = rep(1:6, each = 3))
+
+p1 <- pieglyphGrob(x = 100, y = 150,
+                   z = dims, size = 40,
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 2, col.grid = "black")
+
+p2 <- pieglyphGrob(x = 400, y = 150,
+                   angle.start = 0, angle.stop = -base::pi,
+                   z = dims, size = 40,
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 2, col.grid = "black")
+
+p3 <- pieglyphGrob(x = 100, y = 400,
+                   z = dims, size = 40, scale.segment = TRUE,
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 2, col.grid = "black")
+
+p4 <- pieglyphGrob(x = 400, y = 400,
+                   angle.start = 0, angle.stop = -base::pi,
+                   z = dims, size = 40, scale.segment = TRUE,
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 2, col.grid = "black")
+
+grid::grid.newpage()
+grid::grid.draw(p1)
+grid::grid.draw(p2)
+grid::grid.draw(p3)
+grid::grid.draw(p4)
+
+dims = c(1, 3, 2, 1, 2, 3)
+gl <- split(x = rep(c(1, 2, 3), 6),
+            f = rep(1:6, each = 3))
+
+p1 <- pieglyphGrob(x = 100, y = 150,
+                   z = dims, size = 40, col = "white",
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 3, col.grid = "white",
+                   fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+p2 <- pieglyphGrob(x = 400, y = 150,
+                   angle.start = 0, angle.stop = -base::pi,
+                   z = dims, size = 40, col = "white",
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 3, col.grid = "white",
+                   fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+p3 <- pieglyphGrob(x = 100, y = 400,
+                   z = dims, size = 40,
+                   col = "white", scale.segment = TRUE,
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 3, col.grid = "white",
+                   fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+p4 <- pieglyphGrob(x = 400, y = 400,
+                   angle.start = 0, angle.stop = -base::pi,
+                   z = dims, size = 40,
+                   col = "white", scale.segment = TRUE,
+                   grid.lines = TRUE, grid.levels = gl,
+                   lwd = 3, col.grid = "white",
+                   fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+
+grid::grid.newpage()
+grid::grid.draw(p1)
+grid::grid.draw(p2)
+grid::grid.draw(p3)
+grid::grid.draw(p4)
 
 }
 \references{

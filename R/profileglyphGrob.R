@@ -20,6 +20,14 @@
 #' @param mirror logical. If \code{TRUE}, mirror profile is plotted.
 #' @param linejoin The line join style for the profile line(s) and bars. Either
 #'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
+#' @param grid.lines logical. If \code{TRUE}, grid lines are plotted along the
+#'   bars. Default is \code{FALSE}.
+#' @param grid.levels A list of grid levels (as vectors) corresponding to the
+#'   values in \code{z} at which grid lines are to be plotted. The values in
+#'   \code{z} should be present in the list specified.
+#' @param lwd.grid The line width of the grid lines.
+#' @param col.grid The colour of the grid lines.
+#'
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'
@@ -294,6 +302,7 @@
 #' grid::grid.draw(pg2)
 #' grid::grid.draw(pg3)
 #'
+#' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
 #' bg1 <- profileglyphGrob(x = 100, y = 100, z = dims,
 #'                         size = 100,
 #'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
@@ -338,6 +347,70 @@
 #' grid::grid.draw(bg4)
 #' grid::grid.draw(bpg4)
 #'
+#' dims = c(1, 3, 2, 1, 2, 3)
+#' gl <- split(x = rep(c(1, 2, 3), 6),
+#'             f = rep(1:6, each = 3))
+#'
+#' bg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+#'                         size = 50, width = 20,
+#'                         grid.lines = TRUE, lwd = 2,
+#'                         grid.levels = gl, col.grid = "black")
+#'
+#' bg2 <- profileglyphGrob(x = 250, y = 200, z = dims,
+#'                         size = 50, width = 20, lwd = 2,
+#'                         grid.lines = TRUE, mirror = FALSE,
+#'                         grid.levels = gl, col.grid = "black")
+#'
+#' bg3 <- profileglyphGrob(x = 400, y = 150, z = dims,
+#'                         size = 50, width = 20, flip.axes = TRUE,
+#'                         grid.lines = TRUE, lwd = 2,
+#'                         grid.levels = gl, col.grid = "black")
+#'
+#' bg4 <- profileglyphGrob(x = 500, y = 150, z = dims,
+#'                         size = 50, width = 20, flip.axes = TRUE,
+#'                         grid.lines = TRUE, mirror = FALSE,
+#'                         grid.levels = gl, col.grid = "black",
+#'                         lwd = 2)
+#'
+#' bg5 <- profileglyphGrob(x = 100, y = 350, z = dims,
+#'                         size = 50, width = 20,
+#'                         grid.lines = TRUE, lwd = 2,
+#'                         grid.levels = gl, col.grid = "white",
+#'                         col.bar = "white", line = FALSE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bg6 <- profileglyphGrob(x = 250, y = 400, z = dims,
+#'                         size = 50, width = 20, lwd = 2,
+#'                         grid.lines = TRUE, mirror = FALSE,
+#'                         grid.levels = gl, col.grid = "white",
+#'                         col.bar = "white", line = FALSE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bg7 <- profileglyphGrob(x = 400, y = 350, z = dims,
+#'                         size = 50, width = 20, flip.axes = TRUE,
+#'                         grid.lines = TRUE, lwd = 2,
+#'                         grid.levels = gl, col.grid = "white",
+#'                         col.bar = "white", line = FALSE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#' bg8 <- profileglyphGrob(x = 500, y = 350, z = dims,
+#'                         size = 50, width = 20, flip.axes = TRUE,
+#'                         grid.lines = TRUE, mirror = FALSE,
+#'                         grid.levels = gl, col.grid = "white",
+#'                         col.bar = "white", lwd = 2, line = FALSE,
+#'                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(bg1)
+#' grid::grid.draw(bg2)
+#' grid::grid.draw(bg3)
+#' grid::grid.draw(bg4)
+#' grid::grid.draw(bg5)
+#' grid::grid.draw(bg6)
+#' grid::grid.draw(bg7)
+#' grid::grid.draw(bg8)
+#'
 profileglyphGrob <- function(x = .5, y = .5, z,
                           size = 1,
                           col.bar = 'black',
@@ -350,12 +423,43 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                           bar = TRUE,
                           line = TRUE,
                           mirror = TRUE,
-                          linejoin = c("mitre", "round", "bevel")) {
+                          linejoin = c("mitre", "round", "bevel"),
+                          grid.levels = NULL,
+                          grid.lines = FALSE,
+                          col.grid = "grey",
+                          lwd.grid = lwd) {
 
   linejoin <- match.arg(linejoin)
 
   # grid::grid.rect(gp=gpar(col="gray"))
   # grid::grid.points(x = x, y = y, pch =  20)
+
+  # Checks for grid lines
+  drawgridlines <- FALSE
+  if (grid.lines) {
+    if (!is.null(grid.levels)) { # Check if grid lines are to be plotted
+      # Check if grid.levels is a list in appropriate format
+      if (is.list(grid.levels) &
+          all(unlist( lapply(grid.levels,
+                             function(x) is.numeric(x) | is.integer(x))))) {
+        # Check if z is present in corresponding grid.levels
+        if (!all(mapply(function(a, b) a %in% b, z, grid.levels))) {
+          warning('Mismatch in values "z" values and corresponding "grid.levels".\n',
+                  'Unable to plot grid lines.')
+        } else {
+          drawgridlines <- TRUE
+        }
+
+      } else {
+        warning('Non-standard format specified as "grid.levels".\n',
+                'Unable to plot grid lines.')
+      }
+
+    } else {
+      warning('"grid.levels" not specified.\n',
+              'Unable to plot grid lines.')
+    }
+  }
 
   # Empty grobs
   bargrob <- grid::nullGrob()
@@ -433,6 +537,50 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     # grid::grid.points(x= xpos, y = rep(y, dimension), default.units = "native")
 
+    if (drawgridlines) {
+      # plot grid lines
+      grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels)
+
+      if (mirror) {
+        gridy <- mapply(function(a, b) a - (b * size), ypos2, grid.levels)
+        gridy <- mapply(function(a, b) setdiff(b, a), ypos1, gridy)
+      } else {
+        gridy <- lapply(grid.levels, function(a) y - (a * size))
+        gridy <- mapply(function(a, b) setdiff(b, a), y - (z*size), gridy)
+      }
+
+      gridx <- mapply(function(a, b) rep(a, length(b)), xpos, gridy)
+
+      gridx <- unlist(gridx)
+      gridy <- unlist(gridy)
+
+      if (is.na(col.grid)) {
+        if (length(col.bar == length(grid.levels))) {
+          col.grid <- mapply(function(a,b) rep(a, length(b)),
+                             col.bar, grid.levels)
+          col.grid <- unlist(col.grid)
+        } else {
+          col.grid <- col.bar
+        }
+      }
+
+      # grid.draw(pointsGrob(gridx, gridy, pch = 3))
+
+      gridxstrt <- gridx - (width / 2)
+      gridxstp <- gridx + (width / 2)
+
+      # grid::grid.points(c(gridxstrt, gridxstp), rep(gridy, 2), pch = 20)
+
+      glinesGrob <- grid::polylineGrob(x = c(gridxstrt, gridxstp),
+                                       y = rep(gridy, 2),
+                                       id = rep(1:length(gridx), 2),
+                                       default.units = "native",
+                                       gp = gpar(col = col.grid,
+                                                 lwd = lwd.grid,
+                                                 lineend = "butt",
+                                                 alpha = alpha))
+    }
+
     #---------------------------------------------------------------------------
 
 
@@ -508,9 +656,53 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     # grid::grid.points(x= rep(y, dimension), y = ypos, default.units = "native")
 
+    if (drawgridlines) {
+      # plot grid lines
+      grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels)
+
+      if (mirror) {
+        gridx <- mapply(function(a, b) a - (b * size), xpos2, grid.levels)
+        gridx <- mapply(function(a, b) setdiff(b, a), xpos1, gridx)
+      } else {
+        gridx <- lapply(grid.levels, function(a) x + (a * size))
+        gridx <- mapply(function(a, b) setdiff(b, a), x + (z*size), gridx)
+      }
+
+      gridy <- mapply(function(a, b) rep(a, length(b)), ypos, gridx)
+
+      gridx <- unlist(gridx)
+      gridy <- unlist(gridy)
+
+      if (is.na(col.grid)) {
+        if (length(col.bar == length(grid.levels))) {
+          col.grid <- mapply(function(a,b) rep(a, length(b)),
+                             col.bar, grid.levels)
+          col.grid <- unlist(col.grid)
+        } else {
+          col.grid <- col.bar
+        }
+      }
+
+      # grid.draw(pointsGrob(gridx, gridy, pch = 3))
+
+      gridystrt <- gridy - (width / 2)
+      gridystp <- gridy + (width / 2)
+
+      # grid::grid.points(rep(gridx, 2), c(gridystrt, gridystp), pch = 20)
+
+      glinesGrob <- grid::polylineGrob(x = rep(gridx, 2),
+                                       y = c(gridystrt, gridystp),
+                                       id = rep(1:length(gridy), 2),
+                                       default.units = "native",
+                                       gp = gpar(col = col.grid,
+                                                 lwd = lwd.grid,
+                                                 lineend = "butt",
+                                                 alpha = alpha))
+    }
+
   }
 
-  gridout <- grid::grobTree(bargrob, blinegrob,
+  gridout <- grid::grobTree(bargrob, blinegrob, glinesGrob,
                             gp = grid::gpar(lwd = lwd, alpha = alpha,
                                             fill = fill,
                                             linejoin = linejoin))

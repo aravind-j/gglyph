@@ -19,7 +19,11 @@ profileglyphGrob(
   bar = TRUE,
   line = TRUE,
   mirror = TRUE,
-  linejoin = c("mitre", "round", "bevel")
+  linejoin = c("mitre", "round", "bevel"),
+  grid.levels = NULL,
+  grid.lines = FALSE,
+  col.grid = "grey",
+  lwd.grid = lwd
 )
 }
 \arguments{
@@ -54,6 +58,17 @@ of the profile (length of the bars).}
 
 \item{linejoin}{The line join style for the profile line(s) and bars. Either
 \code{"mitre"}, \code{"round"} or \code{"bevel"}.}
+
+\item{grid.levels}{A list of grid levels (as vectors) corresponding to the
+values in \code{z} at which grid lines are to be plotted. The values in
+\code{z} should be present in the list specified.}
+
+\item{grid.lines}{logical. If \code{TRUE}, grid lines are plotted along the
+bars. Default is \code{FALSE}.}
+
+\item{col.grid}{The colour of the grid lines.}
+
+\item{lwd.grid}{The line width of the grid lines.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
@@ -324,6 +339,7 @@ grid::grid.draw(pg1)
 grid::grid.draw(pg2)
 grid::grid.draw(pg3)
 
+dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
 bg1 <- profileglyphGrob(x = 100, y = 100, z = dims,
                         size = 100,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
@@ -367,6 +383,70 @@ grid::grid.draw(bg3)
 grid::grid.draw(bpg3)
 grid::grid.draw(bg4)
 grid::grid.draw(bpg4)
+
+dims = c(1, 3, 2, 1, 2, 3)
+gl <- split(x = rep(c(1, 2, 3), 6),
+            f = rep(1:6, each = 3))
+
+bg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
+                        size = 50, width = 20,
+                        grid.lines = TRUE, lwd = 2,
+                        grid.levels = gl, col.grid = "black")
+
+bg2 <- profileglyphGrob(x = 250, y = 200, z = dims,
+                        size = 50, width = 20, lwd = 2,
+                        grid.lines = TRUE, mirror = FALSE,
+                        grid.levels = gl, col.grid = "black")
+
+bg3 <- profileglyphGrob(x = 400, y = 150, z = dims,
+                        size = 50, width = 20, flip.axes = TRUE,
+                        grid.lines = TRUE, lwd = 2,
+                        grid.levels = gl, col.grid = "black")
+
+bg4 <- profileglyphGrob(x = 500, y = 150, z = dims,
+                        size = 50, width = 20, flip.axes = TRUE,
+                        grid.lines = TRUE, mirror = FALSE,
+                        grid.levels = gl, col.grid = "black",
+                        lwd = 2)
+
+bg5 <- profileglyphGrob(x = 100, y = 350, z = dims,
+                        size = 50, width = 20,
+                        grid.lines = TRUE, lwd = 2,
+                        grid.levels = gl, col.grid = "white",
+                        col.bar = "white", line = FALSE,
+                        fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+bg6 <- profileglyphGrob(x = 250, y = 400, z = dims,
+                        size = 50, width = 20, lwd = 2,
+                        grid.lines = TRUE, mirror = FALSE,
+                        grid.levels = gl, col.grid = "white",
+                        col.bar = "white", line = FALSE,
+                        fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+bg7 <- profileglyphGrob(x = 400, y = 350, z = dims,
+                        size = 50, width = 20, flip.axes = TRUE,
+                        grid.lines = TRUE, lwd = 2,
+                        grid.levels = gl, col.grid = "white",
+                        col.bar = "white", line = FALSE,
+                        fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+bg8 <- profileglyphGrob(x = 500, y = 350, z = dims,
+                        size = 50, width = 20, flip.axes = TRUE,
+                        grid.lines = TRUE, mirror = FALSE,
+                        grid.levels = gl, col.grid = "white",
+                        col.bar = "white", lwd = 2, line = FALSE,
+                        fill = RColorBrewer::brewer.pal(6, "Dark2"))
+
+
+grid::grid.newpage()
+grid::grid.draw(bg1)
+grid::grid.draw(bg2)
+grid::grid.draw(bg3)
+grid::grid.draw(bg4)
+grid::grid.draw(bg5)
+grid::grid.draw(bg6)
+grid::grid.draw(bg7)
+grid::grid.draw(bg8)
 
 }
 \references{
