@@ -47,7 +47,10 @@ layer, as a string.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{...}{additional parameters}
+\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer()}}. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
+to the paired geom/stat.}
 
 \item{cols}{Name of columns specifying the variables to be plotted in the
 glyphs as a character vector.}

@@ -11,7 +11,10 @@
 #' @param colour.whisker The colour of whisker.
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
-#' @param ... additional parameters
+#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These are
+#'   often aesthetics, used to set an aesthetic to a fixed value, like
+#'   \code{colour = "red"} or \code{size = 3}. They may also be parameters
+#'   to the paired geom/stat.
 #'
 #' @section Aesthetics: \code{geom_starglyph()} understands the following
 #'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
