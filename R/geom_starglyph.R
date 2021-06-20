@@ -11,10 +11,12 @@
 #' @param colour.whisker The colour of whisker.
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
-#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These are
-#'   often aesthetics, used to set an aesthetic to a fixed value, like
-#'   \code{colour = "red"} or \code{size = 3}. They may also be parameters
-#'   to the paired geom/stat.
+#' @param full logical. If (\code{TRUE}), full star glyphs (360°) are plotted,
+#'   otherwise half star glyphs (180°) are plotted.
+#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+#'   are often aesthetics, used to set an aesthetic to a fixed value, like
+#'   \code{colour = "red"} or \code{size = 3}. They may also be parameters to
+#'   the paired geom/stat.
 #'
 #' @section Aesthetics: \code{geom_starglyph()} understands the following
 #'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
@@ -56,6 +58,12 @@
 #' ggplot(data = mtcars) +
 #'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                  cols = zs, whisker = TRUE, contour = TRUE,
+#'                  size = 0.1, alpha =  0.5, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                  cols = zs, whisker = TRUE, contour = TRUE,
 #'                  size = 0.1, alpha =  0.5,
 #'                  linewidth.whisker = 3, linewidth.contour = 0.1) +
 #'   ylim(c(-0, 550))
@@ -86,6 +94,13 @@
 #'   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                  cols = zs, whisker = TRUE, contour = FALSE,
 #'                  size = 0.1) +
+#'   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                  cols = zs, whisker = TRUE, contour = FALSE,
+#'                  size = 0.1, full = FALSE) +
 #'   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
 #'   ylim(c(-0, 550))
 #'
@@ -130,6 +145,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            colour.whisker = NULL,
                            linewidth.whisker = 1,
                            linewidth.contour = 1,
+                           full = TRUE,
                            show.legend = NA, inherit.aes = TRUE) {
 
 
@@ -148,6 +164,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     linewidth.whisker = linewidth.whisker,
     linewidth.contour = linewidth.contour,
     colour.whisker = colour.whisker,
+    full = full,
     cols = cols, ...)
 
   ggplot2::layer(
@@ -218,11 +235,20 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                         whisker, contour,
                                                         linewidth.whisker,
                                                         linewidth.contour,
-                                                        colour.whisker) {
+                                                        colour.whisker,
+                                                        full) {
 
                                     data <- coord$transform(data, panel_params)
 
                                     gl <- grid::grobTree()
+
+                                    if (full) {
+                                      astrt <- 0
+                                      astp <- 2 * base::pi
+                                    } else {
+                                      astrt <- 0
+                                      astp <- base::pi
+                                    }
 
                                     for (i in seq_along(data$x)) {
                                       # addGrob to get proper overlappin of glyphs
@@ -241,8 +267,8 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                                         lwd.whisker = data$linewidth.whisker[i],
                                                                         lwd.contour = data$linewidth.contour[i],
                                                                         alpha = data$alpha[i],
-                                                                        angle.start = 0,
-                                                                        angle.stop = 2 * base::pi,
+                                                                        angle.start = astrt,
+                                                                        angle.stop = astp,
                                                                         whisker = whisker,
                                                                         contour = contour,
                                                                         linejoin = data$linejoin[i],

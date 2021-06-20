@@ -16,6 +16,7 @@ geom_starglyph(
   colour.whisker = NULL,
   linewidth.whisker = 1,
   linewidth.contour = 1,
+  full = TRUE,
   show.legend = NA,
   inherit.aes = TRUE
 )
@@ -47,10 +48,10 @@ layer, as a string.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer()}}. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-\code{colour = "red"} or \code{size = 3}. They may also be parameters
-to the paired geom/stat.}
+\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+are often aesthetics, used to set an aesthetic to a fixed value, like
+\code{colour = "red"} or \code{size = 3}. They may also be parameters to
+the paired geom/stat.}
 
 \item{cols}{Name of columns specifying the variables to be plotted in the
 glyphs as a character vector.}
@@ -64,6 +65,9 @@ glyphs as a character vector.}
 \item{linewidth.whisker}{The whisker line width.}
 
 \item{linewidth.contour}{The contour line width.}
+
+\item{full}{logical. If (\code{TRUE}), full star glyphs (360°) are plotted,
+otherwise half star glyphs (180°) are plotted.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
@@ -111,6 +115,12 @@ ggplot(data = mtcars) +
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
+                 size = 0.1, alpha =  0.5, full = FALSE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+                 cols = zs, whisker = TRUE, contour = TRUE,
                  size = 0.1, alpha =  0.5,
                  linewidth.whisker = 3, linewidth.contour = 0.1) +
   ylim(c(-0, 550))
@@ -141,6 +151,13 @@ ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
                  size = 0.1) +
+  geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
+                 cols = zs, whisker = TRUE, contour = FALSE,
+                 size = 0.1, full = FALSE) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
   ylim(c(-0, 550))
 
