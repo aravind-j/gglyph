@@ -167,7 +167,9 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                              fill = NA,
                                                              stroke = 0.5,
                                                              linetype = 1,
-                                                             alpha = 1),
+                                                             alpha = 1,
+                                                             linejoin = "mitre",
+                                                             lineend = "round"),
 
                                   draw_key = ggplot2::draw_key_polygon,
 
@@ -239,7 +241,9 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                                         angle.start = 0,
                                                                         angle.stop = 2 * base::pi,
                                                                         whisker = whisker,
-                                                                        contour = contour))
+                                                                        contour = contour,
+                                                                        linejoin = data$linejoin[i],
+                                                                        lineend = data$lineend[i]))
                                     }
 
                                     ggname("geom_starglyph",
