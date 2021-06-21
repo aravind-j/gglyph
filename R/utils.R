@@ -1,6 +1,7 @@
 
 # Get unexported functions from ggplot2
 ggname <- utils::getFromNamespace("ggname", "ggplot2")
+remove_missing <- utils::getFromNamespace("remove_missing", "ggplot2")
 
 
 

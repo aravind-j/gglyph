@@ -4,18 +4,22 @@
 #' \insertCite{siegel_surgical_1972,chambers_graphical_1983,dutoit_graphical_1986}{gglyph}
 #' in a scatterplot.
 #'
+#' @template draw.grid-arg
 #' @inheritParams ggplot2::layer
 #' @inheritParams starglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
 #'   glyphs as a character vector.
 #' @param colour.whisker The colour of whisker.
+#' @param colour.contour The colour of contour.
+#' @param colour.points The colour of grid points.
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
+#' @param point.size The size of the grid points in native units.
 #' @param full logical. If (\code{TRUE}), full star glyphs (360°) are plotted,
 #'   otherwise half star glyphs (180°) are plotted.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
-#'   \code{colour = "red"} or \code{size = 3}. They may also be parameters to
+#'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
 #'   the paired geom/stat.
 #'
 #' @section Aesthetics: \code{geom_starglyph()} understands the following
@@ -31,6 +35,8 @@
 #' @importFrom grid grobTree addGrob
 #' @importFrom Rdpack reprompt
 #' @export
+#'
+#' @encoding UTF-8
 #'
 #' @seealso \code{\link[gglyph]{starglyphGrob}}
 #'
@@ -137,21 +143,57 @@
 #'   ylim(c(-0, 550)) +
 #'   facet_grid(. ~ cyl)
 #'
+#' rm(mtcars)
+#' mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)
+#'
+#' mtcars[ , zs] <- lapply(mtcars[, zs],
+#'                         function(x) cut(x, breaks = 3,
+#'                                         labels = c(1, 2, 3)))
+#' mtcars[ , zs] <- lapply(mtcars[ , zs], as.factor)
+#'
+#' mtcars$cyl <- as.factor(mtcars$cyl)
+#' mtcars$lab <- row.names(mtcars)
+#'
+#' # Grid points
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                  cols = zs, whisker = TRUE, contour = TRUE,
+#'                  size = 0.03, alpha =  0.5, draw.grid = TRUE,
+#'                  point.size = 5) +
+#'   ylim(c(-0, 550))
+#'
+#'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                  cols = zs, whisker = TRUE, contour = FALSE,
+#'                  size = 0.015, draw.grid = TRUE, point.size = 7,
+#'                  linewidth.whisker = 2, alpha = 0.6) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_starglyph(aes(x = mpg, y = disp),
+#'                  cols = zs, whisker = TRUE, contour = FALSE,
+#'                  size = 0.015, draw.grid = TRUE,
+#'                  point.size = 5, alpha =  0.6,
+#'                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
+#'   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
+#'   ylim(c(-0, 550))
+#'
 geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            position = "identity", ...,
                            cols = character(0L),
                            whisker = TRUE,
                            contour = TRUE,
                            colour.whisker = NULL,
+                           colour.contour = NULL,
+                           colour.points = NULL,
                            linewidth.whisker = 1,
                            linewidth.contour = 1,
                            full = TRUE,
-                           show.legend = NA, inherit.aes = TRUE) {
-
-
-  # Check if cols are numeric or factor
-
-  # Remove rows with missing values in "cols"
+                           draw.grid = FALSE,
+                           point.size = 1,
+                           show.legend = NA,
+                           inherit.aes = TRUE) {
 
   # Modify mapping to include cols
   mcols <- rlang::as_quosures(rlang::syms(cols), .GlobalEnv)
@@ -164,7 +206,11 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     linewidth.whisker = linewidth.whisker,
     linewidth.contour = linewidth.contour,
     colour.whisker = colour.whisker,
+    colour.contour = colour.contour,
+    colour.points = colour.points,
     full = full,
+    draw.grid = draw.grid,
+    point.size = point.size,
     cols = cols, ...)
 
   ggplot2::layer(
@@ -210,6 +256,38 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                  sep = ""))
                                     }
 
+
+                                    # Check if cols are numeric or factor
+                                    intfactcols <- unlist(lapply(data[, cols],
+                                                                  function(x) FALSE %in% (is.vector(x, mode = "integer") |
+                                                                                            is.vector(x, mode = "numeric") |
+                                                                                            is.factor(x))))
+                                    if (TRUE %in% intfactcols) {
+                                      stop('The following column(s) specified as "cols" in ',
+                                           '"data" are not of type numeric, integer or factor:\n',
+                                           paste(names(intfactcols[intfactcols]), collapse = ", "))
+                                    }
+
+                                    draw.grid <- params$draw.grid
+
+                                    if (draw.grid &
+                                        !all(unlist(lapply(data[, cols], is.factor)))) {
+                                      draw.grid <- FALSE
+                                      warning('All the columns specified as "cols" in ',
+                                           '"data" are not of type factor.\n',
+                                           'Unable to plot grid points.')
+                                    }
+
+                                    # Remove rows with missing values in "cols"
+                                    # check for missing values
+                                    missvcols <- unlist(lapply(data[, cols], function(x) TRUE %in% is.na(x)))
+                                    if (TRUE %in% missvcols) {
+                                      warning(paste('The following column(s) in "data" have missing values:\n',
+                                                 paste(names(missvcols[missvcols]), collapse = ", ")))
+
+                                      data <- remove_missing(df = data, vars = cols)
+                                    }
+
                                     # Check if col.whisker are valid
                                     if (!is.null(params$colour.whisker)) {
                                       if (length(params$colour.whisker) != length(cols))
@@ -224,6 +302,13 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                       data$colour <- NULL
                                     }
 
+                                    # browser()
+                                    #
+                                    # if (params$draw.grid) {
+                                    #   data$point.size <- params$point.size
+                                    # } else {
+                                    #   data$point.size <- NA
+                                    # }
 
                                     data$linewidth.whisker <- params$linewidth.whisker
                                     data$linewidth.contour <- params$linewidth.contour
@@ -236,7 +321,11 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                         linewidth.whisker,
                                                         linewidth.contour,
                                                         colour.whisker,
-                                                        full) {
+                                                        colour.contour,
+                                                        colour.points,
+                                                        full,
+                                                        draw.grid,
+                                                        point.size) {
 
                                     data <- coord$transform(data, panel_params)
 
@@ -250,6 +339,20 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                       astp <- base::pi
                                     }
 
+                                    grid.levels <- NULL
+
+                                    if (draw.grid) {
+                                      grid.levels <- lapply(data[, cols], function(a) as.integer(levels(a)))
+                                    }
+
+                                    fcols <- names(Filter(is.factor, data[, cols]))
+
+                                    if (length(fcols) > 0)  {
+                                      data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
+                                    }
+
+
+
                                     for (i in seq_along(data$x)) {
                                       # addGrob to get proper overlappin of glyphs
                                       gl <- grid::addGrob(gl,
@@ -262,7 +365,11 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                                         } else {
                                                                           colour.whisker
                                                                         },
-                                                                        col.contour = data$colour[i],
+                                                                        col.contour = if (is.null(colour.contour)) {
+                                                                          data$colour[i]
+                                                                        } else {
+                                                                          colour.contour
+                                                                        },
                                                                         fill = data$fill[i],
                                                                         lwd.whisker = data$linewidth.whisker[i],
                                                                         lwd.contour = data$linewidth.contour[i],
@@ -272,7 +379,19 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                                         whisker = whisker,
                                                                         contour = contour,
                                                                         linejoin = data$linejoin[i],
-                                                                        lineend = data$lineend[i]))
+                                                                        lineend = data$lineend[i],
+                                                                        grid.levels = grid.levels,
+                                                                        draw.grid = draw.grid,
+                                                                        point.size = grid::unit(point.size, "pt"),
+                                                                        col.points = if (is.null(colour.points)) {
+                                                                          if (is.null(colour.whisker)) {
+                                                                            data$colour[i]
+                                                                          } else {
+                                                                            NA
+                                                                          }
+                                                                        } else {
+                                                                          colour.points
+                                                                        }))
                                     }
 
                                     ggname("geom_starglyph",
