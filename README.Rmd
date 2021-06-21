@@ -1,0 +1,170 @@
+---
+output: rmarkdown::github_document
+always_allow_html: true
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "",
+  fig.path = "inst/extdata/"
+)
+```
+
+<!-- 
+```{r, out.width = '20%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("https://raw.githubusercontent.com/aravind-j/gglyph/master/inst/extdata/gglyph.png") 
+```
+-->
+
+## `gglyph`: Multivariate Data Visualization using Glyphs <img src="https://raw.githubusercontent.com/aravind-j/gglyph/master/inst/extdata/gglyph.png" align="right" alt="logo" width="173" height = "200" style = "border: none; float: right;">
+
+```{r,echo = FALSE, message = FALSE}
+devtools::load_all(".")
+
+```
+
+###### Version : [`r getNamespaceVersion("gglyph")`](https://aravind-j.github.io/gglyph/); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
+
+##### Aravind, J.
+
+Division of Germplasm Conservation, ICAR-National Bureau of Plant Genetic Resources, New Delhi.
+
+***
+[![minimal R version](https://img.shields.io/badge/R>%3D-3.5.0-6666ff.svg?logo=R)](https://cran.r-project.org/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-last-release/gglyph)](https://cran.r-project.org/package=gglyph)
+[![Dependencies](https://tinyverse.netlify.com/badge/gglyph)](https://cran.r-project.org/package=gglyph)
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/gglyph?color=green)](https://CRAN.R-project.org/package=gglyph)
+```{r, results='asis', echo=FALSE}
+dver <- ifelse(test = gsub("(.\\.)(\\d+)(\\..)", "", getNamespaceVersion("gglyph")) != "",
+               yes = getNamespaceVersion("gglyph"),
+               no = gsub("Version:\\s*", "", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/gglyph", "/master/DESCRIPTION"))[grep("Version:", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/gglyph", "/master/DESCRIPTION")))]))
+
+cat(paste("[![develVersion](https://img.shields.io/badge/devel%20version-", dver, "-orange.svg)](https://github.com/aravind-j/gglyph)", sep = ""))
+```
+[![Github Code Size](https://img.shields.io/github/languages/code-size/aravind-j/gglyph.svg)](https://github.com/aravind-j/gglyph)
+<!-- [![R-CMD-check](https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/gglyph/actions) -->
+[![Project Status: WIP](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/aravind-j/gglyph/)
+<!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxxx) -->
+[![Website - pkgdown](https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/gglyph.svg)](https://aravind-j.github.io/gglyph/)
+<!-- [![.](https://pro-pulsar-193905.appspot.com/UA-148941781-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon) -->
+<!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/gglyph) -->
+<!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/gglyph/total.svg)] -->
+<!-- [![Rdoc](http://www.rdocumentation.org/badges/version/gglyph)](http://www.rdocumentation.org/packages/gglyph) -->
+
+***
+
+## Description
+`r gsub("(<doi:)(.+)(>)", "[doi:\\2](https://doi.org/\\2)", gsub("\\n", " ", packageDescription("gglyph", fields = "Description")))`
+
+## Installation
+<!-- The package can be installed from CRAN as follows: -->
+
+```{r, eval=FALSE, echo=FALSE}
+# Install from CRAN
+install.packages('gglyph', dependencies=TRUE)
+```
+
+The development version can be installed from github as follows:
+
+```{r, eval=FALSE}
+# Install development version from Github
+devtools::install_github("aravind-j/gglyph")
+```
+
+<!-- ## Detailed tutorial
+For a detailed tutorial (vignette) on how to used this package type:
+
+```{r, eval=FALSE}
+browseVignettes(package = 'gglyph')
+```
+The vignette for the latest version is also available [online](https://aravind-j.github.io/gglyph/articles.html).-->
+
+## What's new
+To know whats new in this version type:
+
+```{r, eval=FALSE}
+news(package='gglyph')
+```
+
+## Links
+
+<!-- [CRAN page](https://cran.r-project.org/package=gglyph) -->
+
+[Github page](https://github.com/aravind-j/gglyph)
+
+[Documentation website](https://aravind-j.github.io/gglyph/)
+
+<!-- [Zenodo DOI](https://doi.org/10.5281/zenodo.xxxxxxx) -->
+
+<!-- ## CRAN checks -->
+
+```{r, echo = FALSE, eval=FALSE}
+pkgname <- "gglyph"
+
+osdf <-
+  rbind(data.frame(OS = "Linux", 
+           Flavour = c("r-devel-linux-x86_64-debian-clang",
+                       "r-devel-linux-x86_64-debian-gcc", 
+                       "r-devel-linux-x86_64-fedora-clang",
+                       "r-devel-linux-x86_64-fedora-gcc", 
+                       "r-patched-linux-x86_64",
+                       "r-release-linux-x86_64")),
+data.frame(OS = "Solaris", 
+           Flavour = c("r-patched-solaris-x86")),
+data.frame(OS = "Windows", 
+           Flavour = c("r-devel-windows-ix86+x86_64", 
+                       "r-release-windows-ix86+x86_64",
+                       "r-oldrel-windows-ix86+x86_64")),
+data.frame(OS = "macOS", 
+           Flavour = c("r-release-macos-x86_64", 
+                       "r-oldrel-macos-x86_64")))
+
+osdf$`CRAN check` <- paste("[![CRAN check - ", osdf$Flavour, "]",
+                    "(https://cranchecks.info/badges/flavor/",
+                    osdf$Flavour, "/", pkgname, ")]",
+                    "(https://cran.r-project.org/web/checks/check_results_",
+                    pkgname, ".html)",
+                    sep = "")
+```
+
+```{r, echo = FALSE, results='asis', eval=FALSE}
+library(kableExtra, warn.conflicts = FALSE)
+
+kosdf <- kbl(osdf[, c("Flavour", "CRAN check")], row.names = FALSE)
+
+kosdf2 <- kable_styling(kosdf, bootstrap_options = c("striped", "hover"),
+              full_width = F, position = "left")
+
+pack_rows(kosdf2, index = c("[![Linux](https://shields.io/badge/Linux--9cf?logo=Linux&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)" = 6,
+                            "[![Solaris](https://shields.io/badge/Solaris--9cf?logo=Oracle&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)" = 1,
+                            "[![Windows](https://shields.io/badge/Windows--9cf?logo=Windows&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)" = 3,
+                            "[![MacOS](https://shields.io/badge/MacOS--9cf?logo=Apple&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)" = 2))
+
+```
+
+## Citing `gglyph`
+To cite the methods in the package use:
+
+```{r, eval = FALSE}
+citation("gglyph")
+```
+
+```{r, echo = FALSE}
+detach("package:gglyph", unload = TRUE)
+suppressPackageStartupMessages(library(gglyph))
+cit <- citation("gglyph")
+# yr <- format(Sys.Date(), "%Y")
+# cit[1]$year <- yr
+# oc <- class(cit)
+# 
+# cit <- unclass(cit)
+# attr(cit[[1]],"textVersion") <- gsub("\\(\\)",
+#                                      paste("\\(", yr, "\\)", sep = ""),
+#                                      attr(cit[[1]],"textVersion"))
+# class(cit) <- oc
+cit
+```
