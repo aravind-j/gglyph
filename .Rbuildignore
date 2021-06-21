@@ -3,7 +3,12 @@
 ^RoughWork$
 ^Release\.R$
 ^gglyph\.pdf$
-^README\.Rmd$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^README\.utf8.Rmd$
+^README\.Rmd$
+^README\.html$
+^README-*\.png$
+^man-roxygen$
+^\.github$
