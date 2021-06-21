@@ -10,7 +10,7 @@
 #' @param size The size of glyphs.
 #' @param col.whisker The colour of whisker.
 #' @param col.contour The colour of contours.
-#' @param col.points The colour of grid.points.
+#' @param col.points The colour of grid points.
 #' @param fill The fill colour.
 #' @param lwd.whisker The whisker line width.
 #' @param lwd.contour The contour line width.
@@ -24,7 +24,7 @@
 #'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
 #' @param lineend The line end style for the whisker lines. Either
 #'   \code{"round"}, \code{"butt"} or \code{"square"}.
-#' @param grid.points logical. If \code{TRUE}, grid points are plotted along the
+#' @param draw.grid logical. If \code{TRUE}, grid points are plotted along the
 #'   whiskers. Default is \code{FALSE}.
 #' @param grid.levels A list of grid levels (as vectors) corresponding to the
 #'   values in \code{z} at which points are to be plotted. The values in
@@ -211,26 +211,26 @@
 #'
 #' sg1 <- starglyphGrob(x = 150, y = 150,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
-#'                      grid.points = TRUE, grid.levels = gl)
+#'                      draw.grid = TRUE, grid.levels = gl)
 #'
 #' sg2 <- starglyphGrob(x = 150, y = 300,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      lwd.whisker = 3,
 #'                      lwd.contour = 0.01,
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      contour = FALSE)
 #'
 #' sg3 <- starglyphGrob(x = 150, y = 450,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      lwd.whisker = 0.1,
 #'                      lwd.contour = 3,
-#'                      grid.points = FALSE, grid.levels = gl,
+#'                      draw.grid = FALSE, grid.levels = gl,
 #'                      whisker = FALSE)
 #'
 #' sg4 <- starglyphGrob(x = 400, y = 150,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      angle.start = 0, angle.stop = -base::pi,
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      contour = FALSE,
 #'                      point.size = 5)
 #'
@@ -239,7 +239,7 @@
 #'                      lwd.whisker = 3,
 #'                      lwd.contour = 0.01,
 #'                      angle.start = 0, angle.stop = -base::pi,
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      point.size = 20)
 #'
 #' sg6 <- starglyphGrob(x = 400, y = 450,
@@ -247,7 +247,7 @@
 #'                      lwd.whisker = 0.1,
 #'                      lwd.contour = 3,
 #'                      angle.start = 0, angle.stop = -base::pi,
-#'                      grid.points = FALSE, grid.levels = gl,
+#'                      draw.grid = FALSE, grid.levels = gl,
 #'                      whisker = FALSE)
 #'
 #' grid::grid.newpage()
@@ -264,14 +264,14 @@
 #' sg1 <- starglyphGrob(x = 150, y = 150,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      col.points = NA)
 #'
 #' sg2 <- starglyphGrob(x = 150, y = 300,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      lwd.whisker = 3,
 #'                      lwd.contour = 0.01,
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                      contour = FALSE)
 #'
@@ -279,14 +279,14 @@
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      lwd.whisker = 0.1,
 #'                      lwd.contour = 3,
-#'                      grid.points = FALSE, grid.levels = gl,
+#'                      draw.grid = FALSE, grid.levels = gl,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                      whisker = FALSE)
 #'
 #' sg4 <- starglyphGrob(x = 400, y = 150,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 25,
 #'                      angle.start = 0, angle.stop = -base::pi,
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                      contour = FALSE,
 #'                      point.size = 10, col.points = "gray")
@@ -296,7 +296,7 @@
 #'                      lwd.whisker = 3,
 #'                      lwd.contour = 0.01,
 #'                      angle.start = 0, angle.stop = -base::pi,
-#'                      grid.points = TRUE, grid.levels = gl,
+#'                      draw.grid = TRUE, grid.levels = gl,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                      point.size = 20, col.points = NA)
 #'
@@ -305,7 +305,7 @@
 #'                      lwd.whisker = 0.1,
 #'                      lwd.contour = 3,
 #'                      angle.start = 0, angle.stop = -base::pi,
-#'                      grid.points = FALSE, grid.levels = gl,
+#'                      draw.grid = FALSE, grid.levels = gl,
 #'                      whisker = FALSE)
 #'
 #' grid::grid.newpage()
@@ -332,7 +332,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
                           linejoin = c("mitre", "round", "bevel"),
                           lineend = c("round", "butt", "square"),
                           grid.levels = NULL,
-                          grid.points = FALSE,
+                          draw.grid = FALSE,
                           point.size = 10) {
 
   linejoin <- match.arg(linejoin)
@@ -391,7 +391,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
 
   # Plot grid points
 
-  if (grid.points) {
+  if (draw.grid) {
     if (!is.null(grid.levels)) { # Check if grid points are to be plotted
       # Check if grid.levels is a list in appropriate format
       if (is.list(grid.levels) &

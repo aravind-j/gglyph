@@ -23,7 +23,7 @@ starglyphGrob(
   linejoin = c("mitre", "round", "bevel"),
   lineend = c("round", "butt", "square"),
   grid.levels = NULL,
-  grid.points = FALSE,
+  draw.grid = FALSE,
   point.size = 10
 )
 }
@@ -41,7 +41,7 @@ the centre.}
 
 \item{col.contour}{The colour of contours.}
 
-\item{col.points}{The colour of grid.points.}
+\item{col.points}{The colour of grid points.}
 
 \item{fill}{The fill colour.}
 
@@ -70,7 +70,7 @@ the centre.}
 values in \code{z} at which points are to be plotted. The values in
 \code{z} should be present in the list specified.}
 
-\item{grid.points}{logical. If \code{TRUE}, grid points are plotted along the
+\item{draw.grid}{logical. If \code{TRUE}, grid points are plotted along the
 whiskers. Default is \code{FALSE}.}
 
 \item{point.size}{The size of the grid points in native units.}
@@ -251,26 +251,26 @@ gl <- split(x = rep(c(1, 2, 3), 6),
 
 sg1 <- starglyphGrob(x = 150, y = 150,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
-                     grid.points = TRUE, grid.levels = gl)
+                     draw.grid = TRUE, grid.levels = gl)
 
 sg2 <- starglyphGrob(x = 150, y = 300,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      lwd.whisker = 3,
                      lwd.contour = 0.01,
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      contour = FALSE)
 
 sg3 <- starglyphGrob(x = 150, y = 450,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      lwd.whisker = 0.1,
                      lwd.contour = 3,
-                     grid.points = FALSE, grid.levels = gl,
+                     draw.grid = FALSE, grid.levels = gl,
                      whisker = FALSE)
 
 sg4 <- starglyphGrob(x = 400, y = 150,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      angle.start = 0, angle.stop = -base::pi,
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      contour = FALSE,
                      point.size = 5)
 
@@ -279,7 +279,7 @@ sg5 <- starglyphGrob(x = 400, y = 300,
                      lwd.whisker = 3,
                      lwd.contour = 0.01,
                      angle.start = 0, angle.stop = -base::pi,
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      point.size = 20)
 
 sg6 <- starglyphGrob(x = 400, y = 450,
@@ -287,7 +287,7 @@ sg6 <- starglyphGrob(x = 400, y = 450,
                      lwd.whisker = 0.1,
                      lwd.contour = 3,
                      angle.start = 0, angle.stop = -base::pi,
-                     grid.points = FALSE, grid.levels = gl,
+                     draw.grid = FALSE, grid.levels = gl,
                      whisker = FALSE)
 
 grid::grid.newpage()
@@ -304,14 +304,14 @@ gl <- split(x = rep(c(1, 2, 3), 6),
 sg1 <- starglyphGrob(x = 150, y = 150,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      col.points = NA)
 
 sg2 <- starglyphGrob(x = 150, y = 300,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      lwd.whisker = 3,
                      lwd.contour = 0.01,
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
                      contour = FALSE)
 
@@ -319,14 +319,14 @@ sg3 <- starglyphGrob(x = 150, y = 450,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      lwd.whisker = 0.1,
                      lwd.contour = 3,
-                     grid.points = FALSE, grid.levels = gl,
+                     draw.grid = FALSE, grid.levels = gl,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
                      whisker = FALSE)
 
 sg4 <- starglyphGrob(x = 400, y = 150,
                      z = c(1, 3, 2, 1, 2, 3), size = 25,
                      angle.start = 0, angle.stop = -base::pi,
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
                      contour = FALSE,
                      point.size = 10, col.points = "gray")
@@ -336,7 +336,7 @@ sg5 <- starglyphGrob(x = 400, y = 300,
                      lwd.whisker = 3,
                      lwd.contour = 0.01,
                      angle.start = 0, angle.stop = -base::pi,
-                     grid.points = TRUE, grid.levels = gl,
+                     draw.grid = TRUE, grid.levels = gl,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
                      point.size = 20, col.points = NA)
 
@@ -345,7 +345,7 @@ sg6 <- starglyphGrob(x = 400, y = 450,
                      lwd.whisker = 0.1,
                      lwd.contour = 3,
                      angle.start = 0, angle.stop = -base::pi,
-                     grid.points = FALSE, grid.levels = gl,
+                     draw.grid = FALSE, grid.levels = gl,
                      whisker = FALSE)
 
 grid::grid.newpage()
