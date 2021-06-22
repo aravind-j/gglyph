@@ -37,7 +37,7 @@ the centre.}
 
 \item{size}{The size of glyphs.}
 
-\item{col.whisker}{The colour of whisker.}
+\item{col.whisker}{The colour of whiskers.}
 
 \item{col.contour}{The colour of contours.}
 

@@ -9,8 +9,8 @@
 #' @inheritParams starglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
 #'   glyphs as a character vector.
-#' @param colour.whisker The colour of whisker.
-#' @param colour.contour The colour of contour.
+#' @param colour.whisker The colour of whiskers.
+#' @param colour.contour The colour of contours.
 #' @param colour.points The colour of grid points.
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
@@ -341,6 +341,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
 
                                     grid.levels <- NULL
 
+                                    # Convert factor columns to equivalent numeric
                                     if (draw.grid) {
                                       grid.levels <- lapply(data[, cols], function(a) as.integer(levels(a)))
                                     }
@@ -350,8 +351,6 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                     if (length(fcols) > 0)  {
                                       data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                     }
-
-
 
                                     for (i in seq_along(data$x)) {
                                       # addGrob to get proper overlappin of glyphs

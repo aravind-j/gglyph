@@ -8,7 +8,7 @@
 #' @param z A numeric vector specifying the distance of star glyph points from
 #'   the centre.
 #' @param size The size of glyphs.
-#' @param col.whisker The colour of whisker.
+#' @param col.whisker The colour of whiskers.
 #' @param col.contour The colour of contours.
 #' @param col.points The colour of grid points.
 #' @param fill The fill colour.
