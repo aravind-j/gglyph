@@ -10,7 +10,7 @@
 #' @param circle.size The size of the central circle.
 #' @param col.circle The circle colour.
 #' @param col.ray The colour of rays.
-#' @param col.points The colour of grid.points.
+#' @param col.points The colour of grid points.
 #' @param fill The circle fill colour.
 #' @param lwd.circle The circle line width.
 #' @param lwd.ray The ray line width.
@@ -21,7 +21,7 @@
 #'   \eqn{2\pi}.
 #' @param lineend The line end style for the rays. Either \code{"round"},
 #'   \code{"butt"} or \code{"square"}.
-#' @param grid.points logical. If \code{TRUE}, grid points are plotted along the
+#' @param draw.grid logical. If \code{TRUE}, grid points are plotted along the
 #'   whiskers. Default is \code{FALSE}.
 #' @param grid.levels A list of grid levels (as vectors) corresponding to the
 #'   values in \code{z} at which points are to be plotted. The values in
@@ -175,26 +175,26 @@
 #' mglyph1 <- metroglyphGrob(x = 200, y = 100,
 #'                           z = c(1, 3, 2, 1, 2, 3),
 #'                           size = 25, circle.size = 10, lwd.circle = 3,
-#'                           grid.points = TRUE, grid.levels = gl)
+#'                           draw.grid = TRUE, grid.levels = gl)
 #'
 #' mglyph2 <- metroglyphGrob(x = 500, y = 100,
 #'                           z = c(1, 3, 2, 1, 2, 3),
 #'                           size = 25, circle.size = 25, lwd.circle = 3,
-#'                           grid.points = TRUE, grid.levels = gl)
+#'                           draw.grid = TRUE, grid.levels = gl)
 #'
 #' mglyph3 <- metroglyphGrob(x = 200, y = 300,
 #'                           z = c(1, 3, 2, 1, 2, 3),
 #'                           size = 25, circle.size = 0,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3,
-#'                           grid.points = TRUE, grid.levels = gl)
+#'                           draw.grid = TRUE, grid.levels = gl)
 #'
 #' mglyph4 <- metroglyphGrob(x = 500, y = 300,
 #'                           z = c(1, 3, 2, 1, 2, 3),
 #'                           size = 25, circle.size = 50,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3,
-#'                           grid.points = TRUE, grid.levels = gl)
+#'                           draw.grid = TRUE, grid.levels = gl)
 #'
 #' grid::grid.newpage()
 #' grid::grid.draw(mglyph1)
@@ -208,14 +208,14 @@
 #' mglyph1 <- metroglyphGrob(x = 200, y = 100,
 #'                           z = c(0, 2, 1, 0, 1, 2),
 #'                           size = 25, circle.size = 10, lwd.circle = 3,
-#'                           grid.points = TRUE, grid.levels = gl,
+#'                           draw.grid = TRUE, grid.levels = gl,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                           col.points = NA)
 #'
 #' mglyph2 <- metroglyphGrob(x = 500, y = 100,
 #'                           z = c(0, 2, 1, 0, 1, 2),
 #'                           size = 25, circle.size = 25, lwd.circle = 3,
-#'                           grid.points = TRUE, grid.levels = gl,
+#'                           draw.grid = TRUE, grid.levels = gl,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
 #' mglyph3 <- metroglyphGrob(x = 200, y = 300,
@@ -223,7 +223,7 @@
 #'                           size = 25, circle.size = 0,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3,
-#'                           grid.points = TRUE, grid.levels = gl,
+#'                           draw.grid = TRUE, grid.levels = gl,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                           col.points = "white")
 #'
@@ -232,7 +232,7 @@
 #'                           size = 25, circle.size = 50,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3,
-#'                           grid.points = TRUE, grid.levels = gl,
+#'                           draw.grid = TRUE, grid.levels = gl,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                           col.points = NA, point.size = 20)
 #'
@@ -255,7 +255,7 @@ metroglyphGrob <- function(x = .5, y = .5, z,
                           angle.stop = 2 * base::pi,
                           lineend = c("round", "butt", "square"),
                           grid.levels = NULL,
-                          grid.points = FALSE,
+                          draw.grid = FALSE,
                           point.size = 10) {
 
   lineend <- match.arg(lineend)
@@ -307,7 +307,7 @@ metroglyphGrob <- function(x = .5, y = .5, z,
   gpointsGrob <- grid::nullGrob()
 
   # Plot grid points
-  if (grid.points) {
+  if (draw.grid) {
     if (!is.null(grid.levels)) { # Check if grid points are to be plotted
       # Check if grid.levels is a list in appropriate format
       if (is.list(grid.levels) &
