@@ -6,6 +6,7 @@ template:
 reference:
     - title: Geoms
       contents:
+         - '`geom_metroglyph`'
          - '`geom_starglyph`'
 
     - title: Grobs
