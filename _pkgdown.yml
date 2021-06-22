@@ -1,6 +1,7 @@
 template:
   params:
     bootswatch: sandstone
+    ganalytics: UA-199996472-1
 
 reference:
     - title: Geoms
