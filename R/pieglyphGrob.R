@@ -24,7 +24,7 @@
 #'   scaled according to value of \code{z}.
 #' @param scale.radius logical. If \code{TRUE}, the radius of segments (pie
 #'   slices) are scaled according to value of \code{z}.
-#' @param grid.lines logical. If \code{TRUE}, grid lines are plotted along the
+#' @param draw.grid logical. If \code{TRUE}, grid lines are plotted along the
 #'   segments when \code{scale.radius = TRUE}. Default is \code{FALSE}.
 #' @param grid.levels A list of grid levels (as vectors) corresponding to the
 #'   values in \code{z} at which grid lines are to be plotted. The values in
@@ -142,24 +142,24 @@
 #'
 #' p1 <- pieglyphGrob(x = 100, y = 150,
 #'                    z = dims, size = 40,
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
 #' p2 <- pieglyphGrob(x = 400, y = 150,
 #'                    angle.start = 0, angle.stop = -base::pi,
 #'                    z = dims, size = 40,
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
 #' p3 <- pieglyphGrob(x = 100, y = 400,
 #'                    z = dims, size = 40, scale.segment = TRUE,
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
 #' p4 <- pieglyphGrob(x = 400, y = 400,
 #'                    angle.start = 0, angle.stop = -base::pi,
 #'                    z = dims, size = 40, scale.segment = TRUE,
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
 #' grid::grid.newpage()
@@ -174,21 +174,21 @@
 #'
 #' p1 <- pieglyphGrob(x = 100, y = 150,
 #'                    z = dims, size = 40, col = "white",
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
 #' p2 <- pieglyphGrob(x = 400, y = 150,
 #'                    angle.start = 0, angle.stop = -base::pi,
 #'                    z = dims, size = 40, col = "white",
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
 #' p3 <- pieglyphGrob(x = 100, y = 400,
 #'                    z = dims, size = 40,
 #'                    col = "white", scale.segment = TRUE,
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
@@ -196,7 +196,7 @@
 #'                    angle.start = 0, angle.stop = -base::pi,
 #'                    z = dims, size = 40,
 #'                    col = "white", scale.segment = TRUE,
-#'                    grid.lines = TRUE, grid.levels = gl,
+#'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
@@ -219,7 +219,7 @@ pieglyphGrob <- function(x = .5, y = .5, z,
                          scale.segment = FALSE,
                          scale.radius = TRUE,
                          grid.levels = NULL,
-                         grid.lines = FALSE,
+                         draw.grid = FALSE,
                          col.grid = "grey",
                          lwd.grid = lwd) {
 
@@ -232,7 +232,7 @@ pieglyphGrob <- function(x = .5, y = .5, z,
   # Checks for grid lines
   drawgridlines <- FALSE
 
-    if (grid.lines) {
+    if (draw.grid) {
       if (scale.radius ) {
       if (!is.null(grid.levels)) { # Check if grid lines are to be plotted
         # Check if grid.levels is a list in appropriate format
