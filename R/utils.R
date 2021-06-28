@@ -3,6 +3,10 @@
 ggname <- utils::getFromNamespace("ggname", "ggplot2")
 remove_missing <- utils::getFromNamespace("remove_missing", "ggplot2")
 
+# Get unexported functions from grid
+upgradeUnit.unit.list <- utils::getFromNamespace("upgradeUnit.unit.list",
+                                                 "grid")
+
 
 
 # Check if a colour is valid
