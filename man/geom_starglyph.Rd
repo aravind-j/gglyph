@@ -124,26 +124,26 @@ library(ggplot2)
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.1, alpha =  0.5) +
+                 size = 10, alpha =  0.5) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.1, alpha =  0.5, full = FALSE) +
+                 size = 10, alpha =  0.5, full = FALSE) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.1, alpha =  0.5,
+                 size = 10, alpha =  0.5,
                  linewidth.whisker = 3, linewidth.contour = 0.1) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.1, alpha =  0.5,
+                 size = 10, alpha =  0.5,
                  linewidth.whisker = 1, linewidth.contour = 3) +
   ylim(c(-0, 550))
 
@@ -152,27 +152,27 @@ ggplot(data = mtcars) +
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = FALSE, contour = TRUE,
-                 size = 0.1, alpha =  0.5) +
+                 size = 10, alpha =  0.5) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = FALSE, contour = TRUE,
-                 size = 0.1, alpha =  0.5, linewidth.contour = 3) +
+                 size = 10, alpha =  0.5, linewidth.contour = 3) +
   ylim(c(-0, 550))
 
 # Only whiskers
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 0.1) +
+                 size = 10) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 0.1, full = FALSE) +
+                 size = 10, full = FALSE) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
   ylim(c(-0, 550))
 
@@ -180,7 +180,7 @@ ggplot(data = mtcars) +
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 0.1,
+                 size = 10,
                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
   ylim(c(-0, 550))
@@ -189,7 +189,7 @@ ggplot(data = mtcars) +
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 0.1) +
+                 size = 10) +
   geom_point(data = mtcars, aes(x = mpg, y = disp, colour = cyl)) +
   geom_text(data = mtcars, aes(x = mpg, y = disp, label = lab), cex = 2) +
   ylim(c(-0, 550))
@@ -198,14 +198,14 @@ ggplot(data = mtcars) +
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.1, alpha =  0.5) +
+                 size = 10, alpha =  0.5) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.1) +
+                 size = 10) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
@@ -224,7 +224,7 @@ mtcars$lab <- row.names(mtcars)
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
-                 size = 0.03, alpha =  0.5, draw.grid = TRUE,
+                 size = 3, alpha =  0.5, draw.grid = TRUE,
                  point.size = 5) +
   ylim(c(-0, 550))
 
@@ -232,14 +232,14 @@ ggplot(data = mtcars) +
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 0.015, draw.grid = TRUE, point.size = 7,
+                 size = 3, draw.grid = TRUE, point.size = 7,
                  linewidth.whisker = 2, alpha = 0.6) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 0.015, draw.grid = TRUE,
+                 size = 3, draw.grid = TRUE,
                  point.size = 5, alpha =  0.6,
                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
