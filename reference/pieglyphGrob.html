@@ -147,7 +147,7 @@
   scale.segment <span class='op'>=</span> <span class='cn'>FALSE</span>,
   scale.radius <span class='op'>=</span> <span class='cn'>TRUE</span>,
   grid.levels <span class='op'>=</span> <span class='cn'>NULL</span>,
-  grid.lines <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  draw.grid <span class='op'>=</span> <span class='cn'>FALSE</span>,
   col.grid <span class='op'>=</span> <span class='st'>"grey"</span>,
   lwd.grid <span class='op'>=</span> <span class='va'>lwd</span>
 <span class='op'>)</span></pre>
@@ -225,7 +225,7 @@ values in <code>z</code> at which grid lines are to be plotted. The values in
 <code>z</code> should be present in the list specified.</p></td>
     </tr>
     <tr>
-      <th>grid.lines</th>
+      <th>draw.grid</th>
       <td><p>logical. If <code>TRUE</code>, grid lines are plotted along the
 segments when <code>scale.radius = TRUE</code>. Default is <code>FALSE</code>.</p></td>
     </tr>
@@ -351,24 +351,24 @@ ISBN 978-1-4503-1899-0.<br /><br /> Ward MO, Lipchak BN (2000).
 
 <span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>150</span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>2</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
 <span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>150</span>,
                    angle.start <span class='op'>=</span> <span class='fl'>0</span>, angle.stop <span class='op'>=</span> <span class='op'>-</span><span class='fu'>base</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/base/Constants.html'>pi</a></span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>2</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
 <span class='va'>p3</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>400</span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>, scale.segment <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>2</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
 <span class='va'>p4</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>400</span>,
                    angle.start <span class='op'>=</span> <span class='fl'>0</span>, angle.stop <span class='op'>=</span> <span class='op'>-</span><span class='fu'>base</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/base/Constants.html'>pi</a></span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>, scale.segment <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>2</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -383,21 +383,21 @@ ISBN 978-1-4503-1899-0.<br /><br /> Ward MO, Lipchak BN (2000).
 
 <span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>150</span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>, col <span class='op'>=</span> <span class='st'>"white"</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>3</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                    fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>150</span>,
                    angle.start <span class='op'>=</span> <span class='fl'>0</span>, angle.stop <span class='op'>=</span> <span class='op'>-</span><span class='fu'>base</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/base/Constants.html'>pi</a></span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>, col <span class='op'>=</span> <span class='st'>"white"</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>3</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                    fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='va'>p3</span> <span class='op'>&lt;-</span> <span class='fu'>pieglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>400</span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>,
                    col <span class='op'>=</span> <span class='st'>"white"</span>, scale.segment <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>3</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                    fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
@@ -405,7 +405,7 @@ ISBN 978-1-4503-1899-0.<br /><br /> Ward MO, Lipchak BN (2000).
                    angle.start <span class='op'>=</span> <span class='fl'>0</span>, angle.stop <span class='op'>=</span> <span class='op'>-</span><span class='fu'>base</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/r/base/Constants.html'>pi</a></span>,
                    z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>40</span>,
                    col <span class='op'>=</span> <span class='st'>"white"</span>, scale.segment <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                   grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
+                   draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, grid.levels <span class='op'>=</span> <span class='va'>gl</span>,
                    lwd <span class='op'>=</span> <span class='fl'>3</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                    fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
