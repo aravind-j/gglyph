@@ -12,18 +12,19 @@ profileglyphGrob(
   col.bar = "black",
   col.line = "black",
   fill = NA,
-  lwd = 1,
+  lwd.bar = 1,
+  lwd.line = 1,
   alpha = 1,
-  width = 10,
+  width = 5,
   flip.axes = FALSE,
   bar = TRUE,
   line = TRUE,
   mirror = TRUE,
   linejoin = c("mitre", "round", "bevel"),
   grid.levels = NULL,
-  grid.lines = FALSE,
+  draw.grid = FALSE,
   col.grid = "grey",
-  lwd.grid = lwd
+  lwd.grid = 1
 )
 }
 \arguments{
@@ -41,8 +42,6 @@ of the profile (length of the bars).}
 \item{col.line}{The colour of line(s).}
 
 \item{fill}{The fill colour.}
-
-\item{lwd}{The line width.}
 
 \item{alpha}{The alpha transparency value.}
 
@@ -63,12 +62,14 @@ of the profile (length of the bars).}
 values in \code{z} at which grid lines are to be plotted. The values in
 \code{z} should be present in the list specified.}
 
-\item{grid.lines}{logical. If \code{TRUE}, grid lines are plotted along the
+\item{draw.grid}{logical. If \code{TRUE}, grid lines are plotted along the
 bars. Default is \code{FALSE}.}
 
 \item{col.grid}{The colour of the grid lines.}
 
 \item{lwd.grid}{The line width of the grid lines.}
+
+\item{lwd}{The line width.}
 }
 \value{
 A \code{\link[grid]{grobTree}} object.
@@ -80,43 +81,43 @@ Uses \code{\link[grid]{Grid}} graphics to draw a profile glyph
 \examples{
 # mirror = TRUE
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-barglyph <- profileglyphGrob(x = 100, y = 100, z = dims,
-                             size = 100)
+barglyph <- profileglyphGrob(x = 200, y = 200, z = dims,
+                             size = 20)
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 100, z = dims,
-                                    size = 100, line = FALSE)
+barprofileglyph <- profileglyphGrob(x = 450, y = 200, z = dims,
+                                    size = 20, line = FALSE)
 
-profileglyph <- profileglyphGrob(x = 500, y = 100, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE)
+profileglyph <- profileglyphGrob(x = 700, y = 200, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE)
 grid::grid.newpage()
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 250, z = dims,
-                             size = 100,
+barglyph <- profileglyphGrob(x = 200, y = 450, z = dims,
+                             size = 20,
                              col.bar = "salmon", col.line = "salmon")
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 250, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 450, z = dims,
+                                    size = 20, line = FALSE,
                                     col.bar = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 250, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 450, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  col.line = "green")
 
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 400, z = dims, size = 100,
+barglyph <- profileglyphGrob(x = 200, y = 700, z = dims, size = 20,
                              fill = "salmon")
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 400, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 700, z = dims,
+                                    size = 20, line = FALSE,
                                     fill = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 400, z = dims, size = 100,
+profileglyph <- profileglyphGrob(x = 700, y = 700, z = dims, size = 20,
                                  line = TRUE, bar = FALSE,
                                  fill = "green")
 
@@ -127,46 +128,46 @@ grid::grid.draw(profileglyph)
 
 # mirror = FALSE
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-barglyph <- profileglyphGrob(x = 100, y = 200, z = dims,
-                             size = 100,
+barglyph <- profileglyphGrob(x = 200, y = 300, z = dims,
+                             size = 20,
                              mirror = FALSE)
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 200, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 300, z = dims,
+                                    size = 20, line = FALSE,
                                     mirror = FALSE)
 
-profileglyph <- profileglyphGrob(x = 500, y = 200, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 300, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  mirror = FALSE)
 grid::grid.newpage()
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 350, z = dims,
-                             size = 100, mirror = FALSE,
+barglyph <- profileglyphGrob(x = 200, y = 550, z = dims,
+                             size = 20, mirror = FALSE,
                              col.bar = "salmon", col.line = "salmon")
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 350, z = dims,
-                                    size = 100, line = FALSE, mirror = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 550, z = dims,
+                                    size = 20, line = FALSE, mirror = FALSE,
                                     col.bar = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 350, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 550, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  mirror = FALSE, col.line = "green")
 
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)#'
 
-barglyph <- profileglyphGrob(x = 100, y = 500, z = dims, size = 100,
+barglyph <- profileglyphGrob(x = 200, y = 800, z = dims, size = 20,
                              fill = "salmon", mirror = FALSE)
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 500, z = dims,
-                                    size = 100, line = FALSE, mirror = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 800, z = dims,
+                                    size = 20, line = FALSE, mirror = FALSE,
                                     fill = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 500, z = dims, size = 100,
+profileglyph <- profileglyphGrob(x = 700, y = 800, z = dims, size = 20,
                                  line = TRUE, bar = FALSE,
                                  mirror = FALSE, fill = "green")
 
@@ -176,32 +177,32 @@ grid::grid.draw(profileglyph)
 
 # mirror = TRUE, flip.axes = TRUE
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-barglyph <- profileglyphGrob(x = 100, y = 100, z = dims,
-                             size = 100, flip.axes = TRUE)
+barglyph <- profileglyphGrob(x = 200, y = 200, z = dims,
+                             size = 20, flip.axes = TRUE)
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 100, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 200, z = dims,
+                                    size = 20, line = FALSE,
                                     flip.axes = TRUE)
 
-profileglyph <- profileglyphGrob(x = 500, y = 100, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 200, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  flip.axes = TRUE)
 grid::grid.newpage()
 grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 250, z = dims,
-                             size = 100, flip.axes = TRUE,
+barglyph <- profileglyphGrob(x = 200, y = 450, z = dims,
+                             size = 20, flip.axes = TRUE,
                              col.bar = "salmon", col.line = "salmon")
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 250, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 450, z = dims,
+                                    size = 20, line = FALSE,
                                     flip.axes = TRUE,
                                     col.bar = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 250, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 450, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  flip.axes = TRUE,
                                  col.line = "green")
 
@@ -209,16 +210,16 @@ grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 400, z = dims, size = 100,
+barglyph <- profileglyphGrob(x = 200, y = 700, z = dims, size = 20,
                              flip.axes = TRUE,
                              fill = "salmon")
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 400, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 700, z = dims,
+                                    size = 20, line = FALSE,
                                     flip.axes = TRUE,
                                     fill = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 400, z = dims, size = 100,
+profileglyph <- profileglyphGrob(x = 700, y = 700, z = dims, size = 20,
                                  line = TRUE, bar = FALSE,
                                  flip.axes = TRUE,
                                  fill = "green")
@@ -230,17 +231,17 @@ grid::grid.draw(profileglyph)
 
 # mirror = FALSE, flip.axes = TRUE
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-barglyph <- profileglyphGrob(x = 100, y = 100, z = dims,
-                             size = 100, flip.axes = TRUE,
+barglyph <- profileglyphGrob(x = 200, y = 200, z = dims,
+                             size = 20, flip.axes = TRUE,
                              mirror = FALSE)
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 100, z = dims,
-                                    size = 100, line = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 200, z = dims,
+                                    size = 20, line = FALSE,
                                     flip.axes = TRUE,
                                     mirror = FALSE)
 
-profileglyph <- profileglyphGrob(x = 500, y = 100, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 200, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  flip.axes = TRUE,
                                  mirror = FALSE)
 grid::grid.newpage()
@@ -248,18 +249,18 @@ grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 250, z = dims,
-                             size = 100, mirror = FALSE,
+barglyph <- profileglyphGrob(x = 200, y = 450, z = dims,
+                             size = 20, mirror = FALSE,
                              flip.axes = TRUE,
                              col.bar = "salmon", col.line = "salmon")
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 250, z = dims,
-                                    size = 100, line = FALSE, mirror = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 450, z = dims,
+                                    size = 20, line = FALSE, mirror = FALSE,
                                     flip.axes = TRUE,
                                     col.bar = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 250, z = dims,
-                                 size = 100, line = TRUE, bar = FALSE,
+profileglyph <- profileglyphGrob(x = 700, y = 450, z = dims,
+                                 size = 20, line = TRUE, bar = FALSE,
                                  flip.axes = TRUE,
                                  mirror = FALSE, col.line = "green")
 
@@ -267,16 +268,16 @@ grid::grid.draw(barglyph)
 grid::grid.draw(barprofileglyph)
 grid::grid.draw(profileglyph)
 
-barglyph <- profileglyphGrob(x = 100, y = 400, z = dims, size = 100,
+barglyph <- profileglyphGrob(x = 200, y = 700, z = dims, size = 20,
                              flip.axes = TRUE,
                              fill = "salmon", mirror = FALSE)
 
-barprofileglyph <- profileglyphGrob(x = 300, y = 400, z = dims,
-                                    size = 100, line = FALSE, mirror = FALSE,
+barprofileglyph <- profileglyphGrob(x = 450, y = 700, z = dims,
+                                    size = 20, line = FALSE, mirror = FALSE,
                                     flip.axes = TRUE,
                                     fill = "cyan")
 
-profileglyph <- profileglyphGrob(x = 500, y = 400, z = dims, size = 100,
+profileglyph <- profileglyphGrob(x = 700, y = 700, z = dims, size = 20,
                                  line = TRUE, bar = FALSE,
                                  flip.axes = TRUE,
                                  mirror = FALSE, fill = "green")
@@ -287,15 +288,15 @@ grid::grid.draw(profileglyph)
 
 # linejoin variants
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
-                        size = 150, lwd = 5, width = 25)
+pg1 <- profileglyphGrob(x = 200, y = 150, z = dims,
+                        size = 25, lwd.bar = 5, width = 8)
 
-pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg2 <- profileglyphGrob(x = 500, y = 400, z = dims,
+                        size = 25, lwd.bar = 5, width = 8,
                         linejoin = "round")
 
-pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg3 <- profileglyphGrob(x = 800, y = 650, z = dims,
+                        size = 25, lwd.bar = 5, width = 8,
                         linejoin = "bevel")
 
 grid::grid.newpage()
@@ -304,16 +305,16 @@ grid::grid.draw(pg2)
 grid::grid.draw(pg3)
 
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg1 <- profileglyphGrob(x = 200, y = 150, z = dims,
+                        size = 25, lwd.line = 5, width = 8,
                         bar = FALSE)
 
-pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg2 <- profileglyphGrob(x = 500, y = 400, z = dims,
+                        size = 25, lwd.line = 5, width = 8,
                         linejoin = "round", bar = FALSE)
 
-pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg3 <- profileglyphGrob(x = 800, y = 650, z = dims,
+                        size = 25, lwd.line = 5, width = 8,
                         linejoin = "bevel", bar = FALSE)
 
 grid::grid.newpage()
@@ -322,16 +323,16 @@ grid::grid.draw(pg2)
 grid::grid.draw(pg3)
 
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-pg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg1 <- profileglyphGrob(x = 200, y = 150, z = dims,
+                        size = 25, lwd.bar = 5, width = 8,
                         line = FALSE)
 
-pg2 <- profileglyphGrob(x = 250, y = 250, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg2 <- profileglyphGrob(x = 500, y = 400, z = dims,
+                        size = 25, lwd.bar = 5, width = 8,
                         linejoin = "round", line = FALSE)
 
-pg3 <- profileglyphGrob(x = 400, y = 350, z = dims,
-                        size = 150, lwd = 5, width = 25,
+pg3 <- profileglyphGrob(x = 800, y = 650, z = dims,
+                        size = 25, lwd.bar = 5, width = 8,
                         linejoin = "bevel", line = FALSE)
 
 grid::grid.newpage()
@@ -340,36 +341,36 @@ grid::grid.draw(pg2)
 grid::grid.draw(pg3)
 
 dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
-bg1 <- profileglyphGrob(x = 100, y = 100, z = dims,
-                        size = 100,
+bg1 <- profileglyphGrob(x = 200, y = 200, z = dims,
+                        size = 20,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bpg1 <- profileglyphGrob(x = 300, y = 100, z = dims,
-                         size = 100, line = FALSE,
+bpg1 <- profileglyphGrob(x = 700, y = 200, z = dims,
+                         size = 20, line = FALSE,
                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bg2 <- profileglyphGrob(x = 150, y = 250, z = dims,
-                        size = 100, mirror = FALSE,
+bg2 <- profileglyphGrob(x = 350, y = 450, z = dims,
+                        size = 20, mirror = FALSE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bpg2 <- profileglyphGrob(x = 350, y = 250, z = dims,
-                         size = 100, line = FALSE, mirror = FALSE,
+bpg2 <- profileglyphGrob(x = 850, y = 450, z = dims,
+                         size = 20, line = FALSE, mirror = FALSE,
                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bg3 <- profileglyphGrob(x = 100, y = 300, z = dims,
-                        size = 100, flip.axes = TRUE,
+bg3 <- profileglyphGrob(x = 200, y = 650, z = dims,
+                        size = 20, flip.axes = TRUE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bpg3 <- profileglyphGrob(x = 300, y = 300, z = dims,
-                         size = 100, line = FALSE, flip.axes = TRUE,
+bpg3 <- profileglyphGrob(x = 700, y = 650, z = dims,
+                         size = 20, line = FALSE, flip.axes = TRUE,
                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bg4 <- profileglyphGrob(x = 150, y = 400, z = dims,
-                        size = 100, mirror = FALSE, flip.axes = TRUE,
+bg4 <- profileglyphGrob(x = 350, y = 700, z = dims,
+                        size = 20, mirror = FALSE, flip.axes = TRUE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bpg4 <- profileglyphGrob(x = 350, y = 400, z = dims,
-                         size = 100, line = FALSE, mirror = FALSE,
+bpg4 <- profileglyphGrob(x = 850, y = 700, z = dims,
+                         size = 20, line = FALSE, mirror = FALSE,
                          flip.axes = TRUE,
                          fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
@@ -388,53 +389,53 @@ dims = c(1, 3, 2, 1, 2, 3)
 gl <- split(x = rep(c(1, 2, 3), 6),
             f = rep(1:6, each = 3))
 
-bg1 <- profileglyphGrob(x = 100, y = 150, z = dims,
-                        size = 50, width = 20,
-                        grid.lines = TRUE, lwd = 2,
+bg1 <- profileglyphGrob(x = 150, y = 200, z = dims,
+                        size = 10, width = 5,
+                        draw.grid = TRUE, lwd.bar = 5,
                         grid.levels = gl, col.grid = "black")
 
-bg2 <- profileglyphGrob(x = 250, y = 200, z = dims,
-                        size = 50, width = 20, lwd = 2,
-                        grid.lines = TRUE, mirror = FALSE,
+bg2 <- profileglyphGrob(x = 400, y = 250, z = dims,
+                        size = 10, width = 5, lwd.bar = 5,
+                        draw.grid = TRUE, mirror = FALSE,
                         grid.levels = gl, col.grid = "black")
 
-bg3 <- profileglyphGrob(x = 400, y = 150, z = dims,
-                        size = 50, width = 20, flip.axes = TRUE,
-                        grid.lines = TRUE, lwd = 2,
+bg3 <- profileglyphGrob(x = 650, y = 200, z = dims,
+                        size = 10, width = 5, flip.axes = TRUE,
+                        draw.grid = TRUE, lwd.bar = 5,
                         grid.levels = gl, col.grid = "black")
 
-bg4 <- profileglyphGrob(x = 500, y = 150, z = dims,
-                        size = 50, width = 20, flip.axes = TRUE,
-                        grid.lines = TRUE, mirror = FALSE,
+bg4 <- profileglyphGrob(x = 800, y = 200, z = dims,
+                        size = 10, width = 5, flip.axes = TRUE,
+                        draw.grid = TRUE, mirror = FALSE,
                         grid.levels = gl, col.grid = "black",
-                        lwd = 2)
+                        lwd.bar = 5)
 
-bg5 <- profileglyphGrob(x = 100, y = 350, z = dims,
-                        size = 50, width = 20,
-                        grid.lines = TRUE, lwd = 2,
+bg5 <- profileglyphGrob(x = 150, y = 500, z = dims,
+                        size = 10, width = 5,
+                        draw.grid = TRUE, lwd.bar = 5,
                         grid.levels = gl, col.grid = "white",
                         col.bar = "white", line = FALSE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bg6 <- profileglyphGrob(x = 250, y = 400, z = dims,
-                        size = 50, width = 20, lwd = 2,
-                        grid.lines = TRUE, mirror = FALSE,
+bg6 <- profileglyphGrob(x = 400, y = 550, z = dims,
+                        size = 10, width = 5, lwd.bar = 5,
+                        draw.grid = TRUE, mirror = FALSE,
                         grid.levels = gl, col.grid = "white",
                         col.bar = "white", line = FALSE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bg7 <- profileglyphGrob(x = 400, y = 350, z = dims,
-                        size = 50, width = 20, flip.axes = TRUE,
-                        grid.lines = TRUE, lwd = 2,
+bg7 <- profileglyphGrob(x = 650, y = 500, z = dims,
+                        size = 10, width = 5, flip.axes = TRUE,
+                        draw.grid = TRUE, lwd.bar = 5,
                         grid.levels = gl, col.grid = "white",
                         col.bar = "white", line = FALSE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-bg8 <- profileglyphGrob(x = 500, y = 350, z = dims,
-                        size = 50, width = 20, flip.axes = TRUE,
-                        grid.lines = TRUE, mirror = FALSE,
+bg8 <- profileglyphGrob(x = 800, y = 500, z = dims,
+                        size = 10, width = 5, flip.axes = TRUE,
+                        draw.grid = TRUE, mirror = FALSE,
                         grid.levels = gl, col.grid = "white",
-                        col.bar = "white", lwd = 2, line = FALSE,
+                        col.bar = "white", lwd.bar = 5, line = FALSE,
                         fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
 

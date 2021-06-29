@@ -34,8 +34,7 @@
 #'
 #' @return A \code{\link[grid]{grobTree}} object.
 #'
-#' @importFrom dplyr bind_rows
-#' @importFrom grid gpar polygonGrob nullGrob grobTree
+#' @importFrom grid gpar polygonGrob nullGrob grobTree unit unit.c
 #' @importFrom scales rescale
 #' @export
 #'
@@ -46,31 +45,31 @@
 #' \insertAllCited{}
 #'
 #' @examples
-#' p1 <- pieglyphGrob(x = 150, y = 150,
-#'              z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'              size = 50)
-#'
-#' p2 <- pieglyphGrob(x = 300, y = 150,
+#' p1 <- pieglyphGrob(x = 250, y = 200,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.radius = FALSE)
+#'                    size = 20)
 #'
-#' p3 <- pieglyphGrob(x = 450, y = 150,
+#' p2 <- pieglyphGrob(x = 500, y = 200,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.segment = TRUE, scale.radius = FALSE)
+#'                    size = 20, scale.radius = FALSE)
 #'
-#' p4 <- pieglyphGrob(x = 150, y = 350,
+#' p3 <- pieglyphGrob(x = 900, y = 200,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, angle.start = 0, angle.stop = -base::pi)
+#'                    size = 20, scale.segment = TRUE, scale.radius = FALSE)
 #'
-#' p5 <- pieglyphGrob(x = 300, y = 350,
+#' p4 <- pieglyphGrob(x = 250, y = 650,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.radius = FALSE,
-#'                    angle.start = 0, angle.stop = -base::pi)
+#'                    size = 20, angle.start = 0, angle.stop = base::pi)
 #'
-#' p6 <- pieglyphGrob(x = 450, y = 350,
+#' p5 <- pieglyphGrob(x = 500, y = 650,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.segment = TRUE, scale.radius = FALSE,
-#'                    angle.start = 0, angle.stop = -base::pi)
+#'                    size = 20, scale.radius = FALSE,
+#'                    angle.start = 0, angle.stop = base::pi)
+#'
+#' p6 <- pieglyphGrob(x = 900, y = 650,
+#'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+#'                    size = 20, scale.segment = TRUE, scale.radius = FALSE,
+#'                    angle.start = 0, angle.stop = base::pi)
 #'
 #' grid::grid.newpage()
 #' grid::grid.draw(p1)
@@ -80,35 +79,35 @@
 #' grid::grid.draw(p5)
 #' grid::grid.draw(p6)
 #'
-#' p1 <- pieglyphGrob(x = 150, y = 150,
+#' p1 <- pieglyphGrob(x = 250, y = 200,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, fill = RColorBrewer::brewer.pal(6, "Dark2"))
+#'                    size = 20, fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p2 <- pieglyphGrob(x = 300, y = 150,
+#' p2 <- pieglyphGrob(x = 500, y = 200,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.radius = FALSE,
+#'                    size = 20, scale.radius = FALSE,
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p3 <- pieglyphGrob(x = 450, y = 150,
+#' p3 <- pieglyphGrob(x = 900, y = 200,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.segment = TRUE, scale.radius = FALSE,
+#'                    size = 20, scale.segment = TRUE, scale.radius = FALSE,
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p4 <- pieglyphGrob(x = 150, y = 350,
+#' p4 <- pieglyphGrob(x = 250, y = 650,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, angle.start = 0, angle.stop = -base::pi,
+#'                    size = 20, angle.start = 0, angle.stop = base::pi,
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p5 <- pieglyphGrob(x = 300, y = 350,
+#' p5 <- pieglyphGrob(x = 500, y = 650,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.radius = FALSE,
-#'                    angle.start = 0, angle.stop = -base::pi,
+#'                    size = 20, scale.radius = FALSE,
+#'                    angle.start = 0, angle.stop = base::pi,
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p6 <- pieglyphGrob(x = 450, y = 350,
+#' p6 <- pieglyphGrob(x = 900, y = 650,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 50, scale.segment = TRUE, scale.radius = FALSE,
-#'                    angle.start = 0, angle.stop = -base::pi,
+#'                    size = 20, scale.segment = TRUE, scale.radius = FALSE,
+#'                    angle.start = 0, angle.stop = base::pi,
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
 #' grid::grid.newpage()
@@ -119,17 +118,17 @@
 #' grid::grid.draw(p5)
 #' grid::grid.draw(p6)
 #'
-#' p1 <- pieglyphGrob(x = 200, y = 150,
+#' p1 <- pieglyphGrob(x = 300, y = 250,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 100, lwd = 5)
+#'                    size = 20, lwd = 5)
 #'
-#' p2 <- pieglyphGrob(x = 400, y = 300,
+#' p2 <- pieglyphGrob(x = 500, y = 450,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 100, lwd = 5, linejoin = "round")
+#'                    size = 20, lwd = 5, linejoin = "round")
 #'
-#' p3 <- pieglyphGrob(x = 600, y = 450,
+#' p3 <- pieglyphGrob(x = 700, y = 650,
 #'                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-#'                    size = 100, lwd = 5, linejoin = "bevel")
+#'                    size = 20, lwd = 5, linejoin = "bevel")
 #'
 #' grid::grid.newpage()
 #' grid::grid.draw(p1)
@@ -140,25 +139,25 @@
 #' gl <- split(x = rep(c(1, 2, 3), 6),
 #'             f = rep(1:6, each = 3))
 #'
-#' p1 <- pieglyphGrob(x = 100, y = 150,
-#'                    z = dims, size = 40,
+#' p1 <- pieglyphGrob(x = 200, y = 250,
+#'                    z = dims, size = 8,
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
-#' p2 <- pieglyphGrob(x = 400, y = 150,
-#'                    angle.start = 0, angle.stop = -base::pi,
-#'                    z = dims, size = 40,
+#' p2 <- pieglyphGrob(x = 700, y = 250,
+#'                    angle.start = 0, angle.stop = base::pi,
+#'                    z = dims, size = 8,
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
-#' p3 <- pieglyphGrob(x = 100, y = 400,
-#'                    z = dims, size = 40, scale.segment = TRUE,
+#' p3 <- pieglyphGrob(x = 200, y = 600,
+#'                    z = dims, size = 8, scale.segment = TRUE,
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
-#' p4 <- pieglyphGrob(x = 400, y = 400,
-#'                    angle.start = 0, angle.stop = -base::pi,
-#'                    z = dims, size = 40, scale.segment = TRUE,
+#' p4 <- pieglyphGrob(x = 700, y = 600,
+#'                    angle.start = 0, angle.stop = base::pi,
+#'                    z = dims, size = 8, scale.segment = TRUE,
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 2, col.grid = "black")
 #'
@@ -172,29 +171,29 @@
 #' gl <- split(x = rep(c(1, 2, 3), 6),
 #'             f = rep(1:6, each = 3))
 #'
-#' p1 <- pieglyphGrob(x = 100, y = 150,
-#'                    z = dims, size = 40, col = "white",
+#' p1 <- pieglyphGrob(x = 200, y = 250,
+#'                    z = dims, size = 8, col = "white",
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p2 <- pieglyphGrob(x = 400, y = 150,
-#'                    angle.start = 0, angle.stop = -base::pi,
-#'                    z = dims, size = 40, col = "white",
+#' p2 <- pieglyphGrob(x = 700, y = 250,
+#'                    angle.start = 0, angle.stop = base::pi,
+#'                    z = dims, size = 8, col = "white",
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p3 <- pieglyphGrob(x = 100, y = 400,
-#'                    z = dims, size = 40,
+#' p3 <- pieglyphGrob(x = 200, y = 600,
+#'                    z = dims, size = 8,
 #'                    col = "white", scale.segment = TRUE,
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
 #'                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' p4 <- pieglyphGrob(x = 400, y = 400,
-#'                    angle.start = 0, angle.stop = -base::pi,
-#'                    z = dims, size = 40,
+#' p4 <- pieglyphGrob(x = 700, y = 600,
+#'                    angle.start = 0, angle.stop = base::pi,
+#'                    z = dims, size = 8,
 #'                    col = "white", scale.segment = TRUE,
 #'                    draw.grid = TRUE, grid.levels = gl,
 #'                    lwd = 3, col.grid = "white",
@@ -279,10 +278,16 @@ pieglyphGrob <- function(x = .5, y = .5, z,
 
   diffz <- diff(cumpropz)
 
-  segxylist <- vector("list", dimension)
+  # segxylist <- vector("list", dimension)
+  segarcx <- vector("list", dimension)
+  segarcy <- vector("list", dimension)
+  segarcid <- vector("list", dimension)
 
   if (drawgridlines) {
-    gridxylist <- vector("list", dimension)
+    # gridxylist <- vector("list", dimension)
+    gridarcx <- vector("list", dimension)
+    gridarcy <- vector("list", dimension)
+    gridarcid <- vector("list", dimension)
 
     grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels)
     grid.levels <- mapply(function(a, b) setdiff(b, a), z, grid.levels)
@@ -301,39 +306,85 @@ pieglyphGrob <- function(x = .5, y = .5, z,
     # Sector arc coordinates
 
     if (!scale.radius) {
-      segxylist[[i]] <- data.frame(arcx = c(x, x + (size * cos(arcpr))),
-                                   arcy = c(y, y + (size * sin(arcpr))),
-                                   arcid = i)
+      # segxylist[[i]] <- data.frame(arcx = c(x, x + (size * cos(arcpr))),
+      #                              arcy = c(y, y + (size * sin(arcpr))),
+      #                              arcid = i)
+      segarcx[[i]] <- unit.c(unit(x, "native") + unit(0, "mm"),
+                             unit(x, "native") +
+                               unit(size * cos(arcpr), "mm"))
+      segarcy[[i]] <- unit.c(unit(y, "native") + unit(0, "mm"),
+                             unit(y, "native") +
+                               unit(size * sin(arcpr), "mm"))
+      segarcid[[i]]  <- rep(i, length(arcp) + 1)
     } else {
-      segxylist[[i]] <- data.frame(arcx = c(x, x + (z[i] * size * cos(arcpr))),
-                                   arcy = c(y, y + (z[i] * size * sin(arcpr))),
-                                   arcid = i)
+      # segxylist[[i]] <- data.frame(arcx = c(x, x + (z[i] * size * cos(arcpr))),
+      #                              arcy = c(y, y + (z[i] * size * sin(arcpr))),
+      #                              arcid = i)
+      segarcx[[i]] <- unit.c(unit(x, "native"),
+                             unit(x, "native") +
+                               unit(z[i] * size * cos(arcpr),
+                                    "mm"))
+      segarcy[[i]] <- unit.c(unit(y, "native"),
+                             unit(y, "native") +
+                               unit(z[i] * size * sin(arcpr),
+                                    "mm"))
+      segarcid[[i]] <- rep(i, length(arcp) + 1)
       if (drawgridlines) {
-        gridxylist[[i]] <- lapply(grid.levels[[i]],
-                                  function(a) if (length(a) == 0) {
-                                    NA
-                                  } else{
-                                    lapply(a,
-                                           function(b) data.frame(arcx = c(x + (b * size * cos(arcpr))),
-                                                                  arcy = c(y + (b * size * sin(arcpr))),
-                                                                  arcid = paste(i, "_", b, sep = "")))
-                                  })
+        # gridxylist[[i]] <- lapply(grid.levels[[i]],
+        #                           function(a) if (length(a) == 0) {
+        #                             NA
+        #                           } else{
+        #                             lapply(a,
+        #                                    function(b) data.frame(arcx = c(x + (b * size * cos(arcpr))),
+        #                                                           arcy = c(y + (b * size * sin(arcpr))),
+        #                                                           arcid = paste(i, "_", b, sep = "")))
+        #                           })
+        gridarcx[[i]] <- lapply(grid.levels[[i]],
+                                function(a) if (length(a) == 0) {
+                                  NA
+                                } else{
+                                  upgradeUnit.unit.list(lapply(a,
+                                                               function(b) unit.c(unit(x, "native") +
+                                                                                    unit(b * size * cos(arcpr), "mm"))))
+                                })
+        gridarcy[[i]] <- lapply(grid.levels[[i]],
+                                function(a) if (length(a) == 0) {
+                                  NA
+                                } else{
+                                  upgradeUnit.unit.list(lapply(a,
+                                                               function(b) unit.c(unit(y, "native") +
+                                                                                    unit(b * size * sin(arcpr), "mm"))))
+                                })
+        gridarcid[[i]] <- lapply(grid.levels[[i]],
+                                 function(a) if (length(a) == 0) {
+                                   NA
+                                 } else{
+                                   unlist(lapply(a, function(b) rep(paste(i, "_", b, sep = ""),
+                                                                    length(arcp))))
+                                 })
 
 
       }
     }
   }
 
-  segxy <- dplyr::bind_rows(segxylist)
+  # segxy <- dplyr::bind_rows(segxylist)
+  segarcx <- upgradeUnit.unit.list(segarcx)
+  segarcy <- upgradeUnit.unit.list(segarcy)
+  segarcid <- unlist(segarcid)
+  # segarcid <- rep(1:dimension, each = length(arcp) +1)
 
   #NullGrobs
   circsegGrob <- grid::nullGrob()
   glinesGrob <- grid::nullGrob()
 
-  circsegGrob <- grid::polygonGrob(x = segxy$arcx,
-                                   y = segxy$arcy,
-                                   id = segxy$arcid,
-                                   default.units = "native",
+  circsegGrob <- grid::polygonGrob(x = segarcx,
+                                   y = segarcy,
+                                   id = segarcid,
+                                   # x = segxy$arcx,
+                                   # y = segxy$arcy,
+                                   # id = segxy$arcid,
+                                   # default.units = "native",
                                    gp = grid::gpar(col = col,
                                                    fill = fill,
                                                    lwd = lwd,
@@ -341,13 +392,33 @@ pieglyphGrob <- function(x = .5, y = .5, z,
                                                    linejoin = linejoin))
 
   if (drawgridlines) {
-    gridxy <- dplyr::bind_rows(lapply(gridxylist, dplyr::bind_rows))
-    gridxy$arcid <- as.numeric(as.factor(gridxy$arcid))
+    # gridxy <- dplyr::bind_rows(lapply(gridxylist, dplyr::bind_rows))
 
-    glinesGrob <- grid::polylineGrob(x = gridxy$arcx,
-                                     y = gridxy$arcy,
-                                     id = gridxy$arcid,
-                                     default.units = "native",
+    gridarcx <- lapply(gridarcx, function(a) if (length(a) > 0) {
+      upgradeUnit.unit.list(a)
+    })
+    gridarcy <- lapply(gridarcy, function(a) if (length(a) > 0) {
+      upgradeUnit.unit.list(a)
+    })
+    gridarcid <- lapply(gridarcid, function(a) if (length(a) > 0) {
+      unlist(a)
+    })
+
+    gridarcx <- upgradeUnit.unit.list(gridarcx[!sapply(gridarcx, is.null)])
+    gridarcy <- upgradeUnit.unit.list(gridarcy[!sapply(gridarcy, is.null)])
+    gridarcid <- unlist(gridarcid[!sapply(gridarcid, is.null)])
+
+    gridarcid <- as.numeric(as.factor(gridarcid))
+
+    # gridxy$arcid <- as.numeric(as.factor(gridxy$arcid))
+
+    glinesGrob <- grid::polylineGrob(x = gridarcx,
+                                     y = gridarcy,
+                                     id = gridarcid,
+                                     # x = gridxy$arcx,
+                                     # y = gridxy$arcy,
+                                     # id = gridxy$arcid,
+                                     # default.units = "native",
                                      gp = grid::gpar(col = col.grid,
                                                      lwd = lwd.grid,
                                                      lineend = "butt",

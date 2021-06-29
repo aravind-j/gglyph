@@ -80,31 +80,31 @@ Uses \code{\link[grid]{Grid}} graphics to draw a circular pie or clock glyph
 \insertCite{ward_visualization_2000,fuchs_evaluation_2013}{gglyph}.
 }
 \examples{
-p1 <- pieglyphGrob(x = 150, y = 150,
-             z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-             size = 50)
-
-p2 <- pieglyphGrob(x = 300, y = 150,
+p1 <- pieglyphGrob(x = 250, y = 200,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.radius = FALSE)
+                   size = 20)
 
-p3 <- pieglyphGrob(x = 450, y = 150,
+p2 <- pieglyphGrob(x = 500, y = 200,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.segment = TRUE, scale.radius = FALSE)
+                   size = 20, scale.radius = FALSE)
 
-p4 <- pieglyphGrob(x = 150, y = 350,
+p3 <- pieglyphGrob(x = 900, y = 200,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, angle.start = 0, angle.stop = -base::pi)
+                   size = 20, scale.segment = TRUE, scale.radius = FALSE)
 
-p5 <- pieglyphGrob(x = 300, y = 350,
+p4 <- pieglyphGrob(x = 250, y = 650,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.radius = FALSE,
-                   angle.start = 0, angle.stop = -base::pi)
+                   size = 20, angle.start = 0, angle.stop = base::pi)
 
-p6 <- pieglyphGrob(x = 450, y = 350,
+p5 <- pieglyphGrob(x = 500, y = 650,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.segment = TRUE, scale.radius = FALSE,
-                   angle.start = 0, angle.stop = -base::pi)
+                   size = 20, scale.radius = FALSE,
+                   angle.start = 0, angle.stop = base::pi)
+
+p6 <- pieglyphGrob(x = 900, y = 650,
+                   z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
+                   size = 20, scale.segment = TRUE, scale.radius = FALSE,
+                   angle.start = 0, angle.stop = base::pi)
 
 grid::grid.newpage()
 grid::grid.draw(p1)
@@ -114,35 +114,35 @@ grid::grid.draw(p4)
 grid::grid.draw(p5)
 grid::grid.draw(p6)
 
-p1 <- pieglyphGrob(x = 150, y = 150,
+p1 <- pieglyphGrob(x = 250, y = 200,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, fill = RColorBrewer::brewer.pal(6, "Dark2"))
+                   size = 20, fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p2 <- pieglyphGrob(x = 300, y = 150,
+p2 <- pieglyphGrob(x = 500, y = 200,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.radius = FALSE,
+                   size = 20, scale.radius = FALSE,
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p3 <- pieglyphGrob(x = 450, y = 150,
+p3 <- pieglyphGrob(x = 900, y = 200,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.segment = TRUE, scale.radius = FALSE,
+                   size = 20, scale.segment = TRUE, scale.radius = FALSE,
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p4 <- pieglyphGrob(x = 150, y = 350,
+p4 <- pieglyphGrob(x = 250, y = 650,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, angle.start = 0, angle.stop = -base::pi,
+                   size = 20, angle.start = 0, angle.stop = base::pi,
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p5 <- pieglyphGrob(x = 300, y = 350,
+p5 <- pieglyphGrob(x = 500, y = 650,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.radius = FALSE,
-                   angle.start = 0, angle.stop = -base::pi,
+                   size = 20, scale.radius = FALSE,
+                   angle.start = 0, angle.stop = base::pi,
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p6 <- pieglyphGrob(x = 450, y = 350,
+p6 <- pieglyphGrob(x = 900, y = 650,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 50, scale.segment = TRUE, scale.radius = FALSE,
-                   angle.start = 0, angle.stop = -base::pi,
+                   size = 20, scale.segment = TRUE, scale.radius = FALSE,
+                   angle.start = 0, angle.stop = base::pi,
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
 grid::grid.newpage()
@@ -153,17 +153,17 @@ grid::grid.draw(p4)
 grid::grid.draw(p5)
 grid::grid.draw(p6)
 
-p1 <- pieglyphGrob(x = 200, y = 150,
+p1 <- pieglyphGrob(x = 300, y = 250,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 100, lwd = 5)
+                   size = 20, lwd = 5)
 
-p2 <- pieglyphGrob(x = 400, y = 300,
+p2 <- pieglyphGrob(x = 500, y = 450,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 100, lwd = 5, linejoin = "round")
+                   size = 20, lwd = 5, linejoin = "round")
 
-p3 <- pieglyphGrob(x = 600, y = 450,
+p3 <- pieglyphGrob(x = 700, y = 650,
                    z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
-                   size = 100, lwd = 5, linejoin = "bevel")
+                   size = 20, lwd = 5, linejoin = "bevel")
 
 grid::grid.newpage()
 grid::grid.draw(p1)
@@ -174,25 +174,25 @@ dims = c(1, 3, 2, 1, 2, 3)
 gl <- split(x = rep(c(1, 2, 3), 6),
             f = rep(1:6, each = 3))
 
-p1 <- pieglyphGrob(x = 100, y = 150,
-                   z = dims, size = 40,
+p1 <- pieglyphGrob(x = 200, y = 250,
+                   z = dims, size = 8,
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 2, col.grid = "black")
 
-p2 <- pieglyphGrob(x = 400, y = 150,
-                   angle.start = 0, angle.stop = -base::pi,
-                   z = dims, size = 40,
+p2 <- pieglyphGrob(x = 700, y = 250,
+                   angle.start = 0, angle.stop = base::pi,
+                   z = dims, size = 8,
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 2, col.grid = "black")
 
-p3 <- pieglyphGrob(x = 100, y = 400,
-                   z = dims, size = 40, scale.segment = TRUE,
+p3 <- pieglyphGrob(x = 200, y = 600,
+                   z = dims, size = 8, scale.segment = TRUE,
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 2, col.grid = "black")
 
-p4 <- pieglyphGrob(x = 400, y = 400,
-                   angle.start = 0, angle.stop = -base::pi,
-                   z = dims, size = 40, scale.segment = TRUE,
+p4 <- pieglyphGrob(x = 700, y = 600,
+                   angle.start = 0, angle.stop = base::pi,
+                   z = dims, size = 8, scale.segment = TRUE,
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 2, col.grid = "black")
 
@@ -206,29 +206,29 @@ dims = c(1, 3, 2, 1, 2, 3)
 gl <- split(x = rep(c(1, 2, 3), 6),
             f = rep(1:6, each = 3))
 
-p1 <- pieglyphGrob(x = 100, y = 150,
-                   z = dims, size = 40, col = "white",
+p1 <- pieglyphGrob(x = 200, y = 250,
+                   z = dims, size = 8, col = "white",
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 3, col.grid = "white",
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p2 <- pieglyphGrob(x = 400, y = 150,
-                   angle.start = 0, angle.stop = -base::pi,
-                   z = dims, size = 40, col = "white",
+p2 <- pieglyphGrob(x = 700, y = 250,
+                   angle.start = 0, angle.stop = base::pi,
+                   z = dims, size = 8, col = "white",
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 3, col.grid = "white",
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p3 <- pieglyphGrob(x = 100, y = 400,
-                   z = dims, size = 40,
+p3 <- pieglyphGrob(x = 200, y = 600,
+                   z = dims, size = 8,
                    col = "white", scale.segment = TRUE,
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 3, col.grid = "white",
                    fill = RColorBrewer::brewer.pal(6, "Dark2"))
 
-p4 <- pieglyphGrob(x = 400, y = 400,
-                   angle.start = 0, angle.stop = -base::pi,
-                   z = dims, size = 40,
+p4 <- pieglyphGrob(x = 700, y = 600,
+                   angle.start = 0, angle.stop = base::pi,
+                   z = dims, size = 8,
                    col = "white", scale.segment = TRUE,
                    draw.grid = TRUE, grid.levels = gl,
                    lwd = 3, col.grid = "white",
