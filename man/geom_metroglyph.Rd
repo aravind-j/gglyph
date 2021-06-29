@@ -119,115 +119,115 @@ library(ggplot2)
 # Mapped colour
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2, fill = "gray30",
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
                   full = FALSE,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE,
                   linewidth.circle = 2, linewidth.ray = 2, fill = "gray30",
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 # Mapped colour + fill
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 # Mapped fill
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
                   colour.circle = "transparent",
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE, colour.circle = "transparent",
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550))
 
 # Rays with colours
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp),
-                  cols = zs, circle.size = 0.015,
+                  cols = zs, circle.size = 3,
                   linewidth.circle = 0, linewidth.ray = 2,
                   colour.circle = "transparent", fill = "gray",
                   colour.ray = RColorBrewer::brewer.pal(8, "Dark2"),
-                  size = 0.05, alpha =  0.8) +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp),
-                  cols = zs, circle.size = 0.015,
+                  cols = zs, circle.size = 3,
                   linewidth.circle = 0, linewidth.ray = 2,
                   colour.circle = "transparent", fill = "gray",
                   colour.ray = RColorBrewer::brewer.pal(8, "Dark2"),
-                  size = 0.05, alpha =  0.8, full = FALSE) +
+                  size = 10, alpha =  0.8, full = FALSE) +
   ylim(c(-0, 550))
 
 # Faceted
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.05, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8, lineend = "butt") +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
@@ -246,27 +246,27 @@ mtcars$lab <- row.names(mtcars)
 # Grid points
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.01, alpha =  0.8, lineend = "butt",
+                  size = 2.5, alpha =  0.8, lineend = "butt",
                   draw.grid = TRUE, point.size = 5) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
-                  cols = zs, circle.size = 0.02, colour.ray = NULL,
+                  cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 0.01, alpha =  0.8, lineend = "butt",
+                  size = 2.5, alpha =  0.8, lineend = "butt",
                   draw.grid = TRUE, point.size = 5) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp),
-                  cols = zs, circle.size = 0.015,
+                  cols = zs, circle.size = 3,
                   linewidth.circle = 0, linewidth.ray = 2,
                   colour.circle = "transparent", fill = "gray",
                   colour.ray = RColorBrewer::brewer.pal(8, "Dark2"),
-                  size = 0.01, alpha =  0.8,
+                  size = 2.5, alpha =  0.8,
                   draw.grid = TRUE, point.size = 5) +
   ylim(c(-0, 550))
 
