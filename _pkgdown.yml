@@ -7,7 +7,9 @@ reference:
     - title: Geoms
       contents:
          - '`geom_metroglyph`'
+         - '`geom_pieglyph`'
          - '`geom_starglyph`'
+
 
     - title: Grobs
       contents:
