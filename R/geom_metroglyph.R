@@ -5,6 +5,7 @@
 #' in a scatterplot.
 #'
 #' @template draw.grid-arg
+#' @template full-arg
 #' @inheritParams ggplot2::layer
 #' @inheritParams metroglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
@@ -15,8 +16,6 @@
 #' @param linewidth.ray The ray line width.
 #' @param linewidth.circle The circle line width.
 #' @param point.size The size of the grid points in native units.
-#' @param full logical. If (\code{TRUE}), full metroglyphs (360°) are plotted,
-#'   otherwise half metroglyphs (180°) are plotted.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to

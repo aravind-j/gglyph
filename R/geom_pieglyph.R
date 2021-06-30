@@ -1,8 +1,264 @@
+#' Add Pie Glyphs as a Scatterplot
+#'
+#' The pieglyph geom is used to plot multivariate data as pie glyphs
+#' \insertCite{ward_visualization_2000,fuchs_evaluation_2013}{gglyph} in a
+#' scatterplot.
+#'
+#' @template draw.grid-arg
+#' @template full-arg
+#' @template fill.gradient-arg
+#' @template scale.segment.radius-arg
+#' @inheritParams ggplot2::layer
+#' @inheritParams starglyphGrob
+#' @param cols Name of columns specifying the variables to be plotted in the
+#'   glyphs as a character vector.
+#' @param fill.segment The fill colour of the segments.
+#' @param colour.grid The colour of grid lines.
+#' @param linewidth The line width of the segments.
+#' @param linewidth.grid The line width for the grid lines.
+#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+#'   are often aesthetics, used to set an aesthetic to a fixed value, like
+#'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
+#'   the paired geom/stat.
+#'
+#' @section Aesthetics: \code{geom_pieglyph()} understands the following
+#'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
+#'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
+#'   \item{shape} \item{size} \item{stroke} \item{linetype} }
+#'
+#' @return A \code{geom} layer.
+#'
+#' @importFrom rlang as_quosures syms
+#' @importFrom utils modifyList
+#' @importFrom ggplot2 layer ggproto aes
+#' @importFrom grid grobTree addGrob
+#' @importFrom Rdpack reprompt
+#' @export
+#'
+#' @encoding UTF-8
+#'
+#' @seealso \code{\link[gglyph]{pieglyphGrob}}
+#'
+#' @references
+#'
+#' \insertAllCited{}
+#'
+#' @examples
+# Scale the data
+#' zs <- c("hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")
+#' mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)
+#'
+#' mtcars$cyl <- as.factor(mtcars$cyl)
+#' mtcars$lab <- row.names(mtcars)
+#'
+#' # Mapped fill + scaled radius
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                 cols = zs, size = 10,
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                 cols = zs, size = 10,
+#'                 alpha =  0.8, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' # Mapped fill + scaled segment
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 alpha =  0.8, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' # Mapped colour + scaled radius
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 10,
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 10, fill = "white",
+#'                 alpha =  0.8,  linewidth = 2) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 10,
+#'                 alpha =  0.8, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 10, fill = "white",
+#'                 alpha =  0.8,  linewidth = 2, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' # Mapped colour + scaled segment
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 5, fill = "white",
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 alpha =  0.8, linewidth = 2) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 alpha =  0.8, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 5, fill = "white",
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 alpha =  0.8, linewidth = 2, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' # Segments with colours + scaled radius
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 10,
+#'                 fill.segment = RColorBrewer::brewer.pal(8, "Dark2"),
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 10,
+#'                 fill.segment = RColorBrewer::brewer.pal(8, "Dark2"),
+#'                 alpha =  0.8, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' # Segments with colours + scaled segment (scatterpie)
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 fill.segment = RColorBrewer::brewer.pal(8, "Dark2"),
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = TRUE,
+#'                 fill.segment = RColorBrewer::brewer.pal(8, "Dark2"),
+#'                 alpha =  0.8, full = FALSE) +
+#'   ylim(c(-0, 550))
+#'
+#' # Gradient fill
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = FALSE,
+#'                 fill.gradient = "Greens",
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = FALSE,
+#'                 fill.gradient = "Blues",
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = FALSE,
+#'                 fill.gradient = "RdYlBu",
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 5,
+#'                 scale.radius = FALSE, scale.segment = FALSE,
+#'                 fill.gradient = "viridis",
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550))
+#'
+#' # Faceted
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                 cols = zs, size = 10,
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550)) +
+#'   facet_grid(. ~ cyl)
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 10,
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550)) +
+#'   facet_grid(. ~ cyl)
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 10,
+#'                 fill.segment = RColorBrewer::brewer.pal(8, "Dark2"),
+#'                 alpha =  0.8) +
+#'   ylim(c(-0, 550)) +
+#'   facet_grid(. ~ cyl)
+#'
+#' rm(mtcars)
+#' mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)
+#'
+#' mtcars[ , zs] <- lapply(mtcars[, zs],
+#'                         function(x) cut(x, breaks = 3,
+#'                                         labels = c(1, 2, 3)))
+#' mtcars[ , zs] <- lapply(mtcars[ , zs], as.factor)
+#'
+#' mtcars$cyl <- as.factor(mtcars$cyl)
+#' mtcars$lab <- row.names(mtcars)
+#'
+#' # Grid lines (when scale.radius = TRUE)
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                 cols = zs, size = 2,
+#'                 alpha =  0.8, draw.grid = TRUE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                 cols = zs, size = 2,
+#'                 alpha =  0.8, draw.grid = TRUE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_pieglyph(aes(x = mpg, y = disp),
+#'                 cols = zs, size = 2,
+#'                 scale.radius = TRUE, scale.segment = FALSE,
+#'                 fill.gradient = "Blues",
+#'                 alpha =  0.8, draw.grid = TRUE) +
+#'   ylim(c(-0, 550))
+#'
 geom_pieglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                           position = "identity", ...,
                           cols = character(0L),
                           edges = 200,
                           fill.segment = NULL,
+                          fill.gradient = NULL,
                           colour.grid = NULL,
                           linewidth = 1,
                           linewidth.grid = linewidth,
@@ -27,6 +283,7 @@ geom_pieglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     scale.segment = scale.segment,
     scale.radius = scale.radius,
     full = full,
+    fill.gradient = fill.gradient,
     draw.grid = draw.grid,
     cols = cols, ...)
 
@@ -51,8 +308,7 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                                             stroke = 0.5,
                                                             linetype = 1,
                                                             alpha = 1,
-                                                            linejoin = "mitre",
-                                                            lineend = "round"),
+                                                            linejoin = "mitre"),
 
                                  draw_key = ggplot2::draw_key_polygon,
 
@@ -143,6 +399,7 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                                        fill.segment,
                                                        colour.grid,
                                                        full,
+                                                       fill.gradient,
                                                        draw.grid) {
 
                                    data <- coord$transform(data, panel_params)
@@ -170,6 +427,16 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                      data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                    }
 
+                                   # Gradient colour mapping
+                                   if (is.null(fill.segment) & !is.null(fill.gradient)) {
+                                     gdata <- data[, cols]
+
+                                     gdata <- lapply(gdata,
+                                                     function(x) scales::col_numeric(palette = fill.gradient,
+                                                                                     domain = min(x):max(x))(x))
+                                     gdata <- data.frame(gdata)
+                                   }
+
                                    for (i in seq_along(data$x)) {
                                      # addGrob to get proper overlappin of glyphs
                                      gl <- grid::addGrob(gl,
@@ -180,7 +447,11 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                                                       edges = edges,
                                                                       col = data$colour[i],
                                                                       fill = if (is.null(fill.segment)) {
-                                                                        data$fill[i]
+                                                                        if (!is.null(fill.gradient)) {
+                                                                          unlist(gdata[i, ])
+                                                                        } else {
+                                                                          data$fill[i]
+                                                                        }
                                                                       } else {
                                                                         fill.segment
                                                                       },
@@ -194,10 +465,10 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                                                       linejoin = data$linejoin[i],
                                                                       grid.levels = grid.levels,
                                                                       draw.grid = draw.grid,
-                                                                      col.grid = if (is.null(colour.segment)) {
+                                                                      col.grid = if (is.null(colour.grid)) {
                                                                         data$colour[i]
                                                                       } else {
-                                                                        colour.segment
+                                                                        colour.grid
                                                                       }))
                                    }
 

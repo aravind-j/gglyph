@@ -5,6 +5,7 @@
 #' in a scatterplot.
 #'
 #' @template draw.grid-arg
+#' @template full-arg
 #' @inheritParams ggplot2::layer
 #' @inheritParams starglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
@@ -15,8 +16,6 @@
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
 #' @param point.size The size of the grid points in native units.
-#' @param full logical. If (\code{TRUE}), full star glyphs (360°) are plotted,
-#'   otherwise half star glyphs (180°) are plotted.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
