@@ -27,21 +27,21 @@
 #' \insertAllCited{}
 #'
 #' @examples
-#' dg1 <- dotglyphGrob(x = 150, y = 200,
+#' dg1 <- dotglyphGrob(x = 150, y = 300,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10)
+#'                     radius = 2)
 #'
-#' dg2 <- dotglyphGrob(x = 450, y = 200,
+#' dg2 <- dotglyphGrob(x = 550, y = 300,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, mirror = TRUE)
+#'                     radius = 2, mirror = TRUE)
 #'
-#' dg3 <- dotglyphGrob(x = 150, y = 450,
+#' dg3 <- dotglyphGrob(x = 100, y = 550,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, flip.axes = TRUE)
+#'                     radius = 2, flip.axes = TRUE)
 #'
-#' dg4 <- dotglyphGrob(x = 450, y = 450,
+#' dg4 <- dotglyphGrob(x = 550, y = 550,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, mirror = TRUE,
+#'                     radius = 2, mirror = TRUE,
 #'                     flip.axes = TRUE)
 #'
 #' grid::grid.newpage()
@@ -50,23 +50,23 @@
 #' grid::grid.draw(dg3)
 #' grid::grid.draw(dg4)
 #'
-#' dg1 <- dotglyphGrob(x = 150, y = 200,
+#' dg1 <- dotglyphGrob(x = 150, y = 300,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, fill = "black", col = "white")
+#'                     radius = 2, fill = "black", col = "white")
 #'
-#' dg2 <- dotglyphGrob(x = 450, y = 200,
+#' dg2 <- dotglyphGrob(x = 550, y = 300,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, mirror = TRUE,
+#'                     radius = 2, mirror = TRUE,
 #'                     fill = "salmon", col = "black")
 #'
-#' dg3 <- dotglyphGrob(x = 150, y = 450,
+#' dg3 <- dotglyphGrob(x = 100, y = 550,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, flip.axes = TRUE,
+#'                     radius = 2, flip.axes = TRUE,
 #'                     fill = "cyan", col = "grey")
 #'
-#' dg4 <- dotglyphGrob(x = 450, y = 450,
+#' dg4 <- dotglyphGrob(x = 550, y = 550,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, mirror = TRUE,
+#'                     radius = 2, mirror = TRUE,
 #'                     flip.axes = TRUE,
 #'                     fill = "green", col = "grey")
 #'
@@ -81,23 +81,23 @@
 #'                round(c(4, 3.5, 2.7, 6.8, 3.4, 5.7)))
 #' clrs <- unlist(clrs)
 #'
-#' dg1 <- dotglyphGrob(x = 150, y = 200,
+#' dg1 <- dotglyphGrob(x = 150, y = 300,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, fill = clrs, col = "white")
+#'                     radius = 2, fill = clrs, col = "white")
 #'
-#' dg2 <- dotglyphGrob(x = 450, y = 200,
+#' dg2 <- dotglyphGrob(x = 550, y = 300,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, mirror = TRUE,
+#'                     radius = 2, mirror = TRUE,
 #'                     fill = clrs, col = "black")
 #'
-#' dg3 <- dotglyphGrob(x = 150, y = 450,
+#' dg3 <- dotglyphGrob(x = 100, y = 550,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, flip.axes = TRUE,
+#'                     radius = 2, flip.axes = TRUE,
 #'                     fill = "black", col = clrs, lwd = 5)
 #'
-#' dg4 <- dotglyphGrob(x = 450, y = 450,
+#' dg4 <- dotglyphGrob(x = 550, y = 550,
 #'                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                     radius = 10, mirror = TRUE,
+#'                     radius = 2, mirror = TRUE,
 #'                     flip.axes = TRUE,
 #'                     col = clrs)
 #'
@@ -108,7 +108,7 @@
 #' grid::grid.draw(dg4)
 #'
 dotglyphGrob <- function(x = .5, y = .5, z,
-                         radius = 10,
+                         radius = 1,
                          col = "black",
                          fill = NA,
                          lwd = 1,
@@ -119,26 +119,39 @@ dotglyphGrob <- function(x = .5, y = .5, z,
   dimension <- length(z)
 
   # grid::grid.points(x = x, y = y, pch =  20)
+  radius <- grid::unit(radius, "mm")
 
   if (!flip.axes) {
-    xpos <- x + ((radius * 2) * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
-                                    length.out = dimension))
-    ypos <- rep(y, dimension)
+    # xpos <- x + ((radius * 2) * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
+    #                                 length.out = dimension))
+    xpos <- unit(x, "native") + ((radius * 2) * seq(-(dimension - 1) / 2,
+                                                    (dimension - 1) / 2,
+                                                    length.out = dimension))
+    # ypos <- rep(y, dimension)
+    ypos <- rep(unit(y, "native"), dimension)
 
     circx <- mapply(function(a, b) rep(a, b), xpos, z)
-    circy <- lapply(z, function(c) y - (1:c * (radius * 2)) + radius)
+    # circy <- lapply(z, function(c) y - (1:c * (radius * 2)) + radius)
+    circy <- lapply(z, function(c) unit(y, "native") +
+                      (1:c * (radius * 2)) + radius)
 
     if (mirror) {
       circy <- mapply(function(a, b) a + (radius * b[1]), circy, z)
     }
 
   } else {
-    xpos <- rep(x, dimension)
-    ypos <- y - ((radius * 2) * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
+    # xpos <- rep(x, dimension)
+    xpos <- rep(unit(x, "native"), dimension)
+    # ypos <- y - ((radius * 2) * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
+    #                                 length.out = dimension))
+    ypos <- unit(y, "native") - ((radius * 2) * seq(-(dimension - 1) / 2,
+                                                    (dimension - 1) / 2,
                                     length.out = dimension))
 
     circy <- mapply(function(a, b) rep(a, b), ypos, z)
-    circx <- lapply(z, function(c) x + (1:c * (radius * 2)) - radius)
+    # circx <- lapply(z, function(c) x + (1:c * (radius * 2)) - radius)
+    circx <- lapply(z, function(c) unit(x, "native") +
+                      (1:c * (radius * 2)) - radius)
 
     if (mirror) {
       circx <- mapply(function(a, b) a - (radius * b[1]), circx, z)
@@ -146,14 +159,18 @@ dotglyphGrob <- function(x = .5, y = .5, z,
 
   }
 
-  circx <- unlist(circx)
-  circy <- unlist(circy)
+  # circx <- unlist(circx)
+  # circy <- unlist(circy)
+
+  circx <- upgradeUnit.unit.list(circx)
+  circy <- upgradeUnit.unit.list(circy)
 
   # grid::grid.points(x = xpos, y = ypos, pch =  1)
 
   grid::circleGrob(x = circx, y = circy, r = radius,
-                   default.units = "native", gp = gpar(col = col,
-                                                       fill = fill,
-                                                       lwd = lwd,
-                                                       alpha = alpha))
+                   # default.units = "native",
+                   gp = gpar(col = col,
+                             fill = fill,
+                             lwd = lwd,
+                             alpha = alpha))
 }
