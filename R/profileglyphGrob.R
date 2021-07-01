@@ -9,7 +9,7 @@
 #'   of the profile (length of the bars).
 #' @param size The size of glyphs.
 #' @param col.bar The colour of bars.
-#' @param col.line The colour of line(s).
+#' @param col.line The colour of profile line(s).
 #' @param fill The fill colour.
 #' @param lwd The line width.
 #' @param alpha The alpha transparency value.
@@ -20,6 +20,8 @@
 #' @param mirror logical. If \code{TRUE}, mirror profile is plotted.
 #' @param linejoin The line join style for the profile line(s) and bars. Either
 #'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
+#' @param lineend The line end style for the whisker lines. Either
+#'   \code{"round"}, \code{"butt"} or \code{"square"}.
 #' @param draw.grid logical. If \code{TRUE}, grid lines are plotted along the
 #'   bars. Default is \code{FALSE}.
 #' @param grid.levels A list of grid levels (as vectors) corresponding to the
@@ -303,6 +305,25 @@
 #' grid::grid.draw(pg2)
 #' grid::grid.draw(pg3)
 #'
+#' # lineend variants
+#' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
+#' pg1 <- profileglyphGrob(x = 200, y = 150, z = dims,
+#'                         size = 25, lwd.line = 5, width = 8)
+#'
+#' pg2 <- profileglyphGrob(x = 500, y = 400, z = dims,
+#'                         size = 25, lwd.line = 5, width = 8,
+#'                         lineend = "butt")
+#'
+#' pg3 <- profileglyphGrob(x = 800, y = 650, z = dims,
+#'                         size = 25, lwd.line = 5, width = 8,
+#'                         lineend = "square")
+#'
+#' grid::grid.newpage()
+#' grid::grid.draw(pg1)
+#' grid::grid.draw(pg2)
+#' grid::grid.draw(pg3)
+#'
+#' # Bars with multiple fill colours
 #' dims = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33)
 #' bg1 <- profileglyphGrob(x = 200, y = 200, z = dims,
 #'                         size = 20,
@@ -348,6 +369,7 @@
 #' grid::grid.draw(bg4)
 #' grid::grid.draw(bpg4)
 #'
+#' # Grid lines
 #' dims = c(1, 3, 2, 1, 2, 3)
 #' gl <- split(x = rep(c(1, 2, 3), 6),
 #'             f = rep(1:6, each = 3))
@@ -426,6 +448,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                           line = TRUE,
                           mirror = TRUE,
                           linejoin = c("mitre", "round", "bevel"),
+                          lineend = c("round", "butt", "square"),
                           grid.levels = NULL,
                           draw.grid = FALSE,
                           col.grid = "grey",
@@ -523,6 +546,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                           gp = grid::gpar(lwd = lwd.line,
                                                           alpha = alpha,
                                                           col = col.line,
+                                                          lineend = lineend,
                                                           linejoin = linejoin))
         } else {
           blinegrob <- grid::polylineGrob(x = xpos, y = ypos,
@@ -530,6 +554,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                           gp = grid::gpar(lwd = lwd.line,
                                                           alpha = alpha,
                                                           col = col.line,
+                                                          lineend = lineend,
                                                           linejoin = linejoin))
         }
       }
@@ -547,6 +572,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        gp = grid::gpar(lwd = lwd.line,
                                                        alpha = alpha,
                                                        col = col.line,
+                                                       lineend = lineend,
                                                        linejoin = linejoin))
       } else {
         blinegrob <- grid::polygonGrob(x = grid::unit.c(xpos[1],
@@ -561,6 +587,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        gp = grid::gpar(lwd = lwd.line,
                                                        alpha = alpha,
                                                        col = col.line,
+                                                       lineend = lineend,
                                                        linejoin = linejoin))
       }
     }
@@ -674,6 +701,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                           gp = grid::gpar(lwd = lwd.line,
                                                           alpha = alpha,
                                                           col = col.line,
+                                                          lineend = lineend,
                                                           linejoin = linejoin))
         } else {
           blinegrob <- grid::polylineGrob(x = xpos, y = ypos,
@@ -681,6 +709,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                           gp = grid::gpar(lwd = lwd.line,
                                                           alpha = alpha,
                                                           col = col.line,
+                                                          lineend = lineend,
                                                           linejoin = linejoin))
         }
       }
@@ -698,6 +727,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        gp = grid::gpar(lwd = lwd.line,
                                                        alpha = alpha,
                                                        col = col.line,
+                                                       lineend = lineend,
                                                        linejoin = linejoin))
       } else {
         blinegrob <- grid::polygonGrob(x = grid::unit.c(unit(x, "native") + unit(0, "mm"),
@@ -712,6 +742,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
                                        gp = grid::gpar(lwd = lwd.line,
                                                        alpha = alpha,
                                                        col = col.line,
+                                                       lineend = lineend,
                                                        linejoin = linejoin))
       }
     }
