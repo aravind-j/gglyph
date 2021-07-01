@@ -40,7 +40,7 @@
 #' \insertAllCited{}
 #'
 #' @examples
-#' mglyph1 <- metroglyphGrob(x = 200, y = 200,
+#' mglyph1 <- metroglyphGrob(x = 300, y = 200,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 2)
 #'
@@ -48,7 +48,7 @@
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 5)
 #'
-#' mglyph3 <- metroglyphGrob(x = 200, y = 600,
+#' mglyph3 <- metroglyphGrob(x = 300, y = 600,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 0,
 #'                           angle.start = base::pi, angle.stop = -base::pi)
@@ -90,21 +90,21 @@
 #' grid::grid.draw(mglyph3)
 #' grid::grid.draw(mglyph4)
 #'
-#' mglyph1 <- metroglyphGrob(x = 200, y = 200,
+#' mglyph1 <- metroglyphGrob(x = 300, y = 200,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 2, lwd.circle = 3)
 #'
-#' mglyph2 <- metroglyphGrob(x = 800, y = 200,
+#' mglyph2 <- metroglyphGrob(x = 900, y = 200,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 5, lwd.circle = 3)
 #'
-#' mglyph3 <- metroglyphGrob(x = 200, y = 600,
+#' mglyph3 <- metroglyphGrob(x = 300, y = 600,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 0,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3)
 #'
-#' mglyph4 <- metroglyphGrob(x = 800, y = 600,
+#' mglyph4 <- metroglyphGrob(x = 900, y = 600,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 10,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
@@ -116,26 +116,26 @@
 #' grid::grid.draw(mglyph3)
 #' grid::grid.draw(mglyph4)
 #'
-#' mglyph1 <- metroglyphGrob(x = 200, y = 200,
+#' mglyph1 <- metroglyphGrob(x = 300, y = 200,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 2, lwd.circle = 3,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                           col.circle = "gray")
 #'
-#' mglyph2 <- metroglyphGrob(x = 800, y = 200,
+#' mglyph2 <- metroglyphGrob(x = 900, y = 200,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 5, lwd.circle = 3,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
 #'                           col.circle = "white", fill = "black")
 #'
-#' mglyph3 <- metroglyphGrob(x = 200, y = 600,
+#' mglyph3 <- metroglyphGrob(x = 300, y = 600,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 0,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
 #'                           lwd.ray = 3,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"))
 #'
-#' mglyph4 <- metroglyphGrob(x = 800, y = 600,
+#' mglyph4 <- metroglyphGrob(x = 900, y = 600,
 #'                           z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                           size = 25, circle.size = 10,
 #'                           angle.start = base::pi, angle.stop = -base::pi,
@@ -149,17 +149,17 @@
 #' grid::grid.draw(mglyph3)
 #' grid::grid.draw(mglyph4)
 #'
-#' mg1 <- metroglyphGrob(x = 200, y = 200,
+#' mg1 <- metroglyphGrob(x = 300, y = 200,
 #'                       z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                       size = 15, circle.size = 5,
 #'                       lwd.ray = 5)
 #'
-#' mg2 <- metroglyphGrob(x = 400, y = 400,
+#' mg2 <- metroglyphGrob(x = 500, y = 400,
 #'                       z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                       size = 15, circle.size = 5,
 #'                       lwd.ray = 5, lineend = "butt")
 #'
-#' mg3 <- metroglyphGrob(x = 600, y = 600,
+#' mg3 <- metroglyphGrob(x = 700, y = 600,
 #'                       z = c(0.24, 0.3, 0.8, 1.4, 0.6, 0.33),
 #'                       size = 15, circle.size = 5,
 #'                       lwd.ray = 5, lineend = "square")
