@@ -6,10 +6,12 @@ template:
 reference:
     - title: Geoms
       contents:
+         - '`geom_dotglyph`'
          - '`geom_metroglyph`'
          - '`geom_pieglyph`'
          - '`geom_profileglyph`'
          - '`geom_starglyph`'
+         - '`geom_tileglyph`'
 
 
     - title: Grobs
