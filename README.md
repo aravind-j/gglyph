@@ -27,9 +27,9 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/gglyph?color=green)](ht
 Size](https://img.shields.io/github/languages/code-size/aravind-j/gglyph.svg)](https://github.com/aravind-j/gglyph)
 <!-- [![R-CMD-check](https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/gglyph/actions) -->
 [![Project Status:
-WIP](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--06--22-yellowgreen.svg)](https://github.com/aravind-j/gglyph/)
+WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2021--07--01-yellowgreen.svg)](https://github.com/aravind-j/gglyph/)
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxxx) -->
 [![Website -
 pkgdown](https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/gglyph.svg)](https://aravind-j.github.io/gglyph/)
@@ -92,18 +92,21 @@ To cite the methods in the package use:
 citation("gglyph")
 ```
 
-    Warning in citation("gglyph"): no date field in DESCRIPTION file of package 'gglyph'
-    Warning in citation("gglyph"): could not determine year for 'gglyph' from package DESCRIPTION file
 
-    To cite package 'gglyph' in publications use:
+    To cite the R package 'gglyph' in publications use:
 
-      J. Aravind (NA). gglyph: Multivariate Data Visualization using Glyphs. R package version
-      0.0.0.9000.
+      Aravind, J. (2021).  gglyph: Multivariate Data Visualization using Glyphs. R package
+      version 0.0.0.9000, https://aravind-j.github.io/gglyph/.
 
     A BibTeX entry for LaTeX users is
 
       @Manual{,
         title = {gglyph: Multivariate Data Visualization using Glyphs},
         author = {J. Aravind},
+        year = {2021},
         note = {R package version 0.0.0.9000},
+        note = {https://aravind-j.github.io/gglyph/},
       }
+
+    This free and open-source software implements academic research by the authors and
+    co-workers. If you use it, please support the project by citing the package.
