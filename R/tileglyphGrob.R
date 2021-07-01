@@ -32,38 +32,38 @@
 #' @examples
 #' tg1 <- tileglyphGrob(x = 150, y = 150,
 #'                    z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                    size = 30)
+#'                    size = 5)
 #'
 #' tg2 <- tileglyphGrob(x = 450, y = 150,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 30)
+#'                      size = 5)
 #'
 #' tg3 <- tileglyphGrob(x = 150, y = 250,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 30, nrow = 2)
+#'                      size = 5, nrow = 2)
 #'
 #' tg4 <- tileglyphGrob(x = 450, y = 250,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 30, nrow = 2)
+#'                      size = 5, nrow = 2)
 #'
 #' tg5 <- tileglyphGrob(x = 150, y = 350,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 30,
+#'                      size = 5,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
 #' tg6 <- tileglyphGrob(x = 450, y = 350,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 30,
+#'                      size = 5,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
 #' tg7 <- tileglyphGrob(x = 150, y = 450,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 30, nrow = 2,
+#'                      size = 5, nrow = 2,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
 #' tg8 <- tileglyphGrob(x = 450, y = 450,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 30, nrow = 2,
+#'                      size = 5, nrow = 2,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
 #' grid::grid.newpage()
@@ -78,38 +78,38 @@
 #'
 #' tg1 <- tileglyphGrob(x = 150, y = 150,
 #'                    z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                    size = 5, ratio = 10)
+#'                    size = 2, ratio = 6)
 #'
 #' tg2 <- tileglyphGrob(x = 450, y = 150,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 5, ratio = 10)
+#'                      size = 2, ratio = 6)
 #'
-#' tg3 <- tileglyphGrob(x = 150, y = 250,
+#' tg3 <- tileglyphGrob(x = 150, y = 300,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 5, nrow = 2, ratio = 10)
+#'                      size = 2, nrow = 2, ratio = 6)
 #'
-#' tg4 <- tileglyphGrob(x = 450, y = 250,
+#' tg4 <- tileglyphGrob(x = 450, y = 300,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 5, nrow = 2, ratio = 10)
+#'                      size = 2, nrow = 2, ratio = 6)
 #'
-#' tg5 <- tileglyphGrob(x = 150, y = 350,
+#' tg5 <- tileglyphGrob(x = 150, y = 450,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 5, ratio = 10,
+#'                      size = 2, ratio = 6,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
-#' tg6 <- tileglyphGrob(x = 450, y = 350,
+#' tg6 <- tileglyphGrob(x = 450, y = 450,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 5, ratio = 10,
+#'                      size = 2, ratio = 6,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
-#' tg7 <- tileglyphGrob(x = 150, y = 450,
+#' tg7 <- tileglyphGrob(x = 150, y = 600,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 5, nrow = 2, ratio = 10,
+#'                      size = 2, nrow = 2, ratio = 6,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
-#' tg8 <- tileglyphGrob(x = 450, y = 450,
+#' tg8 <- tileglyphGrob(x = 450, y = 600,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
-#'                      size = 5, nrow = 2, ratio = 10,
+#'                      size = 2, nrow = 2, ratio = 6,
 #'                      fill = RColorBrewer::brewer.pal(7, "Dark2"))
 #'
 #' grid::grid.newpage()
@@ -124,16 +124,16 @@
 #'
 #' tg1 <- tileglyphGrob(x = 150, y = 150,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 30, nrow = 2, lwd = 5)
+#'                      size = 5, nrow = 2, lwd = 5)
 #'
 #' tg2 <- tileglyphGrob(x = 300, y = 300,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 30, nrow = 2, lwd = 5,
+#'                      size = 5, nrow = 2, lwd = 5,
 #'                      linejoin = "round")
 #'
 #' tg3 <- tileglyphGrob(x = 450, y = 450,
 #'                      z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7, 4.3),
-#'                      size = 30, nrow = 2, lwd = 5,
+#'                      size = 5, nrow = 2, lwd = 5,
 #'                      linejoin = "bevel")
 #'
 #'
@@ -158,38 +158,59 @@ tileglyphGrob <- function(x = .5, y = .5, z,
 
   dimension <- length(z)
 
-  width <- size
-  height <- size * ratio
+  # width <- size
+  # height <- size * ratio
+
+  width <- unit(size, "mm")
+  height <- unit(size, "mm") * ratio
 
   dim <- ceiling(dimension / nrow)
 
   zs <- split(z, sort(rep_len(1:nrow, length(z))))
 
   if (nrow > 1) {
-    ys <- y + (height * seq(-(nrow - 1) / 2, (nrow - 1) / 2,
-                            length.out = nrow))
+    # ys <- y + (height * seq(-(nrow - 1) / 2, (nrow - 1) / 2,
+    #                         length.out = nrow))
+    ys <- unit(y, "native") +
+      (height * seq(-(nrow - 1) / 2, (nrow - 1) / 2,
+                    length.out = nrow))
   } else {
-    ys <- y
+    # ys <- y
+    ys <- unit(y, "native") + unit(0, "mm")
   }
 
-  xs <- x + (width * seq(-(dim - 1) / 2, (dim - 1) / 2,
-                         length.out = dim))
+  # xs <- x + (width * seq(-(dim - 1) / 2, (dim - 1) / 2,
+  #                        length.out = dim))
 
-  xylist <- vector("list", nrow)
+  xs <- unit(x, "native") +
+    (width * seq(-(dim - 1) / 2, (dim - 1) / 2,
+                 length.out = dim))
+
+  # xylist <- vector("list", nrow)
+  xlist <- vector("list", nrow)
+  ylist <- vector("list", nrow)
 
   for (i in 1:nrow) {
     nz <- length(zs[[i]])
-    xylist[[i]] <- data.frame(xpos = xs[1:nz],
-                              ypos = rep(ys[[i]], nz))
+    # xylist[[i]] <- data.frame(xpos = xs[1:nz],
+    #                           ypos = rep(ys[[i]], nz))
+    xlist[[i]] <- xs[1:nz]
+    ylist[[i]] <- rep(ys[[i]], nz)
   }
 
-  xylist <- dplyr::bind_rows(xylist)
+  # xylist <- dplyr::bind_rows(xylist)
+  xlist <- upgradeUnit.unit.list(xlist)
+  ylist <- upgradeUnit.unit.list(ylist)
 
   # grid::grid.points(x = xylist$xpos, y = xylist$ypos, pch =  1)
 
-  grid::rectGrob(x = xylist$xpos, y = xylist$ypos,
+  grid::rectGrob(x = xlist,
+                 y = ylist,
+                 # x = xylist$xpos,
+                 # y = xylist$ypos,
                  width = width, height = height,
-                 default.units = "native", just = "centre",
+                 # default.units = "native",
+                 just = "centre",
                  gp = gpar(col = col,
                            fill = fill,
                            lwd = lwd,
