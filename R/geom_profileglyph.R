@@ -650,7 +650,7 @@ GeomProfileGlyph <- ggplot2::ggproto("GeomProfileGlyph", ggplot2::Geom,
                                     ggname("geom_profileglyph",
                                            gl)
 
-                                    # ggname("geom_starglyph",
+                                    # ggname("geom_profileglyph",
                                     #        grid::gTree(
                                     #          children = grid::gList(
                                     #            grid::pointsGrob(x = data$x,
