@@ -3,6 +3,7 @@
 export(dotglyphGrob)
 export(geom_metroglyph)
 export(geom_pieglyph)
+export(geom_profileglyph)
 export(geom_starglyph)
 export(metroglyphGrob)
 export(pieglyphGrob)

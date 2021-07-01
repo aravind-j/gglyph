@@ -8,6 +8,7 @@ reference:
       contents:
          - '`geom_metroglyph`'
          - '`geom_pieglyph`'
+         - '`geom_profileglyph`'
          - '`geom_starglyph`'
 
 
