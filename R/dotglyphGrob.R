@@ -133,10 +133,10 @@ dotglyphGrob <- function(x = .5, y = .5, z,
     circx <- mapply(function(a, b) rep(a, b), xpos, z)
     # circy <- lapply(z, function(c) y - (1:c * (radius * 2)) + radius)
     circy <- lapply(z, function(c) unit(y, "native") +
-                      (1:c * (radius * 2)) + radius)
+                      (1:c * (radius * 2)) - radius)
 
     if (mirror) {
-      circy <- mapply(function(a, b) a + (radius * b[1]), circy, z)
+      circy <- mapply(function(a, b) a - (radius * b[1]), circy, z)
     }
 
   } else {

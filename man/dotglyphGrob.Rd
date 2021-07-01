@@ -47,19 +47,19 @@ Uses \code{\link[grid]{Grid}} graphics to draw a dot profile glyph
 \insertCite{chambers_graphical_1983,dutoit_graphical_1986}{gglyph}.
 }
 \examples{
-dg1 <- dotglyphGrob(x = 150, y = 200,
+dg1 <- dotglyphGrob(x = 150, y = 300,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2)
 
-dg2 <- dotglyphGrob(x = 450, y = 200,
+dg2 <- dotglyphGrob(x = 550, y = 300,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, mirror = TRUE)
 
-dg3 <- dotglyphGrob(x = 150, y = 450,
+dg3 <- dotglyphGrob(x = 100, y = 550,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, flip.axes = TRUE)
 
-dg4 <- dotglyphGrob(x = 450, y = 450,
+dg4 <- dotglyphGrob(x = 550, y = 550,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, mirror = TRUE,
                     flip.axes = TRUE)
@@ -70,21 +70,21 @@ grid::grid.draw(dg2)
 grid::grid.draw(dg3)
 grid::grid.draw(dg4)
 
-dg1 <- dotglyphGrob(x = 150, y = 200,
+dg1 <- dotglyphGrob(x = 150, y = 300,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, fill = "black", col = "white")
 
-dg2 <- dotglyphGrob(x = 450, y = 200,
+dg2 <- dotglyphGrob(x = 550, y = 300,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, mirror = TRUE,
                     fill = "salmon", col = "black")
 
-dg3 <- dotglyphGrob(x = 150, y = 450,
+dg3 <- dotglyphGrob(x = 100, y = 550,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, flip.axes = TRUE,
                     fill = "cyan", col = "grey")
 
-dg4 <- dotglyphGrob(x = 450, y = 450,
+dg4 <- dotglyphGrob(x = 550, y = 550,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, mirror = TRUE,
                     flip.axes = TRUE,
@@ -101,21 +101,21 @@ clrs <- mapply(function(a, b) rep(a, b),
                round(c(4, 3.5, 2.7, 6.8, 3.4, 5.7)))
 clrs <- unlist(clrs)
 
-dg1 <- dotglyphGrob(x = 150, y = 200,
+dg1 <- dotglyphGrob(x = 150, y = 300,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, fill = clrs, col = "white")
 
-dg2 <- dotglyphGrob(x = 450, y = 200,
+dg2 <- dotglyphGrob(x = 550, y = 300,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, mirror = TRUE,
                     fill = clrs, col = "black")
 
-dg3 <- dotglyphGrob(x = 150, y = 450,
+dg3 <- dotglyphGrob(x = 100, y = 550,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, flip.axes = TRUE,
                     fill = "black", col = clrs, lwd = 5)
 
-dg4 <- dotglyphGrob(x = 450, y = 450,
+dg4 <- dotglyphGrob(x = 550, y = 550,
                     z = c(4, 3.5, 2.7, 6.8, 3.4, 5.7),
                     radius = 2, mirror = TRUE,
                     flip.axes = TRUE,
