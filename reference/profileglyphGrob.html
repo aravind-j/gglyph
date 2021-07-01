@@ -139,18 +139,19 @@
   col.bar <span class='op'>=</span> <span class='st'>"black"</span>,
   col.line <span class='op'>=</span> <span class='st'>"black"</span>,
   fill <span class='op'>=</span> <span class='cn'>NA</span>,
-  lwd <span class='op'>=</span> <span class='fl'>1</span>,
+  lwd.bar <span class='op'>=</span> <span class='fl'>1</span>,
+  lwd.line <span class='op'>=</span> <span class='fl'>1</span>,
   alpha <span class='op'>=</span> <span class='fl'>1</span>,
-  width <span class='op'>=</span> <span class='fl'>10</span>,
+  width <span class='op'>=</span> <span class='fl'>5</span>,
   flip.axes <span class='op'>=</span> <span class='cn'>FALSE</span>,
   bar <span class='op'>=</span> <span class='cn'>TRUE</span>,
   line <span class='op'>=</span> <span class='cn'>TRUE</span>,
   mirror <span class='op'>=</span> <span class='cn'>TRUE</span>,
   linejoin <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mitre"</span>, <span class='st'>"round"</span>, <span class='st'>"bevel"</span><span class='op'>)</span>,
   grid.levels <span class='op'>=</span> <span class='cn'>NULL</span>,
-  grid.lines <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  draw.grid <span class='op'>=</span> <span class='cn'>FALSE</span>,
   col.grid <span class='op'>=</span> <span class='st'>"grey"</span>,
-  lwd.grid <span class='op'>=</span> <span class='va'>lwd</span>
+  lwd.grid <span class='op'>=</span> <span class='fl'>1</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,10 +185,6 @@ of the profile (length of the bars).</p></td>
     <tr>
       <th>fill</th>
       <td><p>The fill colour.</p></td>
-    </tr>
-    <tr>
-      <th>lwd</th>
-      <td><p>The line width.</p></td>
     </tr>
     <tr>
       <th>alpha</th>
@@ -225,7 +222,7 @@ values in <code>z</code> at which grid lines are to be plotted. The values in
 <code>z</code> should be present in the list specified.</p></td>
     </tr>
     <tr>
-      <th>grid.lines</th>
+      <th>draw.grid</th>
       <td><p>logical. If <code>TRUE</code>, grid lines are plotted along the
 bars. Default is <code>FALSE</code>.</p></td>
     </tr>
@@ -236,6 +233,10 @@ bars. Default is <code>FALSE</code>.</p></td>
     <tr>
       <th>lwd.grid</th>
       <td><p>The line width of the grid lines.</p></td>
+    </tr>
+    <tr>
+      <th>lwd</th>
+      <td><p>The line width.</p></td>
     </tr>
     </table>
 
@@ -258,43 +259,43 @@ ISBN 978-1-4612-9371-2.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># mirror = TRUE</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>,
                              col.bar <span class='op'>=</span> <span class='st'>"salmon"</span>, col.line <span class='op'>=</span> <span class='st'>"salmon"</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     col.bar <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  col.line <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
 
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                              fill <span class='op'>=</span> <span class='st'>"salmon"</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     fill <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                                  line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  fill <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
 
@@ -305,46 +306,46 @@ ISBN 978-1-4612-9371-2.</p>
 
 <span class='co'># mirror = FALSE</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>300</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>,
                              mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>300</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>300</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>550</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                              col.bar <span class='op'>=</span> <span class='st'>"salmon"</span>, col.line <span class='op'>=</span> <span class='st'>"salmon"</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>550</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     col.bar <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>550</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, col.line <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
 
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span><span class='co'>#'</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>500</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>800</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                              fill <span class='op'>=</span> <span class='st'>"salmon"</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>500</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>800</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     fill <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>500</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>800</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                                  line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, fill <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
 
@@ -354,32 +355,32 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='img'><img src='profileglyphGrob-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># mirror = TRUE, flip.axes = TRUE</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                              col.bar <span class='op'>=</span> <span class='st'>"salmon"</span>, col.line <span class='op'>=</span> <span class='st'>"salmon"</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                     col.bar <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                  col.line <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
 
@@ -387,16 +388,16 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                              flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                              fill <span class='op'>=</span> <span class='st'>"salmon"</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                     fill <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                                  line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                  fill <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
@@ -408,17 +409,17 @@ ISBN 978-1-4612-9371-2.</p>
 
 <span class='co'># mirror = FALSE, flip.axes = TRUE</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                              mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                  mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -426,18 +427,18 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                             size <span class='op'>=</span> <span class='fl'>100</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                             size <span class='op'>=</span> <span class='fl'>20</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                              flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                              col.bar <span class='op'>=</span> <span class='st'>"salmon"</span>, col.line <span class='op'>=</span> <span class='st'>"salmon"</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                     col.bar <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                 size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                 size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                  mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, col.line <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
 
@@ -445,16 +446,16 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>barprofileglyph</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>profileglyph</span><span class='op'>)</span>
 </div><div class='input'>
-<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>barglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                              flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                              fill <span class='op'>=</span> <span class='st'>"salmon"</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                                    size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>barprofileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>450</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                                    size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                     fill <span class='op'>=</span> <span class='st'>"cyan"</span><span class='op'>)</span>
 
-<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>profileglyph</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>, size <span class='op'>=</span> <span class='fl'>20</span>,
                                  line <span class='op'>=</span> <span class='cn'>TRUE</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                                  flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                                  mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, fill <span class='op'>=</span> <span class='st'>"green"</span><span class='op'>)</span>
@@ -465,15 +466,15 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='img'><img src='profileglyphGrob-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># linejoin variants</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span>
+<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
 
-<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>250</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         linejoin <span class='op'>=</span> <span class='st'>"round"</span><span class='op'>)</span>
 
-<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>800</span>, y <span class='op'>=</span> <span class='fl'>650</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         linejoin <span class='op'>=</span> <span class='st'>"bevel"</span><span class='op'>)</span>
 
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -482,16 +483,16 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg3</span><span class='op'>)</span>
 </div><div class='img'><img src='profileglyphGrob-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.line <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         bar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>250</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.line <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         linejoin <span class='op'>=</span> <span class='st'>"round"</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>800</span>, y <span class='op'>=</span> <span class='fl'>650</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.line <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         linejoin <span class='op'>=</span> <span class='st'>"bevel"</span>, bar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -500,16 +501,16 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg3</span><span class='op'>)</span>
 </div><div class='img'><img src='profileglyphGrob-6.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         line <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>250</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         linejoin <span class='op'>=</span> <span class='st'>"round"</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>150</span>, lwd <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>25</span>,
+<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>800</span>, y <span class='op'>=</span> <span class='fl'>650</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
                         linejoin <span class='op'>=</span> <span class='st'>"bevel"</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
@@ -518,36 +519,36 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg3</span><span class='op'>)</span>
 </div><div class='img'><img src='profileglyphGrob-7.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
-<span class='va'>bg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>100</span>,
+<span class='va'>bg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>20</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bpg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>100</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                         size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bpg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                         size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                          fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>150</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>100</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>350</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>20</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bpg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>350</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                         size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bpg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>850</span>, y <span class='op'>=</span> <span class='fl'>450</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                         size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                          fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>300</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>100</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+<span class='va'>bg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>650</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bpg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>300</span>, y <span class='op'>=</span> <span class='fl'>300</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                         size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+<span class='va'>bpg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>700</span>, y <span class='op'>=</span> <span class='fl'>650</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                         size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                          fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg4</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>150</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>100</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+<span class='va'>bg4</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>350</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>20</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bpg4</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>350</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                         size <span class='op'>=</span> <span class='fl'>100</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bpg4</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>850</span>, y <span class='op'>=</span> <span class='fl'>700</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                         size <span class='op'>=</span> <span class='fl'>20</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                          flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                          fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
@@ -566,53 +567,53 @@ ISBN 978-1-4612-9371-2.</p>
 <span class='va'>gl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, <span class='fl'>6</span><span class='op'>)</span>,
             f <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span>, each <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>,
+<span class='va'>bg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>150</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
-<span class='va'>bg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>250</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>250</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
-<span class='va'>bg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>,
+<span class='va'>bg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>650</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 
-<span class='va'>bg4</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bg4</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>800</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"black"</span>,
-                        lwd <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+                        lwd.bar <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
 
-<span class='va'>bg5</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>100</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>,
+<span class='va'>bg5</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>150</span>, y <span class='op'>=</span> <span class='fl'>500</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                         col.bar <span class='op'>=</span> <span class='st'>"white"</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg6</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>250</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bg6</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>550</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                         col.bar <span class='op'>=</span> <span class='st'>"white"</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg7</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>400</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>,
+<span class='va'>bg7</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>650</span>, y <span class='op'>=</span> <span class='fl'>500</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
                         col.bar <span class='op'>=</span> <span class='st'>"white"</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>bg8</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>350</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
-                        size <span class='op'>=</span> <span class='fl'>50</span>, width <span class='op'>=</span> <span class='fl'>20</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                        grid.lines <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
+<span class='va'>bg8</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>800</span>, y <span class='op'>=</span> <span class='fl'>500</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>10</span>, width <span class='op'>=</span> <span class='fl'>5</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
+                        draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         grid.levels <span class='op'>=</span> <span class='va'>gl</span>, col.grid <span class='op'>=</span> <span class='st'>"white"</span>,
-                        col.bar <span class='op'>=</span> <span class='st'>"white"</span>, lwd <span class='op'>=</span> <span class='fl'>2</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
+                        col.bar <span class='op'>=</span> <span class='st'>"white"</span>, lwd.bar <span class='op'>=</span> <span class='fl'>5</span>, line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         fill <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>6</span>, <span class='st'>"Dark2"</span><span class='op'>)</span><span class='op'>)</span>
 
 
