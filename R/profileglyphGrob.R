@@ -11,7 +11,8 @@
 #' @param col.bar The colour of bars.
 #' @param col.line The colour of profile line(s).
 #' @param fill The fill colour.
-#' @param lwd The line width.
+#' @param lwd.line The line width of the profile line(s)
+#' @param lwd.bar The line width of the bars.
 #' @param alpha The alpha transparency value.
 #' @param width The width of the bars.
 #' @param flip.axes logical. If \code{TRUE}, axes are flipped.
@@ -657,7 +658,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     xpos <- unit(x, "native") + unit(z * size, "mm")
     ypos <- unit(y, "native") +
-      (width * seq(-(dimension - 1) / 2, (dimension - 1)/ 2,
+      (width * seq(-(dimension - 1) / 2, (dimension - 1) / 2,
                    length.out = dimension))
 
     # Specify justification
@@ -677,7 +678,7 @@ profileglyphGrob <- function(x = .5, y = .5, z,
 
     # Bar profile with/without line
     if (bar) {
-      bargrob <- grid::rectGrob(x= rep(unit(x, "native") + unit(0, "mm"),
+      bargrob <- grid::rectGrob(x = rep(unit(x, "native") + unit(0, "mm"),
                                        dimension),
                                 # x= rep(x, dimension),
                                 y = ypos,

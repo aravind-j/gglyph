@@ -44,6 +44,10 @@ of the profile (length of the bars).}
 
 \item{fill}{The fill colour.}
 
+\item{lwd.bar}{The line width of the bars.}
+
+\item{lwd.line}{The line width of the profile line(s)}
+
 \item{alpha}{The alpha transparency value.}
 
 \item{width}{The width of the bars.}
@@ -72,8 +76,6 @@ bars. Default is \code{FALSE}.}
 \item{col.grid}{The colour of the grid lines.}
 
 \item{lwd.grid}{The line width of the grid lines.}
-
-\item{lwd}{The line width.}
 }
 \value{
 A \code{\link[grid]{gTree}} object.
