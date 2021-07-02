@@ -7,8 +7,6 @@ remove_missing <- utils::getFromNamespace("remove_missing", "ggplot2")
 upgradeUnit.unit.list <- utils::getFromNamespace("upgradeUnit.unit.list",
                                                  "grid")
 
-
-
 # Check if a colour is valid
 
 #' @importFrom grDevices col2rgb
