@@ -73,7 +73,7 @@ segments when \code{scale.radius = TRUE}. Default is \code{FALSE}.}
 \item{lwd.grid}{The line width of the grid lines.}
 }
 \value{
-A \code{\link[grid]{grobTree}} object.
+A \code{\link[grid]{gTree}} object.
 }
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a circular pie or clock glyph

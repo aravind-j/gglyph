@@ -31,7 +31,7 @@
 #' @param col.grid The colour of the grid lines.
 #'
 #'
-#' @return A \code{\link[grid]{grobTree}} object.
+#' @return A \code{\link[grid]{gTree}} object.
 #'
 #' @importFrom grid rectGrob polygonGrob polylineGrob nullGrob grobTree gpar
 #'   unit.c

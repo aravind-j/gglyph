@@ -69,7 +69,7 @@ whiskers. Default is \code{FALSE}.}
 \item{point.size}{The size of the grid points in native units.}
 }
 \value{
-A \code{\link[grid]{grobTree}} object.
+A \code{\link[grid]{gTree}} object.
 }
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a metroglyph

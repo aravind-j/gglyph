@@ -76,7 +76,7 @@ bars. Default is \code{FALSE}.}
 \item{lwd}{The line width.}
 }
 \value{
-A \code{\link[grid]{grobTree}} object.
+A \code{\link[grid]{gTree}} object.
 }
 \description{
 Uses \code{\link[grid]{Grid}} graphics to draw a profile glyph

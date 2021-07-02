@@ -32,7 +32,7 @@
 #' @param lwd.grid The line width of the grid lines.
 #' @param col.grid The colour of the grid lines.
 #'
-#' @return A \code{\link[grid]{grobTree}} object.
+#' @return A \code{\link[grid]{gTree}} object.
 #'
 #' @importFrom grid gpar polygonGrob nullGrob grobTree unit unit.c
 #' @importFrom scales rescale

@@ -28,7 +28,7 @@
 #'   \code{z} should be present in the list specified.
 #' @param point.size The size of the grid points in native units.
 #'
-#' @return A \code{\link[grid]{grobTree}} object.
+#' @return A \code{\link[grid]{gTree}} object.
 #'
 #' @importFrom grid circleGrob polylineGrob grobTree gpar nullGrob unit unit.c
 #' @export
