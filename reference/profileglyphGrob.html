@@ -148,6 +148,7 @@
   line <span class='op'>=</span> <span class='cn'>TRUE</span>,
   mirror <span class='op'>=</span> <span class='cn'>TRUE</span>,
   linejoin <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mitre"</span>, <span class='st'>"round"</span>, <span class='st'>"bevel"</span><span class='op'>)</span>,
+  lineend <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"round"</span>, <span class='st'>"butt"</span>, <span class='st'>"square"</span><span class='op'>)</span>,
   grid.levels <span class='op'>=</span> <span class='cn'>NULL</span>,
   draw.grid <span class='op'>=</span> <span class='cn'>FALSE</span>,
   col.grid <span class='op'>=</span> <span class='st'>"grey"</span>,
@@ -180,11 +181,19 @@ of the profile (length of the bars).</p></td>
     </tr>
     <tr>
       <th>col.line</th>
-      <td><p>The colour of line(s).</p></td>
+      <td><p>The colour of profile line(s).</p></td>
     </tr>
     <tr>
       <th>fill</th>
       <td><p>The fill colour.</p></td>
+    </tr>
+    <tr>
+      <th>lwd.bar</th>
+      <td><p>The line width of the bars.</p></td>
+    </tr>
+    <tr>
+      <th>lwd.line</th>
+      <td><p>The line width of the profile line(s)</p></td>
     </tr>
     <tr>
       <th>alpha</th>
@@ -216,6 +225,11 @@ of the profile (length of the bars).</p></td>
 <code>"mitre"</code>, <code>"round"</code> or <code>"bevel"</code>.</p></td>
     </tr>
     <tr>
+      <th>lineend</th>
+      <td><p>The line end style for the whisker lines. Either
+<code>"round"</code>, <code>"butt"</code> or <code>"square"</code>.</p></td>
+    </tr>
+    <tr>
       <th>grid.levels</th>
       <td><p>A list of grid levels (as vectors) corresponding to the
 values in <code>z</code> at which grid lines are to be plotted. The values in
@@ -234,15 +248,11 @@ bars. Default is <code>FALSE</code>.</p></td>
       <th>lwd.grid</th>
       <td><p>The line width of the grid lines.</p></td>
     </tr>
-    <tr>
-      <th>lwd</th>
-      <td><p>The line width.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://rdrr.io/r/grid/grid.grob.html'>grobTree</a></code> object.</p>
+    <p>A <code><a href='https://rdrr.io/r/grid/grid.grob.html'>gTree</a></code> object.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Chambers JM, Cleveland WS, Kleiner B, Tukey PA (1983).
@@ -254,7 +264,7 @@ Springer-Verlag, New York.
 ISBN 978-1-4612-9371-2.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>geom_profileglyph</code></p></div>
+    <div class='dont-index'><p><code><a href='geom_profileglyph.html'>geom_profileglyph</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># mirror = TRUE</span>
@@ -518,6 +528,25 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg2</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg3</span><span class='op'>)</span>
 </div><div class='img'><img src='profileglyphGrob-7.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># lineend variants</span>
+<span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
+<span class='va'>pg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>150</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.line <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>
+
+<span class='va'>pg2</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>500</span>, y <span class='op'>=</span> <span class='fl'>400</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.line <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
+                        lineend <span class='op'>=</span> <span class='st'>"butt"</span><span class='op'>)</span>
+
+<span class='va'>pg3</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>800</span>, y <span class='op'>=</span> <span class='fl'>650</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
+                        size <span class='op'>=</span> <span class='fl'>25</span>, lwd.line <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>8</span>,
+                        lineend <span class='op'>=</span> <span class='st'>"square"</span><span class='op'>)</span>
+
+<span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.newpage.html'>grid.newpage</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg1</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg2</span><span class='op'>)</span>
+</div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>pg3</span><span class='op'>)</span>
+</div><div class='img'><img src='profileglyphGrob-8.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Bars with multiple fill colours</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.24</span>, <span class='fl'>0.3</span>, <span class='fl'>0.8</span>, <span class='fl'>1.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.33</span><span class='op'>)</span>
 <span class='va'>bg1</span> <span class='op'>&lt;-</span> <span class='fu'>profileglyphGrob</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>200</span>, y <span class='op'>=</span> <span class='fl'>200</span>, z <span class='op'>=</span> <span class='va'>dims</span>,
                         size <span class='op'>=</span> <span class='fl'>20</span>,
@@ -562,7 +591,8 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>bpg3</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>bg4</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>bpg4</span><span class='op'>)</span>
-</div><div class='img'><img src='profileglyphGrob-8.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='profileglyphGrob-9.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Grid lines</span>
 <span class='va'>dims</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>
 <span class='va'>gl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, <span class='fl'>6</span><span class='op'>)</span>,
             f <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span>, each <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
@@ -626,7 +656,7 @@ ISBN 978-1-4612-9371-2.</p>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>bg6</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>bg7</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'>grid</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/grid/grid.draw.html'>grid.draw</a></span><span class='op'>(</span><span class='va'>bg8</span><span class='op'>)</span>
-</div><div class='img'><img src='profileglyphGrob-9.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='profileglyphGrob-10.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
