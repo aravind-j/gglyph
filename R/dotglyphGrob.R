@@ -20,7 +20,7 @@
 #' @importFrom grid circleGrob gpar
 #' @export
 #'
-#' @seealso \code{\link[gglyph]{geom_dotprofileglyph}}
+#' @seealso \code{\link[gglyph]{geom_dotglyph}}
 #'
 #' @references
 #'

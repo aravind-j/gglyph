@@ -18,7 +18,7 @@
 #' @param linewidth.bar The line width of the bars.
 #' @param linewidth.grid The line width of the grid lines.
 #' @param fill.bar The fill colour of the bars.
-#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
 #'   the paired geom/stat.

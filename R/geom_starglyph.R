@@ -16,7 +16,7 @@
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
 #' @param point.size The size of the grid points in native units.
-#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
 #'   the paired geom/stat.

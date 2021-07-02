@@ -48,7 +48,7 @@ layer, as a string.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 are often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "green"} or \code{size = 3}. They may also be parameters to
 the paired geom/stat.}
@@ -80,10 +80,6 @@ display.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
-
-\item{draw.grid}{logical. If \code{TRUE}, grid points are plotted along the
-whiskers if all the variables specified in \code{cols} are of type
-\link[base]{factor}. Default is \code{FALSE}.}
 }
 \value{
 A \code{geom} layer.

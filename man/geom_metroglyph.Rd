@@ -52,7 +52,7 @@ layer, as a string.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+\item{...}{Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 are often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "green"} or \code{size = 3}. They may also be parameters to
 the paired geom/stat.}

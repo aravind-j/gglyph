@@ -132,5 +132,5 @@ grid::grid.draw(dg4)
 \insertAllCited{}
 }
 \seealso{
-\code{\link[gglyph]{geom_dotprofileglyph}}
+\code{\link[gglyph]{geom_dotglyph}}
 }

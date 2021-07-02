@@ -9,14 +9,14 @@
 #' @template fill.gradient-arg
 #' @template scale.segment.radius-arg
 #' @inheritParams ggplot2::layer
-#' @inheritParams starglyphGrob
+#' @inheritParams pieglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
 #'   glyphs as a character vector.
 #' @param fill.segment The fill colour of the segments.
 #' @param colour.grid The colour of grid lines.
 #' @param linewidth The line width of the segments.
 #' @param linewidth.grid The line width for the grid lines.
-#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer()}}. These
+#' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
 #'   the paired geom/stat.
