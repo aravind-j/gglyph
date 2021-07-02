@@ -51,6 +51,11 @@
 #' mtcars$cyl <- as.factor(mtcars$cyl)
 #' mtcars$lab <- row.names(mtcars)
 #'
+#' library(ggplot2)
+#' theme_set(theme_bw())
+#' options(ggplot2.discrete.colour = RColorBrewer::brewer.pal(8, "Dark2"))
+#' options(ggplot2.discrete.fill = RColorBrewer::brewer.pal(8, "Dark2"))
+#'
 #' # Mapped fill + scaled radius
 #' ggplot(data = mtcars) +
 #'   geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),

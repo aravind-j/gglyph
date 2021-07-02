@@ -52,6 +52,9 @@
 #' mtcars$lab <- row.names(mtcars)
 #'
 #' library(ggplot2)
+#' theme_set(theme_bw())
+#' options(ggplot2.discrete.colour = RColorBrewer::brewer.pal(8, "Dark2"))
+#' options(ggplot2.discrete.fill = RColorBrewer::brewer.pal(8, "Dark2"))
 #'
 #' # Both whiskers and contour
 #' ggplot(data = mtcars) +
@@ -166,14 +169,14 @@
 #'   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                  cols = zs, whisker = TRUE, contour = FALSE,
 #'                  size = 3, draw.grid = TRUE, point.size = 7,
-#'                  linewidth.whisker = 2, alpha = 0.6) +
+#'                  linewidth.whisker = 2, alpha = 0.7) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
 #'   geom_starglyph(aes(x = mpg, y = disp),
 #'                  cols = zs, whisker = TRUE, contour = FALSE,
 #'                  size = 3, draw.grid = TRUE,
-#'                  point.size = 5, alpha =  0.6,
+#'                  point.size = 5, alpha =  0.8,
 #'                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
 #'   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
 #'   ylim(c(-0, 550))
