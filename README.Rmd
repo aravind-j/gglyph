@@ -44,7 +44,7 @@ dver <- ifelse(test = gsub("(.\\.)(\\d+)(\\..)", "", getNamespaceVersion("gglyph
 cat(paste("[![develVersion](https://img.shields.io/badge/devel%20version-", dver, "-orange.svg)](https://github.com/aravind-j/gglyph)", sep = ""))
 ```
 [![Github Code Size](https://img.shields.io/github/languages/code-size/aravind-j/gglyph.svg)](https://github.com/aravind-j/gglyph)
-<!-- [![R-CMD-check](https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/gglyph/actions) -->
+[![R-CMD-check](https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/gglyph/actions)
 [![Project Status: WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/aravind-j/gglyph/)

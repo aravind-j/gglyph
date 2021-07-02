@@ -25,11 +25,11 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/gglyph?color=green)](ht
 [![develVersion](https://img.shields.io/badge/devel%20version-0.0.0.9000-orange.svg)](https://github.com/aravind-j/gglyph)
 [![Github Code
 Size](https://img.shields.io/github/languages/code-size/aravind-j/gglyph.svg)](https://github.com/aravind-j/gglyph)
-<!-- [![R-CMD-check](https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/gglyph/actions) -->
+[![R-CMD-check](https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/gglyph/actions)
 [![Project Status:
 WIP](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![lifecycle](https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--07--01-yellowgreen.svg)](https://github.com/aravind-j/gglyph/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2021--07--02-yellowgreen.svg)](https://github.com/aravind-j/gglyph/)
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxxx) -->
 [![Website -
 pkgdown](https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/gglyph.svg)](https://aravind-j.github.io/gglyph/)
