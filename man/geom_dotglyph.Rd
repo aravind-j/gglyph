@@ -271,4 +271,12 @@ ggplot(data = mtcars) +
 }
 \seealso{
 \code{\link[gglyph]{dotglyphGrob}}
+
+Other geoms: 
+\code{\link{geom_metroglyph}()},
+\code{\link{geom_pieglyph}()},
+\code{\link{geom_profileglyph}()},
+\code{\link{geom_starglyph}()},
+\code{\link{geom_tileglyph}()}
 }
+\concept{geoms}

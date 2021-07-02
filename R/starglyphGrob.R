@@ -33,6 +33,8 @@
 #'
 #' @return A \code{\link[grid]{gTree}} object.
 #'
+#' @family grobs
+#'
 #' @importFrom grid polygonGrob polylineGrob nullGrob grobTree gpar unit unit.c
 #' @export
 #'

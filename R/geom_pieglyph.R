@@ -26,6 +26,8 @@
 #'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
 #'   \item{shape} \item{size} \item{stroke} \item{linetype} }
 #'
+#' @family geoms
+#'
 #' @return A \code{geom} layer.
 #'
 #' @importFrom rlang as_quosures syms

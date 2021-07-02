@@ -18,6 +18,8 @@
 #' @param linejoin The line join style for the tile polygon. Either
 #'   \code{"mitre"}, \code{"round"} or \code{"bevel"}.
 #'
+#' @family grobs
+#'
 #' @return A \code{\link[grid]{grob}} object.
 #'
 #' @importFrom grid rectGrob gpar

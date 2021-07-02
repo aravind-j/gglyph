@@ -481,4 +481,12 @@ grid::grid.draw(bg8)
 }
 \seealso{
 \code{\link[gglyph]{geom_profileglyph}}
+
+Other grobs: 
+\code{\link{dotglyphGrob}()},
+\code{\link{metroglyphGrob}()},
+\code{\link{pieglyphGrob}()},
+\code{\link{starglyphGrob}()},
+\code{\link{tileglyphGrob}()}
 }
+\concept{grobs}

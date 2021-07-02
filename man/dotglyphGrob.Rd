@@ -133,4 +133,12 @@ grid::grid.draw(dg4)
 }
 \seealso{
 \code{\link[gglyph]{geom_dotglyph}}
+
+Other grobs: 
+\code{\link{metroglyphGrob}()},
+\code{\link{pieglyphGrob}()},
+\code{\link{profileglyphGrob}()},
+\code{\link{starglyphGrob}()},
+\code{\link{tileglyphGrob}()}
 }
+\concept{grobs}

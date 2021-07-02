@@ -170,4 +170,12 @@ grid::grid.draw(tg3)
 }
 \seealso{
 \code{\link[gglyph]{geom_tileglyph}}
+
+Other grobs: 
+\code{\link{dotglyphGrob}()},
+\code{\link{metroglyphGrob}()},
+\code{\link{pieglyphGrob}()},
+\code{\link{profileglyphGrob}()},
+\code{\link{starglyphGrob}()}
 }
+\concept{grobs}

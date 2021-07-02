@@ -15,6 +15,8 @@
 #' @param mirror logical. If \code{TRUE}, mirror profile is plotted.
 #' @param flip.axes logical. If \code{TRUE}, axes are flipped.
 #'
+#' @family grobs
+#'
 #' @return A \code{\link[grid]{grob}} object.
 #'
 #' @importFrom grid circleGrob gpar

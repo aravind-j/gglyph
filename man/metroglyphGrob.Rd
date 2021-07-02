@@ -284,4 +284,12 @@ grid::grid.draw(mglyph4)
 }
 \seealso{
 \code{\link[gglyph]{geom_metroglyph}}
+
+Other grobs: 
+\code{\link{dotglyphGrob}()},
+\code{\link{pieglyphGrob}()},
+\code{\link{profileglyphGrob}()},
+\code{\link{starglyphGrob}()},
+\code{\link{tileglyphGrob}()}
 }
+\concept{grobs}

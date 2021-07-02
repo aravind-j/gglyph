@@ -353,4 +353,12 @@ grid::grid.draw(sg6)
 }
 \seealso{
 \code{\link[gglyph]{geom_starglyph}}
+
+Other grobs: 
+\code{\link{dotglyphGrob}()},
+\code{\link{metroglyphGrob}()},
+\code{\link{pieglyphGrob}()},
+\code{\link{profileglyphGrob}()},
+\code{\link{tileglyphGrob}()}
 }
+\concept{grobs}

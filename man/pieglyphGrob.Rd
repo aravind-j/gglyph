@@ -247,4 +247,12 @@ grid::grid.draw(p4)
 }
 \seealso{
 \code{\link[gglyph]{geom_pieglyph}}
+
+Other grobs: 
+\code{\link{dotglyphGrob}()},
+\code{\link{metroglyphGrob}()},
+\code{\link{profileglyphGrob}()},
+\code{\link{starglyphGrob}()},
+\code{\link{tileglyphGrob}()}
 }
+\concept{grobs}
