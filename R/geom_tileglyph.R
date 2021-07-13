@@ -185,8 +185,6 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
 
                                     data <- coord$transform(data, panel_params)
 
-                                    gl <- grid::grobTree()
-
                                     grid.levels <- NULL
 
                                     # Convert factor columns to equivalent numeric
@@ -206,10 +204,8 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                       gdata <- data.frame(gdata)
                                     }
 
-                                    for (i in seq_along(data$x)) {
-                                      # addGrob to get proper overlappin of glyphs
-                                      gl <- grid::addGrob(gl,
-                                                          tileglyphGrob(x = data$x[i],
+                                    gl <- lapply(seq_along(data$x),
+                                                 function(i) tileglyphGrob(x = data$x[i],
                                                                         y = data$y[i],
                                                                         z = unlist(data[i, cols]),
                                                                         size = data$size[i],
@@ -222,10 +218,15 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                                                         },
                                                                         lwd = data$linewidth[i],
                                                                         alpha = data$alpha[i]))
-                                    }
 
-                                    ggname("geom_tileglyph",
-                                           gl)
+                                    gl <- do.call(grid::gList, gl)
+
+                                    glout <- grid::grobTree()
+
+                                    glout <- grid::setChildren(glout, gl)
+
+                                    ggname("geom_starglyph",
+                                           glout)
 
                                     # ggname("geom_tileglyph",
                                     #        grid::gTree(

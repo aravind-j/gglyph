@@ -263,9 +263,9 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
 
                                     # Check if cols are numeric or factor
                                     intfactcols <- unlist(lapply(data[, cols],
-                                                                  function(x) FALSE %in% (is.vector(x, mode = "integer") |
-                                                                                            is.vector(x, mode = "numeric") |
-                                                                                            is.factor(x))))
+                                                                 function(x) FALSE %in% (is.vector(x, mode = "integer") |
+                                                                                           is.vector(x, mode = "numeric") |
+                                                                                           is.factor(x))))
                                     if (TRUE %in% intfactcols) {
                                       stop('The following column(s) specified as "cols" in ',
                                            '"data" are not of type numeric, integer or factor:\n',
@@ -278,8 +278,8 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                         !all(unlist(lapply(data[, cols], is.factor)))) {
                                       draw.grid <- FALSE
                                       warning('All the columns specified as "cols" in ',
-                                           '"data" are not of type factor.\n',
-                                           'Unable to plot grid points.')
+                                              '"data" are not of type factor.\n',
+                                              'Unable to plot grid points.')
                                     }
 
                                     # Remove rows with missing values in "cols"
@@ -287,7 +287,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                     missvcols <- unlist(lapply(data[, cols], function(x) TRUE %in% is.na(x)))
                                     if (TRUE %in% missvcols) {
                                       warning(paste('The following column(s) in "data" have missing values:\n',
-                                                 paste(names(missvcols[missvcols]), collapse = ", ")))
+                                                    paste(names(missvcols[missvcols]), collapse = ", ")))
 
                                       data <- remove_missing(df = data, vars = cols)
                                     }
@@ -305,14 +305,6 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
 
                                       data$colour <- NULL
                                     }
-
-                                    # browser()
-                                    #
-                                    # if (params$draw.grid) {
-                                    #   data$point.size <- params$point.size
-                                    # } else {
-                                    #   data$point.size <- NA
-                                    # }
 
                                     data$linewidth.whisker <- params$linewidth.whisker
                                     data$linewidth.contour <- params$linewidth.contour
@@ -332,8 +324,6 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                         point.size) {
 
                                     data <- coord$transform(data, panel_params)
-
-                                    gl <- grid::grobTree()
 
                                     if (full) {
                                       astrt <- 0
@@ -356,49 +346,52 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                       data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                     }
 
-                                    for (i in seq_along(data$x)) {
-                                      # addGrob to get proper overlappin of glyphs
-                                      gl <- grid::addGrob(gl,
-                                                          starglyphGrob(x = data$x[i],
-                                                                        y = data$y[i],
-                                                                        z = unlist(data[i, cols]),
-                                                                        size = data$size[i],
-                                                                        col.whisker = if (is.null(colour.whisker)) {
-                                                                          data$colour[i]
-                                                                        } else {
-                                                                          colour.whisker
-                                                                        },
-                                                                        col.contour = if (is.null(colour.contour)) {
-                                                                          data$colour[i]
-                                                                        } else {
-                                                                          colour.contour
-                                                                        },
-                                                                        fill = data$fill[i],
-                                                                        lwd.whisker = data$linewidth.whisker[i],
-                                                                        lwd.contour = data$linewidth.contour[i],
-                                                                        alpha = data$alpha[i],
-                                                                        angle.start = astrt,
-                                                                        angle.stop = astp,
-                                                                        whisker = whisker,
-                                                                        contour = contour,
-                                                                        linejoin = data$linejoin[i],
-                                                                        lineend = data$lineend[i],
-                                                                        grid.levels = grid.levels,
-                                                                        draw.grid = draw.grid,
-                                                                        point.size = grid::unit(point.size, "pt"),
-                                                                        col.points = if (is.null(colour.points)) {
-                                                                          if (is.null(colour.whisker)) {
-                                                                            data$colour[i]
-                                                                          } else {
-                                                                            NA
-                                                                          }
-                                                                        } else {
-                                                                          colour.points
-                                                                        }))
-                                    }
+                                    gl <- lapply(seq_along(data$x),
+                                                 function(i) starglyphGrob(x = data$x[i],
+                                                                           y = data$y[i],
+                                                                           z = unlist(data[i, cols]),
+                                                                           size = data$size[i],
+                                                                           col.whisker = if (is.null(colour.whisker)) {
+                                                                             data$colour[i]
+                                                                           } else {
+                                                                             colour.whisker
+                                                                           },
+                                                                           col.contour = if (is.null(colour.contour)) {
+                                                                             data$colour[i]
+                                                                           } else {
+                                                                             colour.contour
+                                                                           },
+                                                                           fill = data$fill[i],
+                                                                           lwd.whisker = data$linewidth.whisker[i],
+                                                                           lwd.contour = data$linewidth.contour[i],
+                                                                           alpha = data$alpha[i],
+                                                                           angle.start = astrt,
+                                                                           angle.stop = astp,
+                                                                           whisker = whisker,
+                                                                           contour = contour,
+                                                                           linejoin = data$linejoin[i],
+                                                                           lineend = data$lineend[i],
+                                                                           grid.levels = grid.levels,
+                                                                           draw.grid = draw.grid,
+                                                                           point.size = grid::unit(point.size, "pt"),
+                                                                           col.points = if (is.null(colour.points)) {
+                                                                             if (is.null(colour.whisker)) {
+                                                                               data$colour[i]
+                                                                             } else {
+                                                                               NA
+                                                                             }
+                                                                           } else {
+                                                                             colour.points
+                                                                           }))
+
+                                    gl <- do.call(grid::gList, gl)
+
+                                    glout <- grid::grobTree()
+
+                                    glout <- grid::setChildren(glout, gl)
 
                                     ggname("geom_starglyph",
-                                           gl)
+                                           glout)
 
                                     # ggname("geom_starglyph",
                                     #        grid::gTree(

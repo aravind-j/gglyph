@@ -332,14 +332,6 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                        data$colour <- NULL
                                      }
 
-                                     # browser()
-                                     #
-                                     # if (params$draw.grid) {
-                                     #   data$point.size <- params$point.size
-                                     # } else {
-                                     #   data$point.size <- NA
-                                     # }
-
                                      data$linewidth.ray <- params$linewidth.ray
                                      data$linewidth.circle <- params$linewidth.circle
                                      data
@@ -358,8 +350,6 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                                          point.size) {
 
                                      data <- coord$transform(data, panel_params)
-
-                                     gl <- grid::grobTree()
 
                                      if (full) {
                                        astrt <- 0
@@ -382,47 +372,50 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                        data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                      }
 
-                                     for (i in seq_along(data$x)) {
-                                       # addGrob to get proper overlappin of glyphs
-                                       gl <- grid::addGrob(gl,
-                                                           metroglyphGrob(x = data$x[i],
-                                                                         y = data$y[i],
-                                                                         z = unlist(data[i, cols]),
-                                                                         size = data$size[i],
-                                                                         circle.size = circle.size,
-                                                                         col.ray = if (is.null(colour.ray)) {
-                                                                           data$colour[i]
-                                                                         } else {
-                                                                           colour.ray
-                                                                         },
-                                                                         col.circle = if (is.null(colour.circle)) {
-                                                                           data$colour[i]
-                                                                         } else {
-                                                                           colour.circle
-                                                                         },
-                                                                         fill = data$fill[i],
-                                                                         lwd.ray = data$linewidth.ray[i],
-                                                                         lwd.circle = data$linewidth.circle[i],
-                                                                         alpha = data$alpha[i],
-                                                                         angle.start = astrt,
-                                                                         angle.stop = astp,
-                                                                         lineend = data$lineend[i],
-                                                                         grid.levels = grid.levels,
-                                                                         draw.grid = draw.grid,
-                                                                         point.size = grid::unit(point.size, "pt"),
-                                                                         col.points = if (is.null(colour.points)) {
-                                                                           if (is.null(colour.ray)) {
-                                                                             data$colour[i]
-                                                                           } else {
-                                                                             NA
-                                                                           }
-                                                                         } else {
-                                                                           colour.points
-                                                                         }))
-                                     }
+                                     gl <- lapply(seq_along(data$x),
+                                                  function(i) metroglyphGrob(x = data$x[i],
+                                                                             y = data$y[i],
+                                                                             z = unlist(data[i, cols]),
+                                                                             size = data$size[i],
+                                                                             circle.size = circle.size,
+                                                                             col.ray = if (is.null(colour.ray)) {
+                                                                               data$colour[i]
+                                                                             } else {
+                                                                               colour.ray
+                                                                             },
+                                                                             col.circle = if (is.null(colour.circle)) {
+                                                                               data$colour[i]
+                                                                             } else {
+                                                                               colour.circle
+                                                                             },
+                                                                             fill = data$fill[i],
+                                                                             lwd.ray = data$linewidth.ray[i],
+                                                                             lwd.circle = data$linewidth.circle[i],
+                                                                             alpha = data$alpha[i],
+                                                                             angle.start = astrt,
+                                                                             angle.stop = astp,
+                                                                             lineend = data$lineend[i],
+                                                                             grid.levels = grid.levels,
+                                                                             draw.grid = draw.grid,
+                                                                             point.size = grid::unit(point.size, "pt"),
+                                                                             col.points = if (is.null(colour.points)) {
+                                                                               if (is.null(colour.ray)) {
+                                                                                 data$colour[i]
+                                                                               } else {
+                                                                                 NA
+                                                                               }
+                                                                             } else {
+                                                                               colour.points
+                                                                             }))
 
-                                     ggname("geom_metroglyph",
-                                            gl)
+                                     gl <- do.call(grid::gList, gl)
+
+                                     glout <- grid::grobTree()
+
+                                     glout <- grid::setChildren(glout, gl)
+
+                                     ggname("geom_starglyph",
+                                            glout)
 
                                      # ggname("geom_metroglyph",
                                      #        grid::gTree(
