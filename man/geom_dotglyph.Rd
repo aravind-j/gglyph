@@ -90,10 +90,9 @@ The dotglyph geom is used to plot multivariate data as dot profile glyphs
 scatterplot.
 }
 \section{Aesthetics}{
- \code{geom_pieglyph()} understands the following
+ \code{geom_dotglyph()} understands the following
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
-  \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-  \item{shape} \item{size} \item{stroke} \item{linetype} }
+  \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group} }
 }
 
 \examples{
