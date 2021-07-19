@@ -8,7 +8,7 @@
 #' @param z A numeric vector specifying the values to be plotted as dimensions
 #'   of the pie glyph according to the arguments \code{scale.segment} or
 #'   \code{scale.radius}.
-#' @param size The size of glyphs.
+#' @param size The size of glyphs (radius).
 #' @param edges The number of edges of the polygon to depict the circular glyph
 #'   outline.
 #' @param col The line colour.

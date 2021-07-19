@@ -24,7 +24,7 @@
 #' @section Aesthetics: \code{geom_metroglyph()} understands the following
 #'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
 #'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-#'   \item{shape} \item{size} \item{stroke} \item{linetype} }
+#'   \item{circle.size} }
 #'
 #' @family geoms
 #'
@@ -63,14 +63,14 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
 #'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2, fill = "gray30",
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
@@ -78,7 +78,7 @@
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
 #'                   full = FALSE,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
@@ -86,7 +86,7 @@
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   full = FALSE,
 #'                   linewidth.circle = 2, linewidth.ray = 2, fill = "gray30",
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' # Mapped colour + fill
@@ -94,7 +94,7 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl, fill = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
@@ -102,7 +102,7 @@
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   full = FALSE,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' # Mapped fill
@@ -110,7 +110,7 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
@@ -118,7 +118,7 @@
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
 #'                   colour.circle = "transparent",
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
@@ -126,7 +126,7 @@
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   full = FALSE,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
@@ -134,7 +134,7 @@
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   full = FALSE, colour.circle = "transparent",
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550))
 #'
 #' # Rays with colours
@@ -161,7 +161,7 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550)) +
 #'   facet_grid(. ~ cyl)
 #'
@@ -169,7 +169,7 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 10, alpha =  0.8, lineend = "butt") +
+#'                   size = 10, alpha =  0.8) +
 #'   ylim(c(-0, 550)) +
 #'   facet_grid(. ~ cyl)
 #'
@@ -190,7 +190,7 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 2.5, alpha =  0.8, lineend = "butt",
+#'                   size = 2.5, alpha =  0.8,
 #'                   draw.grid = TRUE, point.size = 5) +
 #'   ylim(c(-0, 550))
 #'
@@ -198,7 +198,7 @@
 #'   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                   cols = zs, circle.size = 3, colour.ray = NULL,
 #'                   linewidth.circle = 2, linewidth.ray = 2,
-#'                   size = 2.5, alpha =  0.8, lineend = "butt",
+#'                   size = 2.5, alpha =  0.8,
 #'                   draw.grid = TRUE, point.size = 5) +
 #'   ylim(c(-0, 550))
 #'
@@ -221,6 +221,7 @@ geom_metroglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                             colour.points = NULL,
                             linewidth.circle = 1,
                             linewidth.ray = 1,
+                            lineend = "butt",
                             full = TRUE,
                             draw.grid = FALSE,
                             point.size = 1,
@@ -240,6 +241,7 @@ geom_metroglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     colour.ray = colour.ray,
     colour.points = colour.points,
     full = full,
+    lineend = lineend,
     draw.grid = draw.grid,
     point.size = point.size,
     cols = cols, ...)
@@ -260,12 +262,10 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                    required_aes = c("x", "y"),
                                    default_aes = ggplot2::aes(colour = "black",
                                                               size = 1,
-                                                              shape = 19,
+                                                              circle.size = 1,
                                                               fill = NA,
-                                                              stroke = 0.5,
-                                                              linetype = 1,
-                                                              alpha = 1,
-                                                              lineend = "round"),
+                                                              # linetype = 1,
+                                                              alpha = 1),
 
                                    draw_key = ggplot2::draw_key_polygon,
 
@@ -334,6 +334,7 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
 
                                      data$linewidth.ray <- params$linewidth.ray
                                      data$linewidth.circle <- params$linewidth.circle
+                                     data$lineend <- params$lineend
                                      data
                                    },
 
@@ -346,6 +347,7 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                                          colour.circle,
                                                          colour.points,
                                                          full,
+                                                         lineend,
                                                          draw.grid,
                                                          point.size) {
 
@@ -377,7 +379,7 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                                                              y = data$y[i],
                                                                              z = unlist(data[i, cols]),
                                                                              size = data$size[i],
-                                                                             circle.size = circle.size,
+                                                                             circle.size = data$circle.size[i],
                                                                              col.ray = if (is.null(colour.ray)) {
                                                                                data$colour[i]
                                                                              } else {

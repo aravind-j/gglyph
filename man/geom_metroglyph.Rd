@@ -18,6 +18,7 @@ geom_metroglyph(
   colour.points = NULL,
   linewidth.circle = 1,
   linewidth.ray = 1,
+  lineend = "butt",
   full = TRUE,
   draw.grid = FALSE,
   point.size = 1,
@@ -60,7 +61,7 @@ the paired geom/stat.}
 \item{cols}{Name of columns specifying the variables to be plotted in the
 glyphs as a character vector.}
 
-\item{circle.size}{The size of the central circle.}
+\item{circle.size}{The size of the central circle (radius).}
 
 \item{colour.circle}{The colour of circles.}
 
@@ -71,6 +72,9 @@ glyphs as a character vector.}
 \item{linewidth.circle}{The circle line width.}
 
 \item{linewidth.ray}{The ray line width.}
+
+\item{lineend}{The line end style for the rays. Either \code{"round"},
+\code{"butt"} or \code{"square"}.}
 
 \item{full}{logical. If \code{TRUE}, full star glyphs (360°) are plotted,
 otherwise half star glyphs (180°) are plotted.}
@@ -104,7 +108,7 @@ in a scatterplot.
  \code{geom_metroglyph()} understands the following
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-  \item{shape} \item{size} \item{stroke} \item{linetype} }
+  \item{circle.size} }
 }
 
 \examples{
@@ -125,14 +129,14 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2, fill = "gray30",
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -140,7 +144,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
                   full = FALSE,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -148,7 +152,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE,
                   linewidth.circle = 2, linewidth.ray = 2, fill = "gray30",
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 # Mapped colour + fill
@@ -156,7 +160,7 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl, fill = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -164,7 +168,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 # Mapped fill
@@ -172,7 +176,7 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -180,7 +184,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
                   colour.circle = "transparent",
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -188,7 +192,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -196,7 +200,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   full = FALSE, colour.circle = "transparent",
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550))
 
 # Rays with colours
@@ -223,7 +227,7 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
@@ -231,7 +235,7 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 10, alpha =  0.8, lineend = "butt") +
+                  size = 10, alpha =  0.8) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
@@ -252,7 +256,7 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 2.5, alpha =  0.8, lineend = "butt",
+                  size = 2.5, alpha =  0.8,
                   draw.grid = TRUE, point.size = 5) +
   ylim(c(-0, 550))
 
@@ -260,7 +264,7 @@ ggplot(data = mtcars) +
   geom_metroglyph(aes(x = mpg, y = disp, fill = cyl),
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
-                  size = 2.5, alpha =  0.8, lineend = "butt",
+                  size = 2.5, alpha =  0.8,
                   draw.grid = TRUE, point.size = 5) +
   ylim(c(-0, 550))
 

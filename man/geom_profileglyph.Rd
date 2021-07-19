@@ -12,6 +12,7 @@ geom_profileglyph(
   ...,
   cols = character(0L),
   width = 10,
+  size = 1,
   colour.bar = NULL,
   colour.line = NULL,
   colour.grid = NULL,
@@ -66,6 +67,8 @@ glyphs as a character vector.}
 
 \item{width}{The width of the bars.}
 
+\item{size}{The size of glyphs.}
+
 \item{colour.bar}{The colour of bars.}
 
 \item{colour.line}{The colour of profile line(s).}
@@ -118,8 +121,7 @@ scatterplot.
 \section{Aesthetics}{
  \code{geom_pieglyph()} understands the following
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
-  \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-  \item{shape} \item{size} \item{stroke} \item{linetype} }
+  \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group} }
 }
 
 \examples{

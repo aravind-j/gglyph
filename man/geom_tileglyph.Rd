@@ -11,6 +11,8 @@ geom_tileglyph(
   position = "identity",
   ...,
   cols = character(0L),
+  colour = "black",
+  fill = NA,
   ratio = 1,
   nrow = 1,
   linewidth = 1,
@@ -54,6 +56,8 @@ the paired geom/stat.}
 \item{cols}{Name of columns specifying the variables to be plotted in the
 glyphs as a character vector.}
 
+\item{fill}{The fill colour.}
+
 \item{ratio}{The aspect ratio (height / width).}
 
 \item{nrow}{The number of rows.}
@@ -86,8 +90,7 @@ to 'autoglyph' \insertCite{beddow_shape_1990}{gglyph} or 'stripe glyph'
 \section{Aesthetics}{
  \code{geom_pieglyph()} understands the following
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
-  \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-  \item{shape} \item{size} \item{stroke} \item{linetype} }
+  \item{\strong{y}} \item{alpha} \item{group} \item{size} }
 }
 
 \examples{

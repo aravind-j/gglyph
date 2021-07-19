@@ -24,7 +24,7 @@
 #' @section Aesthetics: \code{geom_pieglyph()} understands the following
 #'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
 #'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-#'   \item{shape} \item{size} \item{stroke} \item{linetype} }
+#'   \item{size} }
 #'
 #' @family geoms
 #'
@@ -310,12 +310,8 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                  required_aes = c("x", "y"),
                                  default_aes = ggplot2::aes(colour = "black",
                                                             size = 1,
-                                                            shape = 19,
                                                             fill = NA,
-                                                            stroke = 0.5,
-                                                            linetype = 1,
-                                                            alpha = 1,
-                                                            linejoin = "mitre"),
+                                                            alpha = 1),
 
                                  draw_key = ggplot2::draw_key_polygon,
 
@@ -384,6 +380,7 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
 
                                    data$linewidth <- params$linewidth
                                    data$linewidth.grid <- params$linewidth.grid
+                                   data$linejoin <- "mitre"
                                    data
 
                                  },

@@ -18,8 +18,7 @@
 #'
 #' @section Aesthetics: \code{geom_pieglyph()} understands the following
 #'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
-#'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-#'   \item{shape} \item{size} \item{stroke} \item{linetype} }
+#'   \item{\strong{y}} \item{alpha} \item{group} \item{size} }
 #'
 #' @family geoms
 #'
@@ -86,6 +85,8 @@
 geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            position = "identity", ...,
                            cols = character(0L),
+                           colour = "black",
+                           fill = NA,
                            ratio = 1,
                            nrow = 1,
                            linewidth = 1,
@@ -101,6 +102,8 @@ geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
   params <- list(
     ratio = ratio,
     nrow = nrow,
+    colour = colour,
+    fill = fill,
     fill.gradient = fill.gradient,
     cols = cols, ...)
 
@@ -118,15 +121,8 @@ geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
 
 GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                   required_aes = c("x", "y"),
-                                  default_aes = ggplot2::aes(colour = "black",
-                                                             size = 1,
-                                                             shape = 19,
-                                                             fill = NA,
-                                                             stroke = 0.5,
-                                                             linetype = 1,
-                                                             alpha = 1,
-                                                             linejoin = "mitre",
-                                                             lineend = "round"),
+                                  default_aes = ggplot2::aes(size = 1,
+                                                             alpha = 1),
 
                                   draw_key = ggplot2::draw_key_polygon,
 
@@ -174,6 +170,8 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                     }
 
                                     data$linewidth <- params$linewidth
+                                    data$colour <- params$colour
+                                    data$fill <- params$fill
                                     data
                                   },
 
@@ -181,6 +179,7 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                                         coord, cols,
                                                         ratio,
                                                         nrow,
+                                                        colour, fill,
                                                         fill.gradient) {
 
                                     data <- coord$transform(data, panel_params)
@@ -217,7 +216,9 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                                                           data$fill[i]
                                                                         },
                                                                         lwd = data$linewidth[i],
-                                                                        alpha = data$alpha[i]))
+                                                                        alpha = data$alpha[i],
+                                                                        col = colour,
+                                                                        linejoin = "mitre"))
 
                                     gl <- do.call(grid::gList, gl)
 

@@ -112,7 +112,7 @@ scatterplot.
  \code{geom_pieglyph()} understands the following
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-  \item{shape} \item{size} \item{stroke} \item{linetype} }
+  \item{size} }
 }
 
 \examples{

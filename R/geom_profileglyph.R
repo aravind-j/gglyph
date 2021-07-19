@@ -25,8 +25,7 @@
 #'
 #' @section Aesthetics: \code{geom_pieglyph()} understands the following
 #'   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
-#'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
-#'   \item{shape} \item{size} \item{stroke} \item{linetype} }
+#'   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group} }
 #'
 #' @family geoms
 #'
@@ -423,6 +422,7 @@ geom_profileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                               position = "identity", ...,
                               cols = character(0L),
                               width = 10,
+                              size = 1,
                               colour.bar = NULL,
                               colour.line = NULL,
                               colour.grid = NULL,
@@ -446,6 +446,7 @@ geom_profileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
 
   params <- list(
     width = width,
+    size = size,
     colour.grid = colour.grid,
     colour.line = colour.line,
     colour.bar = colour.bar,
@@ -476,14 +477,8 @@ geom_profileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
 GeomProfileGlyph <- ggplot2::ggproto("GeomProfileGlyph", ggplot2::Geom,
                                      required_aes = c("x", "y"),
                                      default_aes = ggplot2::aes(colour = "black",
-                                                                size = 1,
-                                                                shape = 19,
                                                                 fill = NA,
-                                                                stroke = 0.5,
-                                                                linetype = 1,
-                                                                alpha = 1,
-                                                                linejoin = "mitre",
-                                                                lineend = "round"),
+                                                                alpha = 1),
 
                                      draw_key = ggplot2::draw_key_polygon,
 
@@ -553,12 +548,16 @@ GeomProfileGlyph <- ggplot2::ggproto("GeomProfileGlyph", ggplot2::Geom,
                                        data$linewidth.bar <- params$linewidth.bar
                                        data$linewidth.line <- params$linewidth.line
                                        data$linewidth.grid <- params$linewidth.grid
+                                       data$linejoin <- "mitre"
+                                       data$lineend <- "round"
+                                       data$size <- params$size
                                        data
                                      },
 
                                      draw_panel = function(data, panel_params,
                                                            coord, cols,
                                                            width,
+                                                           size,
                                                            colour.grid,
                                                            colour.line,
                                                            colour.bar,
