@@ -7,7 +7,7 @@
 #' @param y A numeric vector or unit object specifying y-locations.
 #' @param z A numeric vector specifying the length of rays.
 #' @param size The size of rays.
-#' @param circle.size The size of the central circle.
+#' @param circle.size The size of the central circle (radius).
 #' @param col.circle The circle colour.
 #' @param col.ray The colour of rays.
 #' @param col.points The colour of grid points.

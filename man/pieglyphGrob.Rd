@@ -34,7 +34,7 @@ pieglyphGrob(
 of the pie glyph according to the arguments \code{scale.segment} or
 \code{scale.radius}.}
 
-\item{size}{The size of glyphs.}
+\item{size}{The size of glyphs (radius).}
 
 \item{edges}{The number of edges of the polygon to depict the circular glyph
 outline.}

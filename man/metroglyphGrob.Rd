@@ -34,7 +34,7 @@ metroglyphGrob(
 
 \item{size}{The size of rays.}
 
-\item{circle.size}{The size of the central circle.}
+\item{circle.size}{The size of the central circle (radius).}
 
 \item{col.circle}{The circle colour.}
 
