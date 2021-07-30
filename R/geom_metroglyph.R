@@ -246,11 +246,15 @@ geom_metroglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     point.size = point.size,
     cols = cols, ...)
 
+  # Modify geom aesthetics to include cols
+  geomout <- GeomMetroGlyph
+  geomout$required_aes <- c(geomout$required_aes, cols)
+
   ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomMetroGlyph,
+    geom = geomout,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,

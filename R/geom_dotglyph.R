@@ -233,11 +233,15 @@ geom_dotglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     linewidth = linewidth,
     cols = cols, ...)
 
+  # Modify geom aesthetics to include cols
+  geomout <- GeomDotGlyph
+  geomout$required_aes <- c(geomout$required_aes, cols)
+
   ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomDotGlyph,
+    geom = geomout,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,

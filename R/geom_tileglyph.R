@@ -107,11 +107,15 @@ geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     fill.gradient = fill.gradient,
     cols = cols, ...)
 
+  # Modify geom aesthetics to include cols
+  geomout <- GeomTileGlyph
+  geomout$required_aes <- c(geomout$required_aes, cols)
+
   ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomTileGlyph,
+    geom = geomout,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,

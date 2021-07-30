@@ -217,11 +217,15 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     point.size = point.size,
     cols = cols, ...)
 
+  # Modify geom aesthetics to include cols
+  geomout <- GeomStarGlyph
+  geomout$required_aes <- c(geomout$required_aes, cols)
+
   ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomStarGlyph,
+    geom = geomout,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
