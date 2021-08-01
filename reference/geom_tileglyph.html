@@ -142,6 +142,7 @@ to 'autoglyph' (Beddow 1990)
   position <span class='op'>=</span> <span class='st'>"identity"</span>,
   <span class='va'>...</span>,
   cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='fl'>0L</span><span class='op'>)</span>,
+  colour <span class='op'>=</span> <span class='st'>"black"</span>,
   ratio <span class='op'>=</span> <span class='fl'>1</span>,
   nrow <span class='op'>=</span> <span class='fl'>1</span>,
   linewidth <span class='op'>=</span> <span class='fl'>1</span>,
@@ -197,6 +198,10 @@ the paired geom/stat.</p></td>
 glyphs as a character vector.</p></td>
     </tr>
     <tr>
+      <th>colour</th>
+      <td><p>The colour of the tile glyphs.</p></td>
+    </tr>
+    <tr>
       <th>ratio</th>
       <td><p>The aspect ratio (height / width).</p></td>
     </tr>
@@ -241,13 +246,8 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
 <li><p><strong>x</strong></p></li>
 <li><p><strong>y</strong></p></li>
 <li><p>alpha</p></li>
-<li><p>colour</p></li>
-<li><p>fill</p></li>
 <li><p>group</p></li>
-<li><p>shape</p></li>
 <li><p>size</p></li>
-<li><p>stroke</p></li>
-<li><p>linetype</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -289,7 +289,7 @@ ISBN 978-1-4503-1899-0.</p>
                  fill.gradient <span class='op'>=</span> <span class='st'>"Blues"</span>,
                  alpha <span class='op'>=</span>  <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_tileglyph-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_tileglyph-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_tileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                  cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>2</span>,
@@ -297,7 +297,7 @@ ISBN 978-1-4503-1899-0.</p>
                  fill.gradient <span class='op'>=</span> <span class='st'>"Greens"</span>,
                  alpha <span class='op'>=</span>  <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_tileglyph-2.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_tileglyph-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_tileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                  cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>1</span>,
@@ -305,7 +305,7 @@ ISBN 978-1-4503-1899-0.</p>
                  fill.gradient <span class='op'>=</span> <span class='st'>"RdYlBu"</span>,
                  alpha <span class='op'>=</span>  <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_tileglyph-3.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_tileglyph-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_tileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                  cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>1</span>,
@@ -313,7 +313,7 @@ ISBN 978-1-4503-1899-0.</p>
                  fill.gradient <span class='op'>=</span> <span class='st'>"viridis"</span>,
                  alpha <span class='op'>=</span>  <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_tileglyph-4.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_tileglyph-4.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

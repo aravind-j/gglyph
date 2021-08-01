@@ -141,6 +141,7 @@ scatterplot.</p>
   <span class='va'>...</span>,
   cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span><span class='op'>(</span><span class='fl'>0L</span><span class='op'>)</span>,
   width <span class='op'>=</span> <span class='fl'>10</span>,
+  size <span class='op'>=</span> <span class='fl'>1</span>,
   colour.bar <span class='op'>=</span> <span class='cn'>NULL</span>,
   colour.line <span class='op'>=</span> <span class='cn'>NULL</span>,
   colour.grid <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -207,6 +208,10 @@ glyphs as a character vector.</p></td>
     <tr>
       <th>width</th>
       <td><p>The width of the bars.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>The size of glyphs.</p></td>
     </tr>
     <tr>
       <th>colour.bar</th>
@@ -294,10 +299,6 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
 <li><p>colour</p></li>
 <li><p>fill</p></li>
 <li><p>group</p></li>
-<li><p>shape</p></li>
-<li><p>size</p></li>
-<li><p>stroke</p></li>
-<li><p>linetype</p></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -337,28 +338,28 @@ ISBN 978-1-4612-9371-2.</p>
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-2.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-3.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-4.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Mapped fill + line</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
@@ -366,28 +367,28 @@ ISBN 978-1-4612-9371-2.</p>
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-5.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-6.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-6.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-7.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-7.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-8.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-8.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Mapped fill + bar</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
@@ -395,56 +396,56 @@ ISBN 978-1-4612-9371-2.</p>
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-9.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-9.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-10.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-10.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-11.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-11.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-12.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-12.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Mapped colour + bar and line</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-13.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-13.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-14.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-14.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-15.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-15.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-16.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-16.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Mapped colour + line</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
@@ -452,28 +453,28 @@ ISBN 978-1-4612-9371-2.</p>
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-17.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-17.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-18.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-18.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-19.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-19.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     line <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-20.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-20.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Mapped colour + bar</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
@@ -481,28 +482,28 @@ ISBN 978-1-4612-9371-2.</p>
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-21.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-21.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-22.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-22.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-23.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-23.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     bar <span class='op'>=</span> <span class='cn'>FALSE</span>, mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-24.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-24.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Bars with different fill + bar and line</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
@@ -510,7 +511,7 @@ ISBN 978-1-4612-9371-2.</p>
                     fill.bar <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='st'>"Dark2"</span><span class='op'>)</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-25.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-25.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -518,7 +519,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-26.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-26.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -526,7 +527,7 @@ ISBN 978-1-4612-9371-2.</p>
                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-27.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-27.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -534,7 +535,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-28.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-28.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Bars with different fill + bar</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
@@ -543,7 +544,7 @@ ISBN 978-1-4612-9371-2.</p>
                     fill.bar <span class='op'>=</span> <span class='fu'>RColorBrewer</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span><span class='op'>(</span><span class='fl'>8</span>, <span class='st'>"Dark2"</span><span class='op'>)</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-29.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-29.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -552,7 +553,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-30.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-30.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -561,7 +562,7 @@ ISBN 978-1-4612-9371-2.</p>
                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-31.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-31.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -570,7 +571,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-32.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-32.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Bars with gradient fill + bar and line</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
@@ -578,7 +579,7 @@ ISBN 978-1-4612-9371-2.</p>
                     fill.gradient <span class='op'>=</span> <span class='st'>"Greens"</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-33.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-33.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -586,7 +587,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-34.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-34.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -594,7 +595,7 @@ ISBN 978-1-4612-9371-2.</p>
                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-35.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-35.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -602,7 +603,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-36.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-36.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Bars with gradient fill + bar</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
@@ -611,7 +612,7 @@ ISBN 978-1-4612-9371-2.</p>
                     fill.gradient <span class='op'>=</span> <span class='st'>"Greens"</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-37.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-37.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -620,7 +621,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-38.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-38.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -629,7 +630,7 @@ ISBN 978-1-4612-9371-2.</p>
                     flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-39.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-39.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -638,7 +639,7 @@ ISBN 978-1-4612-9371-2.</p>
                     mirror <span class='op'>=</span> <span class='cn'>FALSE</span>, flip.axes <span class='op'>=</span> <span class='cn'>TRUE</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-40.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-40.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Faceted</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
@@ -646,14 +647,14 @@ ISBN 978-1-4612-9371-2.</p>
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span><span class='op'>(</span><span class='va'>.</span> <span class='op'>~</span> <span class='va'>cyl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-41.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-41.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, colour <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span><span class='op'>(</span><span class='va'>.</span> <span class='op'>~</span> <span class='va'>cyl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-42.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-42.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>5</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
@@ -661,7 +662,7 @@ ISBN 978-1-4612-9371-2.</p>
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span><span class='op'>(</span><span class='va'>.</span> <span class='op'>~</span> <span class='va'>cyl</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-43.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-43.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 <span class='va'>mtcars</span><span class='op'>[</span> , <span class='va'>zs</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>[</span> , <span class='va'>zs</span><span class='op'>]</span>, <span class='fu'>scales</span><span class='fu'>::</span><span class='va'><a href='https://scales.r-lib.org/reference/rescale.html'>rescale</a></span><span class='op'>)</span>
 
@@ -679,20 +680,20 @@ ISBN 978-1-4612-9371-2.</p>
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>3</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span>, draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-44.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-44.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, col <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>3</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span>, draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-45.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-45.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_profileglyph</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mpg</span>, y <span class='op'>=</span> <span class='va'>disp</span>, fill <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span>,
                     cols <span class='op'>=</span> <span class='va'>zs</span>, size <span class='op'>=</span> <span class='fl'>3</span>, width <span class='op'>=</span> <span class='fl'>1</span>,
                     fill.gradient <span class='op'>=</span> <span class='st'>"Blues"</span>,
                     alpha <span class='op'>=</span>  <span class='fl'>0.8</span>, draw.grid <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0</span>, <span class='fl'>550</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ignoring unknown aesthetics: hp, drat, wt, qsec, vs, am, gear, carb</span></div><div class='img'><img src='geom_profileglyph-46.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='geom_profileglyph-46.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
