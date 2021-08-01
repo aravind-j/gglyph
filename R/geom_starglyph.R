@@ -33,7 +33,7 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob
+#' @importFrom grid grobTree addGrob makeContent gTree setChildren
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -350,52 +350,27 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                       data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                     }
 
-                                    gl <- lapply(seq_along(data$x),
-                                                 function(i) starglyphGrob(x = data$x[i],
-                                                                           y = data$y[i],
-                                                                           z = unlist(data[i, cols]),
-                                                                           size = data$size[i],
-                                                                           col.whisker = if (is.null(colour.whisker)) {
-                                                                             data$colour[i]
-                                                                           } else {
-                                                                             colour.whisker
-                                                                           },
-                                                                           col.contour = if (is.null(colour.contour)) {
-                                                                             data$colour[i]
-                                                                           } else {
-                                                                             colour.contour
-                                                                           },
-                                                                           fill = data$fill[i],
-                                                                           lwd.whisker = data$linewidth.whisker[i],
-                                                                           lwd.contour = data$linewidth.contour[i],
-                                                                           alpha = data$alpha[i],
-                                                                           angle.start = astrt,
-                                                                           angle.stop = astp,
-                                                                           whisker = whisker,
-                                                                           contour = contour,
-                                                                           linejoin = data$linejoin[i],
-                                                                           lineend = data$lineend[i],
-                                                                           grid.levels = grid.levels,
-                                                                           draw.grid = draw.grid,
-                                                                           point.size = grid::unit(point.size, "pt"),
-                                                                           col.points = if (is.null(colour.points)) {
-                                                                             if (is.null(colour.whisker)) {
-                                                                               data$colour[i]
-                                                                             } else {
-                                                                               NA
-                                                                             }
-                                                                           } else {
-                                                                             colour.points
-                                                                           }))
-
-                                    gl <- do.call(grid::gList, gl)
-
-                                    glout <- grid::grobTree()
-
-                                    glout <- grid::setChildren(glout, gl)
-
                                     ggname("geom_starglyph",
-                                           glout)
+                                           grid::gTree(data=data,
+                                                       # x = x, y = y,
+                                                       cols=cols,
+                                                       # fill = fill,
+                                                       colour.whisker = colour.whisker,
+                                                       colour.contour = colour.contour,
+                                                       linewidth.whisker = linewidth.whisker,
+                                                       linewidth.contour = linewidth.contour,
+                                                       # alpha = alpha,
+                                                       astrt = astrt,
+                                                       astp = astp,
+                                                       whisker = whisker,
+                                                       contour = contour,
+                                                       # linejoin = "mitre",
+                                                       # lineend = "round",
+                                                       grid.levels = grid.levels,
+                                                       draw.grid = draw.grid,
+                                                       point.size = point.size,
+                                                       colour.points = colour.points,
+                                                       cl="starglyphtree"))
 
                                     # ggname("geom_starglyph",
                                     #        grid::gTree(
@@ -409,3 +384,53 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                     #          )))
                                   }
 )
+
+#' grid::makeContent function for the grobTree of starglyphGrob objects
+#' @param g A grid grobTree.
+#' @export
+#' @noRd
+makeContent.starglyphtree <- function(g) {
+
+  gl <- lapply(seq_along(g$data$x),
+               function(i) starglyphGrob(x = g$data$x[i],
+                                         y = g$data$y[i],
+                                         z = unlist(g$data[i, g$cols]),
+                                         size = g$data$size[i],
+                                         col.whisker = if (is.null(g$colour.whisker)) {
+                                           g$data$colour[i]
+                                         } else {
+                                           g$colour.whisker
+                                         },
+                                         col.contour = if (is.null(g$colour.contour)) {
+                                           g$data$colour[i]
+                                         } else {
+                                           g$colour.contour
+                                         },
+                                         fill = g$data$fill[i],
+                                         lwd.whisker = g$data$linewidth.whisker[i],
+                                         lwd.contour = g$data$linewidth.contour[i],
+                                         alpha = g$data$alpha[i],
+                                         angle.start = g$astrt,
+                                         angle.stop = g$astp,
+                                         whisker = g$whisker,
+                                         contour = g$contour,
+                                         linejoin = g$data$linejoin[i],
+                                         lineend = g$data$lineend[i],
+                                         grid.levels = g$grid.levels,
+                                         draw.grid = g$draw.grid,
+                                         point.size = grid::unit(g$point.size, "pt"),
+                                         col.points = if (is.null(g$colour.points)) {
+                                           if (is.null(g$colour.whisker)) {
+                                             g$data$colour[i]
+                                           } else {
+                                             NA
+                                           }
+                                         } else {
+                                           g$colour.points
+                                         }))
+
+  gl <- do.call(grid::gList, gl)
+
+  grid::setChildren(g, gl)
+
+}

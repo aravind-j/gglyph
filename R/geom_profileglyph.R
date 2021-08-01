@@ -34,7 +34,7 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob
+#' @importFrom grid grobTree addGrob makeContent gTree setChildren
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -591,6 +591,7 @@ GeomProfileGlyph <- ggplot2::ggproto("GeomProfileGlyph", ggplot2::Geom,
                                        }
 
                                        # Gradient colour mapping
+                                       gdata <- NULL
                                        if (is.null(fill.bar) & !is.null(fill.gradient)) {
                                          gdata <- data[, cols]
 
@@ -600,57 +601,28 @@ GeomProfileGlyph <- ggplot2::ggproto("GeomProfileGlyph", ggplot2::Geom,
                                          gdata <- data.frame(gdata)
                                        }
 
-                                       gl <- lapply(seq_along(data$x),
-                                                    function(i) profileglyphGrob(x = data$x[i],
-                                                                                 y = data$y[i],
-                                                                                 z = unlist(data[i, cols]),
-                                                                                 size = data$size[i],
-                                                                                 width = width,
-                                                                                 mirror = mirror,
-                                                                                 flip.axes = flip.axes,
-                                                                                 col.bar = if (is.null(colour.bar)) {
-                                                                                   data$colour[i]
-                                                                                 } else {
-                                                                                   colour.bar
-                                                                                 },
-                                                                                 col.line = if (is.null(colour.line)) {
-                                                                                   data$colour[i]
-                                                                                 } else {
-                                                                                   colour.line
-                                                                                 },
-                                                                                 fill = if (is.null(fill.bar)) {
-                                                                                   if (!is.null(fill.gradient)) {
-                                                                                     unlist(gdata[i, ])
-                                                                                   } else {
-                                                                                     data$fill[i]
-                                                                                   }
-                                                                                 } else {
-                                                                                   fill.bar
-                                                                                 },
-                                                                                 lwd.bar = data$linewidth.bar[i],
-                                                                                 lwd.line = data$linewidth.line[i],
-                                                                                 lwd.grid = data$linewidth.grid[i],
-                                                                                 alpha = data$alpha[i],
-                                                                                 bar = bar,
-                                                                                 line = line,
-                                                                                 linejoin = data$linejoin[i],
-                                                                                 lineend = data$lineend[i],
-                                                                                 grid.levels = grid.levels,
-                                                                                 draw.grid = draw.grid,
-                                                                                 col.grid = if (is.null(colour.grid)) {
-                                                                                   data$colour[i]
-                                                                                 } else {
-                                                                                   colour.grid
-                                                                                 }))
-
-                                       gl <- do.call(grid::gList, gl)
-
-                                       glout <- grid::grobTree()
-
-                                       glout <- grid::setChildren(glout, gl)
-
-                                       ggname("geom_starglyph",
-                                              glout)
+                                       ggname("geom_profileglyph",
+                                              grid::gTree(data=data,
+                                                          # x = x, y = y,
+                                                          cols=cols,
+                                                          # fill = fill,
+                                                          width = width,
+                                                          mirror = mirror,
+                                                          flip.axes = flip.axes,
+                                                          colour.bar = colour.bar,
+                                                          colour.line = colour.line,
+                                                          fill.bar = fill.bar,
+                                                          fill.gradient = fill.gradient,
+                                                          gdata = gdata,
+                                                          # alpha = alpha,
+                                                          bar = bar,
+                                                          line = line,
+                                                          # linejoin = "mitre",
+                                                          # lineend = "round",
+                                                          grid.levels = grid.levels,
+                                                          draw.grid = draw.grid,
+                                                          colour.grid = colour.grid,
+                                                          cl="profileglyphtree"))
 
                                        # ggname("geom_profileglyph",
                                        #        grid::gTree(
@@ -664,3 +636,56 @@ GeomProfileGlyph <- ggplot2::ggproto("GeomProfileGlyph", ggplot2::Geom,
                                        #          )))
                                      }
 )
+
+#' grid::makeContent function for the grobTree of profileglyphGrob objects
+#' @param g A grid grobTree.
+#' @export
+#' @noRd
+makeContent.profileglyphtree <- function(g) {
+  gl <- lapply(seq_along(g$data$x),
+               function(i) profileglyphGrob(x = g$data$x[i],
+                                            y = g$data$y[i],
+                                            z = unlist(g$data[i, g$cols]),
+                                            size = g$data$size[i],
+                                            width = g$width,
+                                            mirror = g$mirror,
+                                            flip.axes = g$flip.axes,
+                                            col.bar = if (is.null(g$colour.bar)) {
+                                              g$data$colour[i]
+                                            } else {
+                                              g$colour.bar
+                                            },
+                                            col.line = if (is.null(g$colour.line)) {
+                                              g$data$colour[i]
+                                            } else {
+                                              g$colour.line
+                                            },
+                                            fill = if (is.null(g$fill.bar)) {
+                                              if (!is.null(g$fill.gradient)) {
+                                                unlist(g$gdata[i, ])
+                                              } else {
+                                                g$data$fill[i]
+                                              }
+                                            } else {
+                                              g$fill.bar
+                                            },
+                                            lwd.bar = g$data$linewidth.bar[i],
+                                            lwd.line = g$data$linewidth.line[i],
+                                            lwd.grid = g$data$linewidth.grid[i],
+                                            alpha = g$data$alpha[i],
+                                            bar = g$bar,
+                                            line = g$line,
+                                            linejoin = g$data$linejoin[i],
+                                            lineend = g$data$lineend[i],
+                                            grid.levels = g$grid.levels,
+                                            draw.grid = g$draw.grid,
+                                            col.grid = if (is.null(g$colour.grid)) {
+                                              g$data$colour[i]
+                                            } else {
+                                              g$colour.grid
+                                            }))
+
+  gl <- do.call(grid::gList, gl)
+
+  grid::setChildren(g, gl)
+}

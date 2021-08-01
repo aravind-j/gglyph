@@ -11,6 +11,7 @@
 #' @param cols Name of columns specifying the variables to be plotted in the
 #'   glyphs as a character vector.
 #' @param linewidth The line width of the tile glyphs.
+#' @param colour The colour of the tile glyphs.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
@@ -27,7 +28,7 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob
+#' @importFrom grid grobTree addGrob makeContent gTree setChildren
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -86,7 +87,7 @@ geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            position = "identity", ...,
                            cols = character(0L),
                            colour = "black",
-                           fill = NA,
+                           # fill = NA,
                            ratio = 1,
                            nrow = 1,
                            linewidth = 1,
@@ -103,7 +104,7 @@ geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     ratio = ratio,
     nrow = nrow,
     colour = colour,
-    fill = fill,
+    # fill = fill,
     fill.gradient = fill.gradient,
     cols = cols, ...)
 
@@ -175,7 +176,7 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
 
                                     data$linewidth <- params$linewidth
                                     data$colour <- params$colour
-                                    data$fill <- params$fill
+                                    # data$fill <- params$fill
                                     data
                                   },
 
@@ -183,7 +184,8 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                                         coord, cols,
                                                         ratio,
                                                         nrow,
-                                                        colour, fill,
+                                                        colour,
+                                                        # fill,
                                                         fill.gradient) {
 
                                     data <- coord$transform(data, panel_params)
@@ -198,6 +200,7 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                     }
 
                                     # Gradient colour mapping
+                                    gdata <- NULL
                                     if (!is.null(fill.gradient)) {
                                       gdata <- data[, cols]
 
@@ -207,31 +210,19 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                       gdata <- data.frame(gdata)
                                     }
 
-                                    gl <- lapply(seq_along(data$x),
-                                                 function(i) tileglyphGrob(x = data$x[i],
-                                                                        y = data$y[i],
-                                                                        z = unlist(data[i, cols]),
-                                                                        size = data$size[i],
-                                                                        ratio = ratio,
-                                                                        nrow = nrow,
-                                                                        fill = if (!is.null(fill.gradient)) {
-                                                                          unlist(gdata[i, ])
-                                                                        } else {
-                                                                          data$fill[i]
-                                                                        },
-                                                                        lwd = data$linewidth[i],
-                                                                        alpha = data$alpha[i],
-                                                                        col = colour,
-                                                                        linejoin = "mitre"))
-
-                                    gl <- do.call(grid::gList, gl)
-
-                                    glout <- grid::grobTree()
-
-                                    glout <- grid::setChildren(glout, gl)
-
-                                    ggname("geom_starglyph",
-                                           glout)
+                                    ggname("geom_tileglyph",
+                                           grid::gTree(data=data,
+                                                       # x = x, y = y,
+                                                       cols=cols,
+                                                       # fill = fill,
+                                                       ratio = ratio,
+                                                       nrow = nrow,
+                                                       fill.gradient = fill.gradient,
+                                                       gdata = gdata,
+                                                       colour = colour,
+                                                       # alpha = alpha,
+                                                       # linejoin = "mitre",
+                                                       cl="tileglyphtree"))
 
                                     # ggname("geom_tileglyph",
                                     #        grid::gTree(
@@ -245,3 +236,27 @@ GeomTileGlyph <- ggplot2::ggproto("GeomTileGlyph", ggplot2::Geom,
                                     #          )))
                                   }
 )
+
+#' grid::makeContent function for the grobTree of tileglyphGrob objects
+#' @param g A grid grobTree.
+#' @export
+#' @noRd
+makeContent.tileglyphtree <- function(g) {
+
+  gl <- lapply(seq_along(g$data$x),
+               function(i) tileglyphGrob(x = g$data$x[i],
+                                         y = g$data$y[i],
+                                         z = unlist(g$data[i, g$cols]),
+                                         size = g$data$size[i],
+                                         ratio = g$ratio,
+                                         nrow = g$nrow,
+                                         fill = unlist(g$gdata[i, ]),
+                                         col = g$colour,
+                                         lwd = g$data$linewidth[i],
+                                         alpha = g$data$alpha[i],
+                                         linejoin = "mitre"))
+
+  gl <- do.call(grid::gList, gl)
+
+  grid::setChildren(g, gl)
+}

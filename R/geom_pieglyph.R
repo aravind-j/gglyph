@@ -33,7 +33,7 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob
+#' @importFrom grid grobTree addGrob makeContent gTree setChildren
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -426,6 +426,7 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                    }
 
                                    # Gradient colour mapping
+                                   gdata <- NULL
                                    if (is.null(fill.segment) & !is.null(fill.gradient)) {
                                      gdata <- data[, cols]
 
@@ -435,45 +436,25 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                      gdata <- data.frame(gdata)
                                    }
 
-                                   gl <- lapply(seq_along(data$x),
-                                                function(i) pieglyphGrob(x = data$x[i],
-                                                                         y = data$y[i],
-                                                                         z = unlist(data[i, cols]),
-                                                                         size = data$size[i],
-                                                                         edges = edges,
-                                                                         col = data$colour[i],
-                                                                         fill = if (is.null(fill.segment)) {
-                                                                           if (!is.null(fill.gradient)) {
-                                                                             unlist(gdata[i, ])
-                                                                           } else {
-                                                                             data$fill[i]
-                                                                           }
-                                                                         } else {
-                                                                           fill.segment
-                                                                         },
-                                                                         lwd = data$linewidth[i],
-                                                                         lwd.grid = data$linewidth.grid[i],
-                                                                         alpha = data$alpha[i],
-                                                                         angle.start = astrt,
-                                                                         angle.stop = astp,
-                                                                         scale.segment = scale.segment,
-                                                                         scale.radius = scale.radius,
-                                                                         linejoin = data$linejoin[i],
-                                                                         grid.levels = grid.levels,
-                                                                         draw.grid = draw.grid,
-                                                                         col.grid = if (is.null(colour.grid)) {
-                                                                           data$colour[i]
-                                                                         } else {
-                                                                           colour.grid
-                                                                         }))
-                                   gl <- do.call(grid::gList, gl)
-
-                                   glout <- grid::grobTree()
-
-                                   glout <- grid::setChildren(glout, gl)
-
-                                   ggname("geom_starglyph",
-                                          glout)
+                                   ggname("geom_pieglyph",
+                                          grid::gTree(data=data,
+                                                      # x = x, y = y,
+                                                      cols=cols,
+                                                      # fill = fill,
+                                                      edges = edges,
+                                                      fill.segment = fill.segment,
+                                                      fill.gradient = fill.gradient,
+                                                      gdata = gdata,
+                                                      # alpha = alpha,
+                                                      astrt = astrt,
+                                                      astp = astp,
+                                                      scale.segment = scale.segment,
+                                                      scale.radius = scale.radius,
+                                                      # linejoin = "mitre",
+                                                      grid.levels = grid.levels,
+                                                      draw.grid = draw.grid,
+                                                      colour.grid = colour.grid,
+                                                      cl="pieglyphtree"))
 
                                    # ggname("geom_pieglyph",
                                    #        grid::gTree(
@@ -487,3 +468,47 @@ GeomPieGlyph <- ggplot2::ggproto("GeomPieGlyph", ggplot2::Geom,
                                    #          )))
                                  }
 )
+
+#' grid::makeContent function for the grobTree of pieglyphGrob objects
+#' @param g A grid grobTree.
+#' @export
+#' @noRd
+makeContent.pieglyphtree <- function(g) {
+
+  gl <- lapply(seq_along(g$data$x),
+               function(i) pieglyphGrob(x = g$data$x[i],
+                                        y = g$data$y[i],
+                                        z = unlist(g$data[i, g$cols]),
+                                        size = g$data$size[i],
+                                        edges = g$edges,
+                                        col = g$data$colour[i],
+                                        fill = if (is.null(g$fill.segment)) {
+                                          if (!is.null(g$fill.gradient)) {
+                                            unlist(g$gdata[i, ])
+                                          } else {
+                                            g$data$fill[i]
+                                          }
+                                        } else {
+                                          g$fill.segment
+                                        },
+                                        lwd = g$data$linewidth[i],
+                                        lwd.grid = g$data$linewidth.grid[i],
+                                        alpha = g$data$alpha[i],
+                                        angle.start = g$astrt,
+                                        angle.stop = g$astp,
+                                        scale.segment = g$scale.segment,
+                                        scale.radius = g$scale.radius,
+                                        linejoin = g$data$linejoin[i],
+                                        grid.levels = g$grid.levels,
+                                        draw.grid = g$draw.grid,
+                                        col.grid = if (is.null(g$colour.grid)) {
+                                          g$data$colour[i]
+                                        } else {
+                                          g$colour.grid
+                                        }))
+
+  gl <- do.call(grid::gList, gl)
+
+  grid::setChildren(g, gl)
+}
+

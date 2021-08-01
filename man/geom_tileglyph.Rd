@@ -12,7 +12,6 @@ geom_tileglyph(
   ...,
   cols = character(0L),
   colour = "black",
-  fill = NA,
   ratio = 1,
   nrow = 1,
   linewidth = 1,
@@ -56,7 +55,7 @@ the paired geom/stat.}
 \item{cols}{Name of columns specifying the variables to be plotted in the
 glyphs as a character vector.}
 
-\item{fill}{The fill colour.}
+\item{colour}{The colour of the tile glyphs.}
 
 \item{ratio}{The aspect ratio (height / width).}
 

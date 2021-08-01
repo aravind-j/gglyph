@@ -33,7 +33,7 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob
+#' @importFrom grid grobTree addGrob makeContent gTree setChildren
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -378,50 +378,24 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                        data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                      }
 
-                                     gl <- lapply(seq_along(data$x),
-                                                  function(i) metroglyphGrob(x = data$x[i],
-                                                                             y = data$y[i],
-                                                                             z = unlist(data[i, cols]),
-                                                                             size = data$size[i],
-                                                                             circle.size = data$circle.size[i],
-                                                                             col.ray = if (is.null(colour.ray)) {
-                                                                               data$colour[i]
-                                                                             } else {
-                                                                               colour.ray
-                                                                             },
-                                                                             col.circle = if (is.null(colour.circle)) {
-                                                                               data$colour[i]
-                                                                             } else {
-                                                                               colour.circle
-                                                                             },
-                                                                             fill = data$fill[i],
-                                                                             lwd.ray = data$linewidth.ray[i],
-                                                                             lwd.circle = data$linewidth.circle[i],
-                                                                             alpha = data$alpha[i],
-                                                                             angle.start = astrt,
-                                                                             angle.stop = astp,
-                                                                             lineend = data$lineend[i],
-                                                                             grid.levels = grid.levels,
-                                                                             draw.grid = draw.grid,
-                                                                             point.size = grid::unit(point.size, "pt"),
-                                                                             col.points = if (is.null(colour.points)) {
-                                                                               if (is.null(colour.ray)) {
-                                                                                 data$colour[i]
-                                                                               } else {
-                                                                                 NA
-                                                                               }
-                                                                             } else {
-                                                                               colour.points
-                                                                             }))
-
-                                     gl <- do.call(grid::gList, gl)
-
-                                     glout <- grid::grobTree()
-
-                                     glout <- grid::setChildren(glout, gl)
-
-                                     ggname("geom_starglyph",
-                                            glout)
+                                     ggname("geom_metroglyph",
+                                            grid::gTree(data=data,
+                                                        # x = x, y = y,
+                                                        cols=cols,
+                                                        # fill = fill,
+                                                        colour.ray = colour.ray,
+                                                        colour.circle = colour.circle,
+                                                        linewidth.ray = linewidth.ray,
+                                                        linewidth.circle = linewidth.circle,
+                                                        # alpha = alpha,
+                                                        astrt = astrt,
+                                                        astp = astp,
+                                                        # lineend = "round",
+                                                        grid.levels = grid.levels,
+                                                        draw.grid = draw.grid,
+                                                        point.size = point.size,
+                                                        colour.points = colour.points,
+                                                        cl="metroglyphtree"))
 
                                      # ggname("geom_metroglyph",
                                      #        grid::gTree(
@@ -435,3 +409,50 @@ GeomMetroGlyph <- ggplot2::ggproto("GeomMetroGlyph", ggplot2::Geom,
                                      #          )))
                                    }
 )
+
+#' grid::makeContent function for the grobTree of metroglyphGrob objects
+#' @param g A grid grobTree.
+#' @export
+#' @noRd
+makeContent.metroglyphtree <- function(g) {
+
+  gl <- lapply(seq_along(g$data$x),
+               function(i) metroglyphGrob(x = g$data$x[i],
+                                          y = g$data$y[i],
+                                          z = unlist(g$data[i, g$cols]),
+                                          size = g$data$size[i],
+                                          circle.size = g$data$circle.size[i],
+                                          col.ray = if (is.null(g$colour.ray)) {
+                                            g$data$colour[i]
+                                          } else {
+                                            g$colour.ray
+                                          },
+                                          col.circle = if (is.null(g$colour.circle)) {
+                                            g$data$colour[i]
+                                          } else {
+                                            g$colour.circle
+                                          },
+                                          fill = g$data$fill[i],
+                                          lwd.ray = g$data$linewidth.ray[i],
+                                          lwd.circle = g$data$linewidth.circle[i],
+                                          alpha = g$data$alpha[i],
+                                          angle.start = g$astrt,
+                                          angle.stop = g$astp,
+                                          lineend = g$data$lineend[i],
+                                          grid.levels = g$grid.levels,
+                                          draw.grid = g$draw.grid,
+                                          point.size = grid::unit(g$point.size, "pt"),
+                                          col.points = if (is.null(g$colour.points)) {
+                                            if (is.null(g$colour.ray)) {
+                                              g$data$colour[i]
+                                            } else {
+                                              NA
+                                            }
+                                          } else {
+                                            g$colour.points
+                                          }))
+
+  gl <- do.call(grid::gList, gl)
+
+  grid::setChildren(g, gl)
+}

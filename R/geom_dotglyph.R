@@ -28,7 +28,7 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob
+#' @importFrom grid grobTree addGrob makeContent gTree setChildren
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -331,6 +331,7 @@ GeomDotGlyph <- ggplot2::ggproto("GeomDotGlyph", ggplot2::Geom,
                                    }
 
                                    # Gradient colour mapping
+                                   gdata <- NULL
                                    if (is.null(fill.dot) & !is.null(fill.gradient)) {
                                      gdata <- data[, cols]
 
@@ -340,38 +341,22 @@ GeomDotGlyph <- ggplot2::ggproto("GeomDotGlyph", ggplot2::Geom,
                                      gdata <- data.frame(gdata)
                                    }
 
-                                   gl <- lapply(seq_along(data$x),
-                                                function(i) dotglyphGrob(x = data$x[i],
-                                                                         y = data$y[i],
-                                                                         z = unlist(data[i, cols]),
-                                                                         radius = radius,
-                                                                         mirror = mirror,
-                                                                         flip.axes = flip.axes,
-                                                                         fill = if (is.null(fill.dot)) {
-                                                                           if (!is.null(fill.gradient)) {
-                                                                             unlist(mapply(function(a, b) rep(a, b),
-                                                                                           unlist(gdata[i, ]),
-                                                                                           round(unlist(data[i, cols]))))
-                                                                           } else {
-                                                                             data$fill[i]
-                                                                           }
-                                                                         } else {
-                                                                           unlist(mapply(function(a, b) rep(a, b),
-                                                                                         fill.dot,
-                                                                                         round(unlist(data[i, cols]))))
-                                                                         },
-                                                                         col = data$colour[i],
-                                                                         lwd = data$linewidth[i],
-                                                                         alpha = data$alpha[i]))
 
-                                   gl <- do.call(grid::gList, gl)
-
-                                   glout <- grid::grobTree()
-
-                                   glout <- grid::setChildren(glout, gl)
-
-                                   ggname("geom_starglyph",
-                                          glout)
+                                   ggname("geom_dotglyph",
+                                          grid::gTree(data=data,
+                                                      # x = x, y = y,
+                                                      cols=cols,
+                                                      # fill = fill,
+                                                      radius = radius,
+                                                      mirror = mirror,
+                                                      flip.axes = flip.axes,
+                                                      fill.dot = fill.dot,
+                                                      fill.gradient = fill.gradient,
+                                                      gdata = gdata,
+                                                      # colour = colour,
+                                                      # alpha = alpha,
+                                                      linewidth = linewidth,
+                                                      cl="dotglyphtree"))
 
                                    # ggname("geom_dotglyph",
                                    #        grid::gTree(
@@ -385,3 +370,39 @@ GeomDotGlyph <- ggplot2::ggproto("GeomDotGlyph", ggplot2::Geom,
                                    #          )))
                                  }
 )
+
+#' grid::makeContent function for the grobTree of dotglyphGrob objects
+#' @param g A grid grobTree.
+#' @export
+#' @noRd
+makeContent.dotglyphtree <- function(g) {
+
+  gl <- lapply(seq_along(g$data$x),
+               function(i) dotglyphGrob(x = g$data$x[i],
+                                        y = g$data$y[i],
+                                        z = unlist(g$data[i, g$cols]),
+                                        radius = g$radius,
+                                        mirror = g$mirror,
+                                        flip.axes = g$flip.axes,
+                                        fill = if (is.null(g$fill.dot)) {
+                                          if (!is.null(g$fill.gradient)) {
+                                            unlist(mapply(function(a, b) rep(a, b),
+                                                          unlist(g$gdata[i, ]),
+                                                          round(unlist(g$data[i, g$cols]))))
+                                          } else {
+                                            g$data$fill[i]
+                                          }
+                                        } else {
+                                          unlist(mapply(function(a, b) rep(a, b),
+                                                        g$fill.dot,
+                                                        round(unlist(g$data[i, g$cols]))))
+                                        },
+                                        col = g$data$colour[i],
+                                        lwd = g$data$linewidth[i],
+                                        alpha = g$data$alpha[i]))
+
+  gl <- do.call(grid::gList, gl)
+
+  grid::setChildren(g, gl)
+
+}
