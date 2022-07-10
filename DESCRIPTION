@@ -10,7 +10,7 @@ Description: Provides geoms for visualizing multivariate data as glyphs using
      'ggplot2'.
 License: GPL-2 | GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 LazyData: true
 RdMacros:
      Rdpack
