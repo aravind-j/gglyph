@@ -1,4 +1,7 @@
 .Rproj.user
+*.o
+*.so
+*.dll
 RoughWork
 Release.R
 .Rhistory
