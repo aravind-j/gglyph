@@ -26,15 +26,10 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Install rmarkdown, remotes, and the local package
-        run: |
-          install.packages("remotes")
-          # remotes::install_local(".")
-          remotes::install_cran("rmarkdown")
-          remotes::install_cran("devtools")
-          remotes::install_cran("RCurl")
-          remotes::install_cran("kableExtra")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rmarkdown, any::devtools, any::RCurl, any::kableExtra
+          needs: check
 
       - name: Render Rmarkdown files and Commit Results
         run: |
