@@ -213,6 +213,15 @@ ggplot(data = mtcars) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
+# Repel glyphs
+ggplot(data = mtcars) +
+geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+                 cols = zs, whisker = TRUE, contour = TRUE,
+                 size = 10, alpha = 1, repel = TRUE) +
+  ylim(c(-0, 550)) +
+  xlim(c(8, 35))
+
 rm(mtcars)
 mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)
 
