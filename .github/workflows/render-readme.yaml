@@ -28,7 +28,12 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rmarkdown, any::devtools, any::RCurl, any::kableExtra
+          extra-packages: |
+            any::rmarkdown
+            any::devtools
+            any::RCurl
+            any::kableExtra
+            local::.
           needs: check
 
       - name: Render Rmarkdown files and Commit Results
