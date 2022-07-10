@@ -20,7 +20,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/aravind-j/gglyph/mast
 ## `gglyph`: Multivariate Data Visualization using Glyphs <img src="https://raw.githubusercontent.com/aravind-j/gglyph/master/inst/extdata/gglyph.png" align="right" alt="logo" width="173" height = "200" style = "border: none; float: right;">
 
 ```{r,echo = FALSE, message = FALSE}
-devtools::load_all(".")
+devtools::load_all(".") # quiet = T for hiding macOS compiler warnings
 
 ```
 
