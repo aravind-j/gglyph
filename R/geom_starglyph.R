@@ -30,6 +30,7 @@
 #'
 #' @return A \code{geom} layer.
 #'
+#' @import Rcpp
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
@@ -37,6 +38,8 @@
 #'   makeContent setChildren unit
 #' @importFrom Rdpack reprompt
 #' @export
+#'
+#' @useDynLib gglyph
 #'
 #' @encoding UTF-8
 #'
@@ -147,6 +150,15 @@
 #'                  size = 10) +
 #'   ylim(c(-0, 550)) +
 #'   facet_grid(. ~ cyl)
+#'
+#' # Repel glyphs
+#' ggplot(data = mtcars) +
+#' geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+#'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
+#'                  cols = zs, whisker = TRUE, contour = TRUE,
+#'                  size = 10, alpha = 1, repel = TRUE) +
+#'   ylim(c(-0, 550)) +
+#'   xlim(c(8, 35))
 #'
 #' rm(mtcars)
 #' mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)
@@ -532,7 +544,7 @@ makeContent.starglyphtree <- function(g) {
     ) / 13
 
     # Repel overlapping bounding boxes away from each other.
-    repel <- ggrepel:::repel_boxes2(
+    repel <- repel_boxes2(
       data_points     = as.matrix(g$data[,c("x","y")]),
       point_size      = rep(point_size,nrow(g$data)),
       point_padding_x = point_padding,

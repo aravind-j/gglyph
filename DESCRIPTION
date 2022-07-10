@@ -14,12 +14,15 @@ RoxygenNote: 7.2.0
 LazyData: true
 RdMacros:
      Rdpack
+LinkingTo:
+    Rcpp
 Depends:
     R (>= 3.5.0)
 Imports:
      dplyr,
      ggplot2,
      grid,
+     Rcpp,
      Rdpack,
      rlang,
      scales
