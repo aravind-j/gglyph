@@ -23,6 +23,7 @@ geom_starglyph(
   draw.grid = FALSE,
   point.size = 1,
   show.legend = NA,
+  repel = FALSE,
   inherit.aes = TRUE
 )
 }

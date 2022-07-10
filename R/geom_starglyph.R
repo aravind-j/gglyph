@@ -33,7 +33,8 @@
 #' @importFrom rlang as_quosures syms
 #' @importFrom utils modifyList
 #' @importFrom ggplot2 layer ggproto aes
-#' @importFrom grid grobTree addGrob makeContent gTree setChildren
+#' @importFrom grid addGrob convertHeight convertWidth grobTree grobX grobY
+#'   makeContent setChildren unit
 #' @importFrom Rdpack reprompt
 #' @export
 #'
@@ -197,6 +198,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            draw.grid = FALSE,
                            point.size = 1,
                            show.legend = NA,
+                           repel = FALSE,
                            inherit.aes = TRUE) {
 
   # Modify mapping to include cols
@@ -215,6 +217,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     full = full,
     draw.grid = draw.grid,
     point.size = point.size,
+    repel = repel,
     cols = cols, ...)
 
   # Modify geom aesthetics to include cols
@@ -325,7 +328,8 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                         colour.points,
                                                         full,
                                                         draw.grid,
-                                                        point.size) {
+                                                        point.size,
+                                                        repel) {
 
                                     data <- coord$transform(data, panel_params)
 
@@ -370,6 +374,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                        draw.grid = draw.grid,
                                                        point.size = point.size,
                                                        colour.points = colour.points,
+                                                       repel = repel,
                                                        cl="starglyphtree"))
 
                                     # ggname("geom_starglyph",
@@ -391,43 +396,257 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
 #' @noRd
 makeContent.starglyphtree <- function(g) {
 
+  # To be added as params/arguments
+  #-----------------------------------------------------------------------------
+  point.padding = 1e-6
+  point.padding = unit(point.padding, "lines")
+  # box.padding = 0.25
+  box.padding = 0.25
+  box.padding = unit(box.padding, "lines")
+  min.segment.length = 0.5
+  min.segment.length = unit(min.segment.length, "lines")
+
+  # arrow = NULL
+  arrow = arrow(length = unit(0.005, "npc"), type = "open")
+  # force = 1
+  force = 1
+  force_pull = 5
+  max.time = 0.5
+  max.iter = 10000
+  # max.overlaps = 10
+  max.overlaps = 11
+  nudge_x = 0
+  nudge_y = 0
+  xlim = c(NA, NA)
+  ylim = c(NA, NA)
+  direction = "both"
+  seed = NA
+  # verbose = FALSE
+  verbose = T
+
+  # default_aes
+  point.size = 1
+  segment.linetype = 1
+  segment.colour = NULL
+  segment.size = 0.5
+  segment.alpha = NULL
+  # segment.curvature = 0
+  segment.curvature = -1e-20
+  # segment.angle = 90
+  segment.angle = 20
+  # segment.ncp = 1
+  segment.ncp = 3
+  segment.shape = 0.5
+  segment.square = TRUE
+  segment.squareShape = 1
+  segment.inflect = FALSE
+  segment.debug = FALSE
+  #-----------------------------------------------------------------------------
+
+
+  # To be added in draw_panel()
+  #-----------------------------------------------------------------------------
+  limits <- data.frame(x = xlim, y = ylim)
+  # limits <- g$coord$transform(limits, g$panel_params)
+  limits <- structure(list(x = c(NA_real_, NA_real_), y = c(NA_real_, NA_real_
+  )), row.names = c(NA, -2L), class = "data.frame")
+  #-----------------------------------------------------------------------------
+
+
+  if (g$repel) {
+    # The padding around each bounding box.
+    box_padding_x <- grid::convertWidth(box.padding, "native", valueOnly = TRUE)
+    box_padding_y <- grid::convertHeight(box.padding, "native", valueOnly = TRUE)
+
+    # The padding around each point.
+    if (is.na(point.padding)) {
+      point.padding = unit(0, "lines")
+    }
+
+    # create circle grobs
+    boxg <- lapply(seq_along(g$data$x), function(i) {
+      grid::circleGrob(g$data$x[i], g$data$y[i],
+                       r = unit(max(g$data[i, g$cols]) * g$data[i, ]$size, "mm"),
+                       gp = grid::gpar(col = "grey", fill = "transparent"))
+    })
+
+    boxg2 <- lapply(seq_along(g$data$x),
+                    function(i) starglyphGrob(x = g$data$x[i],
+                                              y = g$data$y[i],
+                                              z = unlist(g$data[i, g$cols]),
+                                              size = g$data$size[i],
+                                              angle.start = g$astrt,
+                                              angle.stop = g$astp,
+                                              lwd.contour = g$data$linewidth.contour[i],
+                                              col.contour = "grey",
+                                              whisker = FALSE,
+                                              contour = TRUE,
+                                              draw.grid = FALSE))
+    boxg2 <- lapply(seq_along(g$data$x),
+                    function(i) boxg2[[i]]$children[[1]])
+
+    # Create a dataframe with x1 y1 x2 y2
+    boxes <- lapply(seq_along(boxg), function(i) {
+      x1 <- grid::convertWidth(grid::grobX(boxg[[i]], "west"), "native", TRUE)
+      x2 <- grid::convertWidth(grid::grobX(boxg[[i]], "east"), "native", TRUE)
+      y1 <- grid::convertHeight(grid::grobY(boxg[[i]], "south"), "native", TRUE)
+      y2 <- grid::convertHeight(grid::grobY(boxg[[i]], "north"), "native", TRUE)
+      c(
+        "x1" = x1 - box_padding_x + nudge_x,
+        "y1" = y1 - box_padding_y + nudge_y,
+        "x2" = x2 + box_padding_x + nudge_x,
+        "y2" = y2 + box_padding_y + nudge_y
+      )
+    })
+
+    boxes2 <- data.frame(do.call(rbind, boxes))
+    # pg <- lapply(seq_along(boxes2$x1), function(i) {
+    #   grid::polylineGrob(x = c(boxes2$x1[i], g$data$x[i],    boxes2$x2[i], g$data$x[i], boxes2$x1[i]),
+    #                      y = c(g$data$y[i],  boxes2$y1[i], g$data$y[i],  boxes2$y2[i], g$data$y[i]),
+    #                      gp = gpar(col = "grey"))
+    # })
+    pg <- lapply(seq_along(boxes2$x1), function(i) {
+      grid::polylineGrob(x = c(boxes2$x1[i], boxes2$x1[i], boxes2$x2[i], boxes2$x2[i], boxes2$x1[i]),
+                         y = c(boxes2$y1[i], boxes2$y2[i], boxes2$y2[i], boxes2$y1[i], boxes2$y1[i]),
+                         gp = gpar(col = "gray"))
+    })
+
+    # Make the repulsion reproducible if desired.
+    if (is.null(seed) || !is.na(seed)) {
+      set.seed(seed)
+    }
+
+    # Beware the magic numbers. I do not understand them.
+    # I just accept them as necessary to get the code to work.
+    p_width <- grid::convertWidth(unit(1, "npc"), "inch", TRUE)
+    p_height <- grid::convertHeight(unit(1, "npc"), "inch", TRUE)
+    p_ratio <- (p_width / p_height)
+    if (p_ratio > 1) {
+      p_ratio <- p_ratio ^ (1 / (1.15 * p_ratio))
+    }
+    point_size <- p_ratio * grid::convertWidth(
+      grid::unit(point.size, "lines"), "native", valueOnly = TRUE
+    ) / 13
+    point_padding <- p_ratio * grid::convertWidth(
+      grid::unit(point.size, "lines"), "native", valueOnly = TRUE
+    ) / 13
+
+    # Repel overlapping bounding boxes away from each other.
+    repel <- ggrepel:::repel_boxes2(
+      data_points     = as.matrix(g$data[,c("x","y")]),
+      point_size      = rep(point_size,nrow(g$data)),
+      point_padding_x = point_padding,
+      point_padding_y = point_padding,
+      boxes           = do.call(rbind, boxes),
+      xlim            = range(limits$x),
+      ylim            = range(limits$y),
+      hjust           = rep (0.5, nrow(g$data)),
+      vjust           = rep (0.5, nrow(g$data)),
+      force_push      = force * 1e-6,
+      force_pull      = force_pull * 1e-2,
+      max_time        = max.time,
+      max_iter        = ifelse(is.infinite(max.iter), 1e9, max.iter),
+      max_overlaps    = max.overlaps,
+      direction       = direction,
+      verbose         = verbose
+    )
+
+    if (any(repel$too_many_overlaps)) {
+      warning(sum(repel$too_many_overlaps, na.rm = TRUE),
+              ' glyphs have too many overlaps.\nConsider increasing "max.overlaps"')
+    }
+
+    # if (all(repel$too_many_overlaps)) {
+    #   grobs <- list()
+    #   class(grobs) <- "gList"
+    #   return(setChildren(x, grobs))
+    # }
+
+    # create segment grobs
+    segg <- lapply(seq_along(g$data$x), function(i) {
+      grid::curveGrob(x1 = repel$x, y1 = repel$y, x2 = g$data$x, y2 = g$data$y,
+                      default.units = "native",
+                      curvature = segment.curvature,
+                      angle = segment.angle,
+                      ncp = segment.ncp,
+                      shape = segment.shape,
+                      square = segment.square,
+                      squareShape = segment.squareShape,
+                      inflect = segment.inflect,
+                      debug = segment.debug,
+                      gp = gpar(col = g$data$colour,
+                                lwd = segment.size * ggplot2::.pt,
+                                lty = segment.linetype),
+                      arrow = arrow)
+    })
+  }
+
+
   gl <- lapply(seq_along(g$data$x),
-               function(i) starglyphGrob(x = g$data$x[i],
-                                         y = g$data$y[i],
-                                         z = unlist(g$data[i, g$cols]),
-                                         size = g$data$size[i],
-                                         col.whisker = if (is.null(g$colour.whisker)) {
-                                           g$data$colour[i]
-                                         } else {
-                                           g$colour.whisker
-                                         },
-                                         col.contour = if (is.null(g$colour.contour)) {
-                                           g$data$colour[i]
-                                         } else {
-                                           g$colour.contour
-                                         },
-                                         fill = g$data$fill[i],
-                                         lwd.whisker = g$data$linewidth.whisker[i],
-                                         lwd.contour = g$data$linewidth.contour[i],
-                                         alpha = g$data$alpha[i],
-                                         angle.start = g$astrt,
-                                         angle.stop = g$astp,
-                                         whisker = g$whisker,
-                                         contour = g$contour,
-                                         linejoin = g$data$linejoin[i],
-                                         lineend = g$data$lineend[i],
-                                         grid.levels = g$grid.levels,
-                                         draw.grid = g$draw.grid,
-                                         point.size = grid::unit(g$point.size, "pt"),
-                                         col.points = if (is.null(g$colour.points)) {
-                                           if (is.null(g$colour.whisker)) {
-                                             g$data$colour[i]
-                                           } else {
-                                             NA
-                                           }
-                                         } else {
-                                           g$colour.points
-                                         }))
+               function(i) starglyphGrob(x = if (g$repel) {
+                 repel$x[i]
+               } else {
+                 g$data$x[i]
+               },
+               y = if (g$repel) {
+                 repel$y[i]
+               } else {
+                 g$data$y[i]
+               },
+               # x = g$data$x[i],
+               # y = g$data$y[i],
+               z = unlist(g$data[i, g$cols]),
+               size = g$data$size[i],
+               col.whisker = if (is.null(g$colour.whisker)) {
+                 g$data$colour[i]
+               } else {
+                 g$colour.whisker
+               },
+               col.contour = if (is.null(g$colour.contour)) {
+                 g$data$colour[i]
+               } else {
+                 g$colour.contour
+               },
+               fill = g$data$fill[i],
+               lwd.whisker = g$data$linewidth.whisker[i],
+               lwd.contour = g$data$linewidth.contour[i],
+               alpha = g$data$alpha[i],
+               angle.start = g$astrt,
+               angle.stop = g$astp,
+               whisker = g$whisker,
+               contour = g$contour,
+               linejoin = g$data$linejoin[i],
+               lineend = g$data$lineend[i],
+               grid.levels = g$grid.levels,
+               draw.grid = g$draw.grid,
+               point.size = grid::unit(g$point.size, "pt"),
+               col.points = if (is.null(g$colour.points)) {
+                 if (is.null(g$colour.whisker)) {
+                   g$data$colour[i]
+                 } else {
+                   NA
+                 }
+               } else {
+                 g$colour.points
+               }))
+
+  if (g$repel) {
+
+    # gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], boxg[[i]]))
+
+    # gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], boxg2[[i]]))
+    #
+    # gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], pg[[i]]))
+    #
+    gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
+
+    # reorder grobs
+    # gl <- lapply(seq_along(gl),
+    #              function(i) grid::reorderGrob(gl[[i]], c(7, 1:3, 4:6)))
+
+    # gl <- lapply(seq_along(gl),
+    #              function(i) grid::reorderGrob(gl[[i]], c(4, 1:3)))
+  }
 
   gl <- do.call(grid::gList, gl)
 
