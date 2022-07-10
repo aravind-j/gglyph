@@ -26,6 +26,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,25 +40,19 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gglyph</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/aravind-j/gglyph/">
+  <a href="https://github.com/aravind-j/gglyph/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -74,36 +70,55 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="gglyph-multivariate-data-visualization-using-glyphs-" class="section level2">
-<h2 class="hasAnchor">
-<a href="#gglyph-multivariate-data-visualization-using-glyphs-" class="anchor"></a><code>gglyph</code>: Multivariate Data Visualization using Glyphs <img src="https://raw.githubusercontent.com/aravind-j/gglyph/master/inst/extdata/gglyph.png" align="right" alt="logo" width="173" height="200" style="border: none; float: right;">
+<div class="section level2">
+<h2 id="gglyph-multivariate-data-visualization-using-glyphs-">
+<code>gglyph</code>: Multivariate Data Visualization using Glyphs <img src="https://raw.githubusercontent.com/aravind-j/gglyph/master/inst/extdata/gglyph.png" align="right" alt="logo" width="173" height="200" style="border: none; float: right;"><a class="anchor" aria-label="anchor" href="#gglyph-multivariate-data-visualization-using-glyphs-"></a>
 </h2>
-<div id="version--0009000-license-gpl-2gpl-3" class="section level6">
-<h6>Version : <a href="https://aravind-j.github.io/gglyph/">0.0.0.9000</a>; License: <a href="https://www.r-project.org/Licenses/">GPL-2|GPL-3</a>
-</h6>
-</div>
-<div id="aravind-j" class="section level5">
-<h5 class="hasAnchor">
-<a href="#aravind-j" class="anchor"></a>Aravind, J.</h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Exports from <span class="op">/</span>home<span class="op">/</span>runner<span class="op">/</span>work<span class="op">/</span>gglyph<span class="op">/</span>gglyph<span class="op">/</span>src<span class="op">/</span>repel_boxes.cpp<span class="op">:</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="st">   </span>double <span class="kw">euclid</span>(NumericVector a, NumericVector b)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>   NumericVector <span class="kw">centroid</span>(NumericVector b, double hjust, double vjust)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>   bool <span class="kw">intersect_circle_rectangle</span>(NumericVector c, NumericVector r)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>   NumericVector <span class="kw">intersect_line_circle</span>(NumericVector p1, NumericVector p2, double r)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>   NumericVector <span class="kw">intersect_line_rectangle</span>(NumericVector p1, NumericVector p2, NumericVector b)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>   NumericVector <span class="kw">select_line_connection</span>(NumericVector p1, NumericVector b)</span>
+<span id="cb1-8"><a href="#cb1-8"></a>   bool <span class="kw">approximately_equal</span>(double x1, double x2)</span>
+<span id="cb1-9"><a href="#cb1-9"></a>   DataFrame <span class="kw">repel_boxes2</span>(NumericMatrix data_points, NumericVector point_size, double point_padding_x, double point_padding_y, NumericMatrix boxes, NumericVector xlim, NumericVector ylim, NumericVector hjust, NumericVector vjust, double <span class="dt">force_push =</span> <span class="fl">1e-7</span>, double <span class="dt">force_pull =</span> <span class="fl">1e-7</span>, double <span class="dt">max_time =</span> <span class="fl">0.1</span>, double <span class="dt">max_overlaps =</span> <span class="dv">10</span>, int <span class="dt">max_iter =</span> <span class="dv">2000</span>, std<span class="op">::</span>string <span class="dt">direction =</span> <span class="st">"both"</span>, int <span class="dt">verbose =</span> <span class="dv">0</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="op">/</span>home<span class="op">/</span>runner<span class="op">/</span>work<span class="op">/</span>gglyph<span class="op">/</span>gglyph<span class="op">/</span>src<span class="op">/</span>RcppExports.cpp updated.</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="op">/</span>home<span class="op">/</span>runner<span class="op">/</span>work<span class="op">/</span>gglyph<span class="op">/</span>gglyph<span class="op">/</span>R<span class="op">/</span>RcppExports.R updated.</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="op">*</span><span class="st"> </span>installing <span class="op">*</span>source<span class="op">*</span><span class="st"> </span>package ‘gglyph’ ...</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="op">**</span><span class="st"> </span>using staged installation</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="op">**</span><span class="st"> </span>libs</span>
+<span id="cb1-16"><a href="#cb1-16"></a>g<span class="op">++</span><span class="st"> </span><span class="op">-</span>std=gnu<span class="op">++</span><span class="dv">14</span> <span class="op">-</span>I<span class="st">"/opt/R/4.2.0/lib/R/include"</span> <span class="op">-</span>DNDEBUG  <span class="op">-</span>I<span class="st">'/home/runner/.cache/R/renv/library/gglyph-709c81a8/R-4.2/x86_64-pc-linux-gnu/Rcpp/include'</span> <span class="op">-</span>I<span class="op">/</span>usr<span class="op">/</span>local<span class="op">/</span>include   <span class="op">-</span>fpic  <span class="op">-</span>g <span class="op">-</span>O2  <span class="op">-</span>UNDEBUG <span class="op">-</span>Wall <span class="op">-</span>pedantic <span class="op">-</span>g <span class="op">-</span>O0 <span class="op">-</span>c RcppExports.cpp <span class="op">-</span>o RcppExports.o</span>
+<span id="cb1-17"><a href="#cb1-17"></a>g<span class="op">++</span><span class="st"> </span><span class="op">-</span>std=gnu<span class="op">++</span><span class="dv">14</span> <span class="op">-</span>I<span class="st">"/opt/R/4.2.0/lib/R/include"</span> <span class="op">-</span>DNDEBUG  <span class="op">-</span>I<span class="st">'/home/runner/.cache/R/renv/library/gglyph-709c81a8/R-4.2/x86_64-pc-linux-gnu/Rcpp/include'</span> <span class="op">-</span>I<span class="op">/</span>usr<span class="op">/</span>local<span class="op">/</span>include   <span class="op">-</span>fpic  <span class="op">-</span>g <span class="op">-</span>O2  <span class="op">-</span>UNDEBUG <span class="op">-</span>Wall <span class="op">-</span>pedantic <span class="op">-</span>g <span class="op">-</span>O0 <span class="op">-</span>c repel_boxes.cpp <span class="op">-</span>o repel_boxes.o</span>
+<span id="cb1-18"><a href="#cb1-18"></a>g<span class="op">++</span><span class="st"> </span><span class="op">-</span>std=gnu<span class="op">++</span><span class="dv">14</span> <span class="op">-</span>shared <span class="op">-</span>L<span class="op">/</span>opt<span class="op">/</span>R<span class="op">/</span><span class="dv">4</span>.<span class="fl">2.0</span><span class="op">/</span>lib<span class="op">/</span>R<span class="op">/</span>lib <span class="op">-</span>L<span class="op">/</span>usr<span class="op">/</span>local<span class="op">/</span>lib <span class="op">-</span>o gglyph.so RcppExports.o repel_boxes.o <span class="op">-</span>L<span class="op">/</span>opt<span class="op">/</span>R<span class="op">/</span><span class="dv">4</span>.<span class="fl">2.0</span><span class="op">/</span>lib<span class="op">/</span>R<span class="op">/</span>lib <span class="op">-</span>lR</span>
+<span id="cb1-19"><a href="#cb1-19"></a>installing to <span class="op">/</span>tmp<span class="op">/</span>RtmpG4bYBw<span class="op">/</span>devtools_install_8fe36fbdbeb2<span class="op">/</span>00LOCK<span class="op">-</span>gglyph<span class="op">/</span>00new<span class="op">/</span>gglyph<span class="op">/</span>libs</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="op">**</span><span class="st"> </span>checking absolute paths <span class="cf">in</span> shared objects and dynamic libraries</span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="op">*</span><span class="st"> </span><span class="kw">DONE</span> (gglyph)</span></code></pre></div>
+<div class="section level6"><h6 id="version--0009000-license-gpl-2gpl-3">Version : <a href="https://aravind-j.github.io/gglyph/" class="external-link">0.0.0.9000</a>; License: <a href="https://www.r-project.org/Licenses/" class="external-link">GPL-2|GPL-3</a>
+<a class="anchor" aria-label="anchor" href="#version--0009000-license-gpl-2gpl-3"></a>
+</h6></div>
+<div class="section level5">
+<h5 id="aravind-j">Aravind, J.<a class="anchor" aria-label="anchor" href="#aravind-j"></a>
+</h5>
 <p>Division of Germplasm Conservation, ICAR-National Bureau of Plant Genetic Resources, New Delhi.</p>
 <hr>
-<p><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg?logo=R" alt="minimal R version"></a> <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="License: GPL v3"></a> <a href="https://cran.r-project.org/package=gglyph"><img src="https://www.r-pkg.org/badges/version-last-release/gglyph" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=gglyph"><img src="https://tinyverse.netlify.com/badge/gglyph" alt="Dependencies"></a> <a href="https://CRAN.R-project.org/package=gglyph"><img src="https://cranlogs.r-pkg.org/badges/grand-total/gglyph?color=green" alt="rstudio mirror downloads"></a> <a href="https://github.com/aravind-j/gglyph"><img src="https://img.shields.io/badge/devel%20version-0.0.0.9000-orange.svg" alt="develVersion"></a> <a href="https://github.com/aravind-j/gglyph"><img src="https://img.shields.io/github/languages/code-size/aravind-j/gglyph.svg" alt="Github Code Size"></a> <a href="https://github.com/aravind-j/gglyph/actions"><img src="https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#maturing"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg" alt="lifecycle"></a> <a href="https://github.com/aravind-j/gglyph/"><img src="https://img.shields.io/badge/last%20change-2021--08--01-yellowgreen.svg" alt="Last-changedate"></a> <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxxx) --> <a href="https://aravind-j.github.io/gglyph/"><img src="https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/gglyph.svg" alt="Website - pkgdown"></a> <!-- [![.](https://pro-pulsar-193905.appspot.com/UA-148941781-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon) --> <!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/gglyph) --> <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/gglyph/total.svg)] --> <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/gglyph)](http://www.rdocumentation.org/packages/gglyph) --></p>
+<p><a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg?logo=R" alt="minimal R version"></a> <a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="License: GPL v3"></a> <a href="https://cran.r-project.org/package=gglyph" class="external-link"><img src="https://www.r-pkg.org/badges/version-last-release/gglyph" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=gglyph" class="external-link"><img src="https://tinyverse.netlify.com/badge/gglyph" alt="Dependencies"></a> <a href="https://CRAN.R-project.org/package=gglyph" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/gglyph?color=green" alt="rstudio mirror downloads"></a> <a href="https://github.com/aravind-j/gglyph" class="external-link"><img src="https://img.shields.io/badge/devel%20version-0.0.0.9000-orange.svg" alt="develVersion"></a> <a href="https://github.com/aravind-j/gglyph" class="external-link"><img src="https://img.shields.io/github/languages/code-size/aravind-j/gglyph.svg" alt="Github Code Size"></a> <a href="https://github.com/aravind-j/gglyph/actions" class="external-link"><img src="https://github.com/aravind-j/gglyph/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#maturing" class="external-link"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-maturing.svg" alt="lifecycle"></a> <a href="https://github.com/aravind-j/gglyph/" class="external-link"><img src="https://img.shields.io/badge/last%20change-2022--07--10-yellowgreen.svg" alt="Last-changedate"></a> <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxxxx) --> <a href="https://aravind-j.github.io/gglyph/" class="external-link"><img src="https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/gglyph.svg" alt="Website - pkgdown"></a> <!-- [![.](https://pro-pulsar-193905.appspot.com/UA-148941781-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon) --> <!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/gglyph) --> <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/gglyph/total.svg)] --> <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/gglyph)](http://www.rdocumentation.org/packages/gglyph) --></p>
 <hr>
 </div>
 </div>
-<div id="description" class="section level2">
-<h2 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h2>
+<div class="section level2">
+<h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
+</h2>
 <p>Provides geoms for visualizing multivariate data as glyphs using ‘ggplot2’.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<!-- The package can be installed from CRAN as follows: -->
-<p>The development version can be installed from github as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Install development version from Github</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"aravind-j/gglyph"</span><span class="op">)</span></code></pre></div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<!-- The package can be installed from CRAN as follows: --><p>The development version can be installed from github as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install development version from Github</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"aravind-j/gglyph"</span><span class="op">)</span></span></code></pre></div>
 <!-- ## Detailed tutorial
 For a detailed tutorial (vignette) on how to used this package type:
 
@@ -113,94 +128,97 @@ browseVignettes(package = 'gglyph')
 ```
 The vignette for the latest version is also available [online](https://aravind-j.github.io/gglyph/articles.html).-->
 </div>
-<div id="whats-new" class="section level2">
-<h2 class="hasAnchor">
-<a href="#whats-new" class="anchor"></a>What’s new</h2>
+<div class="section level2">
+<h2 id="whats-new">What’s new<a class="anchor" aria-label="anchor" href="#whats-new"></a>
+</h2>
 <p>To know whats new in this version type:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/news.html">news</a></span><span class="op">(</span>package<span class="op">=</span><span class="st">'gglyph'</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/news.html" class="external-link">news</a></span><span class="op">(</span>package<span class="op">=</span><span class="st">'gglyph'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="links" class="section level2">
-<h2 class="hasAnchor">
-<a href="#links" class="anchor"></a>Links</h2>
-<!-- [CRAN page](https://cran.r-project.org/package=gglyph) -->
-<p><a href="https://github.com/aravind-j/gglyph">Github page</a></p>
-<p><a href="https://aravind-j.github.io/gglyph/">Documentation website</a></p>
-<!-- [Zenodo DOI](https://doi.org/10.5281/zenodo.xxxxxxx) -->
-<!-- ## CRAN checks -->
+<div class="section level2">
+<h2 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
+</h2>
+<!-- [CRAN page](https://cran.r-project.org/package=gglyph) --><p><a href="https://github.com/aravind-j/gglyph" class="external-link">Github page</a></p>
+<p><a href="https://aravind-j.github.io/gglyph/" class="external-link">Documentation website</a></p>
+<!-- [Zenodo DOI](https://doi.org/10.5281/zenodo.xxxxxxx) --><!-- ## CRAN checks -->
 </div>
-<div id="citing-gglyph" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citing-gglyph" class="anchor"></a>Citing <code>gglyph</code>
+<div class="section level2">
+<h2 id="citing-gglyph">Citing <code>gglyph</code>
+<a class="anchor" aria-label="anchor" href="#citing-gglyph"></a>
 </h2>
 <p>To cite the methods in the package use:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"gglyph"</span><span class="op">)</span></code></pre></div>
-<pre><code>
-To cite the R package 'gglyph' in publications use:
-
-  Aravind, J. (2021).  gglyph: Multivariate Data Visualization using
-  Glyphs. R package version 0.0.0.9000,
-  https://aravind-j.github.io/gglyph/.
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {gglyph: Multivariate Data Visualization using Glyphs},
-    author = {J. Aravind},
-    year = {2021},
-    note = {R package version 0.0.0.9000},
-    note = {https://aravind-j.github.io/gglyph/},
-  }
-
-This free and open-source software implements academic research by the
-authors and co-workers. If you use it, please support the project by
-citing the package.</code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"gglyph"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>To cite the R package <span class="st">'gglyph'</span> <span class="cf">in</span> publications use<span class="op">:</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="st">  </span>Aravind, <span class="kw">J.</span> (<span class="dv">2022</span>).  gglyph<span class="op">:</span><span class="st"> </span>Multivariate Data Visualization using</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  Glyphs. R package version <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span>,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  https<span class="op">:</span><span class="er">//</span>aravind<span class="op">-</span>j.github.io<span class="op">/</span>gglyph<span class="op">/</span>.</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="op">@</span>Manual{,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    title =<span class="st"> </span>{gglyph<span class="op">:</span><span class="st"> </span>Multivariate Data Visualization using Glyphs},</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    author =<span class="st"> </span>{J. Aravind},</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    year =<span class="st"> </span>{<span class="dv">2022</span>},</span>
+<span id="cb5-13"><a href="#cb5-13"></a>    note =<span class="st"> </span>{R package version <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span>},</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    note =<span class="st"> </span>{https<span class="op">:</span><span class="er">//</span>aravind<span class="op">-</span>j.github.io<span class="op">/</span>gglyph<span class="op">/</span>},</span>
+<span id="cb5-15"><a href="#cb5-15"></a>  }</span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a>This free and open<span class="op">-</span>source software implements academic research by the</span>
+<span id="cb5-18"><a href="#cb5-18"></a>authors and co<span class="op">-</span>workers. If you use it, please support the project by</span>
+<span id="cb5-19"><a href="#cb5-19"></a>citing the package.</span></code></pre></div>
 </div>
 
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/aravind-j/gglyph/">https://​github.com/​aravind-j/​gglyph/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/aravind-j/gglyph/issues">https://​github.com/​aravind-j/​gglyph/​issues</a>
-</li>
+<li><a href="https://github.com/aravind-j/gglyph/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/aravind-j/gglyph/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.r-project.org/Licenses/GPL-2">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a>
+<a href="https://www.r-project.org/Licenses/GPL-2" class="external-link">GPL-2</a> | <a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a>
 </li>
 </ul>
 </div>
+
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html">Citing gglyph</a></li>
+<li><a href="authors.html#citation">Citing gglyph</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>J. Aravind <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4791-442X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>J. Aravind <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4791-442X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by J. Aravind.</p>
+  <p></p>
+<p>Developed by J. Aravind.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
@@ -208,6 +226,8 @@ citing the package.</code></pre>
 
   
 
+
+  
 
   </body>
 </html>
