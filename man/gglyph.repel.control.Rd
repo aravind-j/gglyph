@@ -72,14 +72,6 @@ of labels}
 
 \item{verbose}{If \code{TRUE}, some diagnostics of the repel algorithm are
 printed}
-
-\item{repel}{logical. If \code{TRUE}, the glyphs are repel away from each
-other to avoid overlaps. Default is \code{FALSE}.}
-
-\item{repel.control}{A list of control settings for the repel algorithm.
-Ignored if \code{repel = FALSE}. See
-\code{\link[gglyph]{gglyph.repel.control}} for details  on the various
-control parameters.}
 }
 \value{
 A list with the following components to control the repel algorithm
