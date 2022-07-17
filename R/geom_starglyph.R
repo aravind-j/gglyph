@@ -6,6 +6,7 @@
 #'
 #' @template draw.grid-arg
 #' @template full-arg
+#' @template repel-arg
 #' @inheritParams ggplot2::layer
 #' @inheritParams starglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
@@ -212,24 +213,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            show.legend = NA,
                            repel = FALSE,
                            inherit.aes = TRUE,
-                           repel.control = list(
-                             box.padding = 0.25,
-                             point.padding = 1e-6,
-                             min.segment.length = 0.5,
-                             arrow = NULL,
-                             force = 1,
-                             force_pull = 1,
-                             max.time = 0.5,
-                             max.iter = 10000,
-                             max.overlaps = getOption("ggrepel.max.overlaps", default = 10),
-                             nudge_x = 0,
-                             nudge_y = 0,
-                             xlim = c(NA, NA),
-                             ylim = c(NA, NA),
-                             na.rm = FALSE,
-                             direction = "both",
-                             seed = NA,
-                             verbose = FALSE)) {
+                           repel.control = gglyph.repel.control()) {
 
   # Modify mapping to include cols
   mcols <- rlang::as_quosures(rlang::syms(cols), .GlobalEnv)

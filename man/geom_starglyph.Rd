@@ -24,7 +24,8 @@ geom_starglyph(
   point.size = 1,
   show.legend = NA,
   repel = FALSE,
-  inherit.aes = TRUE
+  inherit.aes = TRUE,
+  repel.control = gglyph.repel.control()
 )
 }
 \arguments{
@@ -91,10 +92,65 @@ whiskers if all the variables specified in \code{cols} are of type
 It can also be a named logical vector to finely select the aesthetics to
 display.}
 
+\item{repel}{logical. If \code{TRUE}, the glyphs are repel away from each
+other to avoid overlaps. Default is \code{FALSE}.}
+
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
+
+\item{repel.control}{A list of control settings for the repel algorithm.
+Ignored if \code{repel = FALSE}. See
+\code{\link[gglyph]{gglyph.repel.control}} for details  on the various
+control parameters.}
+
+\item{nudge_x, nudge_y}{Horizontal and vertical adjustments to nudge the
+starting position of each text label. The units for \code{nudge_x} and
+\code{nudge_y} are the same as for the data units on the x-axis and y-axis.}
+
+\item{xlim, ylim}{Limits for the x and y axes. Text labels will be constrained
+to these limits. By default, text labels are constrained to the entire plot
+area.}
+
+\item{box.padding}{Amount of padding around bounding box, as unit or number.
+Defaults to 0.25. (Default unit is lines, but other units can be specified
+by passing \code{unit(x, "units")}).}
+
+\item{point.padding}{Amount of padding around labeled point, as unit or
+number. Defaults to 0. (Default unit is lines, but other units can be
+specified by passing \code{unit(x, "units")}).}
+
+\item{min.segment.length}{Skip drawing segments shorter than this, as unit or
+number. Defaults to 0.5. (Default unit is lines, but other units can be
+specified by passing \code{unit(x, "units")}).}
+
+\item{arrow}{specification for arrow heads, as created by
+\code{\link[grid]{arrow}}}
+
+\item{force}{Force of repulsion between overlapping text labels. Defaults to
+1.}
+
+\item{force_pull}{Force of attraction between a text label and its
+corresponding data point. Defaults to 1.}
+
+\item{max.time}{Maximum number of seconds to try to resolve overlaps.
+Defaults to 0.5.}
+
+\item{max.iter}{Maximum number of iterations to try to resolve overlaps.
+Defaults to 10000.}
+
+\item{max.overlaps}{Exclude text labels that overlap too many things.
+Defaults to 10.}
+
+\item{direction}{"both", "x", or "y" -- direction in which to adjust position
+of labels}
+
+\item{seed}{Random seed passed to \code{\link[base]{set.seed}}. Defaults to
+\code{NA}, which means that \code{set.seed} will not be called.}
+
+\item{verbose}{If \code{TRUE}, some diagnostics of the repel algorithm are
+printed}
 }
 \value{
 A \code{geom} layer.
