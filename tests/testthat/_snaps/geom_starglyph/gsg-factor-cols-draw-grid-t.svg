@@ -783,6 +783,6 @@
 <text x='709.63' y='277.36' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>4</text>
 <text x='709.63' y='294.64' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='709.63' y='311.92' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>8</text>
-<text x='37.69' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='307.80px' lengthAdjust='spacingAndGlyphs'>geom_starglyph - cols are factors; draw.grid = TRUE</text>
+<text x='37.69' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='181.59px' lengthAdjust='spacingAndGlyphs'>GSG: factor cols; draw.grid = T</text>
 </g>
 </svg>

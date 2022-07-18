@@ -27,7 +27,7 @@
 </defs>
 <g clip-path='url(#cpMzcuNjl8NjY0Ljg0fDIyLjc4fDU0NS4xMQ==)'>
 <rect x='37.69' y='22.78' width='627.15' height='522.33' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<polygon points='329.17,383.23 333.89,372.70 323.36,375.21 318.69,378.56 323.36,383.23 303.32,403.28 323.36,397.41 331.95,391.82 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='329.17,383.23 333.89,372.70 323.36,375.21 318.69,378.56 323.36,383.23 303.32,403.28 323.36,397.41 331.95,391.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='323.36,383.23 329.17,383.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 333.89,372.70 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 323.36,375.21 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -36,7 +36,7 @@
 <polyline points='323.36,383.23 303.32,403.28 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 323.36,397.41 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 331.95,391.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='329.17,383.23 333.89,372.70 323.36,373.36 317.35,377.22 323.36,383.23 303.32,403.28 323.36,397.41 331.95,391.82 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='329.17,383.23 333.89,372.70 323.36,373.36 317.35,377.22 323.36,383.23 303.32,403.28 323.36,397.41 331.95,391.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='323.36,383.23 329.17,383.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 333.89,372.70 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 323.36,373.36 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -45,7 +45,7 @@
 <polyline points='323.36,383.23 303.32,403.28 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 323.36,397.41 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='323.36,383.23 331.95,391.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='371.14,428.13 377.10,418.06 367.03,422.28 357.23,418.32 338.69,428.13 346.99,448.17 367.03,442.30 367.03,428.13 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='371.14,428.13 377.10,418.06 367.03,422.28 357.23,418.32 338.69,428.13 346.99,448.17 367.03,442.30 367.03,428.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='367.03,428.13 371.14,428.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,428.13 377.10,418.06 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,428.13 367.03,422.28 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -54,7 +54,7 @@
 <polyline points='367.03,428.13 346.99,448.17 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,428.13 367.03,442.30 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,428.13 367.03,428.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='338.88,298.62 336.02,295.67 333.07,286.29 321.28,286.84 304.72,298.62 333.07,298.62 333.07,298.62 333.07,298.62 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='338.88,298.62 336.02,295.67 333.07,286.29 321.28,286.84 304.72,298.62 333.07,298.62 333.07,298.62 333.07,298.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='333.07,298.62 338.88,298.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='333.07,298.62 336.02,295.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='333.07,298.62 333.07,286.29 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -63,7 +63,7 @@
 <polyline points='333.07,298.62 333.07,298.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='333.07,298.62 333.07,298.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='333.07,298.62 333.07,298.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='279.88,210.56 271.17,206.96 267.56,196.60 261.55,204.55 267.56,210.56 267.56,210.56 267.56,210.56 270.43,213.43 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='279.88,210.56 271.17,206.96 267.56,196.60 261.55,204.55 267.56,210.56 267.56,210.56 267.56,210.56 270.43,213.43 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='267.56,210.56 279.88,210.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='267.56,210.56 271.17,206.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='267.56,210.56 267.56,196.60 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -72,7 +72,7 @@
 <polyline points='267.56,210.56 267.56,210.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='267.56,210.56 267.56,210.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='267.56,210.56 270.43,213.43 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='258.32,327.12 253.01,327.12 253.01,313.00 239.36,313.47 224.66,327.12 253.01,327.12 253.01,327.12 253.01,327.12 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='258.32,327.12 253.01,327.12 253.01,313.00 239.36,313.47 224.66,327.12 253.01,327.12 253.01,327.12 253.01,327.12 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='253.01,327.12 258.32,327.12 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='253.01,327.12 253.01,327.12 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='253.01,327.12 253.01,313.00 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -81,7 +81,7 @@
 <polyline points='253.01,327.12 253.01,327.12 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='253.01,327.12 253.01,327.12 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='253.01,327.12 253.01,327.12 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='180.15,210.56 164.97,206.41 160.81,195.65 157.62,207.37 160.81,210.56 160.81,210.56 160.81,210.56 169.40,219.15 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='180.15,210.56 164.97,206.41 160.81,195.65 157.62,207.37 160.81,210.56 160.81,210.56 160.81,210.56 169.40,219.15 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='160.81,210.56 180.15,210.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='160.81,210.56 164.97,206.41 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='160.81,210.56 160.81,195.65 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -90,7 +90,7 @@
 <polyline points='160.81,210.56 160.81,210.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='160.81,210.56 160.81,210.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='160.81,210.56 169.40,219.15 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='406.85,394.72 414.44,386.13 405.85,382.56 392.73,381.59 377.51,394.72 405.85,394.72 405.85,408.89 408.72,397.58 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='406.85,394.72 414.44,386.13 405.85,382.56 392.73,381.59 377.51,394.72 405.85,394.72 405.85,408.89 408.72,397.58 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='405.85,394.72 406.85,394.72 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='405.85,394.72 414.44,386.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='405.85,394.72 405.85,382.56 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -99,7 +99,7 @@
 <polyline points='405.85,394.72 405.85,394.72 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='405.85,394.72 405.85,408.89 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='405.85,394.72 408.72,397.58 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='371.34,399.81 377.75,389.10 367.03,387.95 346.99,379.77 338.69,399.81 367.03,399.81 367.03,413.98 369.90,402.67 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='371.34,399.81 377.75,389.10 367.03,387.95 346.99,379.77 338.69,399.81 367.03,399.81 367.03,413.98 369.90,402.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='367.03,399.81 371.34,399.81 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,399.81 377.75,389.10 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,399.81 367.03,387.95 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -108,7 +108,7 @@
 <polyline points='367.03,399.81 367.03,399.81 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,399.81 367.03,413.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='367.03,399.81 369.90,402.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='286.81,376.67 290.41,365.96 279.69,362.71 270.63,367.60 251.35,376.67 279.69,376.67 279.69,390.85 288.28,385.26 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='286.81,376.67 290.41,365.96 279.69,362.71 270.63,367.60 251.35,376.67 279.69,376.67 279.69,390.85 288.28,385.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='279.69,376.67 286.81,376.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,376.67 290.41,365.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,376.67 279.69,362.71 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -117,7 +117,7 @@
 <polyline points='279.69,376.67 279.69,376.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,376.67 279.69,390.85 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,376.67 288.28,385.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='252.84,376.67 256.44,365.96 245.73,362.71 235.23,366.17 217.38,376.67 245.73,376.67 245.73,390.85 254.32,385.26 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='252.84,376.67 256.44,365.96 245.73,362.71 235.23,366.17 217.38,376.67 245.73,376.67 245.73,390.85 254.32,385.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='245.73,376.67 252.84,376.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='245.73,376.67 256.44,365.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='245.73,376.67 245.73,362.71 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -126,7 +126,7 @@
 <polyline points='245.73,376.67 245.73,376.67 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='245.73,376.67 245.73,390.85 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='245.73,376.67 254.32,385.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='224.58,283.26 214.63,280.39 211.76,264.72 204.84,276.34 211.76,283.26 211.76,283.26 211.76,283.26 217.49,288.98 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='224.58,283.26 214.63,280.39 211.76,264.72 204.84,276.34 211.76,283.26 211.76,283.26 211.76,283.26 217.49,288.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='211.76,283.26 224.58,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='211.76,283.26 214.63,280.39 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='211.76,283.26 211.76,264.72 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -135,7 +135,7 @@
 <polyline points='211.76,283.26 211.76,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='211.76,283.26 211.76,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='211.76,283.26 217.49,288.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='246.42,283.26 236.46,280.39 233.60,267.19 226.20,275.86 233.60,283.26 233.60,283.26 233.60,283.26 239.32,288.98 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='246.42,283.26 236.46,280.39 233.60,267.19 226.20,275.86 233.60,283.26 233.60,283.26 233.60,283.26 239.32,288.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='233.60,283.26 246.42,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='233.60,283.26 236.46,280.39 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='233.60,283.26 233.60,267.19 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -144,7 +144,7 @@
 <polyline points='233.60,283.26 233.60,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='233.60,283.26 233.60,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='233.60,283.26 239.32,288.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='195.47,283.26 185.51,280.39 182.65,266.83 174.30,274.91 182.65,283.26 182.65,283.26 182.65,283.26 188.38,288.98 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='195.47,283.26 185.51,280.39 182.65,266.83 174.30,274.91 182.65,283.26 182.65,283.26 182.65,283.26 188.38,288.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='182.65,283.26 195.47,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,283.26 185.51,280.39 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,283.26 182.65,266.83 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -153,7 +153,7 @@
 <polyline points='182.65,283.26 182.65,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,283.26 182.65,283.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,283.26 188.38,288.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='81.52,113.87 67.77,112.30 66.20,86.78 57.89,105.56 66.20,113.87 66.20,113.87 66.20,113.87 74.79,122.46 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='81.52,113.87 67.77,112.30 66.20,86.78 57.89,105.56 66.20,113.87 66.20,113.87 66.20,113.87 74.79,122.46 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='66.20,113.87 81.52,113.87 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,113.87 67.77,112.30 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,113.87 66.20,86.78 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -162,7 +162,7 @@
 <polyline points='66.20,113.87 66.20,113.87 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,113.87 66.20,113.87 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,113.87 74.79,122.46 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='82.52,124.23 68.41,122.01 66.20,95.88 58.27,116.31 66.20,124.23 66.20,124.23 66.20,124.23 74.79,132.82 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='82.52,124.23 68.41,122.01 66.20,95.88 58.27,116.31 66.20,124.23 66.20,124.23 66.20,124.23 74.79,132.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='66.20,124.23 82.52,124.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,124.23 68.41,122.01 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,124.23 66.20,95.88 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -171,7 +171,7 @@
 <polyline points='66.20,124.23 66.20,124.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,124.23 66.20,124.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='66.20,124.23 74.79,132.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='188.35,141.49 174.86,137.15 170.52,113.72 163.55,134.53 170.52,141.49 170.52,141.49 170.52,141.49 179.11,150.08 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='188.35,141.49 174.86,137.15 170.52,113.72 163.55,134.53 170.52,141.49 170.52,141.49 170.52,141.49 179.11,150.08 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='170.52,141.49 188.35,141.49 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='170.52,141.49 174.86,137.15 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='170.52,141.49 170.52,113.72 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -180,7 +180,7 @@
 <polyline points='170.52,141.49 170.52,141.49 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='170.52,141.49 170.52,141.49 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='170.52,141.49 179.11,150.08 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='601.34,453.42 612.14,441.23 599.94,448.45 588.08,441.56 571.60,453.42 579.90,473.47 599.94,467.60 599.94,453.42 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='601.34,453.42 612.14,441.23 599.94,448.45 588.08,441.56 571.60,453.42 579.90,473.47 599.94,467.60 599.94,453.42 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='599.94,453.42 601.34,453.42 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='599.94,453.42 612.14,441.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='599.94,453.42 599.94,448.45 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -189,7 +189,7 @@
 <polyline points='599.94,453.42 579.90,473.47 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='599.94,453.42 599.94,467.60 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='599.94,453.42 599.94,453.42 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='551.42,456.01 571.46,435.97 551.42,455.28 541.83,446.42 523.07,456.01 531.38,476.06 551.42,470.19 554.28,458.88 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='551.42,456.01 571.46,435.97 551.42,455.28 541.83,446.42 523.07,456.01 531.38,476.06 551.42,470.19 554.28,458.88 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='551.42,456.01 551.42,456.01 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,456.01 571.46,435.97 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,456.01 551.42,455.28 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -198,7 +198,7 @@
 <polyline points='551.42,456.01 531.38,476.06 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,456.01 551.42,470.19 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,456.01 554.28,458.88 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='637.64,459.99 649.82,446.50 636.33,457.65 623.45,447.10 607.99,459.99 616.29,480.03 636.33,474.16 636.33,459.99 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='637.64,459.99 649.82,446.50 636.33,457.65 623.45,447.10 607.99,459.99 616.29,480.03 636.33,474.16 636.33,459.99 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='636.33,459.99 637.64,459.99 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='636.33,459.99 649.82,446.50 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='636.33,459.99 636.33,457.65 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -207,7 +207,7 @@
 <polyline points='636.33,459.99 616.29,480.03 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='636.33,459.99 636.33,474.16 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='636.33,459.99 636.33,459.99 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='340.00,417.68 344.18,409.00 335.49,410.78 322.35,404.53 307.15,417.68 335.49,417.68 335.49,417.68 335.49,417.68 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='340.00,417.68 344.18,409.00 335.49,410.78 322.35,404.53 307.15,417.68 335.49,417.68 335.49,417.68 335.49,417.68 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='335.49,417.68 340.00,417.68 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='335.49,417.68 344.18,409.00 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='335.49,417.68 335.49,410.78 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -216,7 +216,7 @@
 <polyline points='335.49,417.68 335.49,417.68 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='335.49,417.68 335.49,417.68 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='335.49,417.68 335.49,417.68 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='199.74,246.82 189.93,246.82 189.93,232.28 184.27,241.17 189.93,246.82 189.93,246.82 189.93,246.82 192.79,249.69 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='199.74,246.82 189.93,246.82 189.93,232.28 184.27,241.17 189.93,246.82 189.93,246.82 189.93,246.82 192.79,249.69 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='189.93,246.82 199.74,246.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='189.93,246.82 189.93,246.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='189.93,246.82 189.93,232.28 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -225,7 +225,7 @@
 <polyline points='189.93,246.82 189.93,246.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='189.93,246.82 189.93,246.82 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='189.93,246.82 192.79,249.69 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='192.47,258.91 186.25,255.31 182.65,244.98 175.97,252.23 182.65,258.91 182.65,258.91 182.65,258.91 185.51,261.77 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='192.47,258.91 186.25,255.31 182.65,244.98 175.97,252.23 182.65,258.91 182.65,258.91 182.65,258.91 185.51,261.77 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='182.65,258.91 192.47,258.91 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,258.91 186.25,255.31 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,258.91 182.65,244.98 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -234,7 +234,7 @@
 <polyline points='182.65,258.91 182.65,258.91 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,258.91 182.65,258.91 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='182.65,258.91 185.51,261.77 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='155.88,219.20 145.51,210.24 136.55,202.33 134.38,217.03 136.55,219.20 136.55,219.20 136.55,219.20 145.14,227.79 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='155.88,219.20 145.51,210.24 136.55,202.33 134.38,217.03 136.55,219.20 136.55,219.20 136.55,219.20 145.14,227.79 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='136.55,219.20 155.88,219.20 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='136.55,219.20 145.51,210.24 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='136.55,219.20 136.55,202.33 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -243,7 +243,7 @@
 <polyline points='136.55,219.20 136.55,219.20 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='136.55,219.20 136.55,219.20 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='136.55,219.20 145.14,227.79 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='292.01,176.03 282.65,173.07 279.69,159.13 273.61,169.94 279.69,176.03 279.69,176.03 279.69,176.03 282.56,178.89 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='292.01,176.03 282.65,173.07 279.69,159.13 273.61,169.94 279.69,176.03 279.69,176.03 279.69,176.03 282.56,178.89 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='279.69,176.03 292.01,176.03 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,176.03 282.65,173.07 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,176.03 279.69,159.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -252,7 +252,7 @@
 <polyline points='279.69,176.03 279.69,176.03 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,176.03 279.69,176.03 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='279.69,176.03 282.56,178.89 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='477.61,453.17 488.40,440.97 476.21,450.11 465.71,442.67 447.86,453.17 456.17,473.21 476.21,467.34 476.21,453.17 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='477.61,453.17 488.40,440.97 476.21,450.11 465.71,442.67 447.86,453.17 456.17,473.21 476.21,467.34 476.21,453.17 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='476.21,453.17 477.61,453.17 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='476.21,453.17 488.40,440.97 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='476.21,453.17 476.21,450.11 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -261,7 +261,7 @@
 <polyline points='476.21,453.17 456.17,473.21 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='476.21,453.17 476.21,467.34 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='476.21,453.17 476.21,453.17 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='448.58,417.51 460.10,402.08 444.67,412.96 439.42,412.26 444.67,417.51 424.63,437.55 444.67,445.86 447.53,420.37 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='448.58,417.51 460.10,402.08 444.67,412.96 439.42,412.26 444.67,417.51 424.63,437.55 444.67,445.86 447.53,420.37 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='444.67,417.51 448.58,417.51 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='444.67,417.51 460.10,402.08 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='444.67,417.51 444.67,412.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -270,7 +270,7 @@
 <polyline points='444.67,417.51 424.63,437.55 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='444.67,417.51 444.67,445.86 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='444.67,417.51 447.53,420.37 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='557.53,439.27 560.75,429.94 551.42,439.27 545.69,433.54 523.07,439.27 531.38,459.31 551.42,467.61 554.28,442.13 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='557.53,439.27 560.75,429.94 551.42,439.27 545.69,433.54 523.07,439.27 531.38,459.31 551.42,467.61 554.28,442.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='551.42,439.27 557.53,439.27 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,439.27 560.75,429.94 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,439.27 551.42,439.27 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -279,7 +279,7 @@
 <polyline points='551.42,439.27 531.38,459.31 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,439.27 551.42,467.61 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='551.42,439.27 554.28,442.13 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='218.44,218.33 210.69,204.85 197.21,206.32 197.21,218.33 197.21,218.33 177.16,238.38 197.21,246.68 205.80,226.92 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='218.44,218.33 210.69,204.85 197.21,206.32 197.21,218.33 197.21,218.33 177.16,238.38 197.21,246.68 205.80,226.92 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='197.21,218.33 218.44,218.33 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='197.21,218.33 210.69,204.85 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='197.21,218.33 197.21,206.32 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -288,7 +288,7 @@
 <polyline points='197.21,218.33 177.16,238.38 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='197.21,218.33 197.21,246.68 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='197.21,218.33 205.80,226.92 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='304.14,396.18 299.77,388.24 291.82,387.07 289.44,393.80 291.82,396.18 271.78,416.23 291.82,424.53 306.14,410.50 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polygon points='304.14,396.18 299.77,388.24 291.82,387.07 289.44,393.80 291.82,396.18 271.78,416.23 291.82,424.53 306.14,410.50 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
 <polyline points='291.82,396.18 304.14,396.18 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='291.82,396.18 299.77,388.24 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='291.82,396.18 291.82,387.07 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -297,7 +297,7 @@
 <polyline points='291.82,396.18 271.78,416.23 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='291.82,396.18 291.82,424.53 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='291.82,396.18 306.14,410.50 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='206.14,261.50 185.00,254.30 177.80,246.59 177.56,261.26 177.80,261.50 157.75,281.54 177.80,289.85 197.84,281.54 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polygon points='206.14,261.50 185.00,254.30 177.80,246.59 177.56,261.26 177.80,261.50 157.75,281.54 177.80,289.85 197.84,281.54 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
 <polyline points='177.80,261.50 206.14,261.50 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='177.80,261.50 185.00,254.30 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='177.80,261.50 177.80,246.59 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -306,7 +306,7 @@
 <polyline points='177.80,261.50 157.75,281.54 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='177.80,261.50 177.80,289.85 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='177.80,261.50 197.84,281.54 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
-<polygon points='338.78,416.90 345.54,404.43 333.07,407.72 323.29,407.12 304.72,416.90 313.02,436.95 333.07,431.08 335.93,419.77 ' style='stroke-width: 2.25; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polygon points='338.78,416.90 345.54,404.43 333.07,407.72 323.29,407.12 304.72,416.90 313.02,436.95 333.07,431.08 335.93,419.77 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
 <polyline points='333.07,416.90 338.78,416.90 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='333.07,416.90 345.54,404.43 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <polyline points='333.07,416.90 333.07,407.72 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
@@ -349,6 +349,6 @@
 <text x='709.63' y='266.30' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>4</text>
 <text x='709.63' y='294.64' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='709.63' y='322.99' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>8</text>
-<text x='37.69' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='223.81px' lengthAdjust='spacingAndGlyphs'>geom_starglyph - Adjust linewidth.* v2</text>
+<text x='37.69' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='76.67px' lengthAdjust='spacingAndGlyphs'>GSG: full = T</text>
 </g>
 </svg>

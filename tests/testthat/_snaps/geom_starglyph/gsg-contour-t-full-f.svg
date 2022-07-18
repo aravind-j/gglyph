@@ -93,6 +93,6 @@
 <text x='709.63' y='266.30' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>4</text>
 <text x='709.63' y='294.64' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='709.63' y='322.99' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>8</text>
-<text x='37.69' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='281.77px' lengthAdjust='spacingAndGlyphs'>geom_starglyph - contour = TRUE; full = FALSE</text>
+<text x='37.69' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='151.15px' lengthAdjust='spacingAndGlyphs'>GSG: contour = T; full = F</text>
 </g>
 </svg>

@@ -11,7 +11,7 @@ library(ggplot2)
 
 test_that("Both whiskers and contour", {
 
-  vdiffr::expect_doppelganger("geom_starglyph - full = TRUE",
+  vdiffr::expect_doppelganger("GSG: full = T",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -19,7 +19,7 @@ test_that("Both whiskers and contour", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - full = FALSE",
+  vdiffr::expect_doppelganger("GSG: full = F",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -27,7 +27,7 @@ test_that("Both whiskers and contour", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - Adjust linewidth.*v1",
+  vdiffr::expect_doppelganger("GSG: Adjust linewidth.*v1",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -36,7 +36,7 @@ test_that("Both whiskers and contour", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - Adjust linewidth.* v2",
+  vdiffr::expect_doppelganger("GSG: Adjust linewidth.* v2",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -49,7 +49,7 @@ test_that("Both whiskers and contour", {
 
 test_that("Only contours (polygon)", {
 
-  vdiffr::expect_doppelganger("geom_starglyph - contour = TRUE; full = TRUE",
+  vdiffr::expect_doppelganger("GSG: contour = T; full = T",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = FALSE, contour = TRUE,
@@ -57,7 +57,7 @@ test_that("Only contours (polygon)", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - contour = TRUE; full = FALSE",
+  vdiffr::expect_doppelganger("GSG: contour = T; full = F",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = FALSE, contour = TRUE,
@@ -65,7 +65,7 @@ test_that("Only contours (polygon)", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - contour = TRUE; Adjust linewidth.*",
+  vdiffr::expect_doppelganger("GSG: contour = T; Adjust linewidth.*",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = FALSE, contour = TRUE,
@@ -77,7 +77,7 @@ test_that("Only contours (polygon)", {
 
 test_that("Only whiskers", {
 
-  vdiffr::expect_doppelganger("geom_starglyph - whisker = TRUE; full = TRUE",
+  vdiffr::expect_doppelganger("GSG: whisker = T; full = T",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                                                cols = zs, whisker = TRUE, contour = FALSE,
@@ -86,7 +86,7 @@ test_that("Only whiskers", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - whisker = TRUE; full = FALSE",
+  vdiffr::expect_doppelganger("GSG: whisker = T; full = F",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                                                cols = zs, whisker = TRUE, contour = FALSE,
@@ -95,7 +95,7 @@ test_that("Only whiskers", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - whisker = TRUE; Adjust linewidth.*",
+  vdiffr::expect_doppelganger("GSG: whisker = T; Adjust linewidth.*",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = FALSE,
@@ -107,7 +107,7 @@ test_that("Only whiskers", {
 
 test_that("Whiskers with colours", {
 
-  vdiffr::expect_doppelganger("geom_starglyph - Map colour.whisker aes",
+  vdiffr::expect_doppelganger("GSG: Map colour.whisker aes",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp),
                                                cols = zs, whisker = TRUE, contour = FALSE,
@@ -121,7 +121,7 @@ test_that("Whiskers with colours", {
 
 test_that("Faceted", {
 
-  vdiffr::expect_doppelganger("geom_starglyph - facet_grid v1",
+  vdiffr::expect_doppelganger("GSG: facet_grid v1",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -130,7 +130,7 @@ test_that("Faceted", {
                                 facet_grid(. ~ cyl)
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - facet_grid v2",
+  vdiffr::expect_doppelganger("GSG: facet_grid v2",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -139,7 +139,7 @@ test_that("Faceted", {
                                 facet_grid(. ~ cyl)
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - facet_grid v3",
+  vdiffr::expect_doppelganger("GSG: facet_grid v3",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -148,7 +148,7 @@ test_that("Faceted", {
                                 facet_grid(cyl ~ .)
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - facet_grid v4",
+  vdiffr::expect_doppelganger("GSG: facet_grid v4",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -157,7 +157,7 @@ test_that("Faceted", {
                                 facet_grid(cyl ~ .)
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - facet_wrap v1",
+  vdiffr::expect_doppelganger("GSG: facet_wrap v1",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -166,7 +166,7 @@ test_that("Faceted", {
                                 facet_wrap(vars(cyl, vs))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - facet_wrap v2",
+  vdiffr::expect_doppelganger("GSG: facet_wrap v2",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -190,7 +190,7 @@ mtcars$lab <- row.names(mtcars)
 
 test_that("Grid points", {
 
-  vdiffr::expect_doppelganger("geom_starglyph - cols are factors; draw.grid = TRUE",
+  vdiffr::expect_doppelganger("GSG: factor cols; draw.grid = T",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                                                cols = zs, whisker = TRUE, contour = TRUE,
@@ -199,7 +199,7 @@ test_that("Grid points", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - cols are factors; draw.grid = TRUE; adjust point size",
+  vdiffr::expect_doppelganger("GSG: factor cols; draw.grid = T; adjust point size",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                                                cols = zs, whisker = TRUE, contour = FALSE,
@@ -208,7 +208,7 @@ test_that("Grid points", {
                                 ylim(c(-0, 550))
   )
 
-  vdiffr::expect_doppelganger("geom_starglyph - cols are factors; draw.grid = TRUE; Map colour.whisker aes",
+  vdiffr::expect_doppelganger("GSG: factor cols; draw.grid = T; Map colour.whisker aes",
                               ggplot(data = mtcars) +
                                 geom_starglyph(aes(x = mpg, y = disp),
                                                cols = zs, whisker = TRUE, contour = FALSE,
@@ -223,5 +223,6 @@ test_that("Grid points", {
 
 # map other aes
 # test repel
+#  - test too many overlaps
 # test other geoms
 
