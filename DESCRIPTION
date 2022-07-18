@@ -5,7 +5,11 @@ Authors@R: c(
     person(given = "J.", family = "Aravind",
            email = "j.aravind@icar.gov.in",
            role = c("aut", "cre"),
-		       comment = c(ORCID = "0000-0002-4791-442X")))
+		       comment = c(ORCID = "0000-0002-4791-442X")),
+		person(given = "Kamil", family = "Slowikowski",
+           role=c("ctb"),
+           comment = c(ORCID = "0000-0002-2843-6370",
+                       "Repel algorithm")))
 Description: Provides geoms for visualizing multivariate data as glyphs using 
      'ggplot2'.
 License: GPL-2 | GPL-3
