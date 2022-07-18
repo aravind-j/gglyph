@@ -44,8 +44,7 @@
 #'   \item{point.padding}{} \item{min.segment.length}{} \item{arrow}{}
 #'   \item{force}{} \item{force_pull}{} \item{max.time}{} \item{max.iter}{}
 #'   \item{max.overlaps}{} \item{nudge_x, nudge_y}{} \item{xlim, ylim}{}
-#'   \item{direction}{} \item{seed}{} \item{verbose}{} \item{repel}{}
-#'   \item{repel.control}{}
+#'   \item{direction}{} \item{seed}{} \item{verbose}{}
 #'
 #' @encoding UTF-8
 #'
