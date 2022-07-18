@@ -212,8 +212,8 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            point.size = 1,
                            show.legend = NA,
                            repel = FALSE,
-                           inherit.aes = TRUE,
-                           repel.control = gglyph.repel.control()) {
+                           repel.control = gglyph.repel.control(),
+                           inherit.aes = TRUE) {
 
   # Modify mapping to include cols
   mcols <- rlang::as_quosures(rlang::syms(cols), .GlobalEnv)
@@ -432,13 +432,6 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                       data[, fcols] <- lapply(data[, cols], function(f) as.numeric(levels(f))[f])
                                     }
 
-                                    # limits <- data.frame(x = xlim, y = ylim)
-                                    #
-                                    # limits <- structure(list(x = c(NA_real_, NA_real_),
-                                    #                          y = c(NA_real_, NA_real_)),
-                                    #                     row.names = c(NA, -2L),
-                                    #                     class = "data.frame")
-
                                     # The nudge is relative to the data.
                                     data$nudge_x <- nudges$x - data$x
                                     data$nudge_y <- nudges$y - data$y
@@ -517,62 +510,6 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
 #' @export
 #' @noRd
 makeContent.starglyphtree <- function(g) {
-
-  # To be added as params/arguments
-  #-----------------------------------------------------------------------------
-  # point.padding = 1e-6
-  # point.padding = unit(point.padding, "lines")
-  # # box.padding = 0.25
-  # box.padding = 0.25
-  # box.padding = unit(box.padding, "lines")
-  # min.segment.length = 0.5
-  # min.segment.length = unit(min.segment.length, "lines")
-  #
-  # # arrow = NULL
-  # arrow = arrow(length = unit(0.005, "npc"), type = "open")
-  # # force = 1
-  # force = 1
-  # force_pull = 5
-  # max.time = 0.5
-  # max.iter = 10000
-  # # max.overlaps = 10
-  # max.overlaps = 11
-  # nudge_x = 0
-  # nudge_y = 0
-  # xlim = c(NA, NA)
-  # ylim = c(NA, NA)
-  # direction = "both"
-  # seed = NA
-  # # verbose = FALSE
-  # verbose = T
-
-  # # default_aes
-  # point.size = 1
-  # segment.linetype = 1
-  # segment.colour = NULL
-  # segment.size = 0.5
-  # segment.alpha = NULL
-  # # segment.curvature = 0
-  # segment.curvature = -1e-20
-  # # segment.angle = 90
-  # segment.angle = 20
-  # # segment.ncp = 1
-  # segment.ncp = 3
-  # segment.shape = 0.5
-  # segment.square = TRUE
-  # segment.squareShape = 1
-  # segment.inflect = FALSE
-  # segment.debug = FALSE
-  #-----------------------------------------------------------------------------
-
-
-  # To be added in draw_panel()
-  #-----------------------------------------------------------------------------
-  # limits <- data.frame(x = xlim, y = ylim)
-  # # limits <- g$coord$transform(limits, g$panel_params)
-  # limits <- structure(list(x = c(NA_real_, NA_real_), y = c(NA_real_, NA_real_
-  # )), row.names = c(NA, -2L), class = "data.frame")
-  #-----------------------------------------------------------------------------
 
   if (g$repel) {
     # The padding around each bounding box.
@@ -698,7 +635,7 @@ makeContent.starglyphtree <- function(g) {
                         squareShape = row$segment.squareShape,
                         inflect = row$segment.inflect,
                         debug = row$segment.debug,
-                        gp = gpar(col = row$colour,
+                        gp = gpar(col = row$segment.colour,
                                   lwd = row$segment.size * ggplot2::.pt,
                                   lty = row$segment.linetype),
                         arrow = row$arrow)
