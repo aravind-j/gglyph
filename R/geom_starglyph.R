@@ -512,6 +512,9 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
 makeContent.starglyphtree <- function(g) {
 
   if (g$repel) {
+
+    repel.debug <- FALSE
+
     # The padding around each bounding box.
     box_padding_x <- grid::convertWidth(g$box.padding, "native", valueOnly = TRUE)
     box_padding_y <- grid::convertHeight(g$box.padding, "native", valueOnly = TRUE)
@@ -521,34 +524,37 @@ makeContent.starglyphtree <- function(g) {
       g$point.padding = unit(0, "lines")
     }
 
-    # create circle grobs
-    boxg <- lapply(seq_along(g$data$x), function(i) {
+    # create circle grobs at original points to compute bounding box
+    circg <- lapply(seq_along(g$data$x), function(i) {
       grid::circleGrob(g$data$x[i], g$data$y[i],
                        r = unit(max(g$data[i, g$cols]) * g$data[i, ]$size, "mm"),
                        gp = grid::gpar(col = "grey", fill = "transparent"))
     })
 
-    boxg2 <- lapply(seq_along(g$data$x),
-                    function(i) starglyphGrob(x = g$data$x[i],
-                                              y = g$data$y[i],
-                                              z = unlist(g$data[i, g$cols]),
-                                              size = g$data$size[i],
-                                              angle.start = g$astrt,
-                                              angle.stop = g$astp,
-                                              lwd.contour = g$data$linewidth.contour[i],
-                                              col.contour = "grey",
-                                              whisker = FALSE,
-                                              contour = TRUE,
-                                              draw.grid = FALSE))
-    boxg2 <- lapply(seq_along(g$data$x),
-                    function(i) boxg2[[i]]$children[[1]])
+    if (repel.debug) {
+      # Original glyph grob
+      glorg <- lapply(seq_along(g$data$x),
+                      function(i) starglyphGrob(x = g$data$x[i],
+                                                y = g$data$y[i],
+                                                z = unlist(g$data[i, g$cols]),
+                                                size = g$data$size[i],
+                                                angle.start = g$astrt,
+                                                angle.stop = g$astp,
+                                                lwd.contour = g$data$linewidth.contour[i],
+                                                col.contour = "grey",
+                                                whisker = FALSE,
+                                                contour = TRUE,
+                                                draw.grid = FALSE))
+      glorg <- lapply(seq_along(g$data$x),
+                      function(i) glorg[[i]]$children[[1]])
+    }
 
-    # Create a dataframe with x1 y1 x2 y2
-    boxes <- lapply(seq_along(boxg), function(i) {
-      x1 <- grid::convertWidth(grid::grobX(boxg[[i]], "west"), "native", TRUE)
-      x2 <- grid::convertWidth(grid::grobX(boxg[[i]], "east"), "native", TRUE)
-      y1 <- grid::convertHeight(grid::grobY(boxg[[i]], "south"), "native", TRUE)
-      y2 <- grid::convertHeight(grid::grobY(boxg[[i]], "north"), "native", TRUE)
+    # Create a dataframe with x1 y1 x2 y2 - Computed from bounding box
+    boxes <- lapply(seq_along(circg), function(i) {
+      x1 <- grid::convertWidth(grid::grobX(circg[[i]], "west"), "native", TRUE)
+      x2 <- grid::convertWidth(grid::grobX(circg[[i]], "east"), "native", TRUE)
+      y1 <- grid::convertHeight(grid::grobY(circg[[i]], "south"), "native", TRUE)
+      y2 <- grid::convertHeight(grid::grobY(circg[[i]], "north"), "native", TRUE)
       c(
         "x1" = x1 - box_padding_x + g$nudge_x,
         "y1" = y1 - box_padding_y + g$nudge_y,
@@ -557,17 +563,20 @@ makeContent.starglyphtree <- function(g) {
       )
     })
 
-    boxes2 <- data.frame(do.call(rbind, boxes))
-    # pg <- lapply(seq_along(boxes2$x1), function(i) {
-    #   grid::polylineGrob(x = c(boxes2$x1[i], g$data$x[i],    boxes2$x2[i], g$data$x[i], boxes2$x1[i]),
-    #                      y = c(g$data$y[i],  boxes2$y1[i], g$data$y[i],  boxes2$y2[i], g$data$y[i]),
-    #                      gp = gpar(col = "grey"))
-    # })
-    pg <- lapply(seq_along(boxes2$x1), function(i) {
-      grid::polylineGrob(x = c(boxes2$x1[i], boxes2$x1[i], boxes2$x2[i], boxes2$x2[i], boxes2$x1[i]),
-                         y = c(boxes2$y1[i], boxes2$y2[i], boxes2$y2[i], boxes2$y1[i], boxes2$y1[i]),
-                         gp = gpar(col = "gray"))
-    })
+    if (repel.debug) {
+      # Bounding box grob
+      boxes2 <- data.frame(do.call(rbind, boxes))
+      # bboxg <- lapply(seq_along(boxes2$x1), function(i) {
+      #   grid::polylineGrob(x = c(boxes2$x1[i], g$data$x[i],  boxes2$x2[i], g$data$x[i],  boxes2$x1[i]),
+      #                      y = c(g$data$y[i],  boxes2$y1[i], g$data$y[i],  boxes2$y2[i], g$data$y[i]),
+      #                      gp = gpar(col = "grey"))
+      # })
+      bboxg <- lapply(seq_along(boxes2$x1), function(i) {
+        grid::polylineGrob(x = c(boxes2$x1[i], boxes2$x1[i], boxes2$x2[i], boxes2$x2[i], boxes2$x1[i]),
+                           y = c(boxes2$y1[i], boxes2$y2[i], boxes2$y2[i], boxes2$y1[i], boxes2$y1[i]),
+                           gp = gpar(col = "gray"))
+      })
+    }
 
     # Make the repulsion reproducible if desired.
     if (is.null(g$seed) || !is.na(g$seed)) {
@@ -657,8 +666,6 @@ makeContent.starglyphtree <- function(g) {
                } else {
                  g$data$y[i]
                },
-               # x = g$data$x[i],
-               # y = g$data$y[i],
                z = unlist(g$data[i, g$cols]),
                size = g$data$size[i],
                col.whisker = if (is.null(g$colour.whisker)) {
@@ -696,20 +703,30 @@ makeContent.starglyphtree <- function(g) {
 
   if (g$repel) {
 
-    # gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], boxg[[i]]))
+    if (repel.debug) {
 
-    # gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], boxg2[[i]]))
-    #
-    # gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], pg[[i]]))
-    #
-    gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
+      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], circg[[i]]))
+
+      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], glorg[[i]]))
+
+      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], bboxg[[i]]))
+
+      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
+
+      # reorder grobs
+      gl <- lapply(seq_along(gl),
+                   function(i) grid::reorderGrob(gl[[i]], c(4:7, 1:3)))
+
+    } else {
+
+      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
+
+    }
 
     # reorder grobs
-    # gl <- lapply(seq_along(gl),
-    #              function(i) grid::reorderGrob(gl[[i]], c(7, 1:3, 4:6)))
+    gl <- lapply(seq_along(gl),
+                 function(i) grid::reorderGrob(gl[[i]], c(4, 1:3)))
 
-    # gl <- lapply(seq_along(gl),
-    #              function(i) grid::reorderGrob(gl[[i]], c(4, 1:3)))
   }
 
   gl <- do.call(grid::gList, gl)
