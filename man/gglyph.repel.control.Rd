@@ -38,7 +38,7 @@ number. Defaults to 0.5. (Default unit is lines, but other units can be
 specified by passing \code{unit(x, "units")}).}
 
 \item{arrow}{specification for arrow heads, as created by
-\code{\link[grid]{arrow}}}
+\code{\link[grid]{arrow}}.}
 
 \item{force}{Force of repulsion between overlapping glyphs. Defaults to
 1.}
@@ -64,13 +64,13 @@ to these limits. By default, glyphs are constrained to the entire plot
 area.}
 
 \item{direction}{"both", "x", or "y" -- direction in which to adjust position
-of labels}
+of glyphs.}
 
 \item{seed}{Random seed passed to \code{\link[base]{set.seed}}. Defaults to
 \code{NA}, which means that \code{set.seed} will not be called.}
 
 \item{verbose}{If \code{TRUE}, some diagnostics of the repel algorithm are
-printed}
+printed.}
 }
 \value{
 A list with the following components to control the repel algorithm
