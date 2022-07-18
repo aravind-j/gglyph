@@ -118,6 +118,19 @@ in a scatterplot.
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
   \item{shape} \item{size} \item{stroke} \item{linetype} }
+
+  See \code{vignette("ggplot2-specs", package = "ggplot2")} for further
+  details on setting these aesthetics.
+
+  The following additional aesthetics are considered if \code{repel = TRUE}:
+  \itemize{ \item{point.size} \item{segment.linetype} \item{segment.colour}
+  \item{segment.size} \item{segment.alpha} \item{segment.curvature}
+  \item{segment.angle} \item{segment.ncp} \item{segment.shape}
+  \item{segment.square} \item{segment.squareShape} \item{segment.inflect}
+  \item{segment.debug} }
+
+  See \code{vignette("Examples", package = "ggrepel")} for further
+  details on setting these aesthetics.
 }
 
 \examples{
