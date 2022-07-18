@@ -6,10 +6,10 @@
 #' other.
 #'
 #' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
-#'   starting position of each text label. The units for \code{nudge_x} and
+#'   starting position of each glyph. The units for \code{nudge_x} and
 #'   \code{nudge_y} are the same as for the data units on the x-axis and y-axis.
-#' @param xlim,ylim Limits for the x and y axes. Text labels will be constrained
-#'   to these limits. By default, text labels are constrained to the entire plot
+#' @param xlim,ylim Limits for the x and y axes. Glyphs will be constrained
+#'   to these limits. By default, glyphs are constrained to the entire plot
 #'   area.
 #' @param box.padding Amount of padding around bounding box, as unit or number.
 #'   Defaults to 0.25. (Default unit is lines, but other units can be specified
@@ -22,15 +22,15 @@
 #'   specified by passing \code{unit(x, "units")}).
 #' @param arrow specification for arrow heads, as created by
 #'   \code{\link[grid]{arrow}}
-#' @param force Force of repulsion between overlapping text labels. Defaults to
+#' @param force Force of repulsion between overlapping glyphs. Defaults to
 #'   1.
-#' @param force_pull Force of attraction between a text label and its
+#' @param force_pull Force of attraction between a glyph and its
 #'   corresponding data point. Defaults to 1.
 #' @param max.time Maximum number of seconds to try to resolve overlaps.
 #'   Defaults to 0.5.
 #' @param max.iter Maximum number of iterations to try to resolve overlaps.
 #'   Defaults to 10000.
-#' @param max.overlaps Exclude text labels that overlap too many things.
+#' @param max.overlaps Exclude glyphs that overlap too many things.
 #'   Defaults to 10.
 #' @param direction "both", "x", or "y" -- direction in which to adjust position
 #'   of labels
