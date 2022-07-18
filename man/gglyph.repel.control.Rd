@@ -19,7 +19,6 @@ gglyph.repel.control(
   nudge_y = 0,
   xlim = c(NA, NA),
   ylim = c(NA, NA),
-  na.rm = FALSE,
   direction = c("both", "y", "x"),
   seed = NA,
   verbose = FALSE
