@@ -24,8 +24,8 @@ geom_starglyph(
   point.size = 1,
   show.legend = NA,
   repel = FALSE,
-  inherit.aes = TRUE,
-  repel.control = gglyph.repel.control()
+  repel.control = gglyph.repel.control(),
+  inherit.aes = TRUE
 )
 }
 \arguments{
@@ -95,15 +95,15 @@ display.}
 \item{repel}{logical. If \code{TRUE}, the glyphs are repel away from each
 other to avoid overlaps. Default is \code{FALSE}.}
 
-\item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
-rather than combining with them. This is most useful for helper functions
-that define both data and aesthetics and shouldn't inherit behaviour from
-the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
-
 \item{repel.control}{A list of control settings for the repel algorithm.
 Ignored if \code{repel = FALSE}. See
 \code{\link[gglyph]{gglyph.repel.control}} for details  on the various
 control parameters.}
+
+\item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn't inherit behaviour from
+the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \value{
 A \code{geom} layer.
