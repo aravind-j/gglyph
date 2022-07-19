@@ -16,7 +16,7 @@
 #' @param colour.points The colour of grid points.
 #' @param linewidth.whisker The whisker line width.
 #' @param linewidth.contour The contour line width.
-#' @param point.size The size of the grid points in native units.
+#' @param grid.point.size The size of the grid points in native units.
 #' @param ... Other arguments passed on to \code{\link[ggplot2]{layer}()}. These
 #'   are often aesthetics, used to set an aesthetic to a fixed value, like
 #'   \code{colour = "green"} or \code{size = 3}. They may also be parameters to
@@ -37,8 +37,9 @@
 #'   \item{segment.square} \item{segment.squareShape} \item{segment.inflect}
 #'   \item{segment.debug} }
 #'
-#'   See \code{vignette("Examples", package = "ggrepel")} for further
-#'   details on setting these aesthetics.
+#'   See \code{ggrepel}
+#'   \href{https://ggrepel.slowkow.com/articles/examples.html}{examples} page
+#'   for further details on setting these aesthetics.
 #'
 #' @family geoms
 #'
@@ -167,7 +168,6 @@
 #'
 #' # Repel glyphs
 #' ggplot(data = mtcars) +
-#' geom_point(aes(x = mpg, y = disp, colour = cyl)) +
 #'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                  cols = zs, whisker = TRUE, contour = TRUE,
 #'                  size = 10, alpha = 1, repel = TRUE) +
@@ -190,14 +190,14 @@
 #'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                  cols = zs, whisker = TRUE, contour = TRUE,
 #'                  size = 3, alpha =  0.5, draw.grid = TRUE,
-#'                  point.size = 5) +
+#'                  grid.point.size = 5) +
 #'   ylim(c(-0, 550))
 #'
 #'
 #' ggplot(data = mtcars) +
 #'   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
 #'                  cols = zs, whisker = TRUE, contour = FALSE,
-#'                  size = 3, draw.grid = TRUE, point.size = 7,
+#'                  size = 3, draw.grid = TRUE, grid.point.size = 7,
 #'                  linewidth.whisker = 2, alpha = 0.7) +
 #'   ylim(c(-0, 550))
 #'
@@ -205,7 +205,7 @@
 #'   geom_starglyph(aes(x = mpg, y = disp),
 #'                  cols = zs, whisker = TRUE, contour = FALSE,
 #'                  size = 3, draw.grid = TRUE,
-#'                  point.size = 5, alpha =  0.8,
+#'                  grid.point.size = 5, alpha =  0.8,
 #'                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
 #'   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
 #'   ylim(c(-0, 550))
@@ -222,7 +222,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            linewidth.contour = 1,
                            full = TRUE,
                            draw.grid = FALSE,
-                           point.size = 1,
+                           grid.point.size = 1,
                            show.legend = NA,
                            repel = FALSE,
                            repel.control = gglyph.repel.control(),
@@ -243,7 +243,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     colour.points = colour.points,
     full = full,
     draw.grid = draw.grid,
-    point.size = point.size,
+    grid.point.size = grid.point.size,
     repel = repel,
     cols = cols,
     box.padding = unit(repel.control$box.padding, "lines"),
@@ -291,6 +291,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                              alpha = 1,
                                                              linejoin = "mitre",
                                                              lineend = "round",
+                                                             grid.point.size = 1,
                                                              # repel aes
                                                              point.size = 1,
                                                              segment.linetype = 1,
@@ -386,8 +387,9 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                         colour.points,
                                                         full,
                                                         draw.grid,
-                                                        point.size,
+                                                        grid.point.size,
                                                         repel,
+                                                        point.size,
                                                         box.padding,
                                                         point.padding,
                                                         min.segment.length,
@@ -483,7 +485,7 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                        # lineend = "round",
                                                        grid.levels = grid.levels,
                                                        draw.grid = draw.grid,
-                                                       point.size = point.size,
+                                                       grid.point.size = grid.point.size,
                                                        colour.points = colour.points,
                                                        repel = repel,
                                                        limits = limits,
@@ -596,6 +598,9 @@ makeContent.starglyphtree <- function(g) {
       set.seed(g$seed)
     }
 
+    # The points are represented by circles.
+    g$data$point.size[is.na(g$data$point.size)] <- 0
+
     # Beware the magic numbers. I do not understand them.
     # I just accept them as necessary to get the code to work.
     p_width <- grid::convertWidth(unit(1, "npc"), "inch", TRUE)
@@ -608,7 +613,7 @@ makeContent.starglyphtree <- function(g) {
       grid::unit(g$data$point.size, "lines"), "native", valueOnly = TRUE
     ) / 13
     point_padding <- p_ratio * grid::convertWidth(
-      grid::unit(g$point.size, "lines"), "native", valueOnly = TRUE
+      grid::unit(g$point.padding, "lines"), "native", valueOnly = TRUE
     ) / 13
 
     # Repel overlapping bounding boxes away from each other.
@@ -703,7 +708,7 @@ makeContent.starglyphtree <- function(g) {
                lineend = g$data$lineend[i],
                grid.levels = g$grid.levels,
                draw.grid = g$draw.grid,
-               point.size = grid::unit(g$point.size, "pt"),
+               grid.point.size = grid::unit(g$grid.point.size, "pt"),
                col.points = if (is.null(g$colour.points)) {
                  if (is.null(g$colour.whisker)) {
                    g$data$colour[i]
@@ -713,6 +718,8 @@ makeContent.starglyphtree <- function(g) {
                } else {
                  g$colour.points
                }))
+
+  browser()
 
   if (g$repel) {
 

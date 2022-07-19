@@ -29,7 +29,7 @@
 #' @param grid.levels A list of grid levels (as vectors) corresponding to the
 #'   values in \code{z} at which points are to be plotted. The values in
 #'   \code{z} should be present in the list specified.
-#' @param point.size The size of the grid points in native units.
+#' @param grid.point.size The size of the grid points in native units.
 #'
 #' @return A \code{\link[grid]{gTree}} object.
 #'
@@ -237,7 +237,7 @@
 #'                      lwd.whisker = 3,
 #'                      angle.start = 0, angle.stop = base::pi,
 #'                      draw.grid = TRUE, grid.levels = gl,
-#'                      point.size = 20, contour = FALSE)
+#'                      grid.point.size = 20, contour = FALSE)
 #'
 #' sg6 <- starglyphGrob(x = 600, y = 650,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 5,
@@ -283,7 +283,7 @@
 #'                      angle.start = 0, angle.stop = base::pi,
 #'                      draw.grid = TRUE, grid.levels = gl,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
-#'                      point.size = 10, col.points = "gray")
+#'                      grid.point.size = 10, col.points = "gray")
 #'
 #' sg5 <- starglyphGrob(x = 600, y = 400,
 #'                      z = c(1, 3, 2, 1, 2, 3), size = 5,
@@ -291,7 +291,7 @@
 #'                      angle.start = 0, angle.stop = base::pi,
 #'                      draw.grid = TRUE, grid.levels = gl,
 #'                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
-#'                      point.size = 20, col.points = NA,
+#'                      grid.point.size = 20, col.points = NA,
 #'                      contour = FALSE)
 #'
 #' sg6 <- starglyphGrob(x = 600, y = 650,
@@ -326,7 +326,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
                           lineend = c("round", "butt", "square"),
                           grid.levels = NULL,
                           draw.grid = FALSE,
-                          point.size = 10) {
+                          grid.point.size = 10) {
 
   linejoin <- match.arg(linejoin)
   lineend <- match.arg(lineend)
@@ -436,7 +436,7 @@ starglyphGrob <- function(x = .5, y = .5, z,
           gpointsGrob <- grid::pointsGrob(starpx, starpy,
                                           # default.units = "native",
                                           pch = 20,
-                                          size = grid::unit(point.size,
+                                          size = grid::unit(grid.point.size,
                                                       "native"),
                                           gp = grid::gpar(col = col.points,
                                                           alpha = alpha))

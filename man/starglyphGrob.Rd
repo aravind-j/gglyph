@@ -24,7 +24,7 @@ starglyphGrob(
   lineend = c("round", "butt", "square"),
   grid.levels = NULL,
   draw.grid = FALSE,
-  point.size = 10
+  grid.point.size = 10
 )
 }
 \arguments{
@@ -73,7 +73,7 @@ values in \code{z} at which points are to be plotted. The values in
 \item{draw.grid}{logical. If \code{TRUE}, grid points are plotted along the
 whiskers. Default is \code{FALSE}.}
 
-\item{point.size}{The size of the grid points in native units.}
+\item{grid.point.size}{The size of the grid points in native units.}
 }
 \value{
 A \code{\link[grid]{gTree}} object.
@@ -275,7 +275,7 @@ sg5 <- starglyphGrob(x = 600, y = 400,
                      lwd.whisker = 3,
                      angle.start = 0, angle.stop = base::pi,
                      draw.grid = TRUE, grid.levels = gl,
-                     point.size = 20, contour = FALSE)
+                     grid.point.size = 20, contour = FALSE)
 
 sg6 <- starglyphGrob(x = 600, y = 650,
                      z = c(1, 3, 2, 1, 2, 3), size = 5,
@@ -321,7 +321,7 @@ sg4 <- starglyphGrob(x = 600, y = 150,
                      angle.start = 0, angle.stop = base::pi,
                      draw.grid = TRUE, grid.levels = gl,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
-                     point.size = 10, col.points = "gray")
+                     grid.point.size = 10, col.points = "gray")
 
 sg5 <- starglyphGrob(x = 600, y = 400,
                      z = c(1, 3, 2, 1, 2, 3), size = 5,
@@ -329,7 +329,7 @@ sg5 <- starglyphGrob(x = 600, y = 400,
                      angle.start = 0, angle.stop = base::pi,
                      draw.grid = TRUE, grid.levels = gl,
                      col.whisker = RColorBrewer::brewer.pal(6, "Dark2"),
-                     point.size = 20, col.points = NA,
+                     grid.point.size = 20, col.points = NA,
                      contour = FALSE)
 
 sg6 <- starglyphGrob(x = 600, y = 650,

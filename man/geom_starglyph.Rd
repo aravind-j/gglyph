@@ -21,7 +21,7 @@ geom_starglyph(
   linewidth.contour = 1,
   full = TRUE,
   draw.grid = FALSE,
-  point.size = 1,
+  grid.point.size = 1,
   show.legend = NA,
   repel = FALSE,
   repel.control = gglyph.repel.control(),
@@ -84,7 +84,7 @@ otherwise half star glyphs (180°) are plotted.}
 whiskers if all the variables specified in \code{cols} are of type
 \link[base]{factor}. Default is \code{FALSE}.}
 
-\item{point.size}{The size of the grid points in native units.}
+\item{grid.point.size}{The size of the grid points in native units.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
@@ -129,8 +129,9 @@ in a scatterplot.
   \item{segment.square} \item{segment.squareShape} \item{segment.inflect}
   \item{segment.debug} }
 
-  See \code{vignette("Examples", package = "ggrepel")} for further
-  details on setting these aesthetics.
+  See \code{ggrepel}
+  \href{https://ggrepel.slowkow.com/articles/examples.html}{examples} page
+  for further details on setting these aesthetics.
 }
 
 \examples{
@@ -237,7 +238,6 @@ ggplot(data = mtcars) +
 
 # Repel glyphs
 ggplot(data = mtcars) +
-geom_point(aes(x = mpg, y = disp, colour = cyl)) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
                  size = 10, alpha = 1, repel = TRUE) +
@@ -260,14 +260,14 @@ ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
                  size = 3, alpha =  0.5, draw.grid = TRUE,
-                 point.size = 5) +
+                 grid.point.size = 5) +
   ylim(c(-0, 550))
 
 
 ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp, colour = cyl),
                  cols = zs, whisker = TRUE, contour = FALSE,
-                 size = 3, draw.grid = TRUE, point.size = 7,
+                 size = 3, draw.grid = TRUE, grid.point.size = 7,
                  linewidth.whisker = 2, alpha = 0.7) +
   ylim(c(-0, 550))
 
@@ -275,7 +275,7 @@ ggplot(data = mtcars) +
   geom_starglyph(aes(x = mpg, y = disp),
                  cols = zs, whisker = TRUE, contour = FALSE,
                  size = 3, draw.grid = TRUE,
-                 point.size = 5, alpha =  0.8,
+                 grid.point.size = 5, alpha =  0.8,
                  colour.whisker = RColorBrewer::brewer.pal(8, "Dark2")) +
   geom_point(data = mtcars, aes(x = mpg, y = disp)) +
   ylim(c(-0, 550))
