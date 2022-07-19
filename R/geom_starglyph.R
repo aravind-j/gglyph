@@ -528,7 +528,7 @@ makeContent.starglyphtree <- function(g) {
 
   if (g$repel) {
 
-    repel.debug <- FALSE
+    repel.debug <- getOption("gglyph.repel.debug", default = FALSE)
 
     # The padding around each bounding box.
     box_padding_x <- grid::convertWidth(g$box.padding, "native", valueOnly = TRUE)
@@ -719,8 +719,6 @@ makeContent.starglyphtree <- function(g) {
                  g$colour.points
                }))
 
-  browser()
-
   if (g$repel) {
 
     if (repel.debug) {
@@ -742,6 +740,8 @@ makeContent.starglyphtree <- function(g) {
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
 
     }
+
+  } else {
 
     # reorder grobs
     gl <- lapply(seq_along(gl),

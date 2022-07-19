@@ -106,6 +106,14 @@
 #'                  alpha = 1, repel = TRUE) +
 #'   ylim(c(-0, 550))
 #'
+#' ggplot(data = mtcars) +
+#' geom_tileglyph(aes(x = mpg, y = disp),
+#'                cols = zs, size = 1,
+#'                ratio = 4, nrow = 2,
+#'                fill.gradient = "viridis",
+#'                alpha = 1, repel = TRUE) +
+#'   ylim(c(-0, 550))
+#'
 geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            position = "identity", ...,
                            cols = character(0L),
@@ -374,7 +382,7 @@ makeContent.tileglyphtree <- function(g) {
 
   if (g$repel) {
 
-    repel.debug <- FALSE
+    repel.debug <- getOption("gglyph.repel.debug", default = FALSE)
 
     # The padding around each bounding box.
     box_padding_x <- grid::convertWidth(g$box.padding, "native", valueOnly = TRUE)
@@ -563,6 +571,8 @@ makeContent.tileglyphtree <- function(g) {
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
 
     }
+
+  } else {
 
     # reorder grobs
     gl <- lapply(seq_along(gl),
