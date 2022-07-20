@@ -31,7 +31,8 @@ Imports:
      scales
 Suggests:
     RColorBrewer,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    vdiffr
 URL: https://github.com/aravind-j/gglyph,
     https://aravind-j.github.io/gglyph/
 BugReports: https://github.com/aravind-j/gglyph/issues
