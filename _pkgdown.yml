@@ -1,7 +1,42 @@
 template:
-  params:
-    bootswatch: sandstone
-    ganalytics: UA-199996472-1
+  bootstrap: 5
+  bootswatch: sandstone
+  bslib:
+    pkgdown-nav-height: 100px
+  includes:
+    in_header: |
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+       <script async src="https://www.googletagmanager.com/gtag/js?id={UA-199996472-1}"#' ></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', '{UA-199996472-1}');
+       </script>
+
+navbar:
+  structure:
+    left:  [home, reference, news]
+    right: [search, github]
+  components:
+    home:
+      icon: fa-home fa-lg
+      text: Home
+      href: index.html
+    reference:
+      icon: fa-code
+      text: Reference
+      href: reference/index.html
+    news:
+      icon: far fa-newspaper
+      text: News
+      href: news/index.html
+
+
+home:
+  sidebar:
+    structure: [links, license, citation, authors, dev]
 
 reference:
     - title: Geoms
