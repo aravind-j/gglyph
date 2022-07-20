@@ -570,13 +570,11 @@ makeContent.tileglyphtree <- function(g) {
 
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
 
+      # reorder grobs
+      gl <- lapply(seq_along(gl),
+                   function(i) grid::reorderGrob(gl[[i]], c(2, 1)))
+
     }
-
-  } else {
-
-    # reorder grobs
-    gl <- lapply(seq_along(gl),
-                 function(i) grid::reorderGrob(gl[[i]], c(2, 1)))
 
   }
 

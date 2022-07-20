@@ -739,13 +739,11 @@ makeContent.starglyphtree <- function(g) {
 
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], segg[[i]]))
 
+      # reorder grobs
+      gl <- lapply(seq_along(gl),
+                   function(i) grid::reorderGrob(gl[[i]], c(4, 1:3)))
+
     }
-
-  } else {
-
-    # reorder grobs
-    gl <- lapply(seq_along(gl),
-                 function(i) grid::reorderGrob(gl[[i]], c(4, 1:3)))
 
   }
 
