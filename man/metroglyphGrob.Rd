@@ -22,7 +22,7 @@ metroglyphGrob(
   lineend = c("round", "butt", "square"),
   grid.levels = NULL,
   draw.grid = FALSE,
-  point.size = 10
+  grid.point.size = 10
 )
 }
 \arguments{
@@ -66,7 +66,7 @@ values in \code{z} at which points are to be plotted. The values in
 \item{draw.grid}{logical. If \code{TRUE}, grid points are plotted along the
 whiskers. Default is \code{FALSE}.}
 
-\item{point.size}{The size of the grid points in native units.}
+\item{grid.point.size}{The size of the grid points in native units.}
 }
 \value{
 A \code{\link[grid]{gTree}} object.
@@ -270,7 +270,7 @@ mglyph4 <- metroglyphGrob(x = 850, y = 600,
                           lwd.ray = 3,
                           draw.grid = TRUE, grid.levels = gl,
                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
-                          col.points = NA, point.size = 20)
+                          col.points = NA, grid.point.size = 20)
 
 grid::grid.newpage()
 grid::grid.draw(mglyph1)

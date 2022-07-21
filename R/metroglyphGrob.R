@@ -26,7 +26,7 @@
 #' @param grid.levels A list of grid levels (as vectors) corresponding to the
 #'   values in \code{z} at which points are to be plotted. The values in
 #'   \code{z} should be present in the list specified.
-#' @param point.size The size of the grid points in native units.
+#' @param grid.point.size The size of the grid points in native units.
 #'
 #' @family grobs
 #'
@@ -236,7 +236,7 @@
 #'                           lwd.ray = 3,
 #'                           draw.grid = TRUE, grid.levels = gl,
 #'                           col.ray = RColorBrewer::brewer.pal(6, "Dark2"),
-#'                           col.points = NA, point.size = 20)
+#'                           col.points = NA, grid.point.size = 20)
 #'
 #' grid::grid.newpage()
 #' grid::grid.draw(mglyph1)
@@ -258,7 +258,7 @@ metroglyphGrob <- function(x = .5, y = .5, z,
                           lineend = c("round", "butt", "square"),
                           grid.levels = NULL,
                           draw.grid = FALSE,
-                          point.size = 10) {
+                          grid.point.size = 10) {
 
   lineend <- match.arg(lineend)
 
@@ -369,7 +369,7 @@ metroglyphGrob <- function(x = .5, y = .5, z,
           gpointsGrob <- grid::pointsGrob(gridx, gridy,
                                           # default.units = "native",
                                           pch = 20,
-                                          size = grid::unit(point.size,
+                                          size = grid::unit(grid.point.size,
                                                             "native"),
                                           gp = grid::gpar(col = col.points,
                                                           alpha = alpha))
