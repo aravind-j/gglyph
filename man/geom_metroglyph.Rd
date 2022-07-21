@@ -21,8 +21,10 @@ geom_metroglyph(
   lineend = "butt",
   full = TRUE,
   draw.grid = FALSE,
-  point.size = 1,
+  grid.point.size = 1,
   show.legend = NA,
+  repel = FALSE,
+  repel.control = gglyph.repel.control(),
   inherit.aes = TRUE
 )
 }
@@ -76,20 +78,28 @@ glyphs as a character vector.}
 \item{lineend}{The line end style for the rays. Either \code{"round"},
 \code{"butt"} or \code{"square"}.}
 
-\item{full}{logical. If \code{TRUE}, full star glyphs (360°) are plotted,
-otherwise half star glyphs (180°) are plotted.}
+\item{full}{logical. If \code{TRUE}, full star glyphs (360Â°) are plotted,
+otherwise half star glyphs (180Â°) are plotted.}
 
 \item{draw.grid}{logical. If \code{TRUE}, grid points are plotted along the
 whiskers if all the variables specified in \code{cols} are of type
 \link[base]{factor}. Default is \code{FALSE}.}
 
-\item{point.size}{The size of the grid points in native units.}
+\item{grid.point.size}{The size of the grid points in native units.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.
 It can also be a named logical vector to finely select the aesthetics to
 display.}
+
+\item{repel}{logical. If \code{TRUE}, the glyphs are repel away from each
+other to avoid overlaps. Default is \code{FALSE}.}
+
+\item{repel.control}{A list of control settings for the repel algorithm.
+Ignored if \code{repel = FALSE}. See
+\code{\link[gglyph]{gglyph.repel.control}} for details  on the various
+control parameters.}
 
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
@@ -109,6 +119,20 @@ in a scatterplot.
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
   \item{circle.size} }
+
+  See \code{vignette("ggplot2-specs", package = "ggplot2")} for further
+  details on setting these aesthetics.
+
+  The following additional aesthetics are considered if \code{repel = TRUE}:
+  \itemize{ \item{point.size} \item{segment.linetype} \item{segment.colour}
+  \item{segment.size} \item{segment.alpha} \item{segment.curvature}
+  \item{segment.angle} \item{segment.ncp} \item{segment.shape}
+  \item{segment.square} \item{segment.squareShape} \item{segment.inflect}
+  \item{segment.debug} }
+
+  See \code{ggrepel}
+  \href{https://ggrepel.slowkow.com/articles/examples.html}{examples} page
+  for further details on setting these aesthetics.
 }
 
 \examples{
@@ -257,7 +281,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
                   size = 2.5, alpha =  0.8,
-                  draw.grid = TRUE, point.size = 5) +
+                  draw.grid = TRUE, grid.point.size = 5) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -265,7 +289,7 @@ ggplot(data = mtcars) +
                   cols = zs, circle.size = 3, colour.ray = NULL,
                   linewidth.circle = 2, linewidth.ray = 2,
                   size = 2.5, alpha =  0.8,
-                  draw.grid = TRUE, point.size = 5) +
+                  draw.grid = TRUE, grid.point.size = 5) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
@@ -275,7 +299,7 @@ ggplot(data = mtcars) +
                   colour.circle = "transparent", fill = "gray",
                   colour.ray = RColorBrewer::brewer.pal(8, "Dark2"),
                   size = 2.5, alpha =  0.8,
-                  draw.grid = TRUE, point.size = 5) +
+                  draw.grid = TRUE, grid.point.size = 5) +
   ylim(c(-0, 550))
 
 }
