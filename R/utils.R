@@ -16,3 +16,29 @@ iscolour <- function(x) {
              error = function(e) FALSE)
   })
 }
+
+# Helper to find dimensions of bounding box
+boxdim <- function(x, what = c("min", "max")) {
+
+  df <- lapply(x, unlist)
+  df <- data.frame(do.call(rbind,  df))
+
+  d1 <- unique(df[, 2])
+
+  if (length(d1) > 1) {
+    stop("Unable to compute bounding box coordinates.")
+  }
+
+  if (what == "min") {
+    d2 <-  min(df[, 4])
+  }
+
+  if (what == "max") {
+    d2 <- max(df[, 4])
+  }
+
+  out <- unit(d1, "native") + unit(d2, "mm")
+
+  return(out)
+
+}

@@ -168,6 +168,7 @@
 #'
 #' # Repel glyphs
 #' ggplot(data = mtcars) +
+#'   geom_point(aes(x = mpg, y = disp, colour = cyl)) +
 #'   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
 #'                  cols = zs, whisker = TRUE, contour = TRUE,
 #'                  size = 10, alpha = 1, repel = TRUE) +
@@ -244,8 +245,8 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
     full = full,
     draw.grid = draw.grid,
     grid.point.size = grid.point.size,
-    repel = repel,
     cols = cols,
+    repel = repel,
     box.padding = unit(repel.control$box.padding, "lines"),
     point.padding = unit(repel.control$point.padding, "lines"),
     min.segment.length = unit(repel.control$min.segment.length, "lines"),
@@ -539,37 +540,28 @@ makeContent.starglyphtree <- function(g) {
       g$point.padding = unit(0, "lines")
     }
 
-    # create circle grobs at original points to compute bounding box
-    circg <- lapply(seq_along(g$data$x), function(i) {
-      grid::circleGrob(g$data$x[i], g$data$y[i],
-                       r = unit(max(g$data[i, g$cols]) * g$data[i, ]$size, "mm"),
-                       gp = grid::gpar(col = "grey", fill = "transparent"))
-    })
-
-    if (repel.debug) {
-      # Original glyph grob
-      glorg <- lapply(seq_along(g$data$x),
-                      function(i) starglyphGrob(x = g$data$x[i],
-                                                y = g$data$y[i],
-                                                z = unlist(g$data[i, g$cols]),
-                                                size = g$data$size[i],
-                                                angle.start = g$astrt,
-                                                angle.stop = g$astp,
-                                                lwd.contour = g$data$linewidth.contour[i],
-                                                col.contour = "grey",
-                                                whisker = FALSE,
-                                                contour = TRUE,
-                                                draw.grid = FALSE))
-      glorg <- lapply(seq_along(g$data$x),
-                      function(i) glorg[[i]]$children[[1]])
-    }
+    # Minimal Original glyph grob
+    glorg <- lapply(seq_along(g$data$x),
+                    function(i) starglyphGrob(x = g$data$x[i],
+                                              y = g$data$y[i],
+                                              z = unlist(g$data[i, g$cols]),
+                                              size = g$data$size[i],
+                                              angle.start = g$astrt,
+                                              angle.stop = g$astp,
+                                              lwd.contour = g$data$linewidth.contour[i],
+                                              col.contour = "grey",
+                                              whisker = FALSE,
+                                              contour = TRUE,
+                                              draw.grid = FALSE))
+    glorg <- lapply(seq_along(g$data$x),
+                    function(i) glorg[[i]]$children[[1]])
 
     # Create a dataframe with x1 y1 x2 y2 - Computed from bounding box
-    boxes <- lapply(seq_along(circg), function(i) {
-      x1 <- grid::convertWidth(grid::grobX(circg[[i]], "west"), "native", TRUE)
-      x2 <- grid::convertWidth(grid::grobX(circg[[i]], "east"), "native", TRUE)
-      y1 <- grid::convertHeight(grid::grobY(circg[[i]], "south"), "native", TRUE)
-      y2 <- grid::convertHeight(grid::grobY(circg[[i]], "north"), "native", TRUE)
+    boxes <- lapply(seq_along(glorg), function(i) {
+      x1 <- grid::convertWidth(boxdim(glorg[[i]]$x, "min"), "native", TRUE)
+      x2 <- grid::convertWidth(boxdim(glorg[[i]]$x, "max"), "native", TRUE)
+      y1 <- grid::convertHeight(boxdim(glorg[[i]]$y, "min"), "native", TRUE)
+      y2 <- grid::convertHeight(boxdim(glorg[[i]]$y, "max"), "native", TRUE)
       c(
         "x1" = x1 - box_padding_x + g$nudge_x,
         "y1" = y1 - box_padding_y + g$nudge_y,
@@ -723,8 +715,6 @@ makeContent.starglyphtree <- function(g) {
 
     if (repel.debug) {
 
-      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], circg[[i]]))
-
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], glorg[[i]]))
 
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], bboxg[[i]]))
@@ -733,7 +723,7 @@ makeContent.starglyphtree <- function(g) {
 
       # reorder grobs
       gl <- lapply(seq_along(gl),
-                   function(i) grid::reorderGrob(gl[[i]], c(4:7, 1:3)))
+                   function(i) grid::reorderGrob(gl[[i]], c(4:6, 1:3)))
 
     } else {
 
