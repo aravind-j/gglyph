@@ -238,6 +238,7 @@ ggplot(data = mtcars) +
 
 # Repel glyphs
 ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
   geom_starglyph(aes(x = mpg, y = disp, fill = cyl),
                  cols = zs, whisker = TRUE, contour = TRUE,
                  size = 10, alpha = 1, repel = TRUE) +
