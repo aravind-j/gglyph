@@ -163,6 +163,7 @@ ggplot(data = mtcars) +
 
 # Repel glyphs
 ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp)) +
   geom_tileglyph(aes(x = mpg, y = disp),
                  cols = zs, size = 2,
                  fill.gradient = "Blues",
@@ -170,7 +171,7 @@ ggplot(data = mtcars) +
   ylim(c(-0, 550))
 
 ggplot(data = mtcars) +
-geom_tileglyph(aes(x = mpg, y = disp),
+geom_tileglyph(aes(x = mpg, y = disp)),
                cols = zs, size = 1,
                ratio = 4, nrow = 2,
                fill.gradient = "viridis",
