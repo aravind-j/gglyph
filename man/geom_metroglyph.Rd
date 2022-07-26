@@ -78,8 +78,8 @@ glyphs as a character vector.}
 \item{lineend}{The line end style for the rays. Either \code{"round"},
 \code{"butt"} or \code{"square"}.}
 
-\item{full}{logical. If \code{TRUE}, full star glyphs (360Â°) are plotted,
-otherwise half star glyphs (180Â°) are plotted.}
+\item{full}{logical. If \code{TRUE}, full star glyphs (360°) are plotted,
+otherwise half star glyphs (180°) are plotted.}
 
 \item{draw.grid}{logical. If \code{TRUE}, grid points are plotted along the
 whiskers if all the variables specified in \code{cols} are of type
