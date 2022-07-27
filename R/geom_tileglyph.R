@@ -108,11 +108,12 @@
 #'   ylim(c(-0, 550))
 #'
 #' ggplot(data = mtcars) +
-#' geom_tileglyph(aes(x = mpg, y = disp)),
-#'                cols = zs, size = 1,
-#'                ratio = 4, nrow = 2,
-#'                fill.gradient = "viridis",
-#'                alpha = 1, repel = TRUE) +
+#'   geom_point(aes(x = mpg, y = disp)) +
+#'   geom_tileglyph(aes(x = mpg, y = disp),
+#'                  cols = zs, size = 1,
+#'                  ratio = 4, nrow = 2,
+#'                  fill.gradient = "viridis",
+#'                  alpha = 1, repel = TRUE) +
 #'   ylim(c(-0, 550))
 #'
 geom_tileglyph <- function(mapping = NULL, data = NULL, stat = "identity",
