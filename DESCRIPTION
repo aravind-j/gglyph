@@ -30,6 +30,7 @@ Imports:
      rlang,
      scales
 Suggests:
+    ggrepel,
     RColorBrewer,
     testthat (>= 3.0.0),
     vdiffr
