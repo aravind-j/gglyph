@@ -263,6 +263,33 @@ ggplot(data = mtcars) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
 
+# Repel glyphs
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
+                  cols = zs, circle.size = 3, colour.ray = NULL,
+                  linewidth.circle = 2, linewidth.ray = 2,
+                  size = 10, alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_metroglyph(aes(x = mpg, y = disp, colour = cyl, fill = cyl),
+                  cols = zs, circle.size = 3, colour.ray = NULL,
+                  linewidth.circle = 2, linewidth.ray = 2,
+                  colour.circle = "transparent",
+                  size = 10, alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp)) +
+  geom_metroglyph(aes(x = mpg, y = disp),
+                  cols = zs, circle.size = 3,
+                  linewidth.circle = 0, linewidth.ray = 2,
+                  colour.circle = "transparent", fill = "gray",
+                  colour.ray = RColorBrewer::brewer.pal(8, "Dark2"),
+                  size = 10, alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
 
 rm(mtcars)
 mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)

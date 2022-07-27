@@ -188,6 +188,33 @@
 #'   ylim(c(-0, 550)) +
 #'   facet_grid(. ~ cyl)
 #'
+#' # Repel glyphs
+#' ggplot(data = mtcars) +
+#'   geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+#'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl),
+#'                   cols = zs, circle.size = 3, colour.ray = NULL,
+#'                   linewidth.circle = 2, linewidth.ray = 2,
+#'                   size = 10, alpha =  1, repel = TRUE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+#'   geom_metroglyph(aes(x = mpg, y = disp, colour = cyl, fill = cyl),
+#'                   cols = zs, circle.size = 3, colour.ray = NULL,
+#'                   linewidth.circle = 2, linewidth.ray = 2,
+#'                   colour.circle = "transparent",
+#'                   size = 10, alpha =  1, repel = TRUE) +
+#'   ylim(c(-0, 550))
+#'
+#' ggplot(data = mtcars) +
+#'   geom_point(aes(x = mpg, y = disp)) +
+#'   geom_metroglyph(aes(x = mpg, y = disp),
+#'                   cols = zs, circle.size = 3,
+#'                   linewidth.circle = 0, linewidth.ray = 2,
+#'                   colour.circle = "transparent", fill = "gray",
+#'                   colour.ray = RColorBrewer::brewer.pal(8, "Dark2"),
+#'                   size = 10, alpha =  1, repel = TRUE) +
+#'   ylim(c(-0, 550))
 #'
 #' rm(mtcars)
 #' mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)
@@ -552,39 +579,28 @@ makeContent.metroglyphtree <- function(g) {
       g$point.padding = unit(0, "lines")
     }
 
-    # create circle grobs at original points to compute bounding box
-    circg <- lapply(seq_along(g$data$x), function(i) {
-      grid::circleGrob(g$data$x[i], g$data$y[i],
-                       r = unit(max(g$data[i, g$cols]) * g$data[i, ]$size, "mm"),
-                       gp = grid::gpar(col = "grey", fill = "transparent"))
-    })
-
-    if (repel.debug) {
-      # Original glyph grob
-      glorg <- lapply(seq_along(g$data$x),
-                      function(i) metroglyphGrob(x = g$data$x[i],
-                                                y = g$data$y[i],
-                                                z = unlist(g$data[i, g$cols]),
-                                                size = g$data$size[i],
-                                                circle.size = g$data$circle.size[i],
-                                                col.ray = "grey",
-                                                col.circle = "grey",
-                                                angle.start = g$astrt,
-                                                angle.stop = g$astp,
-                                                lwd.ray = g$data$linewidth.ray[i],
-                                                lwd.circle = g$data$linewidth.circle[i],
-                                                lineend = g$data$lineend[i],
-                                                ))
-      glorg <- lapply(seq_along(g$data$x),
-                      function(i) glorg[[i]]$children[[1]])
-    }
+    # Original glyph grob
+    glorg <- lapply(seq_along(g$data$x),
+                    function(i) metroglyphGrob(x = g$data$x[i],
+                                               y = g$data$y[i],
+                                               z = unlist(g$data[i, g$cols]),
+                                               size = g$data$size[i],
+                                               circle.size = g$data$circle.size[i],
+                                               col.ray = "grey",
+                                               col.circle = "grey",
+                                               angle.start = g$astrt,
+                                               angle.stop = g$astp,
+                                               lwd.ray = g$data$linewidth.ray[i],
+                                               lwd.circle = g$data$linewidth.circle[i],
+                                               lineend = g$data$lineend[i],
+                    ))
 
     # Create a dataframe with x1 y1 x2 y2 - Computed from bounding box
-    boxes <- lapply(seq_along(circg), function(i) {
-      x1 <- grid::convertWidth(grid::grobX(circg[[i]], "west"), "native", TRUE)
-      x2 <- grid::convertWidth(grid::grobX(circg[[i]], "east"), "native", TRUE)
-      y1 <- grid::convertHeight(grid::grobY(circg[[i]], "south"), "native", TRUE)
-      y2 <- grid::convertHeight(grid::grobY(circg[[i]], "north"), "native", TRUE)
+    boxes <- lapply(seq_along(glorg), function(i) {
+      x1 <- grid::convertWidth(boxdim(glorg[[i]]$children[[2]]$x, "min"), "native", TRUE)
+      x2 <- grid::convertWidth(boxdim(glorg[[i]]$children[[2]]$x, "max"), "native", TRUE)
+      y1 <- grid::convertHeight(boxdim(glorg[[i]]$children[[2]]$y, "min"), "native", TRUE)
+      y2 <- grid::convertHeight(boxdim(glorg[[i]]$children[[2]]$y, "max"), "native", TRUE)
       c(
         "x1" = x1 - box_padding_x + g$nudge_x,
         "y1" = y1 - box_padding_y + g$nudge_y,
@@ -736,8 +752,6 @@ makeContent.metroglyphtree <- function(g) {
 
     if (repel.debug) {
 
-      gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], circg[[i]]))
-
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], glorg[[i]]))
 
       gl <- lapply(seq_along(gl), function(i) grid::addGrob(gl[[i]], bboxg[[i]]))
@@ -746,7 +760,7 @@ makeContent.metroglyphtree <- function(g) {
 
       # reorder grobs
       gl <- lapply(seq_along(gl),
-                   function(i) grid::reorderGrob(gl[[i]], c(4:7, 1:3)))
+                   function(i) grid::reorderGrob(gl[[i]], c(4:6, 1:3)))
 
     } else {
 
