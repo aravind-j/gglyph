@@ -23,6 +23,8 @@ geom_pieglyph(
   full = TRUE,
   draw.grid = FALSE,
   show.legend = NA,
+  repel = FALSE,
+  repel.control = gglyph.repel.control(),
   inherit.aes = TRUE
 )
 }
@@ -95,6 +97,14 @@ whiskers if all the variables specified in \code{cols} are of type
 It can also be a named logical vector to finely select the aesthetics to
 display.}
 
+\item{repel}{logical. If \code{TRUE}, the glyphs are repel away from each
+other to avoid overlaps. Default is \code{FALSE}.}
+
+\item{repel.control}{A list of control settings for the repel algorithm.
+Ignored if \code{repel = FALSE}. See
+\code{\link[gglyph]{gglyph.repel.control}} for details  on the various
+control parameters.}
+
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
@@ -113,6 +123,20 @@ scatterplot.
   aesthetics (required aesthetics are in bold): \itemize{ \item{\strong{x}}
   \item{\strong{y}} \item{alpha} \item{colour} \item{fill} \item{group}
   \item{size} }
+
+  See \code{vignette("ggplot2-specs", package = "ggplot2")} for further
+  details on setting these aesthetics.
+
+  The following additional aesthetics are considered if \code{repel = TRUE}:
+  \itemize{ \item{point.size} \item{segment.linetype} \item{segment.colour}
+  \item{segment.size} \item{segment.alpha} \item{segment.curvature}
+  \item{segment.angle} \item{segment.ncp} \item{segment.shape}
+  \item{segment.square} \item{segment.squareShape} \item{segment.inflect}
+  \item{segment.debug} }
+
+  See \code{ggrepel}
+  \href{https://ggrepel.slowkow.com/articles/examples.html}{examples} page
+  for further details on setting these aesthetics.
 }
 
 \examples{
@@ -296,6 +320,54 @@ ggplot(data = mtcars) +
                 alpha =  0.8) +
   ylim(c(-0, 550)) +
   facet_grid(. ~ cyl)
+
+# Repel glyphs
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+                cols = zs, size = 10,
+                alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_pieglyph(aes(x = mpg, y = disp, fill = cyl),
+                cols = zs, size = 5,
+                scale.radius = FALSE, scale.segment = TRUE,
+                alpha =  1, full = FALSE, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+                cols = zs, size = 10,
+                alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp, colour = cyl)) +
+  geom_pieglyph(aes(x = mpg, y = disp, colour = cyl),
+                cols = zs, size = 5,
+                scale.radius = FALSE, scale.segment = TRUE,
+                alpha =  1, full = FALSE, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp)) +
+  geom_pieglyph(aes(x = mpg, y = disp),
+                cols = zs, size = 10,
+                fill.segment = RColorBrewer::brewer.pal(8, "Dark2"),
+                alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
+
+ggplot(data = mtcars) +
+  geom_point(aes(x = mpg, y = disp)) +
+  geom_pieglyph(aes(x = mpg, y = disp),
+                cols = zs, size = 5,
+                scale.radius = FALSE, scale.segment = FALSE,
+                fill.gradient = "viridis",
+                alpha =  1, repel = TRUE) +
+  ylim(c(-0, 550))
 
 rm(mtcars)
 mtcars[ , zs] <- lapply(mtcars[ , zs], scales::rescale)

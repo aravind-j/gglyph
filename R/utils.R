@@ -21,6 +21,7 @@ iscolour <- function(x) {
 boxdim <- function(x, what = c("min", "max")) {
 
   df <- lapply(x, unlist)
+  df <- df[unlist(lapply(df, length)) == 6]
   df <- data.frame(do.call(rbind,  df))
 
   d1 <- unique(df[, 2])
