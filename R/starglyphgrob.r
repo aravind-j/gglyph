@@ -404,8 +404,10 @@ starglyphGrob <- function(x = .5, y = .5, z,
           warning('Mismatch in values "z" values and corresponding "grid.levels".\n',
                   'Unable to plot grid points.')
         } else {
+
           # plot points
-          grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels)
+          grid.levels <- mapply(function(a, b) b[b <= a], z, grid.levels,
+                                SIMPLIFY = FALSE)
 
           # starpx <- mapply(function(a, b) x + (a * size * cos(b)),
           #                  grid.levels, angle)
@@ -415,10 +417,10 @@ starglyphGrob <- function(x = .5, y = .5, z,
           # starpx <- unlist(starpx)
           # starpy <- unlist(starpy)
 
-          starpx <- mapply(function(a, b) unit(x, "native")  + unit(a * size * cos(b), "mm"),
-                           grid.levels, angle)
-          starpy <- mapply(function(a, b) unit(y, "native")  + unit(a * size * sin(b), "mm"),
-                           grid.levels, angle)
+          starpx <- mapply(function(a, b) unit(x, "native") + unit(a * size * cos(b), "mm"),
+                           grid.levels, angle, SIMPLIFY = FALSE)
+          starpy <- mapply(function(a, b) unit(y, "native") + unit(a * size * sin(b), "mm"),
+                           grid.levels, angle, SIMPLIFY = FALSE)
 
           starpx <- upgradeUnit.unit.list(starpx)
           starpy <- upgradeUnit.unit.list(starpy)

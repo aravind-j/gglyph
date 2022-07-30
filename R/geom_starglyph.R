@@ -269,6 +269,10 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
   geomout <- GeomStarGlyph
   geomout$required_aes <- c(geomout$required_aes, cols)
 
+  geomout$default_aes <- c(geomout$default_aes,
+                           setNames(as.list(rep(0.5, length(cols))), cols))
+  class(geomout$default_aes) <- "uneval"
+
   ggplot2::layer(
     data = data,
     mapping = mapping,
@@ -308,9 +312,25 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                              segment.inflect = FALSE,
                                                              segment.debug = FALSE),
 
-                                  draw_key = ggplot2::draw_key_polygon,
+                                  # draw_key = ggplot2::draw_key_polygon,
 
                                   setup_params = function(data, params) {
+
+                                    grid.levels <- NULL
+
+                                    # Convert factor columns to equivalent numeric
+                                    if (params$draw.grid) {
+                                      grid.levels <- lapply(data[, params$cols], function(a) as.integer(levels(a)))
+                                    }
+
+                                    params$grid.levels <- grid.levels
+
+                                    # params$zkey <- if (params$draw.grid) {
+                                    #   apply(data[, params$cols], 2,
+                                    #         function(x) ceiling(mean(as.numeric(x))))
+                                    #   } else {
+                                    #     apply(data[, params$cols], 2, mean)
+                                    #   }
 
                                     params
                                   },
@@ -326,7 +346,6 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                                        collapse = ", "),
                                                  sep = ""))
                                     }
-
 
                                     # Check if cols are numeric or factor
                                     intfactcols <- unlist(lapply(data[, cols],
@@ -518,6 +537,66 @@ GeomStarGlyph <- ggplot2::ggproto("GeomStarGlyph", ggplot2::Geom,
                                     #                             gp = grid::gpar(col = data$colour,
                                     #                                             fill = data$fill))
                                     #          )))
+                                  },
+
+                                  draw_key = function(data, params, size) {
+
+                                    if (params$full) {
+                                      astrt <- 0
+                                      astp <- 2 * base::pi
+                                    } else {
+                                      astrt <- 0
+                                      astp <- base::pi
+                                    }
+
+                                    # zval <- params$zkey
+                                    #
+                                    # aes_ind <- which(data[, params$cols] == 1)
+                                    #
+                                    # if (length(aes_ind) != 0) {
+                                    #   data[, params$cols][aes_ind] <- zval[aes_ind]
+                                    # }
+
+                                    starglyphGrob(x = .5, y = .5,
+                                                  z = if (params$draw.grid) {
+                                                      ceiling(data[, params$cols])
+                                                    } else {
+                                                      data[, params$cols]
+                                                    },
+                                                  # z = params$zkey,
+                                                  size = data$size,
+                                                  col.whisker = if (is.null(params$colour.whisker)) {
+                                                    data$colour
+                                                  } else {
+                                                    params$colour.whisker
+                                                  },
+                                                  col.contour = if (is.null(params$colour.contour)) {
+                                                    data$colour
+                                                  } else {
+                                                    params$colour.contour
+                                                  },
+                                                  col.points = if (is.null(params$colour.points)) {
+                                                    if (is.null(params$colour.whisker)) {
+                                                      data$colour
+                                                    } else {
+                                                      NA
+                                                    }
+                                                  } else {
+                                                    params$colour.points
+                                                  },
+                                                  fill = data$fill,
+                                                  lwd.whisker = params$linewidth.whisker,
+                                                  lwd.contour = params$linewidth.contour,
+                                                  alpha = data$alpha,
+                                                  angle.start = astrt,
+                                                  angle.stop = astp,
+                                                  whisker = params$whisker,
+                                                  contour = params$contour,
+                                                  linejoin = data$linejoin,
+                                                  lineend = data$lineend,
+                                                  grid.levels = params$grid.levels,
+                                                  draw.grid = params$draw.grid,
+                                                  grid.point.size = grid::unit(params$grid.point.size, "pt"))
                                   }
 )
 
@@ -742,3 +821,5 @@ makeContent.starglyphtree <- function(g) {
   grid::setChildren(g, gl)
 
 }
+
+
