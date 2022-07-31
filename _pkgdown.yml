@@ -58,4 +58,6 @@ reference:
          - '`tileglyphGrob`'
 
     - title: Helpers
-      contents: '`gglyph.repel.control`'
+      contents:
+         - '`gglyph.repel.control`'
+         - '`scale_z_continuous`'
