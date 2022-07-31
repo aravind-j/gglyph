@@ -420,11 +420,35 @@
 <rect x='675.80' y='242.09' width='38.72' height='100.37' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 <text x='675.80' y='250.80' style='font-size: 11.00px; font-family: sans;' textLength='13.45px' lengthAdjust='spacingAndGlyphs'>cyl</text>
 <rect x='675.80' y='257.42' width='28.35' height='28.35' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='677.96' y='259.58' width='24.03' height='24.03' style='stroke-width: 3.25; stroke-linecap: square; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.50;' />
+<polygon points='704.15,271.59 700.00,261.57 689.97,257.42 679.95,261.57 675.80,271.59 679.95,281.62 689.97,285.77 700.00,281.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #F8766D; fill-opacity: 0.25;' />
+<polyline points='689.97,271.59 704.15,271.59 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 700.00,261.57 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 689.97,257.42 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 679.95,261.57 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 675.80,271.59 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 679.95,281.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 689.97,285.77 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,271.59 700.00,281.62 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <rect x='675.80' y='285.77' width='28.35' height='28.35' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='677.96' y='287.93' width='24.03' height='24.03' style='stroke-width: 3.25; stroke-linecap: square; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.50;' />
+<polygon points='704.15,299.94 700.00,289.92 689.97,285.77 679.95,289.92 675.80,299.94 679.95,309.96 689.97,314.11 700.00,309.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #00BA38; fill-opacity: 0.25;' />
+<polyline points='689.97,299.94 704.15,299.94 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 700.00,289.92 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 689.97,285.77 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 679.95,289.92 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 675.80,299.94 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 679.95,309.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 689.97,314.11 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,299.94 700.00,309.96 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <rect x='675.80' y='314.11' width='28.35' height='28.35' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='677.96' y='316.27' width='24.03' height='24.03' style='stroke-width: 3.25; stroke-linecap: square; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.50;' />
+<polygon points='704.15,328.29 700.00,318.26 689.97,314.11 679.95,318.26 675.80,328.29 679.95,338.31 689.97,342.46 700.00,338.31 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25; stroke-linejoin: miter; fill: #619CFF; fill-opacity: 0.25;' />
+<polyline points='689.97,328.29 704.15,328.29 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 700.00,318.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 689.97,314.11 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 679.95,318.26 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 675.80,328.29 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 679.95,338.31 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 689.97,342.46 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
+<polyline points='689.97,328.29 700.00,338.31 ' style='stroke-width: 0.75; stroke: #000000; stroke-opacity: 0.25;' />
 <text x='709.63' y='274.62' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>4</text>
 <text x='709.63' y='302.97' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text x='709.63' y='331.31' style='font-size: 8.80px; font-family: sans;' textLength='4.89px' lengthAdjust='spacingAndGlyphs'>8</text>
