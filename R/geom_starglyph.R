@@ -7,6 +7,7 @@
 #' @template draw.grid-arg
 #' @template full-arg
 #' @template repel-arg
+#' @template general-arg
 #' @inheritParams ggplot2::layer
 #' @inheritParams starglyphGrob
 #' @param cols Name of columns specifying the variables to be plotted in the
@@ -224,10 +225,33 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
                            full = TRUE,
                            draw.grid = FALSE,
                            grid.point.size = 1,
+                           legend.glyph.dims = setNames(rep(0.5, length(cols)), cols),
                            show.legend = NA,
                            repel = FALSE,
                            repel.control = gglyph.repel.control(),
                            inherit.aes = TRUE) {
+
+  # Check legend.glyph.dims
+  if (is.numeric(legend.glyph.dims) & length(legend.glyph.dims) == 1) {
+
+    legend.glyph.dims <- setNames(rep(legend.glyph.dims, length(cols)), cols)
+
+  } else { # Check if legend.glyph.dims has same length as cols
+    if (is.numeric(legend.glyph.dims)
+        & length(legend.glyph.dims) == length(cols)) {
+
+      # Check names of legend.glyph.dims
+      if (!(all(names(legend.glyph.dims) %in% cols)
+          && all(cols %in% names(legend.glyph.dims)))) {
+        stop('Names specified in "legend.glyph.dims" and "cols" do not match.')
+      }
+
+    } else {
+      stop('"legend.glyph.dims" should be a numeric vector of unit length or ',
+           'a numeric vector of same length as "cols" ',
+           'with the "cols" as names.')
+    }
+  }
 
   # Modify mapping to include cols
   mcols <- rlang::as_quosures(rlang::syms(cols), .GlobalEnv)
@@ -269,8 +293,7 @@ geom_starglyph <- function(mapping = NULL, data = NULL, stat = "identity",
   geomout <- GeomStarGlyph
   geomout$required_aes <- c(geomout$required_aes, cols)
 
-  geomout$default_aes <- c(geomout$default_aes,
-                           setNames(as.list(rep(0.5, length(cols))), cols))
+  geomout$default_aes <- c(geomout$default_aes, legend.glyph.dims)
   class(geomout$default_aes) <- "uneval"
 
   ggplot2::layer(

@@ -22,6 +22,7 @@ geom_starglyph(
   full = TRUE,
   draw.grid = FALSE,
   grid.point.size = 1,
+  legend.glyph.dims = setNames(rep(0.5, length(cols)), cols),
   show.legend = NA,
   repel = FALSE,
   repel.control = gglyph.repel.control(),
@@ -85,6 +86,11 @@ whiskers if all the variables specified in \code{cols} are of type
 \link[base]{factor}. Default is \code{FALSE}.}
 
 \item{grid.point.size}{The size of the grid points in native units.}
+
+\item{legend.glyph.dims}{The dimensions of the legend glyph plot. Can be a
+numeric vector of unit length (where all the dimensions will have same
+value) or a numeric vector of same length as "cols" with the "cols" as
+names.}
 
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
