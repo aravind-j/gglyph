@@ -98,6 +98,7 @@ in a scatterplot.</p>
 <span>  full <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  draw.grid <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  grid.point.size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  legend.glyph.dims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/setNames.html" class="external-link">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">cols</span><span class="op">)</span><span class="op">)</span>, <span class="va">cols</span><span class="op">)</span>,</span>
 <span>  show.legend <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  repel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  repel.control <span class="op">=</span> <span class="fu"><a href="gglyph.repel.control.html">gglyph.repel.control</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -191,6 +192,13 @@ whiskers if all the variables specified in <code>cols</code> are of type
 
 <dt>grid.point.size</dt>
 <dd><p>The size of the grid points in native units.</p></dd>
+
+
+<dt>legend.glyph.dims</dt>
+<dd><p>The dimensions of the legend glyph plot. Can be a
+numeric vector of unit length (where all the dimensions will have same
+value) or a numeric vector of same length as "cols" with the "cols" as
+names.</p></dd>
 
 
 <dt>show.legend</dt>

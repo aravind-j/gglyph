@@ -95,6 +95,8 @@ scatterplot.</p>
 <span>  mirror <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  flip.axes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  show.legend <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  repel <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  repel.control <span class="op">=</span> <span class="fu"><a href="gglyph.repel.control.html">gglyph.repel.control</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  inherit.aes <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -178,6 +180,18 @@ It can also be a named logical vector to finely select the aesthetics to
 display.</p></dd>
 
 
+<dt>repel</dt>
+<dd><p>logical. If <code>TRUE</code>, the glyphs are repel away from each
+other to avoid overlaps. Default is <code>FALSE</code>.</p></dd>
+
+
+<dt>repel.control</dt>
+<dd><p>A list of control settings for the repel algorithm.
+Ignored if <code>repel = FALSE</code>. See
+<code><a href="gglyph.repel.control.html">gglyph.repel.control</a></code> for details  on the various
+control parameters.</p></dd>
+
+
 <dt>inherit.aes</dt>
 <dd><p>If <code>FALSE</code>, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
@@ -200,7 +214,25 @@ the default plot specification, e.g. <code><a href="https://ggplot2.tidyverse.or
 <li><p>colour</p></li>
 <li><p>fill</p></li>
 <li><p>group</p></li>
-</ul></div>
+</ul><p>See <code><a href="https://ggplot2.tidyverse.org/articles/ggplot2-specs.html" class="external-link">vignette("ggplot2-specs", package = "ggplot2")</a></code> for further
+  details on setting these aesthetics.</p>
+<p>The following additional aesthetics are considered if <code>repel = TRUE</code>:</p><ul><li><p>point.size</p></li>
+<li><p>segment.linetype</p></li>
+<li><p>segment.colour</p></li>
+<li><p>segment.size</p></li>
+<li><p>segment.alpha</p></li>
+<li><p>segment.curvature</p></li>
+<li><p>segment.angle</p></li>
+<li><p>segment.ncp</p></li>
+<li><p>segment.shape</p></li>
+<li><p>segment.square</p></li>
+<li><p>segment.squareShape</p></li>
+<li><p>segment.inflect</p></li>
+<li><p>segment.debug</p></li>
+</ul><p>See <code>ggrepel</code>
+  <a href="https://ggrepel.slowkow.com/articles/examples.html" class="external-link">examples</a> page
+  for further details on setting these aesthetics.</p>
+    </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Chambers JM, Cleveland WS, Kleiner B, Tukey PA (1983).
@@ -411,6 +443,44 @@ ISBN 978-1-4612-9371-2.</p>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0</span>, <span class="fl">550</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html" class="external-link">facet_grid</a></span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">cyl</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="geom_dotglyph-20.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Repel glyphs</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span>, colour <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu">geom_dotglyph</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span>, fill <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                cols <span class="op">=</span> <span class="va">zs</span>, radius <span class="op">=</span> <span class="fl">0.5</span>,</span></span>
+<span class="r-in"><span>                alpha <span class="op">=</span>  <span class="fl">1</span>, repel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0</span>, <span class="fl">550</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="geom_dotglyph-21.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span>, colour <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu">geom_dotglyph</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span>, colour <span class="op">=</span> <span class="va">cyl</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                cols <span class="op">=</span> <span class="va">zs</span>, radius <span class="op">=</span> <span class="fl">0.5</span>,</span></span>
+<span class="r-in"><span>                mirror <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>                alpha <span class="op">=</span>  <span class="fl">1</span>, repel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0</span>, <span class="fl">550</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="geom_dotglyph-22.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu">geom_dotglyph</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                cols <span class="op">=</span> <span class="va">zs</span>, radius <span class="op">=</span> <span class="fl">0.5</span>,</span></span>
+<span class="r-in"><span>                flip.axes <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                fill.dot <span class="op">=</span> <span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span><span class="fl">8</span>, <span class="st">"Dark2"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                alpha <span class="op">=</span>  <span class="fl">1</span>, repel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0</span>, <span class="fl">550</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="geom_dotglyph-23.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu">geom_dotglyph</span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">mpg</span>, y <span class="op">=</span> <span class="va">disp</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                cols <span class="op">=</span> <span class="va">zs</span>, radius <span class="op">=</span> <span class="fl">0.5</span>,</span></span>
+<span class="r-in"><span>                mirror <span class="op">=</span> <span class="cn">FALSE</span>, flip.axes <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                fill.gradient <span class="op">=</span> <span class="st">"viridis"</span>,</span></span>
+<span class="r-in"><span>                alpha <span class="op">=</span>  <span class="fl">1</span>, repel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">ylim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0</span>, <span class="fl">550</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="geom_dotglyph-24.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
